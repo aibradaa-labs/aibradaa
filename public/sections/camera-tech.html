@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Camera Tech - AI Bradaa</title>
+  <link rel="stylesheet" href="/styles/tailwind.css">
+  <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body class="bg-gray-50">
+  <!-- Header -->
+  <header class="bg-white shadow-sm border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <div class="flex items-center justify-between">
+        <a href="/" class="text-2xl font-bold text-indigo-600">AI Bradaa</a>
+        <nav class="hidden md:flex space-x-8">
+          <a href="/sections/matchmaker.html" class="text-gray-600 hover:text-indigo-600">Matchmaker</a>
+          <a href="/sections/versus.html" class="text-gray-600 hover:text-indigo-600">Versus</a>
+          <a href="/sections/explorer.html" class="text-gray-600 hover:text-indigo-600">Explorer</a>
+          <a href="/sections/command.html" class="text-gray-600 hover:text-indigo-600">Command</a>
+          <a href="/sections/intel.html" class="text-gray-600 hover:text-indigo-600">Intel</a>
+          <a href="/sections/camera-tech.html" class="text-gray-600 hover:text-indigo-600 font-semibold">Camera Tech</a>
+          <a href="/sections/appendices.html" class="text-gray-600 hover:text-indigo-600">Appendices</a>
+        </nav>
+        <button id="mobile-menu-btn" class="md:hidden text-gray-600">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-purple-600 via-indigo-600 to-blue-600 text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Camera Tech</h1>
+      <p class="text-xl text-purple-100">Visual laptop discovery powered by AI vision</p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Camera Upload Section -->
+    <div class="bg-white rounded-lg shadow-md p-8 mb-8">
+      <h2 class="text-3xl font-bold mb-6">Snap & Match</h2>
+      <p class="text-gray-600 mb-6">Upload a photo of a laptop or screenshot, and our AI will identify it and find similar models or better alternatives within your budget.</p>
+
+      <div class="border-2 border-dashed border-gray-300 rounded-lg p-12 text-center mb-6">
+        <div id="upload-area" class="cursor-pointer">
+          <svg class="mx-auto h-16 w-16 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
+          </svg>
+          <p class="text-lg font-medium text-gray-700 mb-2">Drop your image here or click to browse</p>
+          <p class="text-sm text-gray-500">Supports: JPG, PNG, WebP (max 5MB)</p>
+          <input type="file" id="image-upload" class="hidden" accept="image/jpeg,image/png,image/webp">
+        </div>
+
+        <div id="preview-area" class="hidden">
+          <img id="preview-image" class="max-w-full h-auto max-h-96 mx-auto rounded-lg shadow-md mb-4">
+          <button id="clear-image" class="text-sm text-red-600 hover:text-red-700 font-medium">Clear Image</button>
+        </div>
+      </div>
+
+      <div class="flex gap-4">
+        <button id="analyze-btn" class="flex-1 bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+          Analyze Image
+        </button>
+        <button id="camera-btn" class="bg-white text-indigo-600 border-2 border-indigo-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors">
+          📷 Use Camera
+        </button>
+      </div>
+    </div>
+
+    <!-- Camera Modal -->
+    <div id="camera-modal" class="hidden fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center p-4">
+      <div class="bg-white rounded-lg max-w-2xl w-full p-6">
+        <div class="flex justify-between items-center mb-4">
+          <h3 class="text-2xl font-bold">Take Photo</h3>
+          <button id="close-camera" class="text-gray-500 hover:text-gray-700 text-2xl">✕</button>
+        </div>
+        <video id="camera-stream" class="w-full h-auto bg-black rounded-lg mb-4" autoplay></video>
+        <div class="flex gap-4">
+          <button id="capture-btn" class="flex-1 bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700">
+            📸 Capture
+          </button>
+          <button id="switch-camera-btn" class="bg-gray-200 text-gray-700 px-6 py-3 rounded-lg font-semibold hover:bg-gray-300">
+            🔄 Switch
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Analysis Results -->
+    <div id="results-section" class="hidden space-y-6">
+      <!-- Identified Laptop -->
+      <div class="bg-white rounded-lg shadow-md p-8">
+        <h2 class="text-2xl font-bold mb-6">Identified Laptop</h2>
+        <div id="identified-laptop" class="flex gap-6">
+          <!-- Will be populated by JS -->
+        </div>
+      </div>
+
+      <!-- Similar Laptops -->
+      <div class="bg-white rounded-lg shadow-md p-8">
+        <h2 class="text-2xl font-bold mb-6">Similar Models</h2>
+        <div id="similar-laptops" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Will be populated by JS -->
+        </div>
+      </div>
+
+      <!-- Better Alternatives -->
+      <div class="bg-white rounded-lg shadow-md p-8">
+        <h2 class="text-2xl font-bold mb-6">Better Alternatives in Your Budget</h2>
+        <p class="text-gray-600 mb-6">These laptops offer better specs or value at a similar price point:</p>
+        <div id="alternatives" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Will be populated by JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Features Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+      <div class="bg-white rounded-lg shadow-md p-6">
+        <div class="text-4xl mb-4">🔍</div>
+        <h3 class="text-xl font-bold mb-2">AI Vision Recognition</h3>
+        <p class="text-gray-600">Powered by Google Gemini Vision API to identify laptop models from images with high accuracy.</p>
+      </div>
+
+      <div class="bg-white rounded-lg shadow-md p-6">
+        <div class="text-4xl mb-4">🎯</div>
+        <h3 class="text-xl font-bold mb-2">Smart Matching</h3>
+        <p class="text-gray-600">Find similar models and better alternatives based on specs, price, and use case.</p>
+      </div>
+
+      <div class="bg-white rounded-lg shadow-md p-6">
+        <div class="text-4xl mb-4">📱</div>
+        <h3 class="text-xl font-bold mb-2">Mobile-First</h3>
+        <p class="text-gray-600">Snap photos in stores or upload screenshots from anywhere on any device.</p>
+      </div>
+    </div>
+
+    <!-- How It Works -->
+    <div class="bg-white rounded-lg shadow-md p-8 mb-12">
+      <h2 class="text-3xl font-bold mb-6">How It Works</h2>
+      <div class="space-y-6">
+        <div class="flex gap-4">
+          <div class="flex-shrink-0 w-12 h-12 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold text-xl">1</div>
+          <div>
+            <h3 class="text-xl font-bold mb-2">Capture or Upload</h3>
+            <p class="text-gray-600">Take a photo with your device camera or upload an existing image of the laptop.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <div class="flex-shrink-0 w-12 h-12 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold text-xl">2</div>
+          <div>
+            <h3 class="text-xl font-bold mb-2">AI Analysis</h3>
+            <p class="text-gray-600">Our AI vision model analyzes the image to identify the brand, model, and key specs visible in the photo.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <div class="flex-shrink-0 w-12 h-12 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold text-xl">3</div>
+          <div>
+            <h3 class="text-xl font-bold mb-2">Get Recommendations</h3>
+            <p class="text-gray-600">Receive similar models and better alternatives with detailed comparisons and pricing from Malaysian retailers.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tips Section -->
+    <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-8">
+      <h2 class="text-2xl font-bold mb-6">Tips for Best Results</h2>
+      <ul class="space-y-3 text-gray-700">
+        <li class="flex items-start gap-3">
+          <span class="text-green-600 font-bold">✓</span>
+          <span>Capture clear photos with good lighting - avoid shadows and glare</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-green-600 font-bold">✓</span>
+          <span>Include the laptop screen and keyboard area for better identification</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-green-600 font-bold">✓</span>
+          <span>Make sure brand logos and model stickers are visible</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-green-600 font-bold">✓</span>
+          <span>Screenshots from retailer websites work great too!</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-red-600 font-bold">✗</span>
+          <span>Avoid blurry or extremely dark photos</span>
+        </li>
+      </ul>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-12 mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-gray-400">© 2025 AI Bradaa. Malaysia's AI Laptop Recommendation Service.</p>
+      <p class="text-sm text-gray-500 mt-2">PDPA Compliant • Privacy-First • Made with ❤️ in Malaysia</p>
+    </div>
+  </footer>
+
+  <script type="module">
+    import { ApiClient } from '/js/utils/apiClient.js';
+    import { Toast, Loader, Card } from '/js/components/ui.js';
+    import { formatCurrency } from '/js/utils/helpers.js';
+
+    const api = new ApiClient();
+
+    // Elements
+    const uploadArea = document.getElementById('upload-area');
+    const imageUpload = document.getElementById('image-upload');
+    const previewArea = document.getElementById('preview-area');
+    const previewImage = document.getElementById('preview-image');
+    const clearImageBtn = document.getElementById('clear-image');
+    const analyzeBtn = document.getElementById('analyze-btn');
+    const cameraBtn = document.getElementById('camera-btn');
+    const resultsSection = document.getElementById('results-section');
+
+    // Camera modal
+    const cameraModal = document.getElementById('camera-modal');
+    const cameraStream = document.getElementById('camera-stream');
+    const closeCameraBtn = document.getElementById('close-camera');
+    const captureBtn = document.getElementById('capture-btn');
+    const switchCameraBtn = document.getElementById('switch-camera-btn');
+
+    let currentStream = null;
+    let currentFacingMode = 'environment';
+    let selectedImage = null;
+
+    // Upload area click
+    uploadArea.addEventListener('click', () => {
+      imageUpload.click();
+    });
+
+    // Drag and drop
+    uploadArea.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      uploadArea.classList.add('border-indigo-500', 'bg-indigo-50');
+    });
+
+    uploadArea.addEventListener('dragleave', () => {
+      uploadArea.classList.remove('border-indigo-500', 'bg-indigo-50');
+    });
+
+    uploadArea.addEventListener('drop', (e) => {
+      e.preventDefault();
+      uploadArea.classList.remove('border-indigo-500', 'bg-indigo-50');
+
+      const file = e.dataTransfer.files[0];
+      if (file && file.type.startsWith('image/')) {
+        handleImageUpload(file);
+      }
+    });
+
+    // File input change
+    imageUpload.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        handleImageUpload(file);
+      }
+    });
+
+    // Handle image upload
+    function handleImageUpload(file) {
+      if (file.size > 5 * 1024 * 1024) {
+        Toast.show({ message: 'Image too large. Max 5MB.', type: 'error' });
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        selectedImage = e.target.result;
+        previewImage.src = selectedImage;
+        uploadArea.classList.add('hidden');
+        previewArea.classList.remove('hidden');
+        analyzeBtn.disabled = false;
+        resultsSection.classList.add('hidden');
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // Clear image
+    clearImageBtn.addEventListener('click', () => {
+      selectedImage = null;
+      previewImage.src = '';
+      uploadArea.classList.remove('hidden');
+      previewArea.classList.add('hidden');
+      analyzeBtn.disabled = true;
+      imageUpload.value = '';
+      resultsSection.classList.add('hidden');
+    });
+
+    // Camera button
+    cameraBtn.addEventListener('click', async () => {
+      try {
+        await startCamera();
+        cameraModal.classList.remove('hidden');
+      } catch (err) {
+        console.error('Camera error:', err);
+        Toast.show({ message: 'Could not access camera', type: 'error' });
+      }
+    });
+
+    // Start camera
+    async function startCamera() {
+      const constraints = {
+        video: { facingMode: currentFacingMode, width: { ideal: 1920 }, height: { ideal: 1080 } }
+      };
+
+      currentStream = await navigator.mediaDevices.getUserMedia(constraints);
+      cameraStream.srcObject = currentStream;
+    }
+
+    // Stop camera
+    function stopCamera() {
+      if (currentStream) {
+        currentStream.getTracks().forEach(track => track.stop());
+        currentStream = null;
+      }
+    }
+
+    // Close camera
+    closeCameraBtn.addEventListener('click', () => {
+      stopCamera();
+      cameraModal.classList.add('hidden');
+    });
+
+    // Switch camera
+    switchCameraBtn.addEventListener('click', async () => {
+      stopCamera();
+      currentFacingMode = currentFacingMode === 'environment' ? 'user' : 'environment';
+      await startCamera();
+    });
+
+    // Capture photo
+    captureBtn.addEventListener('click', () => {
+      const canvas = document.createElement('canvas');
+      canvas.width = cameraStream.videoWidth;
+      canvas.height = cameraStream.videoHeight;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(cameraStream, 0, 0);
+
+      selectedImage = canvas.toDataURL('image/jpeg', 0.8);
+      previewImage.src = selectedImage;
+      uploadArea.classList.add('hidden');
+      previewArea.classList.remove('hidden');
+      analyzeBtn.disabled = false;
+
+      stopCamera();
+      cameraModal.classList.add('hidden');
+      resultsSection.classList.add('hidden');
+    });
+
+    // Analyze button
+    analyzeBtn.addEventListener('click', async () => {
+      if (!selectedImage) return;
+
+      const loader = Loader.show({ text: 'Analyzing image...' });
+
+      try {
+        // Send image to API for analysis
+        const response = await api.request('/api/camera/analyze', {
+          method: 'POST',
+          body: JSON.stringify({ image: selectedImage })
+        });
+
+        const data = await response.json();
+
+        if (data.identified) {
+          displayResults(data);
+        } else {
+          Toast.show({ message: 'Could not identify laptop. Try a clearer photo.', type: 'warning' });
+        }
+      } catch (err) {
+        console.error('Analysis error:', err);
+        Toast.show({ message: 'Analysis failed. Please try again.', type: 'error' });
+      } finally {
+        Loader.hide();
+      }
+    });
+
+    // Display results
+    function displayResults(data) {
+      resultsSection.classList.remove('hidden');
+
+      // Identified laptop
+      const identifiedSection = document.getElementById('identified-laptop');
+      identifiedSection.innerHTML = `
+        <img src="${data.identified.image || '/images/placeholder-laptop.jpg'}" alt="${data.identified.name}" class="w-48 h-auto rounded-lg shadow-md">
+        <div class="flex-1">
+          <h3 class="text-2xl font-bold mb-2">${data.identified.brand} ${data.identified.model}</h3>
+          <p class="text-gray-600 mb-4">${data.identified.description || 'Identified from your image'}</p>
+          <div class="grid grid-cols-2 gap-4 mb-4">
+            <div>
+              <p class="text-sm text-gray-500">Price</p>
+              <p class="text-lg font-bold text-indigo-600">${formatCurrency(data.identified.price_MYR)}</p>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500">Score</p>
+              <p class="text-lg font-bold">${data.identified.score_composite || 'N/A'}/100</p>
+            </div>
+          </div>
+          <div class="flex gap-2">
+            <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">View Details</button>
+            <button class="bg-white text-indigo-600 border border-indigo-600 px-4 py-2 rounded-lg hover:bg-gray-50">Compare</button>
+          </div>
+        </div>
+      `;
+
+      // Similar laptops
+      const similarSection = document.getElementById('similar-laptops');
+      similarSection.innerHTML = data.similar.map(laptop => createLaptopCard(laptop)).join('');
+
+      // Alternatives
+      const alternativesSection = document.getElementById('alternatives');
+      alternativesSection.innerHTML = data.alternatives.map(laptop => createLaptopCard(laptop)).join('');
+
+      // Scroll to results
+      resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // Create laptop card
+    function createLaptopCard(laptop) {
+      return `
+        <div class="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-lg transition-shadow">
+          <img src="${laptop.image || '/images/placeholder-laptop.jpg'}" alt="${laptop.model}" class="w-full h-40 object-cover rounded-lg mb-3">
+          <h4 class="font-bold text-lg mb-2">${laptop.brand} ${laptop.model}</h4>
+          <div class="flex justify-between items-center mb-3">
+            <span class="text-xl font-bold text-indigo-600">${formatCurrency(laptop.price_MYR)}</span>
+            <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-sm font-medium">${laptop.score_composite || 'N/A'}/100</span>
+          </div>
+          <div class="flex gap-2">
+            <button class="flex-1 bg-indigo-600 text-white px-3 py-2 rounded text-sm hover:bg-indigo-700">View</button>
+            <button class="bg-gray-100 text-gray-700 px-3 py-2 rounded text-sm hover:bg-gray-200">❤️</button>
+          </div>
+        </div>
+      `;
+    }
+
+    // Mobile menu
+    document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
+      document.querySelector('nav').classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>
