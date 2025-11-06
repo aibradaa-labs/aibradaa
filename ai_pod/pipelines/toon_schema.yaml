@@ -1,0 +1,201 @@
+# TOON Schema Definition
+# Token-Optimized Object Notation for 30-60% token reduction
+
+version: "1.0.0"
+lastUpdated: "2025-11-06"
+description: |
+  TOON is a compressed format that reduces token usage while maintaining
+  semantic clarity. Inspired by YAML but optimized for LLM token efficiency.
+
+# Core Principles
+principles:
+  - "Abbreviate common terms"
+  - "Remove redundant punctuation"
+  - "Use symbols over words where unambiguous"
+  - "Maintain human readability"
+  - "Preserve semantic meaning"
+
+# Abbreviation Dictionary
+abbreviations:
+  # Common laptop terms
+  brand: "br"
+  model: "mdl"
+  price: "pr"
+  currency: "cur"
+  specifications: "specs"
+  processor: "cpu"
+  graphics: "gpu"
+  memory: "ram"
+  storage: "sto"
+  display: "disp"
+  battery: "bat"
+  weight: "wt"
+  dimensions: "dim"
+  availability: "avail"
+  release_date: "rel"
+  ratings: "rat"
+  reviews: "rev"
+
+  # Specs details
+  cores: "c"
+  threads: "t"
+  base_frequency: "bf"
+  boost_frequency: "mf"
+  cache: "csh"
+  generation: "gen"
+  resolution: "res"
+  refresh_rate: "hz"
+  brightness: "nit"
+  color_gamut: "col"
+
+  # Values
+  gigabytes: "GB"
+  terabytes: "TB"
+  gigahertz: "GHz"
+  megahertz: "MHz"
+  inches: "in"
+  kilograms: "kg"
+  watts: "W"
+  watt_hours: "Wh"
+  hours: "h"
+  minutes: "m"
+
+# Symbol Replacements
+symbols:
+  "true": "+"
+  "false": "-"
+  "yes": "y"
+  "no": "n"
+  "and": "&"
+  "or": "|"
+  "not": "!"
+  "approximately": "~"
+  "greater_than": ">"
+  "less_than": "<"
+  "equals": "="
+
+# Compression Rules
+rules:
+  # Remove unnecessary quotes
+  quotes:
+    removeWhenSafe: true
+    keepForSpecialChars: true
+
+  # Compact arrays
+  arrays:
+    inlineWhenShort: true  # [1,2,3] vs multi-line
+    maxInlineLength: 5
+
+  # Compact objects
+  objects:
+    singleLineWhenShort: true  # {k:v,k2:v2}
+    maxSingleLineKeys: 3
+
+  # Remove whitespace
+  whitespace:
+    removeTrailing: true
+    compactIndentation: true
+    indentSize: 1  # spaces (vs 2 or 4)
+
+# TOON vs JSON Example
+example:
+  json: |
+    {
+      "brand": "Apple",
+      "model": "MacBook Pro 14-inch M4",
+      "price": 7999,
+      "currency": "MYR",
+      "specifications": {
+        "processor": "Apple M4",
+        "cores": 10,
+        "memory": 16,
+        "storage": 512,
+        "display": {
+          "size": 14.2,
+          "resolution": "3024x1964",
+          "brightness": 600,
+          "refresh_rate": 120
+        }
+      }
+    }
+
+  toon: |
+    br:Apple mdl:"MBA14M4" pr:7999 cur:MYR
+    specs{cpu:"M4" c:10 ram:16GB sto:512GB
+    disp{sz:14.2in res:3024x1964 nit:600 hz:120}}
+
+  tokens_saved: "~45%"
+
+# Validation Rules
+validation:
+  # Required fields (can't be omitted)
+  required:
+    - "br"  # brand
+    - "mdl"  # model
+    - "pr"  # price
+
+  # Field types
+  types:
+    pr: "number"
+    cur: "string"
+    ram: "string-with-unit"  # e.g., "16GB"
+    sto: "string-with-unit"  # e.g., "512GB"
+
+  # Value ranges
+  ranges:
+    pr: [0, 99999]  # MYR
+    ram: [4, 128]  # GB
+    sto: [128, 8192]  # GB
+
+# Parsing Logic
+parsing:
+  # How to parse TOON back to JSON
+  steps:
+    - "Expand abbreviations using dictionary"
+    - "Replace symbols with words"
+    - "Restore nested structure"
+    - "Validate against schema"
+    - "Return JSON"
+
+  # Error handling
+  errors:
+    unknownAbbreviation: "fallback-to-original"
+    invalidSyntax: "parse-as-json"
+    validationFailed: "return-error"
+
+# Conversion Performance
+performance:
+  encoding:
+    targetTime: 5  # ms
+    maxTime: 20  # ms
+
+  decoding:
+    targetTime: 10  # ms
+    maxTime: 50  # ms
+
+# Use Cases
+useCases:
+  - "Compress laptop data for API responses"
+  - "Reduce token usage in prompts"
+  - "Optimize context window utilization"
+  - "Store compressed data in cache"
+
+# Token Savings by Use Case
+savings:
+  laptopSpecs: "40-50%"
+  userQueries: "20-30%"
+  systemPrompts: "30-40%"
+  apiResponses: "35-45%"
+  overall: "30-60%"
+
+# Adoption Strategy
+adoption:
+  phase1: "Use for internal data only"
+  phase2: "Expose to Pro/Ultimate via ABO-84"
+  phase3: "Full public documentation"
+
+# Backward Compatibility
+compatibility:
+  fallback: "Always support JSON as input/output"
+  migration: "Gradual - run both formats in parallel"
+  deprecation: "JSON never deprecated, TOON is optional optimization"

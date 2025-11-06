@@ -1,0 +1,250 @@
+# Grounding Pipeline Configuration
+# Google Search, Maps, Images integration for AI Bradaa
+
+version: "1.0.0"
+lastUpdated: "2025-11-06"
+owner: "AI Bradaa Team"
+status: "planned"  # Not in Phase 1
+
+# Overview
+description: |
+  Grounding allows Gemini to fetch real-time information from Google Search,
+  Maps, and Images APIs. This reduces hallucinations and provides up-to-date data.
+
+# Google Search Grounding
+googleSearch:
+  enabled: false  # Enable in Phase 2
+  apiKey: "${GOOGLE_SEARCH_API_KEY}"
+  customSearchEngineId: "${GOOGLE_CSE_ID}"
+
+  # When to use Google Search
+  triggers:
+    - "user asks about latest releases"
+    - "user asks about current prices"
+    - "user asks about store availability"
+    - "user asks about tech news"
+    - "confidence score < 0.6"
+
+  # Search parameters
+  parameters:
+    numResults: 5
+    safeSearch: "active"
+    dateRestrict: "m3"  # Last 3 months
+    geolocation: "MY"  # Malaysia
+    language: "en"
+
+  # Rate limits
+  rateLimits:
+    free: 5  # searches per day
+    pro: 50
+    ultimate: 200
+
+  # Cost management
+  quota:
+    dailyBudget: 1000  # API calls per day
+    costPerSearch: 0.005  # USD
+
+# Google Maps Grounding
+googleMaps:
+  enabled: false  # Enable in Phase 2
+  apiKey: "${GOOGLE_MAPS_API_KEY}"
+
+  # Use cases
+  useCases:
+    - "Find nearby laptop stores"
+    - "Show store hours and ratings"
+    - "Get directions to retailer"
+    - "Check stock availability (via Places API)"
+
+  # Maps parameters
+  parameters:
+    radius: 10000  # 10km default search radius
+    types: ["electronics_store", "computer_store"]
+    region: "my"
+    language: "en"
+
+  # Rate limits
+  rateLimits:
+    free: 0  # Not available for free tier
+    pro: 20  # queries per day
+    ultimate: 100
+
+  # Cost management
+  quota:
+    dailyBudget: 500  # API calls per day
+    costPerQuery: 0.017  # USD (Places API)
+
+# Google Images Grounding
+googleImages:
+  enabled: false  # Enable in Phase 2
+  apiKey: "${GOOGLE_IMAGES_API_KEY}"
+
+  # Use cases
+  useCases:
+    - "Show laptop product images"
+    - "Display comparison visuals"
+    - "Fetch unboxing/review images"
+
+  # Image parameters
+  parameters:
+    numImages: 3
+    size: "medium"
+    safeSearch: "active"
+    fileType: "jpg,png,webp"
+    rights: "cc_publicdomain,cc_attribute,cc_sharealike"  # Only licensed images
+
+  # Rate limits
+  rateLimits:
+    free: 0
+    pro: 10  # queries per day
+    ultimate: 50
+
+  # Cost management
+  quota:
+    dailyBudget: 100  # API calls per day
+    costPerQuery: 0.005  # USD
+
+# Grounding Strategy
+strategy:
+  # When to ground vs use RAG
+  routing:
+    useRAG:
+      - "specs and features"
+      - "comparisons from our database"
+      - "historical price trends"
+      - "user reviews we've collected"
+
+    useGrounding:
+      - "latest news and releases"
+      - "current online prices"
+      - "store locations and hours"
+      - "real-time availability"
+
+  # Fallback chain
+  fallback:
+    - "Try RAG first"
+    - "If no results, try grounding"
+    - "If grounding fails, use base model"
+    - "If base model uncertain, ask user to clarify"
+
+  # Hybrid approach
+  hybrid:
+    enabled: true  # Use both RAG and grounding
+    strategy: "rag-then-ground"  # Check RAG first, ground if stale
+    staleThreshold: "7days"
+
+# Citation Requirements
+citations:
+  required: true
+  format: |
+    Source: [Google Search result title]
+    URL: [link]
+    Date: [date accessed]
+
+  placement: "inline"  # Show citations inline, not just footer
+
+# Quality Assurance
+quality:
+  # Verify grounding results
+  verification:
+    checkFreshness: true
+    maxAge: "7days"  # Reject if source older than 7 days
+    verifyLinks: true  # Check if URLs are still valid
+
+  # Handle conflicts
+  conflicts:
+    ragVsGrounding: "prefer-grounding"  # If newer
+    multipleGroundingSources: "show-all-with-dates"
+
+# Performance
+performance:
+  # Latency targets
+  latency:
+    googleSearch: 500  # ms
+    googleMaps: 300  # ms
+    googleImages: 400  # ms
+    totalGroundingOverhead: 600  # ms max
+
+  # Caching
+  cache:
+    searchResults: true
+    cacheTTL: "1h"  # Cache search results for 1 hour
+    placeResults: true
+    placeTTL: "24h"  # Cache place data for 24 hours
+
+# Cost Management
+costs:
+  # Budget tracking
+  budgets:
+    dailyBudgetUSD: 10.00
+    monthlyBudgetUSD: 250.00
+
+  # Alert thresholds
+  alerts:
+    dailyBudgetWarning: 0.8  # 80%
+    monthlyBudgetWarning: 0.9  # 90%
+
+  # Cost optimization
+  optimization:
+    cacheAggressively: true
+    batchRequests: true
+    prefetchPopularQueries: true
+
+# Tier-Specific Grounding Quotas
+tierQuotas:
+  free:
+    googleSearch: 0
+    googleMaps: 0
+    googleImages: 0
+
+  pro:
+    googleSearch: 50  # per day
+    googleMaps: 20
+    googleImages: 10
+
+  ultimate:
+    googleSearch: 200  # per day
+    googleMaps: 100
+    googleImages: 50
+
+# Monitoring
+monitoring:
+  metrics:
+    - "grounding_calls_total"
+    - "grounding_latency_p95"
+    - "grounding_cost_daily"
+    - "grounding_cache_hit_rate"
+    - "grounding_error_rate"
+
+  logging:
+    logAllGroundingCalls: true
+    logResults: true
+    logCosts: true
+
+# Safety & Compliance
+safety:
+  # PDPA
+  pdpa:
+    anonymizeQueries: true
+    logRetention: "30days"
+
+  # Content filtering
+  filtering:
+    blockOffensive: true
+    blockPrivateInfo: true
+    blockMisinformation: true
+
+# Rollout Plan
+rollout:
+  phase1: "Disabled - focus on RAG"
+  phase2: "Enable Google Search for Pro tier"
+  phase3: "Enable Maps for Ultimate tier"
+  phase4: "Enable Images for Pro+ tiers"
+
+# Future Enhancements
+roadmap:
+  - "Integrate real-time price tracking"
+  - "Add web scraping fallback (Playwright)"
+  - "Implement grounding result ranking"
+  - "Add multi-source verification"
+  - "Build grounding feedback loop"

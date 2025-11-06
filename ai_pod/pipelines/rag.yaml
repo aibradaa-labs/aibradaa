@@ -1,0 +1,200 @@
+# RAG Pipeline Configuration
+# Retrieval-Augmented Generation for AI Bradaa
+
+version: "1.0.0"
+lastUpdated: "2025-11-06"
+owner: "AI Bradaa Team"
+
+# RAG System Architecture
+architecture:
+  type: "embed-retrieve-inject"
+  embeddingModel: "text-embedding-004"  # Google's embedding model
+  retrievalStrategy: "semantic-search"
+  injectionMethod: "context-prepend"
+
+# Curated Knowledge Sources
+sources:
+  - id: "laptop-specs-db"
+    type: "structured"
+    format: "json"
+    path: "Laptops/top100.json"
+    updateFrequency: "daily"
+    priority: 1
+    fields:
+      - "brand"
+      - "model"
+      - "specs"
+      - "price"
+      - "availability"
+
+  - id: "tech-reviews"
+    type: "unstructured"
+    format: "markdown"
+    path: "data/reviews/"
+    updateFrequency: "weekly"
+    priority: 2
+    sources:
+      - "TechNave MY"
+      - "SoyaCincau"
+      - "Lowyat.net"
+      - "NotebookCheck"
+
+  - id: "price-history"
+    type: "time-series"
+    format: "jsonl"
+    path: "data/price-history/"
+    updateFrequency: "hourly"
+    priority: 3
+    retention: "90days"
+
+  - id: "user-feedback"
+    type: "structured"
+    format: "jsonl"
+    path: "data/feedback/"
+    updateFrequency: "realtime"
+    priority: 4
+    privacy: "anonymized"
+
+# Retrieval Configuration
+retrieval:
+  # Embedding parameters
+  embedding:
+    dimensions: 768
+    batchSize: 32
+    cacheEnabled: true
+    cacheTTL: "24h"
+
+  # Search parameters
+  search:
+    topK: 5  # Retrieve top 5 most relevant chunks
+    minSimilarity: 0.7  # Minimum cosine similarity threshold
+    maxChunkSize: 512  # tokens per chunk
+    overlapSize: 50  # token overlap between chunks
+
+  # Reranking (optional, for Pro/Ultimate tiers)
+  reranking:
+    enabled: false  # Enable in Phase 2
+    model: "cross-encoder/ms-marco-MiniLM-L-6-v2"
+    topKAfterRerank: 3
+
+# Injection Strategy
+injection:
+  # How to inject retrieved context into prompt
+  method: "structured"  # vs "concatenated"
+  position: "before-query"  # vs "after-query"
+  template: |
+    <context>
+    The following information is from our curated knowledge base:
+
+    {retrieved_chunks}
+
+    </context>
+
+    <user-query>
+    {user_query}
+    </user-query>
+
+    Based on the context above, provide an accurate and helpful response. Always cite sources.
+
+  # Citation format
+  citation:
+    enabled: true
+    format: "markdown-link"  # [Source Name](URL)
+    placement: "inline"  # vs "footer"
+
+# Performance Optimization
+performance:
+  # Caching strategy
+  cache:
+    queryCache: true
+    queryCacheTTL: "1h"
+    embeddingCache: true
+    embeddingCacheTTL: "24h"
+
+  # Latency targets
+  latency:
+    embedding: 100  # ms
+    retrieval: 200  # ms
+    totalRAGOverhead: 300  # ms (max acceptable)
+
+  # Fallback strategy
+  fallback:
+    onRetrievalFailure: "use-base-model"
+    onLowSimilarity: "skip-injection"
+    onTimeout: "return-cached"
+
+# Quality Assurance
+quality:
+  # Hallucination prevention
+  hallucination:
+    requireCitation: true
+    penalizeUngrounded: true
+    citationMinimum: 1  # per response
+
+  # Freshness checks
+  freshness:
+    warnIfStale: true
+    staleThreshold: "7days"
+    preferRecentSources: true
+
+  # Relevance scoring
+  relevance:
+    minRelevanceScore: 0.7
+    logLowRelevance: true
+    alertThreshold: 0.5  # alert if <50% relevance
+
+# Tier-Specific Configurations
+tiers:
+  free:
+    sources: ["laptop-specs-db"]
+    topK: 3
+    citationsEnabled: false
+    reranking: false
+
+  pro:
+    sources: ["laptop-specs-db", "tech-reviews", "price-history"]
+    topK: 5
+    citationsEnabled: true
+    reranking: false
+
+  ultimate:
+    sources: ["laptop-specs-db", "tech-reviews", "price-history", "user-feedback"]
+    topK: 7
+    citationsEnabled: true
+    reranking: true
+
+# Monitoring & Logging
+monitoring:
+  logAllQueries: true
+  logRetrievals: true
+  trackLatency: true
+  trackAccuracy: true
+
+  metrics:
+    - "retrieval_latency_p95"
+    - "relevance_score_avg"
+    - "citation_rate"
+    - "cache_hit_rate"
+    - "hallucination_rate"
+
+# Safety & Compliance
+safety:
+  # PDPA compliance
+  pdpa:
+    anonymizeUserQueries: true
+    logRetention: "30days"
+    consentRequired: true
+
+  # Content filtering
+  filtering:
+    blockOffensive: true
+    blockPersonalData: true
+    blockCompetitorBashing: true
+
+# Future Enhancements (Phase 2+)
+roadmap:
+  - "Implement reranking for Pro tier"
+  - "Add multi-modal retrieval (images, videos)"
+  - "Integrate real-time web search fallback"
+  - "Build feedback loop for continuous improvement"
+  - "Add conversational memory (multi-turn RAG)"
