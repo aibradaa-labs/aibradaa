@@ -1,0 +1,394 @@
+{
+  "segments": [
+    {
+      "id": "gaming",
+      "name": "Gaming",
+      "description": "Laptops optimized for gaming with dedicated GPUs, high refresh rate displays, and robust cooling systems",
+      "icon": "🎮",
+      "priority": 1,
+      "criteria": {
+        "gpu": {
+          "required": true,
+          "types": ["NVIDIA RTX", "NVIDIA GTX", "AMD Radeon RX"],
+          "minVram": 4
+        },
+        "cpu": {
+          "minCores": 6,
+          "minThreads": 12,
+          "preferredBrands": ["Intel Core i5+", "AMD Ryzen 5+"]
+        },
+        "ram": {
+          "min": 16,
+          "recommended": 32
+        },
+        "display": {
+          "minRefreshRate": 120,
+          "preferredRefreshRate": 144
+        },
+        "cooling": {
+          "importance": "high"
+        }
+      },
+      "useCases": [
+        "AAA gaming",
+        "Esports",
+        "Game streaming",
+        "VR gaming"
+      ],
+      "brands": ["ASUS ROG", "MSI", "Razer", "Acer Predator", "Lenovo Legion", "HP OMEN", "Dell Alienware"],
+      "priceRange": {
+        "budget": [3000, 5000],
+        "midRange": [5000, 8000],
+        "premium": [8000, 15000]
+      },
+      "active": true
+    },
+    {
+      "id": "creative",
+      "name": "Creative / Content Creation",
+      "description": "High-performance laptops for video editing, 3D rendering, graphic design, and content creation",
+      "icon": "🎨",
+      "priority": 2,
+      "criteria": {
+        "cpu": {
+          "minCores": 8,
+          "minThreads": 16,
+          "preferredBrands": ["Intel Core i7+", "AMD Ryzen 7+", "Apple M1+"]
+        },
+        "gpu": {
+          "required": true,
+          "types": ["NVIDIA RTX", "AMD Radeon Pro", "Apple M-series"],
+          "minVram": 6
+        },
+        "ram": {
+          "min": 16,
+          "recommended": 32
+        },
+        "storage": {
+          "type": "SSD",
+          "min": 512,
+          "recommended": 1024
+        },
+        "display": {
+          "minResolution": "1920x1080",
+          "preferredResolution": "2560x1600",
+          "colorAccuracy": "high",
+          "minColorGamut": "100% sRGB"
+        }
+      },
+      "useCases": [
+        "Video editing",
+        "3D modeling",
+        "Graphic design",
+        "Photo editing",
+        "Music production",
+        "Animation"
+      ],
+      "brands": ["Apple MacBook Pro", "Dell XPS", "ASUS ProArt", "MSI Creator", "HP ZBook", "Lenovo ThinkPad P-series"],
+      "priceRange": {
+        "budget": [4000, 6000],
+        "midRange": [6000, 10000],
+        "premium": [10000, 20000]
+      },
+      "active": true
+    },
+    {
+      "id": "business",
+      "name": "Business / Productivity",
+      "description": "Reliable laptops for office work, business travel, and professional use with good battery life and security features",
+      "icon": "💼",
+      "priority": 3,
+      "criteria": {
+        "cpu": {
+          "minCores": 4,
+          "preferredBrands": ["Intel Core i5+", "AMD Ryzen 5+"]
+        },
+        "ram": {
+          "min": 8,
+          "recommended": 16
+        },
+        "storage": {
+          "type": "SSD",
+          "min": 256,
+          "recommended": 512
+        },
+        "battery": {
+          "minHours": 8,
+          "preferredHours": 12
+        },
+        "weight": {
+          "max": 1.8,
+          "preferred": 1.5
+        },
+        "security": {
+          "features": ["TPM", "fingerprint reader", "webcam privacy shutter"]
+        }
+      },
+      "useCases": [
+        "Office productivity",
+        "Business travel",
+        "Video conferencing",
+        "Document processing",
+        "Spreadsheets",
+        "Presentations"
+      ],
+      "brands": ["Lenovo ThinkPad", "Dell Latitude", "HP EliteBook", "HP ProBook", "ASUS ExpertBook"],
+      "priceRange": {
+        "budget": [2000, 4000],
+        "midRange": [4000, 7000],
+        "premium": [7000, 12000]
+      },
+      "active": true
+    },
+    {
+      "id": "ultrabook",
+      "name": "Ultrabook / Premium Thin & Light",
+      "description": "Sleek, lightweight laptops with premium build quality and excellent battery life for mobility",
+      "icon": "✈️",
+      "priority": 4,
+      "criteria": {
+        "weight": {
+          "max": 1.5,
+          "preferred": 1.2
+        },
+        "thickness": {
+          "max": 20,
+          "preferred": 15
+        },
+        "battery": {
+          "minHours": 10,
+          "preferredHours": 15
+        },
+        "display": {
+          "minResolution": "1920x1080",
+          "preferredResolution": "2560x1600",
+          "type": "IPS or OLED"
+        },
+        "build": {
+          "materials": ["aluminum", "magnesium", "carbon fiber"],
+          "premium": true
+        }
+      },
+      "useCases": [
+        "Travel",
+        "Mobility",
+        "Everyday computing",
+        "Light work",
+        "Media consumption"
+      ],
+      "brands": ["Apple MacBook Air", "Dell XPS", "HP ENVY", "ASUS ZenBook", "Lenovo Yoga", "Microsoft Surface"],
+      "priceRange": {
+        "budget": [3000, 5000],
+        "midRange": [5000, 8000],
+        "premium": [8000, 15000]
+      },
+      "active": true
+    },
+    {
+      "id": "budget",
+      "name": "Budget / Entry-Level",
+      "description": "Affordable laptops for basic computing, students, and light users",
+      "icon": "💰",
+      "priority": 5,
+      "criteria": {
+        "price": {
+          "max": 3000
+        },
+        "cpu": {
+          "minCores": 2,
+          "types": ["Intel Core i3", "AMD Ryzen 3", "Intel Pentium", "AMD Athlon"]
+        },
+        "ram": {
+          "min": 4,
+          "recommended": 8
+        },
+        "storage": {
+          "min": 128,
+          "type": "SSD preferred, HDD acceptable"
+        }
+      },
+      "useCases": [
+        "Web browsing",
+        "Document editing",
+        "Email",
+        "Online classes",
+        "Light multimedia"
+      ],
+      "brands": ["Acer Aspire", "ASUS VivoBook", "Lenovo IdeaPad", "HP Pavilion"],
+      "priceRange": {
+        "budget": [1000, 2000],
+        "midRange": [2000, 3000]
+      },
+      "active": true
+    },
+    {
+      "id": "student",
+      "name": "Student",
+      "description": "Versatile laptops for students balancing study, projects, and entertainment with good value",
+      "icon": "🎓",
+      "priority": 6,
+      "criteria": {
+        "price": {
+          "max": 5000,
+          "sweet": 3500
+        },
+        "cpu": {
+          "minCores": 4,
+          "types": ["Intel Core i5", "AMD Ryzen 5"]
+        },
+        "ram": {
+          "min": 8,
+          "recommended": 16
+        },
+        "storage": {
+          "type": "SSD",
+          "min": 256,
+          "recommended": 512
+        },
+        "battery": {
+          "minHours": 6,
+          "preferredHours": 10
+        },
+        "weight": {
+          "max": 2.0
+        }
+      },
+      "useCases": [
+        "Note-taking",
+        "Research",
+        "Assignments",
+        "Programming",
+        "Light gaming",
+        "Media consumption"
+      ],
+      "brands": ["ASUS VivoBook", "Acer Swift", "Lenovo IdeaPad", "HP Pavilion", "Dell Inspiron"],
+      "priceRange": {
+        "budget": [2000, 3500],
+        "midRange": [3500, 5000]
+      },
+      "active": true
+    },
+    {
+      "id": "2in1",
+      "name": "2-in-1 / Convertible",
+      "description": "Versatile laptops that convert to tablets with touchscreens and stylus support",
+      "icon": "🔄",
+      "priority": 7,
+      "criteria": {
+        "formFactor": "convertible",
+        "touchscreen": true,
+        "stylus": {
+          "preferred": true
+        },
+        "display": {
+          "minResolution": "1920x1080",
+          "type": "IPS or OLED"
+        }
+      },
+      "useCases": [
+        "Digital art",
+        "Note-taking with pen",
+        "Presentations",
+        "Media consumption",
+        "Touch-based apps"
+      ],
+      "brands": ["Lenovo Yoga", "HP Spectre x360", "Dell Inspiron 2-in-1", "ASUS ZenBook Flip", "Microsoft Surface"],
+      "priceRange": {
+        "budget": [2500, 4000],
+        "midRange": [4000, 7000],
+        "premium": [7000, 12000]
+      },
+      "active": true
+    },
+    {
+      "id": "workstation",
+      "name": "Workstation",
+      "description": "Professional-grade laptops for CAD, engineering, scientific computing, and heavy workloads",
+      "icon": "🏗️",
+      "priority": 8,
+      "criteria": {
+        "cpu": {
+          "minCores": 8,
+          "types": ["Intel Xeon", "Intel Core i9", "AMD Ryzen 9"]
+        },
+        "gpu": {
+          "required": true,
+          "types": ["NVIDIA Quadro", "NVIDIA RTX A-series", "AMD Radeon Pro"],
+          "minVram": 8
+        },
+        "ram": {
+          "min": 32,
+          "recommended": 64,
+          "type": "ECC preferred"
+        },
+        "storage": {
+          "type": "SSD",
+          "min": 512,
+          "recommended": 1024
+        },
+        "certifications": ["ISV certified applications"]
+      },
+      "useCases": [
+        "CAD/CAM",
+        "3D rendering",
+        "Scientific computing",
+        "Data analysis",
+        "Engineering simulations",
+        "Professional video editing"
+      ],
+      "brands": ["Dell Precision", "HP ZBook", "Lenovo ThinkPad P-series"],
+      "priceRange": {
+        "midRange": [8000, 12000],
+        "premium": [12000, 25000]
+      },
+      "active": true
+    },
+    {
+      "id": "ai-ml",
+      "name": "AI / Machine Learning",
+      "description": "Laptops optimized for AI development, machine learning, and data science with powerful GPUs",
+      "icon": "🤖",
+      "priority": 9,
+      "criteria": {
+        "gpu": {
+          "required": true,
+          "types": ["NVIDIA RTX 4090", "NVIDIA RTX 4080", "NVIDIA RTX A-series"],
+          "minVram": 12,
+          "tensorCores": true
+        },
+        "cpu": {
+          "minCores": 8,
+          "minThreads": 16
+        },
+        "ram": {
+          "min": 32,
+          "recommended": 64
+        },
+        "storage": {
+          "type": "NVMe SSD",
+          "min": 1024
+        }
+      },
+      "useCases": [
+        "Machine learning",
+        "Deep learning",
+        "AI model training",
+        "Data science",
+        "Neural network development",
+        "LLM fine-tuning"
+      ],
+      "brands": ["MSI Creator", "ASUS ProArt", "Dell Precision", "Lenovo ThinkPad P-series"],
+      "priceRange": {
+        "midRange": [10000, 15000],
+        "premium": [15000, 30000]
+      },
+      "active": true
+    }
+  ],
+  "metadata": {
+    "lastUpdated": "2025-01-15",
+    "version": "1.0.0",
+    "totalSegments": 9,
+    "activeSegments": 9
+  }
+}

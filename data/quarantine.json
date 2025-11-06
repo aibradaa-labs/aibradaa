@@ -1,0 +1,179 @@
+{
+  "quarantine": {
+    "description": "Laptops that failed data quality checks and are temporarily excluded from the catalog",
+    "lastUpdated": "2025-01-15T10:30:00Z",
+    "totalQuarantined": 3,
+    "autoReviewEnabled": true,
+    "maxQuarantineDays": 30
+  },
+  "entries": [
+    {
+      "id": "quarantine-001",
+      "laptopId": "temp-12345",
+      "brand": "Unknown Brand",
+      "model": "Test Model XYZ",
+      "quarantineDate": "2025-01-10T08:20:00Z",
+      "reason": "missing-critical-specs",
+      "details": {
+        "missingFields": ["price", "specs.cpu", "specs.gpu"],
+        "severity": "high",
+        "source": "lazada-scraper"
+      },
+      "status": "pending-review",
+      "reviewer": null,
+      "notes": "Scraper detected incomplete product listing. Needs manual verification.",
+      "daysInQuarantine": 5,
+      "autoReviewAttempts": 2,
+      "expiresAt": "2025-02-09T08:20:00Z"
+    },
+    {
+      "id": "quarantine-002",
+      "laptopId": "temp-67890",
+      "brand": "ASUS",
+      "model": "ROG Strix G16 (2024) - Duplicate",
+      "quarantineDate": "2025-01-12T14:30:00Z",
+      "reason": "duplicate-entry",
+      "details": {
+        "duplicateOf": "asus-rog-strix-g16-2024-001",
+        "similarity": 0.95,
+        "severity": "medium",
+        "source": "shopee-scraper"
+      },
+      "status": "pending-review",
+      "reviewer": null,
+      "notes": "Possible duplicate detected. Same model number but different seller. Verify if legitimate variant or duplicate.",
+      "daysInQuarantine": 3,
+      "autoReviewAttempts": 1,
+      "expiresAt": "2025-02-11T14:30:00Z"
+    },
+    {
+      "id": "quarantine-003",
+      "laptopId": "temp-11111",
+      "brand": "Dell",
+      "model": "XPS 15 9530 - Price Anomaly",
+      "quarantineDate": "2025-01-14T09:15:00Z",
+      "reason": "price-anomaly",
+      "details": {
+        "detectedPrice": 1299,
+        "expectedPriceRange": [7000, 12000],
+        "deviation": -82,
+        "severity": "high",
+        "source": "lazada-scraper",
+        "possibleCauses": [
+          "Pricing error",
+          "Used/refurbished mislabeled as new",
+          "Scraped wrong price field",
+          "Flash sale/promotion"
+        ]
+      },
+      "status": "pending-review",
+      "reviewer": null,
+      "notes": "Price significantly below market average. Requires manual verification before publishing.",
+      "daysInQuarantine": 1,
+      "autoReviewAttempts": 0,
+      "expiresAt": "2025-02-13T09:15:00Z"
+    }
+  ],
+  "quarantineReasons": {
+    "missing-critical-specs": {
+      "severity": "high",
+      "description": "One or more critical specifications are missing",
+      "requiredFields": ["price", "specs.cpu", "specs.ram", "specs.storage"],
+      "autoReviewEnabled": true,
+      "autoReviewInterval": "24h"
+    },
+    "duplicate-entry": {
+      "severity": "medium",
+      "description": "Laptop appears to be a duplicate of existing entry",
+      "similarityThreshold": 0.9,
+      "autoReviewEnabled": true,
+      "autoReviewInterval": "48h"
+    },
+    "price-anomaly": {
+      "severity": "high",
+      "description": "Price significantly deviates from expected range",
+      "deviationThreshold": 50,
+      "autoReviewEnabled": false,
+      "requiresManualReview": true
+    },
+    "invalid-specs": {
+      "severity": "high",
+      "description": "Specifications contain invalid or impossible values",
+      "examples": ["RAM > 128GB", "Storage > 8TB", "Display > 20 inches"],
+      "autoReviewEnabled": false
+    },
+    "unavailable-source": {
+      "severity": "medium",
+      "description": "Source URL is no longer accessible",
+      "autoReviewEnabled": true,
+      "autoReviewInterval": "72h",
+      "maxRetries": 5
+    },
+    "discontinued": {
+      "severity": "low",
+      "description": "Product has been discontinued by manufacturer",
+      "autoReviewEnabled": false,
+      "suggestedAction": "archive"
+    },
+    "data-corruption": {
+      "severity": "high",
+      "description": "Data appears corrupted or malformed",
+      "autoReviewEnabled": false,
+      "requiresManualReview": true
+    }
+  },
+  "reviewWorkflow": {
+    "autoReview": {
+      "enabled": true,
+      "schedule": "0 2 * * *",
+      "rules": [
+        {
+          "reason": "missing-critical-specs",
+          "action": "retry-scrape",
+          "maxAttempts": 3
+        },
+        {
+          "reason": "duplicate-entry",
+          "action": "merge-or-reject",
+          "similarityThreshold": 0.95
+        },
+        {
+          "reason": "unavailable-source",
+          "action": "retry-fetch",
+          "maxAttempts": 5,
+          "backoff": "exponential"
+        }
+      ]
+    },
+    "manualReview": {
+      "required": ["price-anomaly", "invalid-specs", "data-corruption"],
+      "notifyReviewer": true,
+      "notificationChannels": ["email", "dashboard"]
+    },
+    "expiration": {
+      "enabled": true,
+      "maxDays": 30,
+      "onExpire": "archive"
+    }
+  },
+  "statistics": {
+    "totalQuarantined": 3,
+    "byReason": {
+      "missing-critical-specs": 1,
+      "duplicate-entry": 1,
+      "price-anomaly": 1,
+      "invalid-specs": 0,
+      "unavailable-source": 0,
+      "discontinued": 0,
+      "data-corruption": 0
+    },
+    "byStatus": {
+      "pending-review": 3,
+      "under-review": 0,
+      "approved": 0,
+      "rejected": 0
+    },
+    "averageDaysInQuarantine": 3,
+    "autoReviewSuccessRate": 0.67
+  }
+}

@@ -1,0 +1,269 @@
+{
+  "reports": {
+    "description": "Data quality and ETL pipeline reports",
+    "lastUpdated": "2025-01-15T10:30:00Z",
+    "totalReports": 5,
+    "reportFrequency": "daily"
+  },
+  "latest": {
+    "id": "report-2025-01-15",
+    "date": "2025-01-15",
+    "timestamp": "2025-01-15T10:30:00Z",
+    "pipeline": {
+      "status": "success",
+      "duration": "42m 18s",
+      "stages": {
+        "fetch": {
+          "status": "success",
+          "duration": "25m 30s",
+          "sources": {
+            "shopee": {
+              "status": "success",
+              "itemsFetched": 45,
+              "errors": 0
+            },
+            "lazada": {
+              "status": "success",
+              "itemsFetched": 38,
+              "errors": 0
+            },
+            "oem": {
+              "status": "partial",
+              "itemsFetched": 12,
+              "errors": 2,
+              "notes": "2 OEM sites returned 503 errors"
+            }
+          }
+        },
+        "transform": {
+          "status": "success",
+          "duration": "8m 45s",
+          "itemsProcessed": 95,
+          "itemsTransformed": 92,
+          "itemsQuarantined": 3
+        },
+        "validate": {
+          "status": "success",
+          "duration": "3m 20s",
+          "itemsValidated": 92,
+          "itemsPassed": 89,
+          "itemsFailed": 3
+        },
+        "load": {
+          "status": "success",
+          "duration": "4m 43s",
+          "itemsLoaded": 89,
+          "itemsUpdated": 67,
+          "itemsCreated": 22
+        }
+      }
+    },
+    "dataQuality": {
+      "overall": 0.94,
+      "completeness": 0.96,
+      "accuracy": 0.93,
+      "consistency": 0.92,
+      "timeliness": 0.95,
+      "metrics": {
+        "totalLaptops": 100,
+        "activeListings": 89,
+        "quarantinedEntries": 3,
+        "archivedEntries": 8,
+        "missingFields": {
+          "total": 12,
+          "byField": {
+            "price": 2,
+            "specs.gpu": 3,
+            "images": 4,
+            "availability.stock": 3
+          }
+        },
+        "duplicates": {
+          "potential": 1,
+          "confirmed": 0
+        },
+        "priceAccuracy": {
+          "lastVerified": "2025-01-14",
+          "staleListings": 5,
+          "priceChanges": 12
+        }
+      }
+    },
+    "coverage": {
+      "brands": {
+        "total": 10,
+        "active": 10,
+        "breakdown": {
+          "asus": 18,
+          "acer": 12,
+          "lenovo": 15,
+          "hp": 14,
+          "dell": 11,
+          "apple": 8,
+          "msi": 9,
+          "razer": 3,
+          "huawei": 5,
+          "gigabyte": 5
+        }
+      },
+      "segments": {
+        "total": 9,
+        "breakdown": {
+          "gaming": 28,
+          "business": 22,
+          "creative": 15,
+          "ultrabook": 12,
+          "budget": 10,
+          "student": 8,
+          "2in1": 3,
+          "workstation": 1,
+          "ai-ml": 1
+        }
+      },
+      "priceRanges": {
+        "0-3000": 18,
+        "3000-5000": 25,
+        "5000-8000": 24,
+        "8000-12000": 18,
+        "12000+": 15
+      }
+    },
+    "issues": [
+      {
+        "severity": "medium",
+        "type": "missing-data",
+        "count": 4,
+        "description": "4 laptops missing high-resolution images"
+      },
+      {
+        "severity": "low",
+        "type": "stale-data",
+        "count": 5,
+        "description": "5 laptops with price data older than 7 days"
+      },
+      {
+        "severity": "high",
+        "type": "source-error",
+        "count": 2,
+        "description": "2 OEM sources returned errors during fetch"
+      }
+    ],
+    "recommendations": [
+      {
+        "priority": "high",
+        "action": "Investigate OEM source errors and implement retry logic"
+      },
+      {
+        "priority": "medium",
+        "action": "Refresh images for 4 laptops missing high-res photos"
+      },
+      {
+        "priority": "low",
+        "action": "Update pricing for 5 stale listings"
+      }
+    ]
+  },
+  "history": [
+    {
+      "id": "report-2025-01-14",
+      "date": "2025-01-14",
+      "dataQuality": {
+        "overall": 0.93
+      },
+      "pipeline": {
+        "status": "success",
+        "duration": "38m 52s"
+      }
+    },
+    {
+      "id": "report-2025-01-13",
+      "date": "2025-01-13",
+      "dataQuality": {
+        "overall": 0.92
+      },
+      "pipeline": {
+        "status": "success",
+        "duration": "41m 15s"
+      }
+    },
+    {
+      "id": "report-2025-01-12",
+      "date": "2025-01-12",
+      "dataQuality": {
+        "overall": 0.91
+      },
+      "pipeline": {
+        "status": "partial",
+        "duration": "45m 30s",
+        "notes": "Shopee API rate limit hit"
+      }
+    },
+    {
+      "id": "report-2025-01-11",
+      "date": "2025-01-11",
+      "dataQuality": {
+        "overall": 0.94
+      },
+      "pipeline": {
+        "status": "success",
+        "duration": "39m 45s"
+      }
+    }
+  ],
+  "trends": {
+    "dataQuality": {
+      "7day": 0.93,
+      "30day": 0.92,
+      "trend": "stable"
+    },
+    "pipelineDuration": {
+      "7day": "41m",
+      "30day": "43m",
+      "trend": "improving"
+    },
+    "catalogGrowth": {
+      "newListingsLast7Days": 22,
+      "newListingsLast30Days": 85,
+      "trend": "growing"
+    }
+  },
+  "alerts": {
+    "active": [
+      {
+        "id": "alert-001",
+        "severity": "medium",
+        "type": "data-quality",
+        "message": "Data quality score below 95% for 3 consecutive days",
+        "createdAt": "2025-01-13T10:30:00Z",
+        "threshold": 0.95,
+        "currentValue": 0.94
+      }
+    ],
+    "resolved": [
+      {
+        "id": "alert-000",
+        "severity": "high",
+        "type": "pipeline-failure",
+        "message": "ETL pipeline failed on 2025-01-10",
+        "createdAt": "2025-01-10T11:00:00Z",
+        "resolvedAt": "2025-01-10T14:30:00Z",
+        "resolution": "Fixed Shopee API authentication issue"
+      }
+    ]
+  },
+  "configuration": {
+    "reportSchedule": "0 10 * * *",
+    "dataQualityThresholds": {
+      "overall": 0.95,
+      "completeness": 0.95,
+      "accuracy": 0.90,
+      "consistency": 0.90,
+      "timeliness": 0.90
+    },
+    "alerting": {
+      "enabled": true,
+      "channels": ["email", "dashboard"],
+      "recipients": ["data-team@aibradaa.com"]
+    }
+  }
+}

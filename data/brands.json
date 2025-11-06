@@ -1,0 +1,557 @@
+{
+  "brands": [
+    {
+      "id": "asus",
+      "name": "ASUS",
+      "fullName": "ASUSTeK Computer Inc.",
+      "country": "Taiwan",
+      "founded": 1989,
+      "tier": "premium",
+      "segments": ["gaming", "creative", "business", "budget"],
+      "subBrands": [
+        {
+          "id": "rog",
+          "name": "ROG",
+          "fullName": "Republic of Gamers",
+          "focus": "Gaming",
+          "tier": "premium"
+        },
+        {
+          "id": "tuf",
+          "name": "TUF",
+          "fullName": "The Ultimate Force",
+          "focus": "Gaming (Mid-range)",
+          "tier": "mid-range"
+        },
+        {
+          "id": "zenbook",
+          "name": "ZenBook",
+          "focus": "Premium Ultrabooks",
+          "tier": "premium"
+        },
+        {
+          "id": "vivobook",
+          "name": "VivoBook",
+          "focus": "Mainstream",
+          "tier": "mid-range"
+        },
+        {
+          "id": "proart",
+          "name": "ProArt",
+          "focus": "Creative Professionals",
+          "tier": "premium"
+        }
+      ],
+      "strengths": [
+        "Strong gaming lineup",
+        "Innovative designs",
+        "Good build quality",
+        "Wide price range"
+      ],
+      "weaknesses": [
+        "Bloatware on some models",
+        "Inconsistent battery life"
+      ],
+      "marketShare": {
+        "global": 7.8,
+        "malaysia": 15.2
+      },
+      "warranty": {
+        "standard": "2 years international",
+        "extended": "Available up to 5 years"
+      },
+      "website": "https://www.asus.com/my/",
+      "support": "https://www.asus.com/my/support/",
+      "active": true
+    },
+    {
+      "id": "acer",
+      "name": "Acer",
+      "fullName": "Acer Inc.",
+      "country": "Taiwan",
+      "founded": 1976,
+      "tier": "mid-range",
+      "segments": ["gaming", "business", "budget", "education"],
+      "subBrands": [
+        {
+          "id": "predator",
+          "name": "Predator",
+          "focus": "Gaming",
+          "tier": "premium"
+        },
+        {
+          "id": "nitro",
+          "name": "Nitro",
+          "focus": "Gaming (Budget)",
+          "tier": "budget"
+        },
+        {
+          "id": "swift",
+          "name": "Swift",
+          "focus": "Ultrabooks",
+          "tier": "mid-range"
+        },
+        {
+          "id": "aspire",
+          "name": "Aspire",
+          "focus": "Mainstream",
+          "tier": "budget"
+        }
+      ],
+      "strengths": [
+        "Competitive pricing",
+        "Good value for money",
+        "Wide distribution",
+        "Strong gaming options"
+      ],
+      "weaknesses": [
+        "Build quality can vary",
+        "Average battery life",
+        "Less premium feel"
+      ],
+      "marketShare": {
+        "global": 6.5,
+        "malaysia": 12.8
+      },
+      "warranty": {
+        "standard": "1-2 years",
+        "extended": "Available up to 3 years"
+      },
+      "website": "https://www.acer.com/my-en",
+      "support": "https://www.acer.com/my-en/support",
+      "active": true
+    },
+    {
+      "id": "lenovo",
+      "name": "Lenovo",
+      "fullName": "Lenovo Group Limited",
+      "country": "China",
+      "founded": 1984,
+      "tier": "premium",
+      "segments": ["business", "gaming", "creative", "budget"],
+      "subBrands": [
+        {
+          "id": "thinkpad",
+          "name": "ThinkPad",
+          "focus": "Business",
+          "tier": "premium"
+        },
+        {
+          "id": "legion",
+          "name": "Legion",
+          "focus": "Gaming",
+          "tier": "premium"
+        },
+        {
+          "id": "yoga",
+          "name": "Yoga",
+          "focus": "2-in-1 Convertibles",
+          "tier": "premium"
+        },
+        {
+          "id": "ideapad",
+          "name": "IdeaPad",
+          "focus": "Mainstream",
+          "tier": "mid-range"
+        }
+      ],
+      "strengths": [
+        "Excellent keyboards (ThinkPad)",
+        "Strong business lineup",
+        "Good build quality",
+        "Wide range of options"
+      ],
+      "weaknesses": [
+        "Confusing model naming",
+        "Bloatware on consumer models",
+        "Variable screen quality"
+      ],
+      "marketShare": {
+        "global": 23.5,
+        "malaysia": 18.7
+      },
+      "warranty": {
+        "standard": "1-3 years (depends on series)",
+        "extended": "Available up to 5 years"
+      },
+      "website": "https://www.lenovo.com/my/en/",
+      "support": "https://support.lenovo.com/my/en/",
+      "active": true
+    },
+    {
+      "id": "hp",
+      "name": "HP",
+      "fullName": "HP Inc.",
+      "country": "USA",
+      "founded": 1939,
+      "tier": "premium",
+      "segments": ["business", "creative", "gaming", "budget"],
+      "subBrands": [
+        {
+          "id": "omen",
+          "name": "OMEN",
+          "focus": "Gaming",
+          "tier": "premium"
+        },
+        {
+          "id": "victus",
+          "name": "Victus",
+          "focus": "Gaming (Budget)",
+          "tier": "mid-range"
+        },
+        {
+          "id": "pavilion",
+          "name": "Pavilion",
+          "focus": "Mainstream",
+          "tier": "mid-range"
+        },
+        {
+          "id": "envy",
+          "name": "ENVY",
+          "focus": "Premium Ultrabooks",
+          "tier": "premium"
+        },
+        {
+          "id": "elite",
+          "name": "EliteBook",
+          "focus": "Business",
+          "tier": "premium"
+        },
+        {
+          "id": "probook",
+          "name": "ProBook",
+          "focus": "Business (Mid-range)",
+          "tier": "mid-range"
+        }
+      ],
+      "strengths": [
+        "Strong brand reputation",
+        "Excellent business laptops",
+        "Good build quality",
+        "Wide service network"
+      ],
+      "weaknesses": [
+        "Premium pricing",
+        "Bloatware on consumer models",
+        "Battery life can vary"
+      ],
+      "marketShare": {
+        "global": 21.2,
+        "malaysia": 16.5
+      },
+      "warranty": {
+        "standard": "1-3 years",
+        "extended": "HP Care Pack available"
+      },
+      "website": "https://www.hp.com/my-en/",
+      "support": "https://support.hp.com/my-en",
+      "active": true
+    },
+    {
+      "id": "dell",
+      "name": "Dell",
+      "fullName": "Dell Technologies",
+      "country": "USA",
+      "founded": 1984,
+      "tier": "premium",
+      "segments": ["business", "gaming", "creative", "budget"],
+      "subBrands": [
+        {
+          "id": "alienware",
+          "name": "Alienware",
+          "focus": "Gaming (Premium)",
+          "tier": "premium"
+        },
+        {
+          "id": "g-series",
+          "name": "G Series",
+          "focus": "Gaming (Mid-range)",
+          "tier": "mid-range"
+        },
+        {
+          "id": "xps",
+          "name": "XPS",
+          "focus": "Premium Ultrabooks",
+          "tier": "premium"
+        },
+        {
+          "id": "inspiron",
+          "name": "Inspiron",
+          "focus": "Mainstream",
+          "tier": "mid-range"
+        },
+        {
+          "id": "latitude",
+          "name": "Latitude",
+          "focus": "Business",
+          "tier": "premium"
+        },
+        {
+          "id": "precision",
+          "name": "Precision",
+          "focus": "Workstations",
+          "tier": "premium"
+        }
+      ],
+      "strengths": [
+        "Excellent XPS line",
+        "Strong business laptops",
+        "Good build quality",
+        "Excellent customer service"
+      ],
+      "weaknesses": [
+        "Premium pricing",
+        "Limited retail presence",
+        "Thermal issues on some models"
+      ],
+      "marketShare": {
+        "global": 16.8,
+        "malaysia": 11.3
+      },
+      "warranty": {
+        "standard": "1-3 years",
+        "extended": "ProSupport available"
+      },
+      "website": "https://www.dell.com/en-my",
+      "support": "https://www.dell.com/support",
+      "active": true
+    },
+    {
+      "id": "apple",
+      "name": "Apple",
+      "fullName": "Apple Inc.",
+      "country": "USA",
+      "founded": 1976,
+      "tier": "premium",
+      "segments": ["creative", "business", "education"],
+      "subBrands": [
+        {
+          "id": "macbook-air",
+          "name": "MacBook Air",
+          "focus": "Ultrabooks",
+          "tier": "premium"
+        },
+        {
+          "id": "macbook-pro",
+          "name": "MacBook Pro",
+          "focus": "Professional",
+          "tier": "premium"
+        }
+      ],
+      "strengths": [
+        "Excellent build quality",
+        "Best-in-class battery life",
+        "Apple Silicon performance",
+        "Seamless ecosystem integration",
+        "Industry-leading displays"
+      ],
+      "weaknesses": [
+        "Premium pricing",
+        "Limited upgradability",
+        "macOS learning curve for Windows users",
+        "No gaming support"
+      ],
+      "marketShare": {
+        "global": 8.6,
+        "malaysia": 7.2
+      },
+      "warranty": {
+        "standard": "1 year",
+        "extended": "AppleCare+ available (3 years)"
+      },
+      "website": "https://www.apple.com/my/",
+      "support": "https://support.apple.com/",
+      "active": true
+    },
+    {
+      "id": "msi",
+      "name": "MSI",
+      "fullName": "Micro-Star International",
+      "country": "Taiwan",
+      "founded": 1986,
+      "tier": "premium",
+      "segments": ["gaming", "creative"],
+      "subBrands": [
+        {
+          "id": "titan",
+          "name": "Titan",
+          "focus": "Gaming (Extreme)",
+          "tier": "premium"
+        },
+        {
+          "id": "raider",
+          "name": "Raider",
+          "focus": "Gaming (High-end)",
+          "tier": "premium"
+        },
+        {
+          "id": "stealth",
+          "name": "Stealth",
+          "focus": "Gaming (Thin & Light)",
+          "tier": "premium"
+        },
+        {
+          "id": "creator",
+          "name": "Creator",
+          "focus": "Content Creation",
+          "tier": "premium"
+        }
+      ],
+      "strengths": [
+        "Excellent gaming performance",
+        "Good cooling systems",
+        "RGB customization",
+        "Strong creator lineup"
+      ],
+      "weaknesses": [
+        "Premium pricing",
+        "Battery life can be poor",
+        "Heavier than competitors",
+        "Software bloat"
+      ],
+      "marketShare": {
+        "global": 2.8,
+        "malaysia": 8.5
+      },
+      "warranty": {
+        "standard": "2 years international",
+        "extended": "Available"
+      },
+      "website": "https://www.msi.com/",
+      "support": "https://www.msi.com/support",
+      "active": true
+    },
+    {
+      "id": "razer",
+      "name": "Razer",
+      "fullName": "Razer Inc.",
+      "country": "Singapore/USA",
+      "founded": 2005,
+      "tier": "premium",
+      "segments": ["gaming"],
+      "subBrands": [
+        {
+          "id": "blade",
+          "name": "Blade",
+          "focus": "Gaming (Premium)",
+          "tier": "premium"
+        }
+      ],
+      "strengths": [
+        "Premium build quality",
+        "Sleek design",
+        "Good performance",
+        "Excellent displays"
+      ],
+      "weaknesses": [
+        "Very expensive",
+        "Battery bloat issues",
+        "Limited model range",
+        "Poor customer service reputation"
+      ],
+      "marketShare": {
+        "global": 0.5,
+        "malaysia": 1.2
+      },
+      "warranty": {
+        "standard": "1 year",
+        "extended": "Available"
+      },
+      "website": "https://www.razer.com/",
+      "support": "https://support.razer.com/",
+      "active": true
+    },
+    {
+      "id": "huawei",
+      "name": "Huawei",
+      "fullName": "Huawei Technologies Co., Ltd.",
+      "country": "China",
+      "founded": 1987,
+      "tier": "mid-range",
+      "segments": ["business", "creative", "budget"],
+      "subBrands": [
+        {
+          "id": "matebook",
+          "name": "MateBook",
+          "focus": "Ultrabooks",
+          "tier": "mid-range"
+        }
+      ],
+      "strengths": [
+        "Good build quality",
+        "Competitive pricing",
+        "Good displays",
+        "Ecosystem integration (with Huawei devices)"
+      ],
+      "weaknesses": [
+        "Limited availability (sanctions)",
+        "Limited software ecosystem",
+        "No gaming focus"
+      ],
+      "marketShare": {
+        "global": 2.1,
+        "malaysia": 3.5
+      },
+      "warranty": {
+        "standard": "1-2 years",
+        "extended": "Available"
+      },
+      "website": "https://consumer.huawei.com/my/",
+      "support": "https://consumer.huawei.com/my/support/",
+      "active": true
+    },
+    {
+      "id": "gigabyte",
+      "name": "Gigabyte",
+      "fullName": "GIGABYTE Technology Co., Ltd.",
+      "country": "Taiwan",
+      "founded": 1986,
+      "tier": "mid-range",
+      "segments": ["gaming", "creative"],
+      "subBrands": [
+        {
+          "id": "aorus",
+          "name": "AORUS",
+          "focus": "Gaming",
+          "tier": "premium"
+        },
+        {
+          "id": "aero",
+          "name": "AERO",
+          "focus": "Creator",
+          "tier": "premium"
+        }
+      ],
+      "strengths": [
+        "Good gaming performance",
+        "Competitive pricing",
+        "Good cooling",
+        "Strong creator options"
+      ],
+      "weaknesses": [
+        "Less brand recognition",
+        "Build quality varies",
+        "Limited retail presence"
+      ],
+      "marketShare": {
+        "global": 1.2,
+        "malaysia": 2.8
+      },
+      "warranty": {
+        "standard": "2 years",
+        "extended": "Available"
+      },
+      "website": "https://www.gigabyte.com/",
+      "support": "https://www.gigabyte.com/Support",
+      "active": true
+    }
+  ],
+  "metadata": {
+    "lastUpdated": "2025-01-15",
+    "version": "1.0.0",
+    "source": "AI Bradaa ETL Pipeline",
+    "totalBrands": 10,
+    "activeBrands": 10,
+    "coverage": "Malaysia market focus with global brands"
+  }
+}

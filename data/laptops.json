@@ -1,0 +1,664 @@
+{
+  "catalog": {
+    "version": "1.0.0",
+    "lastUpdated": "2025-01-15T10:30:00Z",
+    "totalLaptops": 5,
+    "currency": "MYR",
+    "notes": "Sample catalog data - production will have 100+ laptops"
+  },
+  "laptops": [
+    {
+      "id": "asus-rog-strix-g16-2024-001",
+      "brand": "asus",
+      "brandName": "ASUS",
+      "series": "ROG",
+      "model": "ROG Strix G16 (2024) G614JV",
+      "fullName": "ASUS ROG Strix G16 (2024) G614JV-N4103W",
+      "sku": "G614JV-N4103W",
+      "segment": "gaming",
+      "tier": "premium",
+      "rank": 1,
+      "rating": 4.7,
+      "price": 7299,
+      "originalPrice": 8499,
+      "discount": 14,
+      "specs": {
+        "cpu": {
+          "brand": "Intel",
+          "model": "Core i9-13980HX",
+          "generation": 13,
+          "cores": 24,
+          "threads": 32,
+          "baseClock": 2.2,
+          "boostClock": 5.6,
+          "tdp": 55
+        },
+        "gpu": {
+          "brand": "NVIDIA",
+          "model": "GeForce RTX 4060",
+          "vram": 8,
+          "type": "Laptop",
+          "tdp": 140
+        },
+        "ram": 16,
+        "ramType": "DDR5",
+        "ramSpeed": 4800,
+        "ramSlots": 2,
+        "ramMax": 32,
+        "storage": 1024,
+        "storageType": "NVMe SSD",
+        "storageSlots": 2,
+        "display": {
+          "size": 16,
+          "resolution": "2560x1600",
+          "refreshRate": 165,
+          "panelType": "IPS",
+          "brightness": 500,
+          "colorGamut": "100% DCI-P3",
+          "features": ["G-Sync", "Dolby Vision", "Adaptive Sync"]
+        },
+        "battery": 90,
+        "weight": 2.5,
+        "thickness": 23.5,
+        "ports": {
+          "usb-a": 2,
+          "usb-c": 2,
+          "thunderbolt": 1,
+          "hdmi": 1,
+          "ethernet": 1,
+          "audio": 1,
+          "sdCard": 0
+        },
+        "connectivity": {
+          "wifi": "Wi-Fi 6E",
+          "bluetooth": "5.3"
+        },
+        "cooling": "ROG Intelligent Cooling (Liquid Metal, Arc Flow Fans)",
+        "keyboard": {
+          "type": "RGB backlit",
+          "numpad": true,
+          "keyTravel": 1.7
+        },
+        "webcam": "720p HD",
+        "audio": "2x 4W speakers, Dolby Atmos, Hi-Res Audio"
+      },
+      "description": "Powerful gaming laptop with Intel's latest 13th Gen processor and NVIDIA RTX 4060 GPU. Features a stunning 16-inch QHD+ display with 165Hz refresh rate.",
+      "images": {
+        "main": "/assets/laptops/asus-rog-strix-g16-2024-main.jpg",
+        "gallery": [
+          "/assets/laptops/asus-rog-strix-g16-2024-1.jpg",
+          "/assets/laptops/asus-rog-strix-g16-2024-2.jpg",
+          "/assets/laptops/asus-rog-strix-g16-2024-3.jpg"
+        ]
+      },
+      "pros": [
+        "Excellent gaming performance",
+        "High refresh rate display",
+        "Good cooling system",
+        "Premium build quality",
+        "Thunderbolt 4 support"
+      ],
+      "cons": [
+        "Heavy at 2.5kg",
+        "Battery life mediocre",
+        "Expensive",
+        "720p webcam outdated"
+      ],
+      "useCases": ["gaming", "content-creation", "streaming"],
+      "tags": ["gaming", "rtx-4060", "165hz", "intel-13th-gen", "rgb"],
+      "availability": {
+        "inStock": true,
+        "stockCount": 15,
+        "sources": [
+          {
+            "platform": "shopee",
+            "url": "https://shopee.com.my/product/12345",
+            "price": 7299,
+            "inStock": true,
+            "seller": "ASUS Official Store",
+            "rating": 4.8,
+            "lastChecked": "2025-01-15T09:00:00Z"
+          },
+          {
+            "platform": "lazada",
+            "url": "https://lazada.com.my/product/67890",
+            "price": 7399,
+            "inStock": true,
+            "seller": "ASUS Malaysia",
+            "rating": 4.7,
+            "lastChecked": "2025-01-15T09:00:00Z"
+          }
+        ]
+      },
+      "warranty": "2 years international warranty",
+      "releaseDate": "2024-02-15",
+      "updatedAt": "2025-01-15T09:00:00Z",
+      "metadata": {
+        "views": 2450,
+        "comparisons": 340,
+        "favorites": 128,
+        "clicks": 890
+      }
+    },
+    {
+      "id": "apple-macbook-air-m3-2024-002",
+      "brand": "apple",
+      "brandName": "Apple",
+      "series": "MacBook Air",
+      "model": "MacBook Air 13\" M3 (2024)",
+      "fullName": "Apple MacBook Air 13\" with M3 chip (2024)",
+      "sku": "MRXN3ZP/A",
+      "segment": "ultrabook",
+      "tier": "premium",
+      "rank": 2,
+      "rating": 4.9,
+      "price": 5799,
+      "originalPrice": 5799,
+      "discount": 0,
+      "specs": {
+        "cpu": {
+          "brand": "Apple",
+          "model": "M3",
+          "generation": 3,
+          "cores": 8,
+          "performanceCores": 4,
+          "efficiencyCores": 4,
+          "neuralEngine": "16-core"
+        },
+        "gpu": {
+          "brand": "Apple",
+          "model": "M3 (10-core GPU)",
+          "vram": "shared",
+          "integrated": true
+        },
+        "ram": 16,
+        "ramType": "Unified Memory",
+        "ramUpgradable": false,
+        "storage": 512,
+        "storageType": "SSD",
+        "storageUpgradable": false,
+        "display": {
+          "size": 13.6,
+          "resolution": "2560x1664",
+          "refreshRate": 60,
+          "panelType": "Liquid Retina",
+          "brightness": 500,
+          "colorGamut": "100% P3",
+          "features": ["True Tone", "500 nits brightness"]
+        },
+        "battery": 52.6,
+        "batteryLife": 18,
+        "weight": 1.24,
+        "thickness": 11.3,
+        "ports": {
+          "usb-c": 2,
+          "thunderbolt": 2,
+          "magsafe": 1,
+          "audio": 1
+        },
+        "connectivity": {
+          "wifi": "Wi-Fi 6E",
+          "bluetooth": "5.3"
+        },
+        "keyboard": {
+          "type": "Magic Keyboard with backlight",
+          "touchId": true
+        },
+        "webcam": "1080p FaceTime HD",
+        "audio": "4-speaker system, Spatial Audio, Dolby Atmos"
+      },
+      "description": "Incredibly thin and light laptop with Apple's M3 chip delivering exceptional performance and up to 18 hours of battery life. Perfect for professionals on the go.",
+      "images": {
+        "main": "/assets/laptops/macbook-air-m3-2024-main.jpg",
+        "gallery": [
+          "/assets/laptops/macbook-air-m3-2024-1.jpg",
+          "/assets/laptops/macbook-air-m3-2024-2.jpg",
+          "/assets/laptops/macbook-air-m3-2024-3.jpg"
+        ]
+      },
+      "pros": [
+        "Exceptional battery life (18 hours)",
+        "Ultra-portable (1.24kg)",
+        "Blazing fast performance",
+        "Stunning Retina display",
+        "Fanless design (silent)",
+        "Great build quality"
+      ],
+      "cons": [
+        "Expensive",
+        "Limited to 2 USB-C ports",
+        "Not upgradable",
+        "No gaming support",
+        "macOS learning curve"
+      ],
+      "useCases": ["business", "productivity", "creative", "student"],
+      "tags": ["ultrabook", "apple-silicon", "m3", "lightweight", "long-battery"],
+      "availability": {
+        "inStock": true,
+        "stockCount": 25,
+        "sources": [
+          {
+            "platform": "apple",
+            "url": "https://www.apple.com/my/shop/buy-mac/macbook-air",
+            "price": 5799,
+            "inStock": true,
+            "seller": "Apple Malaysia",
+            "rating": 5.0,
+            "lastChecked": "2025-01-15T09:00:00Z"
+          },
+          {
+            "platform": "lazada",
+            "url": "https://lazada.com.my/product/apple-macbook",
+            "price": 5899,
+            "inStock": true,
+            "seller": "Apple Authorized Reseller",
+            "rating": 4.9,
+            "lastChecked": "2025-01-15T09:00:00Z"
+          }
+        ]
+      },
+      "warranty": "1 year limited warranty (AppleCare+ available)",
+      "releaseDate": "2024-03-10",
+      "updatedAt": "2025-01-15T09:00:00Z",
+      "metadata": {
+        "views": 5800,
+        "comparisons": 1200,
+        "favorites": 420,
+        "clicks": 1850
+      }
+    },
+    {
+      "id": "lenovo-thinkpad-x1-carbon-gen11-003",
+      "brand": "lenovo",
+      "brandName": "Lenovo",
+      "series": "ThinkPad",
+      "model": "ThinkPad X1 Carbon Gen 11",
+      "fullName": "Lenovo ThinkPad X1 Carbon Gen 11 (Intel vPro)",
+      "sku": "21HM002UMY",
+      "segment": "business",
+      "tier": "premium",
+      "rank": 3,
+      "rating": 4.6,
+      "price": 6999,
+      "originalPrice": 7999,
+      "discount": 13,
+      "specs": {
+        "cpu": {
+          "brand": "Intel",
+          "model": "Core i7-1365U vPro",
+          "generation": 13,
+          "cores": 10,
+          "performanceCores": 2,
+          "efficiencyCores": 8,
+          "threads": 12,
+          "baseClock": 1.8,
+          "boostClock": 5.2,
+          "tdp": 15
+        },
+        "gpu": {
+          "brand": "Intel",
+          "model": "Iris Xe",
+          "integrated": true
+        },
+        "ram": 16,
+        "ramType": "LPDDR5",
+        "ramSpeed": 6400,
+        "ramUpgradable": false,
+        "storage": 512,
+        "storageType": "PCIe 4.0 NVMe SSD",
+        "storageUpgradable": true,
+        "display": {
+          "size": 14,
+          "resolution": "2880x1800",
+          "refreshRate": 60,
+          "panelType": "OLED",
+          "brightness": 400,
+          "colorGamut": "100% DCI-P3",
+          "features": ["Dolby Vision", "Low Blue Light", "Touch option available"]
+        },
+        "battery": 57,
+        "batteryLife": 12,
+        "weight": 1.12,
+        "thickness": 15.36,
+        "ports": {
+          "usb-a": 2,
+          "usb-c": 2,
+          "thunderbolt": 2,
+          "hdmi": 1,
+          "audio": 1
+        },
+        "connectivity": {
+          "wifi": "Wi-Fi 6E",
+          "bluetooth": "5.3",
+          "wwan": "5G option available"
+        },
+        "security": {
+          "tpm": "2.0",
+          "fingerprint": true,
+          "faceRecognition": "IR Camera",
+          "privacyShutter": true,
+          "kensington": true
+        },
+        "keyboard": {
+          "type": "Backlit ThinkPad Keyboard",
+          "trackpoint": true
+        },
+        "webcam": "1080p FHD with IR",
+        "audio": "Dolby Atmos, 4x 360° mics"
+      },
+      "description": "Premium business ultrabook with legendary ThinkPad keyboard, military-grade durability, and comprehensive security features. Perfect for professionals.",
+      "images": {
+        "main": "/assets/laptops/thinkpad-x1-carbon-gen11-main.jpg",
+        "gallery": [
+          "/assets/laptops/thinkpad-x1-carbon-gen11-1.jpg",
+          "/assets/laptops/thinkpad-x1-carbon-gen11-2.jpg",
+          "/assets/laptops/thinkpad-x1-carbon-gen11-3.jpg"
+        ]
+      },
+      "pros": [
+        "Exceptional keyboard",
+        "Ultra-portable (1.12kg)",
+        "Stunning OLED display",
+        "Military-grade durability (MIL-STD-810H)",
+        "Comprehensive security",
+        "Excellent battery life"
+      ],
+      "cons": [
+        "Expensive",
+        "RAM not upgradable",
+        "OLED not ideal for static content",
+        "Limited gaming capability"
+      ],
+      "useCases": ["business", "productivity", "travel"],
+      "tags": ["business", "ultrabook", "mil-std", "vpro", "oled"],
+      "availability": {
+        "inStock": true,
+        "stockCount": 8,
+        "sources": [
+          {
+            "platform": "lenovo",
+            "url": "https://www.lenovo.com/my/en/laptops/thinkpad/x1-carbon",
+            "price": 6999,
+            "inStock": true,
+            "seller": "Lenovo Malaysia",
+            "rating": 4.7,
+            "lastChecked": "2025-01-15T09:00:00Z"
+          },
+          {
+            "platform": "shopee",
+            "url": "https://shopee.com.my/product/lenovo-thinkpad",
+            "price": 7199,
+            "inStock": true,
+            "seller": "Lenovo Official",
+            "rating": 4.6,
+            "lastChecked": "2025-01-15T09:00:00Z"
+          }
+        ]
+      },
+      "warranty": "3 years Premier Support",
+      "releaseDate": "2023-04-20",
+      "updatedAt": "2025-01-15T09:00:00Z",
+      "metadata": {
+        "views": 1680,
+        "comparisons": 420,
+        "favorites": 95,
+        "clicks": 580
+      }
+    },
+    {
+      "id": "acer-nitro-5-an515-58-004",
+      "brand": "acer",
+      "brandName": "Acer",
+      "series": "Nitro",
+      "model": "Nitro 5 AN515-58",
+      "fullName": "Acer Nitro 5 AN515-58-74NU",
+      "sku": "AN515-58-74NU",
+      "segment": "gaming",
+      "tier": "budget",
+      "rank": 15,
+      "rating": 4.3,
+      "price": 4299,
+      "originalPrice": 4999,
+      "discount": 14,
+      "specs": {
+        "cpu": {
+          "brand": "Intel",
+          "model": "Core i7-12650H",
+          "generation": 12,
+          "cores": 10,
+          "performanceCores": 6,
+          "efficiencyCores": 4,
+          "threads": 16,
+          "baseClock": 2.3,
+          "boostClock": 4.7,
+          "tdp": 45
+        },
+        "gpu": {
+          "brand": "NVIDIA",
+          "model": "GeForce RTX 3050",
+          "vram": 4,
+          "type": "Laptop",
+          "tdp": 75
+        },
+        "ram": 16,
+        "ramType": "DDR4",
+        "ramSpeed": 3200,
+        "ramSlots": 2,
+        "ramMax": 32,
+        "storage": 512,
+        "storageType": "NVMe SSD",
+        "storageSlots": 2,
+        "display": {
+          "size": 15.6,
+          "resolution": "1920x1080",
+          "refreshRate": 144,
+          "panelType": "IPS",
+          "brightness": 300,
+          "colorGamut": "72% NTSC",
+          "features": ["ComfyView (anti-glare)"]
+        },
+        "battery": 57,
+        "batteryLife": 5,
+        "weight": 2.5,
+        "thickness": 25.9,
+        "ports": {
+          "usb-a": 3,
+          "usb-c": 1,
+          "hdmi": 1,
+          "ethernet": 1,
+          "audio": 1
+        },
+        "connectivity": {
+          "wifi": "Wi-Fi 6",
+          "bluetooth": "5.1"
+        },
+        "cooling": "Acer CoolBoost Technology",
+        "keyboard": {
+          "type": "RGB 4-zone backlit",
+          "numpad": true
+        },
+        "webcam": "720p HD",
+        "audio": "DTS:X Ultra Audio"
+      },
+      "description": "Budget-friendly gaming laptop offering solid performance for 1080p gaming with RTX 3050 graphics and 144Hz display.",
+      "images": {
+        "main": "/assets/laptops/acer-nitro-5-an515-main.jpg",
+        "gallery": [
+          "/assets/laptops/acer-nitro-5-an515-1.jpg",
+          "/assets/laptops/acer-nitro-5-an515-2.jpg",
+          "/assets/laptops/acer-nitro-5-an515-3.jpg"
+        ]
+      },
+      "pros": [
+        "Great value for money",
+        "144Hz display for smooth gaming",
+        "Good cooling system",
+        "Expandable storage and RAM",
+        "Plenty of ports"
+      ],
+      "cons": [
+        "Plasticky build",
+        "Poor battery life",
+        "720p webcam",
+        "RTX 3050 limited for AAA gaming",
+        "Heavy"
+      ],
+      "useCases": ["gaming", "student", "budget"],
+      "tags": ["budget-gaming", "rtx-3050", "144hz", "value"],
+      "availability": {
+        "inStock": true,
+        "stockCount": 42,
+        "sources": [
+          {
+            "platform": "shopee",
+            "url": "https://shopee.com.my/product/acer-nitro-5",
+            "price": 4299,
+            "inStock": true,
+            "seller": "Acer Official Store",
+            "rating": 4.4,
+            "lastChecked": "2025-01-15T09:00:00Z"
+          },
+          {
+            "platform": "lazada",
+            "url": "https://lazada.com.my/product/acer-nitro",
+            "price": 4399,
+            "inStock": true,
+            "seller": "Acer Malaysia",
+            "rating": 4.3,
+            "lastChecked": "2025-01-15T09:00:00Z"
+          }
+        ]
+      },
+      "warranty": "2 years international warranty",
+      "releaseDate": "2023-06-15",
+      "updatedAt": "2025-01-15T09:00:00Z",
+      "metadata": {
+        "views": 3120,
+        "comparisons": 680,
+        "favorites": 245,
+        "clicks": 1050
+      }
+    },
+    {
+      "id": "dell-xps-15-9530-005",
+      "brand": "dell",
+      "brandName": "Dell",
+      "series": "XPS",
+      "model": "XPS 15 9530",
+      "fullName": "Dell XPS 15 9530 (Intel 13th Gen)",
+      "sku": "XPS9530-7890",
+      "segment": "creative",
+      "tier": "premium",
+      "rank": 4,
+      "rating": 4.8,
+      "price": 9499,
+      "originalPrice": 10999,
+      "discount": 14,
+      "specs": {
+        "cpu": {
+          "brand": "Intel",
+          "model": "Core i7-13700H",
+          "generation": 13,
+          "cores": 14,
+          "performanceCores": 6,
+          "efficiencyCores": 8,
+          "threads": 20,
+          "baseClock": 2.4,
+          "boostClock": 5.0,
+          "tdp": 45
+        },
+        "gpu": {
+          "brand": "NVIDIA",
+          "model": "GeForce RTX 4060",
+          "vram": 8,
+          "type": "Laptop",
+          "tdp": 70
+        },
+        "ram": 32,
+        "ramType": "DDR5",
+        "ramSpeed": 4800,
+        "ramUpgradable": true,
+        "storage": 1024,
+        "storageType": "PCIe 4.0 NVMe SSD",
+        "storageUpgradable": true,
+        "display": {
+          "size": 15.6,
+          "resolution": "3456x2160",
+          "refreshRate": 60,
+          "panelType": "OLED",
+          "brightness": 400,
+          "colorGamut": "100% DCI-P3",
+          "features": ["Dolby Vision", "Touch", "HDR 500"]
+        },
+        "battery": 86,
+        "batteryLife": 10,
+        "weight": 1.86,
+        "thickness": 18,
+        "ports": {
+          "usb-c": 3,
+          "thunderbolt": 2,
+          "sdCard": 1,
+          "audio": 1
+        },
+        "connectivity": {
+          "wifi": "Wi-Fi 6E",
+          "bluetooth": "5.3"
+        },
+        "keyboard": {
+          "type": "Backlit keyboard"
+        },
+        "webcam": "720p HD with Windows Hello",
+        "audio": "Quad speakers, MaxxAudio Pro"
+      },
+      "description": "Premium creator laptop with stunning 3.5K OLED touchscreen, powerful RTX 4060 GPU, and sleek aluminum design. Ideal for content creators and professionals.",
+      "images": {
+        "main": "/assets/laptops/dell-xps-15-9530-main.jpg",
+        "gallery": [
+          "/assets/laptops/dell-xps-15-9530-1.jpg",
+          "/assets/laptops/dell-xps-15-9530-2.jpg",
+          "/assets/laptops/dell-xps-15-9530-3.jpg"
+        ]
+      },
+      "pros": [
+        "Stunning 3.5K OLED display",
+        "Premium build quality",
+        "Powerful performance for creators",
+        "Excellent battery life",
+        "Thin and light for the specs",
+        "SD card reader"
+      ],
+      "cons": [
+        "Very expensive",
+        "Limited ports (no USB-A)",
+        "720p webcam",
+        "OLED may have burn-in risk"
+      ],
+      "useCases": ["creative", "video-editing", "photo-editing", "business"],
+      "tags": ["creator", "oled", "rtx-4060", "premium", "touchscreen"],
+      "availability": {
+        "inStock": true,
+        "stockCount": 5,
+        "sources": [
+          {
+            "platform": "dell",
+            "url": "https://www.dell.com/en-my/shop/laptops/xps-15-9530",
+            "price": 9499,
+            "inStock": true,
+            "seller": "Dell Malaysia",
+            "rating": 4.8,
+            "lastChecked": "2025-01-15T09:00:00Z"
+          }
+        ]
+      },
+      "warranty": "2 years Premium Support",
+      "releaseDate": "2023-05-10",
+      "updatedAt": "2025-01-15T09:00:00Z",
+      "metadata": {
+        "views": 4200,
+        "comparisons": 890,
+        "favorites": 310,
+        "clicks": 1420
+      }
+    }
+  ]
+}

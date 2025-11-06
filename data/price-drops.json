@@ -1,0 +1,437 @@
+{
+  "priceDrops": {
+    "description": "Price drop tracking for Intel section",
+    "lastUpdated": "2025-01-15T10:30:00Z",
+    "totalDrops": 12,
+    "trackingPeriod": "30 days",
+    "minDiscountPercent": 10
+  },
+  "drops": [
+    {
+      "id": "drop-001",
+      "laptopId": "asus-rog-strix-g16-2024-001",
+      "brand": "ASUS",
+      "model": "ROG Strix G16 (2024) G614JV",
+      "detectedDate": "2025-01-12T14:30:00Z",
+      "priceHistory": [
+        {
+          "date": "2024-12-15",
+          "price": 8499,
+          "platform": "shopee"
+        },
+        {
+          "date": "2025-01-12",
+          "price": 7299,
+          "platform": "shopee"
+        }
+      ],
+      "currentPrice": 7299,
+      "originalPrice": 8499,
+      "discount": 1200,
+      "discountPercent": 14,
+      "savingsLabel": "Save RM 1,200",
+      "urgency": "medium",
+      "expiresAt": "2025-01-31T23:59:59Z",
+      "platform": "shopee",
+      "seller": "ASUS Official Store",
+      "trending": true,
+      "stock": "limited",
+      "views": 2450,
+      "clicks": 340
+    },
+    {
+      "id": "drop-002",
+      "laptopId": "dell-xps-15-9530-005",
+      "brand": "Dell",
+      "model": "XPS 15 9530",
+      "detectedDate": "2025-01-10T09:15:00Z",
+      "priceHistory": [
+        {
+          "date": "2024-12-01",
+          "price": 10999,
+          "platform": "dell"
+        },
+        {
+          "date": "2025-01-10",
+          "price": 9499,
+          "platform": "dell"
+        }
+      ],
+      "currentPrice": 9499,
+      "originalPrice": 10999,
+      "discount": 1500,
+      "discountPercent": 14,
+      "savingsLabel": "Save RM 1,500",
+      "urgency": "high",
+      "expiresAt": "2025-01-20T23:59:59Z",
+      "platform": "dell",
+      "seller": "Dell Malaysia",
+      "trending": true,
+      "stock": "in-stock",
+      "views": 4200,
+      "clicks": 890
+    },
+    {
+      "id": "drop-003",
+      "laptopId": "acer-nitro-5-an515-58-004",
+      "brand": "Acer",
+      "model": "Nitro 5 AN515-58",
+      "detectedDate": "2025-01-08T16:45:00Z",
+      "priceHistory": [
+        {
+          "date": "2024-11-20",
+          "price": 4999,
+          "platform": "shopee"
+        },
+        {
+          "date": "2025-01-08",
+          "price": 4299,
+          "platform": "shopee"
+        }
+      ],
+      "currentPrice": 4299,
+      "originalPrice": 4999,
+      "discount": 700,
+      "discountPercent": 14,
+      "savingsLabel": "Save RM 700",
+      "urgency": "low",
+      "expiresAt": "2025-02-28T23:59:59Z",
+      "platform": "shopee",
+      "seller": "Acer Official Store",
+      "trending": true,
+      "stock": "in-stock",
+      "views": 3120,
+      "clicks": 680
+    },
+    {
+      "id": "drop-004",
+      "laptopId": "lenovo-legion-5-pro-2024-006",
+      "brand": "Lenovo",
+      "model": "Legion 5 Pro (2024)",
+      "detectedDate": "2025-01-14T11:20:00Z",
+      "priceHistory": [
+        {
+          "date": "2024-12-10",
+          "price": 6799,
+          "platform": "lazada"
+        },
+        {
+          "date": "2025-01-14",
+          "price": 5799,
+          "platform": "lazada"
+        }
+      ],
+      "currentPrice": 5799,
+      "originalPrice": 6799,
+      "discount": 1000,
+      "discountPercent": 15,
+      "savingsLabel": "Save RM 1,000",
+      "urgency": "high",
+      "expiresAt": "2025-01-25T23:59:59Z",
+      "platform": "lazada",
+      "seller": "Lenovo Official",
+      "trending": true,
+      "stock": "limited",
+      "views": 1890,
+      "clicks": 420
+    },
+    {
+      "id": "drop-005",
+      "laptopId": "hp-victus-15-fa0000-007",
+      "brand": "HP",
+      "model": "Victus 15 fa0000",
+      "detectedDate": "2025-01-13T13:00:00Z",
+      "priceHistory": [
+        {
+          "date": "2024-12-05",
+          "price": 4499,
+          "platform": "shopee"
+        },
+        {
+          "date": "2025-01-13",
+          "price": 3799,
+          "platform": "shopee"
+        }
+      ],
+      "currentPrice": 3799,
+      "originalPrice": 4499,
+      "discount": 700,
+      "discountPercent": 16,
+      "savingsLabel": "Save RM 700",
+      "urgency": "medium",
+      "expiresAt": "2025-01-31T23:59:59Z",
+      "platform": "shopee",
+      "seller": "HP Official Store",
+      "trending": false,
+      "stock": "in-stock",
+      "views": 1250,
+      "clicks": 180
+    },
+    {
+      "id": "drop-006",
+      "laptopId": "msi-creator-z16-2024-008",
+      "brand": "MSI",
+      "model": "Creator Z16 (2024)",
+      "detectedDate": "2025-01-11T10:30:00Z",
+      "priceHistory": [
+        {
+          "date": "2024-11-25",
+          "price": 11999,
+          "platform": "shopee"
+        },
+        {
+          "date": "2025-01-11",
+          "price": 9999,
+          "platform": "shopee"
+        }
+      ],
+      "currentPrice": 9999,
+      "originalPrice": 11999,
+      "discount": 2000,
+      "discountPercent": 17,
+      "savingsLabel": "Save RM 2,000",
+      "urgency": "high",
+      "expiresAt": "2025-01-22T23:59:59Z",
+      "platform": "shopee",
+      "seller": "MSI Official Store",
+      "trending": true,
+      "stock": "limited",
+      "views": 980,
+      "clicks": 210
+    },
+    {
+      "id": "drop-007",
+      "laptopId": "asus-vivobook-15-2024-009",
+      "brand": "ASUS",
+      "model": "VivoBook 15 (2024)",
+      "detectedDate": "2025-01-09T15:45:00Z",
+      "priceHistory": [
+        {
+          "date": "2024-12-01",
+          "price": 2999,
+          "platform": "lazada"
+        },
+        {
+          "date": "2025-01-09",
+          "price": 2499,
+          "platform": "lazada"
+        }
+      ],
+      "currentPrice": 2499,
+      "originalPrice": 2999,
+      "discount": 500,
+      "discountPercent": 17,
+      "savingsLabel": "Save RM 500",
+      "urgency": "low",
+      "expiresAt": "2025-02-15T23:59:59Z",
+      "platform": "lazada",
+      "seller": "ASUS Malaysia",
+      "trending": false,
+      "stock": "in-stock",
+      "views": 1580,
+      "clicks": 240
+    },
+    {
+      "id": "drop-008",
+      "laptopId": "acer-swift-3-2024-010",
+      "brand": "Acer",
+      "model": "Swift 3 (2024)",
+      "detectedDate": "2025-01-07T12:20:00Z",
+      "priceHistory": [
+        {
+          "date": "2024-11-30",
+          "price": 3799,
+          "platform": "shopee"
+        },
+        {
+          "date": "2025-01-07",
+          "price": 3199,
+          "platform": "shopee"
+        }
+      ],
+      "currentPrice": 3199,
+      "originalPrice": 3799,
+      "discount": 600,
+      "discountPercent": 16,
+      "savingsLabel": "Save RM 600",
+      "urgency": "medium",
+      "expiresAt": "2025-01-28T23:59:59Z",
+      "platform": "shopee",
+      "seller": "Acer Official",
+      "trending": false,
+      "stock": "in-stock",
+      "views": 890,
+      "clicks": 125
+    },
+    {
+      "id": "drop-009",
+      "laptopId": "lenovo-ideapad-gaming-3-2024-011",
+      "brand": "Lenovo",
+      "model": "IdeaPad Gaming 3 (2024)",
+      "detectedDate": "2025-01-15T08:00:00Z",
+      "priceHistory": [
+        {
+          "date": "2024-12-20",
+          "price": 4299,
+          "platform": "lazada"
+        },
+        {
+          "date": "2025-01-15",
+          "price": 3599,
+          "platform": "lazada"
+        }
+      ],
+      "currentPrice": 3599,
+      "originalPrice": 4299,
+      "discount": 700,
+      "discountPercent": 16,
+      "savingsLabel": "Save RM 700",
+      "urgency": "high",
+      "expiresAt": "2025-01-20T23:59:59Z",
+      "platform": "lazada",
+      "seller": "Lenovo Malaysia",
+      "trending": true,
+      "stock": "limited",
+      "views": 1450,
+      "clicks": 290
+    },
+    {
+      "id": "drop-010",
+      "laptopId": "hp-envy-x360-2024-012",
+      "brand": "HP",
+      "model": "ENVY x360 (2024)",
+      "detectedDate": "2025-01-06T14:10:00Z",
+      "priceHistory": [
+        {
+          "date": "2024-11-15",
+          "price": 5999,
+          "platform": "shopee"
+        },
+        {
+          "date": "2025-01-06",
+          "price": 4999,
+          "platform": "shopee"
+        }
+      ],
+      "currentPrice": 4999,
+      "originalPrice": 5999,
+      "discount": 1000,
+      "discountPercent": 17,
+      "savingsLabel": "Save RM 1,000",
+      "urgency": "medium",
+      "expiresAt": "2025-01-30T23:59:59Z",
+      "platform": "shopee",
+      "seller": "HP Official",
+      "trending": false,
+      "stock": "in-stock",
+      "views": 1120,
+      "clicks": 195
+    },
+    {
+      "id": "drop-011",
+      "laptopId": "dell-inspiron-15-2024-013",
+      "brand": "Dell",
+      "model": "Inspiron 15 (2024)",
+      "detectedDate": "2025-01-05T09:30:00Z",
+      "priceHistory": [
+        {
+          "date": "2024-11-10",
+          "price": 3299,
+          "platform": "dell"
+        },
+        {
+          "date": "2025-01-05",
+          "price": 2799,
+          "platform": "dell"
+        }
+      ],
+      "currentPrice": 2799,
+      "originalPrice": 3299,
+      "discount": 500,
+      "discountPercent": 15,
+      "savingsLabel": "Save RM 500",
+      "urgency": "low",
+      "expiresAt": "2025-02-28T23:59:59Z",
+      "platform": "dell",
+      "seller": "Dell Malaysia",
+      "trending": false,
+      "stock": "in-stock",
+      "views": 680,
+      "clicks": 90
+    },
+    {
+      "id": "drop-012",
+      "laptopId": "gigabyte-aorus-15-2024-014",
+      "brand": "Gigabyte",
+      "model": "AORUS 15 (2024)",
+      "detectedDate": "2025-01-04T11:00:00Z",
+      "priceHistory": [
+        {
+          "date": "2024-10-20",
+          "price": 7999,
+          "platform": "shopee"
+        },
+        {
+          "date": "2025-01-04",
+          "price": 6799,
+          "platform": "shopee"
+        }
+      ],
+      "currentPrice": 6799,
+      "originalPrice": 7999,
+      "discount": 1200,
+      "discountPercent": 15,
+      "savingsLabel": "Save RM 1,200",
+      "urgency": "medium",
+      "expiresAt": "2025-01-31T23:59:59Z",
+      "platform": "shopee",
+      "seller": "Gigabyte Official",
+      "trending": false,
+      "stock": "in-stock",
+      "views": 540,
+      "clicks": 75
+    }
+  ],
+  "statistics": {
+    "totalDrops": 12,
+    "averageDiscount": 15.5,
+    "averageSavings": 925,
+    "totalViews": 20150,
+    "totalClicks": 3735,
+    "conversionRate": 0.185,
+    "topBrand": "ASUS",
+    "topPlatform": "shopee",
+    "highestDiscount": {
+      "laptopId": "msi-creator-z16-2024-008",
+      "discountPercent": 17,
+      "savings": 2000
+    }
+  },
+  "alerts": {
+    "enabled": true,
+    "tiers": {
+      "free": {
+        "enabled": false,
+        "note": "Price alerts not available for free tier"
+      },
+      "pro": {
+        "enabled": true,
+        "maxAlerts": 10,
+        "notificationChannels": ["email", "push"]
+      },
+      "ultimate": {
+        "enabled": true,
+        "maxAlerts": "unlimited",
+        "notificationChannels": ["email", "push", "sms"],
+        "customThresholds": true
+      }
+    }
+  },
+  "configuration": {
+    "trackingSchedule": "0 */6 * * *",
+    "minDiscountPercent": 10,
+    "maxAge": 30,
+    "priceCheckFrequency": "6 hours",
+    "notificationDelay": "1 hour"
+  }
+}
