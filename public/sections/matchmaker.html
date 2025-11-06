@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en-MY">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Matchmaker - AI Bradaa</title>
+  <link rel="stylesheet" href="/styles/tailwind.css">
+  <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body class="bg-gray-50">
+  <div id="app">
+    <!-- Progress Bar -->
+    <div class="bg-white border-b sticky top-0 z-40">
+      <div class="container mx-auto px-4 py-3">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-sm font-semibold text-gray-600">Step <span id="current-step">1</span> of 5</span>
+          <span class="text-sm text-gray-500"><span id="progress-percent">0</span>% Complete</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-2">
+          <div id="progress-bar" class="bg-indigo-600 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8 max-w-4xl">
+      <!-- Header -->
+      <div class="text-center mb-12">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">🎯 Laptop Matchmaker</h1>
+        <p class="text-xl text-gray-600">Answer a few questions and we'll find your perfect laptop match!</p>
+      </div>
+
+      <!-- Question Cards -->
+      <div id="question-container" class="space-y-6">
+        <!-- Questions will be dynamically inserted here -->
+      </div>
+
+      <!-- Navigation Buttons -->
+      <div class="flex justify-between mt-8">
+        <button id="btn-back" class="px-6 py-3 border-2 border-gray-300 rounded-lg font-semibold text-gray-700 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed">
+          ← Back
+        </button>
+        <button id="btn-next" class="px-6 py-3 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed">
+          Next →
+        </button>
+      </div>
+
+      <!-- Results Section (hidden initially) -->
+      <div id="results-section" class="hidden mt-12">
+        <h2 class="text-3xl font-bold text-center mb-8">Your Perfect Matches! 🎉</h2>
+        <div id="results-container" class="space-y-6">
+          <!-- Results will be inserted here -->
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script type="module">
+    // Matchmaker Logic
+    const questions = [
+      {
+        id: 'budget',
+        title: 'What\'s your budget?',
+        type: 'range',
+        options: {
+          min: 2000,
+          max: 15000,
+          step: 500,
+          unit: 'MYR'
+        }
+      },
+      {
+        id: 'usage',
+        title: 'What will you mainly use it for?',
+        type: 'multiple',
+        options: [
+          { value: 'work', label: '💼 Work & Productivity', icon: '💼' },
+          { value: 'gaming', label: '🎮 Gaming', icon: '🎮' },
+          { value: 'creative', label: '🎨 Creative Work', icon: '🎨' },
+          { value: 'student', label: '📚 Student', icon: '📚' },
+          { value: 'programming', label: '💻 Programming', icon: '💻' },
+          { value: 'general', label: '🌐 General Use', icon: '🌐' }
+        ]
+      },
+      {
+        id: 'portability',
+        title: 'How important is portability?',
+        type: 'single',
+        options: [
+          { value: 'essential', label: '⚡ Essential - Always on the go' },
+          { value: 'important', label: '👍 Important - Move around sometimes' },
+          { value: 'nice', label: '🤷 Nice to have' },
+          { value: 'not-important', label: '🏠 Not important - Mostly at desk' }
+        ]
+      },
+      {
+        id: 'screen-size',
+        title: 'Preferred screen size?',
+        type: 'single',
+        options: [
+          { value: '13-14', label: '📱 13-14" - Ultra portable' },
+          { value: '15-16', label: '💻 15-16" - Balanced' },
+          { value: '17+', label: '🖥️ 17"+ - Maximum screen' },
+          { value: 'any', label: '🤷 Any size works' }
+        ]
+      },
+      {
+        id: 'brand-preference',
+        title: 'Any brand preferences?',
+        type: 'multiple',
+        options: [
+          { value: 'apple', label: 'Apple' },
+          { value: 'asus', label: 'Asus' },
+          { value: 'dell', label: 'Dell' },
+          { value: 'hp', label: 'HP' },
+          { value: 'lenovo', label: 'Lenovo' },
+          { value: 'msi', label: 'MSI' },
+          { value: 'acer', label: 'Acer' },
+          { value: 'no-preference', label: 'No preference' }
+        ]
+      }
+    ];
+
+    let currentStep = 0;
+    let answers = {};
+
+    function renderQuestion(question) {
+      const container = document.getElementById('question-container');
+      let html = `
+        <div class="bg-white rounded-lg shadow-md p-8">
+          <h2 class="text-2xl font-bold mb-6">${question.title}</h2>
+      `;
+
+      if (question.type === 'range') {
+        const current = answers[question.id] || question.options.min;
+        html += `
+          <div class="space-y-4">
+            <div class="flex justify-between items-center">
+              <span class="text-3xl font-bold text-indigo-600">${question.options.unit} ${current.toLocaleString()}</span>
+            </div>
+            <input
+              type="range"
+              id="input-${question.id}"
+              min="${question.options.min}"
+              max="${question.options.max}"
+              step="${question.options.step}"
+              value="${current}"
+              class="w-full h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-indigo-600"
+            />
+            <div class="flex justify-between text-sm text-gray-500">
+              <span>${question.options.unit} ${question.options.min.toLocaleString()}</span>
+              <span>${question.options.unit} ${question.options.max.toLocaleString()}</span>
+            </div>
+          </div>
+        `;
+      } else if (question.type === 'single') {
+        html += '<div class="grid gap-3">';
+        question.options.forEach(opt => {
+          const checked = answers[question.id] === opt.value ? 'ring-2 ring-indigo-600 bg-indigo-50' : '';
+          html += `
+            <label class="flex items-center p-4 border-2 rounded-lg cursor-pointer hover:border-indigo-300 transition ${checked}">
+              <input
+                type="radio"
+                name="${question.id}"
+                value="${opt.value}"
+                class="mr-3"
+                ${answers[question.id] === opt.value ? 'checked' : ''}
+              />
+              <span class="text-lg">${opt.label}</span>
+            </label>
+          `;
+        });
+        html += '</div>';
+      } else if (question.type === 'multiple') {
+        html += '<div class="grid md:grid-cols-2 gap-3">';
+        question.options.forEach(opt => {
+          const selected = answers[question.id]?.includes(opt.value);
+          const checked = selected ? 'ring-2 ring-indigo-600 bg-indigo-50' : '';
+          html += `
+            <label class="flex items-center p-4 border-2 rounded-lg cursor-pointer hover:border-indigo-300 transition ${checked}">
+              <input
+                type="checkbox"
+                name="${question.id}"
+                value="${opt.value}"
+                class="mr-3"
+                ${selected ? 'checked' : ''}
+              />
+              <span class="text-lg">${opt.label}</span>
+            </label>
+          `;
+        });
+        html += '</div>';
+      }
+
+      html += '</div>';
+      container.innerHTML = html;
+
+      // Add event listeners
+      if (question.type === 'range') {
+        document.getElementById(`input-${question.id}`).addEventListener('input', (e) => {
+          answers[question.id] = parseInt(e.target.value);
+          const display = e.target.parentElement.querySelector('.text-3xl');
+          display.textContent = `${question.options.unit} ${parseInt(e.target.value).toLocaleString()}`;
+        });
+      } else {
+        container.querySelectorAll('input').forEach(input => {
+          input.addEventListener('change', () => {
+            if (question.type === 'single') {
+              answers[question.id] = input.value;
+            } else {
+              const selected = Array.from(container.querySelectorAll('input:checked')).map(i => i.value);
+              answers[question.id] = selected;
+            }
+            updateButtons();
+          });
+        });
+      }
+
+      updateProgress();
+      updateButtons();
+    }
+
+    function updateProgress() {
+      const percent = Math.round(((currentStep + 1) / questions.length) * 100);
+      document.getElementById('current-step').textContent = currentStep + 1;
+      document.getElementById('progress-percent').textContent = percent;
+      document.getElementById('progress-bar').style.width = `${percent}%`;
+    }
+
+    function updateButtons() {
+      document.getElementById('btn-back').disabled = currentStep === 0;
+      const hasAnswer = answers[questions[currentStep].id] !== undefined;
+      document.getElementById('btn-next').disabled = !hasAnswer;
+    }
+
+    document.getElementById('btn-back').addEventListener('click', () => {
+      if (currentStep > 0) {
+        currentStep--;
+        renderQuestion(questions[currentStep]);
+      }
+    });
+
+    document.getElementById('btn-next').addEventListener('click', () => {
+      if (currentStep < questions.length - 1) {
+        currentStep++;
+        renderQuestion(questions[currentStep]);
+      } else {
+        showResults();
+      }
+    });
+
+    function showResults() {
+      document.getElementById('question-container').classList.add('hidden');
+      document.querySelector('.flex.justify-between').classList.add('hidden');
+      document.getElementById('results-section').classList.remove('hidden');
+
+      // TODO: Call AI API for recommendations
+      console.log('User answers:', answers);
+
+      // Placeholder results
+      const resultsContainer = document.getElementById('results-container');
+      resultsContainer.innerHTML = `
+        <div class="text-center py-12">
+          <div class="animate-spin inline-block w-12 h-12 border-4 border-indigo-600 border-t-transparent rounded-full"></div>
+          <p class="mt-4 text-gray-600">Finding your perfect matches...</p>
+        </div>
+      `;
+
+      // Simulate API call
+      setTimeout(() => {
+        resultsContainer.innerHTML = `
+          <div class="bg-white rounded-lg shadow-md p-6">
+            <h3 class="text-xl font-bold mb-2">🥇 Perfect Match</h3>
+            <p class="text-gray-600 mb-4">Based on your preferences, we recommend...</p>
+            <a href="/explorer" class="text-indigo-600 font-semibold">View detailed recommendations →</a>
+          </div>
+        `;
+      }, 2000);
+    }
+
+    // Initialize
+    renderQuestion(questions[0]);
+  </script>
+</body>
+</html>

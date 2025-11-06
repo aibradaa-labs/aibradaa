@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en-MY">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Versus - AI Bradaa</title>
+  <link rel="stylesheet" href="/styles/tailwind.css">
+  <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body class="bg-gray-50">
+  <div id="app">
+    <main class="container mx-auto px-4 py-8">
+      <div class="text-center mb-12">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">⚔️ Laptop Versus</h1>
+        <p class="text-xl text-gray-600">Compare laptops side-by-side with AI-powered insights</p>
+      </div>
+
+      <!-- Laptop Selection -->
+      <div class="grid md:grid-cols-2 gap-6 mb-8">
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <h3 class="text-lg font-semibold mb-4">Select Laptop 1</h3>
+          <select id="laptop1" class="w-full px-4 py-2 border rounded-lg">
+            <option value="">Choose a laptop...</option>
+            <option value="macbook-air-m4">MacBook Air M4</option>
+            <option value="asus-zenbook-14">Asus Zenbook 14</option>
+            <option value="dell-xps-13">Dell XPS 13</option>
+          </select>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <h3 class="text-lg font-semibold mb-4">Select Laptop 2</h3>
+          <select id="laptop2" class="w-full px-4 py-2 border rounded-lg">
+            <option value="">Choose a laptop...</option>
+            <option value="macbook-air-m4">MacBook Air M4</option>
+            <option value="asus-zenbook-14">Asus Zenbook 14</option>
+            <option value="dell-xps-13">Dell XPS 13</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Comparison Results -->
+      <div id="comparison-results" class="hidden">
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+          <table class="w-full">
+            <thead class="bg-gray-50">
+              <tr>
+                <th class="px-6 py-4 text-left">Specification</th>
+                <th class="px-6 py-4 text-center">Laptop 1</th>
+                <th class="px-6 py-4 text-center">Laptop 2</th>
+              </tr>
+            </thead>
+            <tbody id="comparison-table">
+              <!-- Comparison rows will be inserted here -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- AI Insights -->
+        <div class="mt-8 bg-indigo-50 rounded-lg p-6">
+          <h3 class="text-xl font-bold mb-4">🤖 AI Insights</h3>
+          <div id="ai-insights">
+            <p class="text-gray-600">Loading AI analysis...</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script type="module">
+    const laptop1Select = document.getElementById('laptop1');
+    const laptop2Select = document.getElementById('laptop2');
+
+    laptop1Select.addEventListener('change', updateComparison);
+    laptop2Select.addEventListener('change', updateComparison);
+
+    function updateComparison() {
+      const laptop1 = laptop1Select.value;
+      const laptop2 = laptop2Select.value;
+
+      if (laptop1 && laptop2 && laptop1 !== laptop2) {
+        showComparison(laptop1, laptop2);
+      }
+    }
+
+    function showComparison(laptop1, laptop2) {
+      document.getElementById('comparison-results').classList.remove('hidden');
+      // TODO: Fetch actual laptop data and compare
+      console.log('Comparing:', laptop1, 'vs', laptop2);
+    }
+  </script>
+</body>
+</html>

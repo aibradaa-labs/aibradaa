@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en-MY">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Bradaa Command - AI Chat</title>
+  <link rel="stylesheet" href="/styles/tailwind.css">
+  <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body class="bg-gray-50">
+  <div id="app" class="h-screen flex flex-col">
+    <!-- Header -->
+    <header class="bg-white border-b px-6 py-4">
+      <div class="flex items-center justify-between">
+        <div>
+          <h1 class="text-2xl font-bold text-gray-900">💬 AI Bradaa Command</h1>
+          <p class="text-sm text-gray-600">Your personal laptop advisor</p>
+        </div>
+        <button id="new-chat" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
+          New Chat
+        </button>
+      </div>
+    </header>
+
+    <!-- Chat Container -->
+    <main class="flex-1 overflow-hidden flex flex-col">
+      <!-- Messages -->
+      <div id="messages" class="flex-1 overflow-y-auto p-6 space-y-4">
+        <!-- Welcome Message -->
+        <div class="flex justify-start">
+          <div class="bg-indigo-100 rounded-lg p-4 max-w-2xl">
+            <p class="text-gray-800">
+              👋 Selamat datang! I'm AI Bradaa, your laptop expert. Ask me anything about laptops, specs, recommendations, or tech advice. How can I help you today?
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Input Area -->
+      <div class="border-t bg-white p-4">
+        <form id="chat-form" class="flex gap-3">
+          <input
+            type="text"
+            id="message-input"
+            placeholder="Ask me anything about laptops..."
+            class="flex-1 px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600"
+            autocomplete="off"
+          />
+          <button
+            type="submit"
+            id="send-btn"
+            class="px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 font-semibold disabled:opacity-50"
+          >
+            Send
+          </button>
+        </form>
+        <p class="text-xs text-gray-500 mt-2 text-center">
+          💡 Try asking: "What's the best gaming laptop under RM 5000?" or "Compare MacBook vs ThinkPad"
+        </p>
+      </div>
+    </main>
+  </div>
+
+  <script type="module">
+    const messagesContainer = document.getElementById('messages');
+    const messageInput = document.getElementById('message-input');
+    const chatForm = document.getElementById('chat-form');
+    const sendBtn = document.getElementById('send-btn');
+    const newChatBtn = document.getElementById('new-chat');
+
+    let conversationHistory = [];
+
+    chatForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const message = messageInput.value.trim();
+
+      if (!message) return;
+
+      // Add user message to chat
+      addMessage(message, 'user');
+      messageInput.value = '';
+      sendBtn.disabled = true;
+
+      // Add typing indicator
+      const typingId = addTypingIndicator();
+
+      try {
+        // TODO: Call actual AI API
+        await new Promise(resolve => setTimeout(resolve, 1500));
+
+        removeTypingIndicator(typingId);
+
+        // Mock AI response
+        const aiResponse = "That's a great question! Let me help you with that...";
+        addMessage(aiResponse, 'assistant');
+      } catch (error) {
+        removeTypingIndicator(typingId);
+        addMessage("Sorry, I encountered an error. Please try again.", 'error');
+      } finally {
+        sendBtn.disabled = false;
+        messageInput.focus();
+      }
+    });
+
+    newChatBtn.addEventListener('click', () => {
+      conversationHistory = [];
+      messagesContainer.innerHTML = `
+        <div class="flex justify-start">
+          <div class="bg-indigo-100 rounded-lg p-4 max-w-2xl">
+            <p class="text-gray-800">
+              👋 Fresh start! What can I help you with?
+            </p>
+          </div>
+        </div>
+      `;
+    });
+
+    function addMessage(text, role) {
+      const messageDiv = document.createElement('div');
+      messageDiv.className = `flex ${role === 'user' ? 'justify-end' : 'justify-start'}`;
+
+      const bubble = document.createElement('div');
+      bubble.className = `rounded-lg p-4 max-w-2xl ${
+        role === 'user'
+          ? 'bg-indigo-600 text-white'
+          : role === 'error'
+          ? 'bg-red-100 text-red-800'
+          : 'bg-gray-100 text-gray-800'
+      }`;
+      bubble.textContent = text;
+
+      messageDiv.appendChild(bubble);
+      messagesContainer.appendChild(messageDiv);
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+      conversationHistory.push({ role, content: text });
+    }
+
+    function addTypingIndicator() {
+      const id = 'typing-' + Date.now();
+      const messageDiv = document.createElement('div');
+      messageDiv.id = id;
+      messageDiv.className = 'flex justify-start';
+      messageDiv.innerHTML = `
+        <div class="bg-gray-100 rounded-lg p-4">
+          <div class="flex space-x-2">
+            <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+            <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+            <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.4s"></div>
+          </div>
+        </div>
+      `;
+      messagesContainer.appendChild(messageDiv);
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+      return id;
+    }
+
+    function removeTypingIndicator(id) {
+      document.getElementById(id)?.remove();
+    }
+  </script>
+</body>
+</html>

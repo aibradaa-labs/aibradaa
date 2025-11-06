@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en-MY">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explorer - AI Bradaa</title>
+  <link rel="stylesheet" href="/styles/tailwind.css">
+  <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body class="bg-gray-50">
+  <div id="app">
+    <main class="container mx-auto px-4 py-8">
+      <div class="mb-8">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">🔍 Laptop Explorer</h1>
+        <p class="text-xl text-gray-600">Browse and filter through our curated laptop database</p>
+      </div>
+
+      <!-- Filters -->
+      <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+        <h2 class="text-xl font-semibold mb-4">Filters</h2>
+        <div class="grid md:grid-cols-4 gap-4">
+          <div>
+            <label class="block mb-2 font-semibold text-sm">Budget</label>
+            <select class="w-full px-3 py-2 border rounded-lg">
+              <option>All budgets</option>
+              <option>Under RM 3,000</option>
+              <option>RM 3,000 - RM 5,000</option>
+              <option>RM 5,000 - RM 8,000</option>
+              <option>Above RM 8,000</option>
+            </select>
+          </div>
+          <div>
+            <label class="block mb-2 font-semibold text-sm">Brand</label>
+            <select class="w-full px-3 py-2 border rounded-lg">
+              <option>All brands</option>
+              <option>Apple</option>
+              <option>Asus</option>
+              <option>Dell</option>
+              <option>HP</option>
+              <option>Lenovo</option>
+            </select>
+          </div>
+          <div>
+            <label class="block mb-2 font-semibold text-sm">Use Case</label>
+            <select class="w-full px-3 py-2 border rounded-lg">
+              <option>All uses</option>
+              <option>Gaming</option>
+              <option>Creative</option>
+              <option>Business</option>
+              <option>Student</option>
+            </select>
+          </div>
+          <div>
+            <label class="block mb-2 font-semibold text-sm">Screen Size</label>
+            <select class="w-full px-3 py-2 border rounded-lg">
+              <option>All sizes</option>
+              <option>13-14"</option>
+              <option>15-16"</option>
+              <option>17"+</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Results -->
+      <div class="grid md:grid-cols-3 gap-6" id="laptop-grid">
+        <!-- Laptop cards will be inserted here -->
+        <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
+          <img src="/images/placeholder.jpg" alt="Laptop" class="w-full h-48 object-cover bg-gray-200">
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2">Sample Laptop</h3>
+            <p class="text-gray-600 mb-4">Brief description...</p>
+            <div class="flex justify-between items-center">
+              <span class="text-2xl font-bold text-indigo-600">RM 4,999</span>
+              <button class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
+                View Details
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
