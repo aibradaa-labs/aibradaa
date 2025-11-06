@@ -1,0 +1,66 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2025-11-06",
+  "description": "Council routing tables and weighted decision-making",
+
+  "councils": {
+    "technical": {
+      "name": "Technical Excellence Council",
+      "members": [4, 5, 6, 7, 8, 9, 10, 11],
+      "purpose": "Review technical architecture, AI models, platform reliability",
+      "votingWeight": 1.5,
+      "quorum": 0.75,
+      "passingScore": 9.0
+    },
+    "product": {
+      "name": "Product & UX Council",
+      "members": [12, 13, 14, 20],
+      "purpose": "Review user experience, design quality, customer promise",
+      "votingWeight": 1.3,
+      "quorum": 0.75,
+      "passingScore": 8.5
+    },
+    "governance": {
+      "name": "Governance & Safety Council",
+      "members": [15, 16, 17],
+      "purpose": "Review security, privacy, ethics, compliance",
+      "votingWeight": 2.0,
+      "quorum": 1.0,
+      "passingScore": 9.5
+    },
+    "business": {
+      "name": "Business Strategy Council",
+      "members": [1, 2, 3, 18, 19],
+      "purpose": "Review strategy, growth, unit economics, sustainability",
+      "votingWeight": 1.2,
+      "quorum": 0.6,
+      "passingScore": 8.0
+    },
+    "executive": {
+      "name": "Executive Board",
+      "members": [1, 2, 4, 8, 15, 20],
+      "purpose": "Final approval for major decisions",
+      "votingWeight": 2.0,
+      "quorum": 0.85,
+      "passingScore": 9.0
+    }
+  },
+
+  "routingRules": {
+    "codeChanges": ["technical"],
+    "uiChanges": ["product", "technical"],
+    "securityChanges": ["governance", "technical"],
+    "dataCollection": ["governance"],
+    "pricingChanges": ["business", "product"],
+    "aiModelChanges": ["technical", "governance"],
+    "majorFeatures": ["executive"],
+    "architectureDecisions": ["technical", "executive"]
+  },
+
+  "escalationPath": [
+    "Relevant council(s) vote",
+    "If any council blocks (score <passing), escalate to executive",
+    "Executive board makes final decision",
+    "Dissent logged in dissent_ledger.jsonl"
+  ]
+}

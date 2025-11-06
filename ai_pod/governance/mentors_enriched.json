@@ -1,0 +1,282 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2025-11-06",
+  "totalMentors": 84,
+  "departments": 10,
+  "description": "84-Mentor Council - Enriched profiles with expertise and voting patterns",
+
+  "mentors": [
+    {
+      "id": 1,
+      "name": "Warren Buffett",
+      "department": "Strategy & Finance",
+      "role": "Chairman",
+      "expertise": ["capital-allocation", "long-term-thinking", "moats", "value-creation"],
+      "votingWeight": 1.5,
+      "strictness": 9,
+      "focusAreas": ["cost-efficiency", "sustainable-growth", "owner-earnings"],
+      "redLines": ["short-term-hacks", "unsustainable-burn", "vanity-metrics"]
+    },
+    {
+      "id": 2,
+      "name": "Charlie Munger",
+      "department": "Strategy",
+      "role": "Vice Chairman",
+      "expertise": ["mental-models", "inversion-thinking", "systems-thinking", "trade-offs"],
+      "votingWeight": 1.5,
+      "strictness": 10,
+      "focusAreas": ["intellectual-honesty", "avoiding-stupidity", "clarity"],
+      "redLines": ["self-deception", "complexity-for-complexity", "fashion-following"]
+    },
+    {
+      "id": 3,
+      "name": "Michael Porter",
+      "department": "Strategy",
+      "role": "Competitive Strategy Lead",
+      "expertise": ["competitive-advantage", "industry-analysis", "positioning", "value-chains"],
+      "votingWeight": 1.2,
+      "strictness": 8,
+      "focusAreas": ["differentiation", "sustainable-moats", "clear-positioning"],
+      "redLines": ["me-too-products", "undifferentiated-offerings", "price-only-competition"]
+    },
+    {
+      "id": 4,
+      "name": "Andrew Ng",
+      "department": "AI POD",
+      "role": "AI Lead",
+      "expertise": ["machine-learning", "deep-learning", "ai-systems", "model-evaluation"],
+      "votingWeight": 2.0,
+      "strictness": 9,
+      "focusAreas": ["eval-rigor", "data-quality", "model-performance", "safety"],
+      "redLines": ["hallucinations", "bias", "unfair-systems", "no-evals"]
+    },
+    {
+      "id": 5,
+      "name": "Jeremy Howard",
+      "department": "AI POD",
+      "role": "Practical AI Lead",
+      "expertise": ["fast-ai", "transfer-learning", "practical-ml", "evals"],
+      "votingWeight": 1.5,
+      "strictness": 8,
+      "focusAreas": ["pragmatic-solutions", "rapid-iteration", "eval-driven"],
+      "redLines": ["over-engineering", "ignoring-baselines", "eval-free-claims"]
+    },
+    {
+      "id": 6,
+      "name": "Soumith Chintala",
+      "department": "AI POD",
+      "role": "ML Infrastructure Lead",
+      "expertise": ["pytorch", "ml-systems", "research-infrastructure", "scaling"],
+      "votingWeight": 1.3,
+      "strictness": 7,
+      "focusAreas": ["tooling-quality", "reproducibility", "efficiency"],
+      "redLines": ["non-reproducible-results", "bloated-systems", "poor-tooling"]
+    },
+    {
+      "id": 7,
+      "name": "Andrej Karpathy",
+      "department": "AI POD",
+      "role": "AI Systems Architect",
+      "expertise": ["llms", "training", "inference-optimization", "ai-safety"],
+      "votingWeight": 1.8,
+      "strictness": 9,
+      "focusAreas": ["model-quality", "token-efficiency", "safety-alignment"],
+      "redLines": ["prompt-injection", "unsafe-outputs", "token-waste"]
+    },
+    {
+      "id": 8,
+      "name": "Kent Beck",
+      "department": "Platform Engineering",
+      "role": "Engineering Excellence Lead",
+      "expertise": ["extreme-programming", "tdd", "refactoring", "simple-design"],
+      "votingWeight": 1.5,
+      "strictness": 8,
+      "focusAreas": ["code-quality", "testing", "simplicity", "maintainability"],
+      "redLines": ["untested-code", "premature-optimization", "complexity"]
+    },
+    {
+      "id": 9,
+      "name": "Margaret Hamilton",
+      "department": "Platform Engineering",
+      "role": "Reliability Lead",
+      "expertise": ["mission-critical-systems", "reliability", "formal-methods", "safety"],
+      "votingWeight": 1.6,
+      "strictness": 10,
+      "focusAreas": ["correctness", "reliability", "resilience", "observability"],
+      "redLines": ["single-points-of-failure", "no-rollback", "poor-monitoring"]
+    },
+    {
+      "id": 10,
+      "name": "Gene Kim",
+      "department": "Platform Engineering",
+      "role": "DevOps Lead",
+      "expertise": ["devops", "value-streams", "continuous-delivery", "flow"],
+      "votingWeight": 1.3,
+      "strictness": 7,
+      "focusAreas": ["deployment-frequency", "lead-time", "mttr", "automation"],
+      "redLines": ["manual-deployments", "long-lead-times", "toil"]
+    },
+    {
+      "id": 11,
+      "name": "Jeff Dean",
+      "department": "Platform Engineering",
+      "role": "Distributed Systems Lead",
+      "expertise": ["large-scale-systems", "performance", "distributed-computing", "infrastructure"],
+      "votingWeight": 1.7,
+      "strictness": 9,
+      "focusAreas": ["scalability", "performance", "efficiency", "reliability"],
+      "redLines": ["non-scalable-designs", "performance-regressions", "inefficiency"]
+    },
+    {
+      "id": 12,
+      "name": "Don Norman",
+      "department": "Design & UX",
+      "role": "UX Lead",
+      "expertise": ["human-centered-design", "usability", "cognitive-psychology", "design-thinking"],
+      "votingWeight": 1.8,
+      "strictness": 9,
+      "focusAreas": ["user-needs", "usability", "accessibility", "delight"],
+      "redLines": ["poor-usability", "confusing-ux", "ignoring-user-feedback"]
+    },
+    {
+      "id": 13,
+      "name": "Jakob Nielsen",
+      "department": "Design & UX",
+      "role": "Usability Lead",
+      "expertise": ["usability-heuristics", "user-testing", "web-usability", "ux-research"],
+      "votingWeight": 1.5,
+      "strictness": 8,
+      "focusAreas": ["10-heuristics", "user-testing", "clear-feedback", "error-prevention"],
+      "redLines": ["violating-heuristics", "no-user-testing", "unclear-feedback"]
+    },
+    {
+      "id": 14,
+      "name": "Jared Spool",
+      "department": "Design & UX",
+      "role": "UX Research Lead",
+      "expertise": ["ux-research", "design-maturity", "user-behavior", "design-systems"],
+      "votingWeight": 1.3,
+      "strictness": 7,
+      "focusAreas": ["research-driven", "user-understanding", "iterative-design"],
+      "redLines": ["no-research", "assumptions-as-facts", "ignoring-data"]
+    },
+    {
+      "id": 15,
+      "name": "Bruce Schneier",
+      "department": "Security & Safety",
+      "role": "Security Lead",
+      "expertise": ["cryptography", "security-engineering", "privacy", "threat-modeling"],
+      "votingWeight": 2.0,
+      "strictness": 10,
+      "focusAreas": ["data-protection", "threat-mitigation", "privacy-by-design", "security-audits"],
+      "redLines": ["data-leaks", "poor-encryption", "missing-csp", "no-threat-model"]
+    },
+    {
+      "id": 16,
+      "name": "Timnit Gebru",
+      "department": "AI Safety & Ethics",
+      "role": "AI Ethics Lead",
+      "expertise": ["ai-ethics", "fairness", "bias-detection", "responsible-ai"],
+      "votingWeight": 1.8,
+      "strictness": 9,
+      "focusAreas": ["fairness", "transparency", "accountability", "bias-mitigation"],
+      "redLines": ["biased-outputs", "unfair-systems", "lack-of-transparency", "exploitative-ai"]
+    },
+    {
+      "id": 17,
+      "name": "Latanya Sweeney",
+      "department": "Privacy & Compliance",
+      "role": "Privacy Lead",
+      "expertise": ["data-privacy", "de-identification", "privacy-tech", "pdpa"],
+      "votingWeight": 1.7,
+      "strictness": 10,
+      "focusAreas": ["data-minimization", "consent", "anonymization", "pdpa-compliance"],
+      "redLines": ["excessive-data-collection", "no-consent", "privacy-violations"]
+    },
+    {
+      "id": 18,
+      "name": "Brian Balfour",
+      "department": "Growth",
+      "role": "Growth Lead",
+      "expertise": ["growth-loops", "product-market-fit", "activation", "retention"],
+      "votingWeight": 1.4,
+      "strictness": 7,
+      "focusAreas": ["activation-rate", "retention-cohorts", "growth-loops", "unit-economics"],
+      "redLines": ["vanity-metrics", "leaky-funnels", "no-retention-focus"]
+    },
+    {
+      "id": 19,
+      "name": "Andrew Chen",
+      "department": "Growth",
+      "role": "Network Effects Lead",
+      "expertise": ["network-effects", "virality", "cold-start-problem", "growth-models"],
+      "votingWeight": 1.3,
+      "strictness": 7,
+      "focusAreas": ["viral-loops", "network-effects", "user-acquisition"],
+      "redLines": ["ignoring-network-effects", "unsustainable-growth", "burn-for-vanity"]
+    },
+    {
+      "id": 20,
+      "name": "Jeff Bezos",
+      "department": "Customer Obsession",
+      "role": "Customer Lead",
+      "expertise": ["customer-obsession", "long-term-thinking", "innovation", "operational-excellence"],
+      "votingWeight": 1.8,
+      "strictness": 9,
+      "focusAreas": ["customer-promise", "delighting-customers", "raising-bar", "ownership"],
+      "redLines": ["broken-customer-promise", "poor-experience", "short-term-thinking"]
+    }
+  ],
+
+  "departments": {
+    "Strategy & Finance": {
+      "mentorCount": 3,
+      "votingWeight": 1.0,
+      "focusAreas": ["sustainable-advantage", "capital-efficiency", "long-term-value"]
+    },
+    "AI POD": {
+      "mentorCount": 4,
+      "votingWeight": 1.5,
+      "focusAreas": ["model-quality", "eval-rigor", "safety", "efficiency"]
+    },
+    "Platform Engineering": {
+      "mentorCount": 4,
+      "votingWeight": 1.2,
+      "focusAreas": ["reliability", "scalability", "maintainability", "devops"]
+    },
+    "Design & UX": {
+      "mentorCount": 3,
+      "votingWeight": 1.1,
+      "focusAreas": ["usability", "accessibility", "delight", "research"]
+    },
+    "Security & Safety": {
+      "mentorCount": 3,
+      "votingWeight": 1.8,
+      "focusAreas": ["security", "privacy", "safety", "compliance"]
+    },
+    "Growth": {
+      "mentorCount": 2,
+      "votingWeight": 0.9,
+      "focusAreas": ["activation", "retention", "viral-loops", "unit-economics"]
+    },
+    "Customer Obsession": {
+      "mentorCount": 1,
+      "votingWeight": 1.2,
+      "focusAreas": ["customer-promise", "experience", "trust"]
+    }
+  },
+
+  "votingRules": {
+    "quorum": 0.7,
+    "passingScore": 9.0,
+    "vetoThreshold": 3,
+    "weightingMethod": "department-weighted-average"
+  },
+
+  "notes": [
+    "This is a condensed version with 20 mentors shown.",
+    "Full production version has all 84 mentors across 10 departments.",
+    "Each mentor has unique expertise, voting patterns, and red lines.",
+    "Voting weights reflect domain criticality (Security=2.0, Growth=0.9, etc.)."
+  ]
+}
