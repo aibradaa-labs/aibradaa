@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en-MY">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://generativelanguage.googleapis.com; font-src 'self'; object-src 'none'; media-src 'self'; frame-src 'none';">
+
+  <!-- Primary Meta Tags -->
+  <title>AI Bradaa - Malaysia's AI Laptop Advisor</title>
+  <meta name="title" content="AI Bradaa - Malaysia's AI Laptop Advisor">
+  <meta name="description" content="Find your perfect laptop with AI-powered recommendations tailored for Malaysia. Compare specs, get expert advice, and make informed decisions.">
+  <meta name="keywords" content="laptop recommendations, malaysia, AI advisor, laptop comparison, tech shopping">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://aibradaa.com/">
+  <meta property="og:title" content="AI Bradaa - Malaysia's AI Laptop Advisor">
+  <meta property="og:description" content="Find your perfect laptop with AI-powered recommendations tailored for Malaysia.">
+  <meta property="og:image" content="/og-image.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://aibradaa.com/">
+  <meta property="twitter:title" content="AI Bradaa - Malaysia's AI Laptop Advisor">
+  <meta property="twitter:description" content="Find your perfect laptop with AI-powered recommendations tailored for Malaysia.">
+  <meta property="twitter:image" content="/twitter-image.png">
+
+  <!-- PWA -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#4F46E5">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="AI Bradaa">
+  <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+
+  <!-- Icons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/styles/tailwind.css">
+  <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body class="bg-gray-50">
+  <!-- App Container -->
+  <div id="app">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+      <div class="container mx-auto px-4">
+        <div class="flex items-center justify-between h-16">
+          <div class="flex items-center">
+            <a href="/" class="text-2xl font-bold text-indigo-600">AI Bradaa</a>
+          </div>
+          <div class="hidden md:flex items-center space-x-8">
+            <a href="/matchmaker" class="text-gray-700 hover:text-indigo-600">Matchmaker</a>
+            <a href="/versus" class="text-gray-700 hover:text-indigo-600">Versus</a>
+            <a href="/explorer" class="text-gray-700 hover:text-indigo-600">Explorer</a>
+            <a href="/command" class="text-gray-700 hover:text-indigo-600">AI Command</a>
+            <a href="/auth/login" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">Sign In</a>
+          </div>
+          <button class="md:hidden" id="mobile-menu-button">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content">
+      <!-- Hero Section -->
+      <section class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-20">
+        <div class="container mx-auto px-4 text-center">
+          <h1 class="text-5xl font-bold mb-6">Find Your Perfect Laptop with AI</h1>
+          <p class="text-xl mb-8 max-w-2xl mx-auto">
+            Malaysia's first AI-powered laptop advisor. Get personalized recommendations in seconds.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/matchmaker" class="bg-white text-indigo-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
+              Start Matchmaking
+            </a>
+            <a href="/command" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-indigo-600 transition">
+              Chat with AI
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Features Grid -->
+      <section class="py-16">
+        <div class="container mx-auto px-4">
+          <h2 class="text-3xl font-bold text-center mb-12">Powerful Tools at Your Fingertips</h2>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Matchmaker -->
+            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
+              <div class="text-4xl mb-4">🎯</div>
+              <h3 class="text-xl font-semibold mb-2">Matchmaker</h3>
+              <p class="text-gray-600 mb-4">Answer a few questions and get personalized laptop recommendations powered by AI.</p>
+              <a href="/matchmaker" class="text-indigo-600 font-semibold">Try it →</a>
+            </div>
+
+            <!-- Versus -->
+            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
+              <div class="text-4xl mb-4">⚔️</div>
+              <h3 class="text-xl font-semibold mb-2">Versus</h3>
+              <p class="text-gray-600 mb-4">Compare laptops side-by-side with detailed specs and AI insights.</p>
+              <a href="/versus" class="text-indigo-600 font-semibold">Compare →</a>
+            </div>
+
+            <!-- Explorer -->
+            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
+              <div class="text-4xl mb-4">🔍</div>
+              <h3 class="text-xl font-semibold mb-2">Explorer</h3>
+              <p class="text-gray-600 mb-4">Browse and filter through our curated laptop database with advanced search.</p>
+              <a href="/explorer" class="text-indigo-600 font-semibold">Explore →</a>
+            </div>
+
+            <!-- AI Command -->
+            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
+              <div class="text-4xl mb-4">💬</div>
+              <h3 class="text-xl font-semibold mb-2">AI Bradaa Command</h3>
+              <p class="text-gray-600 mb-4">Chat with our AI assistant for instant answers to all your laptop questions.</p>
+              <a href="/command" class="text-indigo-600 font-semibold">Chat →</a>
+            </div>
+
+            <!-- Intel -->
+            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
+              <div class="text-4xl mb-4">📊</div>
+              <h3 class="text-xl font-semibold mb-2">Intel</h3>
+              <p class="text-gray-600 mb-4">Deep dive into specs, benchmarks, and technical insights with expert analysis.</p>
+              <a href="/intel" class="text-indigo-600 font-semibold">Learn →</a>
+            </div>
+
+            <!-- Appendices -->
+            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
+              <div class="text-4xl mb-4">📚</div>
+              <h3 class="text-xl font-semibold mb-2">Appendices</h3>
+              <p class="text-gray-600 mb-4">Access guides, glossaries, and comprehensive resources for informed decisions.</p>
+              <a href="/appendices" class="text-indigo-600 font-semibold">Browse →</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="bg-indigo-600 text-white py-16">
+        <div class="container mx-auto px-4 text-center">
+          <h2 class="text-3xl font-bold mb-4">Ready to Find Your Perfect Laptop?</h2>
+          <p class="text-xl mb-8">Join thousands of Malaysians who trust AI Bradaa for laptop recommendations</p>
+          <a href="/auth/register" class="bg-white text-indigo-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition inline-block">
+            Get Started Free
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+      <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-4 gap-8">
+          <div>
+            <h3 class="text-xl font-bold mb-4">AI Bradaa</h3>
+            <p class="text-gray-400">Malaysia's AI-powered laptop recommendation service</p>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-4">Tools</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li><a href="/matchmaker">Matchmaker</a></li>
+              <li><a href="/versus">Versus</a></li>
+              <li><a href="/explorer">Explorer</a></li>
+              <li><a href="/command">AI Command</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-4">Resources</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li><a href="/intel">Intel</a></li>
+              <li><a href="/appendices">Appendices</a></li>
+              <li><a href="/docs">Documentation</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-4">Legal</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li><a href="/privacy">Privacy Policy</a></li>
+              <li><a href="/terms">Terms of Service</a></li>
+              <li><a href="/pdpa">PDPA Compliance</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+          <p>&copy; 2025 AI Bradaa. Built with ❤️ in Malaysia.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Scripts -->
+  <script src="/js/app.js" type="module"></script>
+  <script>
+    // Register service worker
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then(reg => console.log('Service Worker registered'))
+          .catch(err => console.log('Service Worker registration failed:', err));
+      });
+    }
+  </script>
+</body>
+</html>

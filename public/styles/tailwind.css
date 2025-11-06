@@ -1,0 +1,34 @@
+/**
+ * Tailwind CSS - Production Build
+ * Include only the utilities you need
+ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom component classes */
+@layer components {
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .card-custom {
+    @apply bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow;
+  }
+
+  .btn-custom {
+    @apply px-6 py-3 rounded-lg font-semibold transition-all duration-200;
+  }
+}
+
+/* Custom utility classes */
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600;
+  }
+
+  .glass {
+    @apply bg-white bg-opacity-20 backdrop-blur-lg;
+  }
+}
