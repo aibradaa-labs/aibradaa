@@ -1,0 +1,99 @@
+{
+  "platforms": {
+    "shopee": {
+      "name": "Shopee Malaysia",
+      "baseUrl": "https://shopee.com.my",
+      "affiliateParam": "affiliate_id",
+      "affiliateToken": "YOUR_SHOPEE_AFFILIATE_ID",
+      "enabled": true,
+      "priority": 1,
+      "notes": "Primary affiliate partner - highest commission rates"
+    },
+    "lazada": {
+      "name": "Lazada Malaysia",
+      "baseUrl": "https://www.lazada.com.my",
+      "affiliateParam": "aff_short_key",
+      "affiliateToken": "YOUR_LAZADA_AFFILIATE_KEY",
+      "enabled": true,
+      "priority": 2,
+      "notes": "Secondary affiliate partner - good coverage"
+    },
+    "oem": {
+      "brands": {
+        "asus": {
+          "name": "ASUS Malaysia",
+          "url": "https://www.asus.com/my/",
+          "affiliateToken": "YOUR_ASUS_PARTNER_ID",
+          "enabled": false,
+          "notes": "Direct OEM link - Phase 2"
+        },
+        "acer": {
+          "name": "Acer Malaysia",
+          "url": "https://www.acer.com/my-en",
+          "affiliateToken": "YOUR_ACER_PARTNER_ID",
+          "enabled": false,
+          "notes": "Direct OEM link - Phase 2"
+        },
+        "lenovo": {
+          "name": "Lenovo Malaysia",
+          "url": "https://www.lenovo.com/my/en/",
+          "affiliateToken": "YOUR_LENOVO_PARTNER_ID",
+          "enabled": false,
+          "notes": "Direct OEM link - Phase 2"
+        },
+        "hp": {
+          "name": "HP Malaysia",
+          "url": "https://www.hp.com/my-en/",
+          "affiliateToken": "YOUR_HP_PARTNER_ID",
+          "enabled": false,
+          "notes": "Direct OEM link - Phase 2"
+        },
+        "dell": {
+          "name": "Dell Malaysia",
+          "url": "https://www.dell.com/en-my",
+          "affiliateToken": "YOUR_DELL_PARTNER_ID",
+          "enabled": false,
+          "notes": "Direct OEM link - Phase 2"
+        },
+        "apple": {
+          "name": "Apple Malaysia",
+          "url": "https://www.apple.com/my/",
+          "affiliateToken": "YOUR_APPLE_AFFILIATE_ID",
+          "enabled": false,
+          "notes": "Apple Affiliate Program - Phase 2"
+        }
+      }
+    }
+  },
+  "tracking": {
+    "utmSource": "aibradaa",
+    "utmMedium": "referral",
+    "utmCampaign": "laptop-recommendation"
+  },
+  "fallback": {
+    "enabled": true,
+    "redirectDelay": 0,
+    "notes": "If no affiliate link available, redirect to brand's official store"
+  },
+  "commissionRates": {
+    "shopee": {
+      "laptop": "2-4%",
+      "accessories": "4-6%",
+      "notes": "Commission depends on brand and product category"
+    },
+    "lazada": {
+      "laptop": "1.5-3.5%",
+      "accessories": "3-5%",
+      "notes": "Commission depends on brand and product category"
+    },
+    "oem": {
+      "direct": "0-2%",
+      "notes": "OEM programs typically have lower rates but better margins"
+    }
+  },
+  "disclaimer": {
+    "text": "AI Bradaa may earn commission from purchases made through affiliate links. This does not affect our recommendations.",
+    "required": true,
+    "placement": "footer"
+  }
+}

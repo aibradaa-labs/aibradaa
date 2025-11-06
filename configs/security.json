@@ -1,0 +1,281 @@
+{
+  "contentSecurityPolicy": {
+    "enabled": true,
+    "reportOnly": false,
+    "directives": {
+      "default-src": ["'self'"],
+      "script-src": [
+        "'self'",
+        "https://cdnjs.cloudflare.com",
+        "https://accounts.google.com",
+        "https://www.gstatic.com"
+      ],
+      "style-src": [
+        "'self'",
+        "'unsafe-inline'",
+        "https://fonts.googleapis.com"
+      ],
+      "font-src": [
+        "'self'",
+        "https://fonts.gstatic.com"
+      ],
+      "img-src": [
+        "'self'",
+        "data:",
+        "https:",
+        "blob:"
+      ],
+      "connect-src": [
+        "'self'",
+        "https://generativelanguage.googleapis.com",
+        "https://accounts.google.com"
+      ],
+      "frame-src": [
+        "'self'",
+        "https://accounts.google.com"
+      ],
+      "object-src": ["'none'"],
+      "base-uri": ["'self'"],
+      "form-action": ["'self'"],
+      "frame-ancestors": ["'none'"],
+      "upgrade-insecure-requests": [],
+      "report-uri": ["/api/csp-report"]
+    },
+    "notes": "Strict CSP policy for security. Add domains as needed for new integrations."
+  },
+  "cors": {
+    "enabled": true,
+    "origin": "${CORS_ORIGIN:-*}",
+    "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    "allowedHeaders": [
+      "Content-Type",
+      "Authorization",
+      "X-Requested-With",
+      "X-Request-ID"
+    ],
+    "exposedHeaders": [
+      "X-Request-ID",
+      "X-Rate-Limit-Remaining",
+      "X-Rate-Limit-Reset"
+    ],
+    "credentials": true,
+    "maxAge": 86400,
+    "notes": "Configure CORS_ORIGIN in production to specific domain(s)"
+  },
+  "headers": {
+    "strictTransportSecurity": {
+      "enabled": true,
+      "maxAge": 31536000,
+      "includeSubDomains": true,
+      "preload": true
+    },
+    "xFrameOptions": {
+      "enabled": true,
+      "value": "DENY"
+    },
+    "xContentTypeOptions": {
+      "enabled": true,
+      "value": "nosniff"
+    },
+    "xXssProtection": {
+      "enabled": true,
+      "value": "1; mode=block"
+    },
+    "referrerPolicy": {
+      "enabled": true,
+      "value": "strict-origin-when-cross-origin"
+    },
+    "permissionsPolicy": {
+      "enabled": true,
+      "value": "geolocation=(self), microphone=(), camera=(), payment=(self)"
+    }
+  },
+  "rateLimit": {
+    "enabled": true,
+    "strategy": "sliding-window",
+    "storage": "redis",
+    "trustProxy": true,
+    "tiers": {
+      "free": {
+        "points": 10,
+        "duration": 60,
+        "blockDuration": 300
+      },
+      "pro": {
+        "points": 30,
+        "duration": 60,
+        "blockDuration": 60
+      },
+      "ultimate": {
+        "points": 60,
+        "duration": 60,
+        "blockDuration": 30
+      }
+    },
+    "endpoints": {
+      "/api/auth/signup": {
+        "points": 3,
+        "duration": 3600
+      },
+      "/api/auth/login": {
+        "points": 5,
+        "duration": 900
+      },
+      "/api/auth/forgot-password": {
+        "points": 3,
+        "duration": 3600
+      }
+    }
+  },
+  "authentication": {
+    "jwt": {
+      "algorithm": "HS256",
+      "expiresIn": "7d",
+      "refreshExpiresIn": "30d",
+      "issuer": "ai-bradaa",
+      "audience": "ai-bradaa-api"
+    },
+    "password": {
+      "minLength": 8,
+      "requireUppercase": true,
+      "requireLowercase": true,
+      "requireNumbers": true,
+      "requireSpecialChars": true,
+      "bcryptRounds": 12
+    },
+    "session": {
+      "maxAge": 604800000,
+      "rolling": true,
+      "secure": true,
+      "httpOnly": true,
+      "sameSite": "lax"
+    },
+    "oauth": {
+      "google": {
+        "enabled": true,
+        "scope": ["profile", "email"]
+      }
+    }
+  },
+  "encryption": {
+    "atRest": {
+      "enabled": false,
+      "algorithm": "aes-256-gcm",
+      "notes": "Database encryption handled by provider (Phase 2)"
+    },
+    "inTransit": {
+      "enabled": true,
+      "tlsVersion": "1.3",
+      "cipherSuites": [
+        "TLS_AES_128_GCM_SHA256",
+        "TLS_AES_256_GCM_SHA384",
+        "TLS_CHACHA20_POLY1305_SHA256"
+      ]
+    }
+  },
+  "dataProtection": {
+    "pdpa": {
+      "enabled": true,
+      "consentRequired": true,
+      "dataRetentionDays": 365,
+      "rightToErasure": true,
+      "rightToPortability": true
+    },
+    "pii": {
+      "redactInLogs": true,
+      "encryptInDatabase": false,
+      "fields": [
+        "email",
+        "phone",
+        "name",
+        "address",
+        "ipAddress"
+      ]
+    },
+    "anonymization": {
+      "enabled": true,
+      "analyticsDelay": 24,
+      "removeIpAddress": true
+    }
+  },
+  "apiSecurity": {
+    "gemini": {
+      "keyRotation": true,
+      "keyRotationDays": 90,
+      "storeInVault": true,
+      "validateRequests": true,
+      "sanitizeResponses": true
+    },
+    "inputValidation": {
+      "enabled": true,
+      "maxRequestSize": "10mb",
+      "maxFieldLength": 10000,
+      "allowedContentTypes": [
+        "application/json",
+        "application/x-www-form-urlencoded",
+        "multipart/form-data"
+      ]
+    },
+    "outputSanitization": {
+      "enabled": true,
+      "stripScripts": true,
+      "stripHtml": false,
+      "allowedTags": ["p", "br", "b", "i", "u", "a", "ul", "ol", "li"]
+    }
+  },
+  "monitoring": {
+    "securityEvents": {
+      "enabled": true,
+      "logLevel": "warn",
+      "events": [
+        "auth.failed",
+        "auth.rateLimit",
+        "csp.violation",
+        "api.unauthorized",
+        "api.forbidden",
+        "injection.detected",
+        "xss.detected"
+      ]
+    },
+    "anomalyDetection": {
+      "enabled": false,
+      "notes": "Phase 2 - ML-based anomaly detection"
+    }
+  },
+  "deployment": {
+    "secretsManagement": {
+      "provider": "env",
+      "rotation": false,
+      "notes": "Use secrets manager in production (AWS Secrets Manager, HashiCorp Vault, etc.)"
+    },
+    "vulnerabilityScanning": {
+      "enabled": true,
+      "frequency": "weekly",
+      "tools": ["npm audit", "snyk", "dependabot"]
+    },
+    "updates": {
+      "autoUpdate": true,
+      "criticalOnly": false,
+      "testingRequired": true
+    }
+  },
+  "compliance": {
+    "standards": [
+      "PDPA (Malaysia)",
+      "OWASP Top 10",
+      "CSP Level 3",
+      "PCI DSS (Phase 2 - if processing payments directly)"
+    ],
+    "auditing": {
+      "enabled": true,
+      "logRetentionDays": 90,
+      "events": [
+        "auth",
+        "admin",
+        "data.access",
+        "data.export",
+        "config.change"
+      ]
+    }
+  }
+}

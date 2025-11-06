@@ -1,0 +1,261 @@
+{
+  "tiers": {
+    "free": {
+      "name": "Free",
+      "price": 0,
+      "currency": "MYR",
+      "billingCycle": null,
+      "features": {
+        "tokensPerDay": 50000,
+        "tokensPerMonth": 1500000,
+        "requestsPerMinute": 10,
+        "requestsPerHour": 100,
+        "requestsPerDay": 500,
+        "sections": {
+          "matchmaker": true,
+          "versus": true,
+          "explorer": true,
+          "command": true,
+          "intel": false,
+          "appendices": true,
+          "cameraTech": false
+        },
+        "ai": {
+          "modes": ["fast"],
+          "model": "gemini-2.0-flash-exp",
+          "maxTokensPerRequest": 8192,
+          "ragEnabled": false,
+          "historyEnabled": false,
+          "exportEnabled": false
+        },
+        "support": {
+          "level": "community",
+          "responseTime": "48-72 hours",
+          "channels": ["email"]
+        },
+        "branding": {
+          "watermark": true,
+          "poweredBy": true,
+          "customizable": false
+        }
+      },
+      "limits": {
+        "comparisons": 3,
+        "favorites": 10,
+        "historyDays": 7,
+        "exportPerMonth": 0
+      },
+      "cta": "Upgrade to Pro",
+      "enabled": true
+    },
+    "pro": {
+      "name": "Pro",
+      "price": 19.90,
+      "currency": "MYR",
+      "billingCycle": "monthly",
+      "stripePriceId": "price_YOUR_STRIPE_PRO_PRICE_ID",
+      "features": {
+        "tokensPerDay": 500000,
+        "tokensPerMonth": 15000000,
+        "requestsPerMinute": 30,
+        "requestsPerHour": 500,
+        "requestsPerDay": 5000,
+        "sections": {
+          "matchmaker": true,
+          "versus": true,
+          "explorer": true,
+          "command": true,
+          "intel": true,
+          "appendices": true,
+          "cameraTech": true
+        },
+        "ai": {
+          "modes": ["fast", "think"],
+          "model": "gemini-2.0-flash-exp",
+          "modelPro": "gemini-exp-1206",
+          "maxTokensPerRequest": 32768,
+          "ragEnabled": true,
+          "historyEnabled": true,
+          "exportEnabled": true
+        },
+        "intel": {
+          "priceDrops": true,
+          "priceAlerts": true,
+          "newsUpdates": true,
+          "etlRefresh": true,
+          "realTimeData": false
+        },
+        "support": {
+          "level": "priority",
+          "responseTime": "12-24 hours",
+          "channels": ["email", "chat"]
+        },
+        "branding": {
+          "watermark": false,
+          "poweredBy": true,
+          "customizable": false
+        }
+      },
+      "limits": {
+        "comparisons": 10,
+        "favorites": 100,
+        "historyDays": 90,
+        "exportPerMonth": 50
+      },
+      "cta": "Upgrade to Ultimate",
+      "enabled": true,
+      "popularBadge": true
+    },
+    "ultimate": {
+      "name": "Ultimate",
+      "price": 49.90,
+      "currency": "MYR",
+      "billingCycle": "monthly",
+      "stripePriceId": "price_YOUR_STRIPE_ULTIMATE_PRICE_ID",
+      "features": {
+        "tokensPerDay": 2000000,
+        "tokensPerMonth": 60000000,
+        "requestsPerMinute": 60,
+        "requestsPerHour": 2000,
+        "requestsPerDay": 20000,
+        "sections": {
+          "matchmaker": true,
+          "versus": true,
+          "explorer": true,
+          "command": true,
+          "intel": true,
+          "appendices": true,
+          "cameraTech": true
+        },
+        "ai": {
+          "modes": ["fast", "think", "research"],
+          "model": "gemini-2.0-flash-exp",
+          "modelPro": "gemini-exp-1206",
+          "maxTokensPerRequest": 65536,
+          "ragEnabled": true,
+          "ragAdvanced": true,
+          "historyEnabled": true,
+          "historyUnlimited": true,
+          "exportEnabled": true
+        },
+        "intel": {
+          "priceDrops": true,
+          "priceAlerts": true,
+          "priceAlertsCustom": true,
+          "newsUpdates": true,
+          "etlRefresh": true,
+          "realTimeData": true,
+          "apiAccess": true
+        },
+        "support": {
+          "level": "premium",
+          "responseTime": "1-4 hours",
+          "channels": ["email", "chat", "phone"],
+          "dedicated": true
+        },
+        "branding": {
+          "watermark": false,
+          "poweredBy": false,
+          "customizable": true,
+          "whiteLabel": false
+        }
+      },
+      "limits": {
+        "comparisons": "unlimited",
+        "favorites": "unlimited",
+        "historyDays": "unlimited",
+        "exportPerMonth": "unlimited"
+      },
+      "cta": "Contact Sales",
+      "enabled": true
+    },
+    "enterprise": {
+      "name": "Enterprise",
+      "price": null,
+      "currency": "MYR",
+      "billingCycle": "custom",
+      "features": {
+        "tokensPerDay": "custom",
+        "tokensPerMonth": "custom",
+        "requestsPerMinute": "custom",
+        "requestsPerHour": "custom",
+        "requestsPerDay": "custom",
+        "sections": {
+          "matchmaker": true,
+          "versus": true,
+          "explorer": true,
+          "command": true,
+          "intel": true,
+          "appendices": true,
+          "cameraTech": true
+        },
+        "ai": {
+          "modes": ["fast", "think", "research", "custom"],
+          "model": "custom",
+          "maxTokensPerRequest": "custom",
+          "ragEnabled": true,
+          "ragAdvanced": true,
+          "ragCustom": true,
+          "historyEnabled": true,
+          "historyUnlimited": true,
+          "exportEnabled": true
+        },
+        "intel": {
+          "priceDrops": true,
+          "priceAlerts": true,
+          "priceAlertsCustom": true,
+          "newsUpdates": true,
+          "etlRefresh": true,
+          "realTimeData": true,
+          "apiAccess": true,
+          "apiUnlimited": true
+        },
+        "support": {
+          "level": "enterprise",
+          "responseTime": "1 hour SLA",
+          "channels": ["email", "chat", "phone", "video"],
+          "dedicated": true,
+          "accountManager": true
+        },
+        "branding": {
+          "watermark": false,
+          "poweredBy": false,
+          "customizable": true,
+          "whiteLabel": true
+        }
+      },
+      "limits": {
+        "comparisons": "unlimited",
+        "favorites": "unlimited",
+        "historyDays": "unlimited",
+        "exportPerMonth": "unlimited"
+      },
+      "cta": "Contact Sales",
+      "enabled": false,
+      "notes": "Phase 2 - Enterprise offering for corporate IT procurement teams"
+    }
+  },
+  "defaults": {
+    "defaultTier": "free",
+    "trialPeriodDays": 0,
+    "gracePeriodDays": 3
+  },
+  "quotaTracking": {
+    "enabled": true,
+    "resetTime": "00:00:00 MYT",
+    "warningThreshold": 0.8,
+    "notifyUser": true
+  },
+  "upgrades": {
+    "allowDowngrade": true,
+    "prorationEnabled": true,
+    "immediateAccess": true
+  },
+  "payment": {
+    "provider": "stripe",
+    "currency": "MYR",
+    "taxRate": 0,
+    "acceptedMethods": ["card", "fpx", "grabpay"],
+    "invoiceEnabled": true
+  }
+}

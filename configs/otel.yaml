@@ -1,0 +1,216 @@
+# OpenTelemetry Configuration for AI Bradaa
+# Observability stack: traces, metrics, logs
+
+# Service identification
+service:
+  name: ai-bradaa-api
+  version: 1.0.0
+  environment: ${OTEL_ENVIRONMENT:-development}
+  namespace: ai-bradaa
+
+# Exporters - where to send telemetry data
+exporters:
+  # Console exporter for development
+  console:
+    enabled: true
+    logLevel: info
+
+  # OTLP exporter for production (e.g., to Grafana Cloud, Honeycomb, etc.)
+  otlp:
+    enabled: ${OTEL_EXPORTER_OTLP_ENABLED:-false}
+    endpoint: ${OTEL_EXPORTER_OTLP_ENDPOINT:-https://otlp.example.com:4317}
+    protocol: grpc
+    headers:
+      authorization: Bearer ${OTEL_EXPORTER_OTLP_TOKEN}
+    compression: gzip
+    timeout: 10000 # ms
+
+  # Prometheus exporter for metrics
+  prometheus:
+    enabled: ${OTEL_EXPORTER_PROMETHEUS_ENABLED:-false}
+    endpoint: /metrics
+    port: 9464
+
+# Traces configuration
+tracing:
+  enabled: true
+  sampler:
+    type: parentbased_traceidratio
+    ratio: ${OTEL_TRACES_SAMPLER_RATIO:-1.0} # 1.0 = 100% in dev, 0.1 = 10% in prod
+
+  # Instrumentation
+  instrumentation:
+    http:
+      enabled: true
+      captureHeaders: true
+      captureRequestBody: false
+      captureResponseBody: false
+      excludeUrls:
+        - /health
+        - /metrics
+        - /favicon.ico
+
+    database:
+      enabled: true
+      captureQuery: true
+      captureParameters: false # Don't log sensitive params
+
+    gemini:
+      enabled: true
+      capturePrompts: ${OTEL_CAPTURE_PROMPTS:-false} # Only in dev
+      captureResponses: false # Too verbose
+      captureTokens: true
+
+  # Span attributes
+  attributes:
+    deployment.environment: ${OTEL_ENVIRONMENT:-development}
+    service.tier: api
+    service.region: ap-southeast-1
+
+# Metrics configuration
+metrics:
+  enabled: true
+  interval: 60000 # Export every 60 seconds
+
+  # Custom metrics
+  custom:
+    - name: ai_bradaa.requests.total
+      description: Total number of API requests
+      type: counter
+      unit: requests
+
+    - name: ai_bradaa.requests.duration
+      description: Request duration
+      type: histogram
+      unit: ms
+      buckets: [10, 50, 100, 500, 1000, 5000, 10000]
+
+    - name: ai_bradaa.gemini.tokens.used
+      description: Gemini API tokens consumed
+      type: counter
+      unit: tokens
+
+    - name: ai_bradaa.gemini.latency
+      description: Gemini API response latency
+      type: histogram
+      unit: ms
+      buckets: [100, 500, 1000, 2000, 5000, 10000, 30000]
+
+    - name: ai_bradaa.quota.remaining
+      description: Remaining quota for user tier
+      type: gauge
+      unit: tokens
+
+    - name: ai_bradaa.cache.hit_rate
+      description: Cache hit rate
+      type: gauge
+      unit: percent
+
+    - name: ai_bradaa.errors.total
+      description: Total errors by type
+      type: counter
+      unit: errors
+
+# Logs configuration
+logging:
+  enabled: true
+  level: ${OTEL_LOG_LEVEL:-info}
+  format: json
+
+  # Correlation
+  correlateTraces: true # Add trace_id to logs
+
+  # Filtering
+  filters:
+    excludeUrls:
+      - /health
+      - /metrics
+
+    redactFields:
+      - password
+      - token
+      - apiKey
+      - authorization
+      - cookie
+
+# Resource attributes (metadata attached to all telemetry)
+resource:
+  attributes:
+    service.name: ai-bradaa-api
+    service.version: 1.0.0
+    service.instance.id: ${HOSTNAME:-unknown}
+    deployment.environment: ${OTEL_ENVIRONMENT:-development}
+    cloud.provider: ${CLOUD_PROVIDER:-unknown}
+    cloud.region: ${CLOUD_REGION:-ap-southeast-1}
+    host.name: ${HOSTNAME:-unknown}
+
+# Batch processor configuration
+batchProcessor:
+  traces:
+    maxQueueSize: 2048
+    maxExportBatchSize: 512
+    scheduleDelayMs: 5000
+    exportTimeoutMs: 30000
+
+  metrics:
+    maxQueueSize: 2048
+    maxExportBatchSize: 512
+    scheduleDelayMs: 60000
+    exportTimeoutMs: 30000
+
+  logs:
+    maxQueueSize: 2048
+    maxExportBatchSize: 512
+    scheduleDelayMs: 5000
+    exportTimeoutMs: 30000
+
+# Context propagation (for distributed tracing)
+propagation:
+  formats:
+    - w3c # W3C Trace Context (recommended)
+    - baggage # W3C Baggage
+    - b3 # Zipkin B3 (for compatibility)
+
+# Performance and resource limits
+limits:
+  attributeCountLimit: 128
+  attributeValueLengthLimit: 4096
+  spanEventCountLimit: 128
+  linkCountLimit: 128
+
+# Health check endpoint
+health:
+  enabled: true
+  endpoint: /health
+  includeDetails: false # Don't expose internal details
+
+# Phase-specific configurations
+phases:
+  development:
+    tracing.sampler.ratio: 1.0
+    logging.level: debug
+    metrics.interval: 10000
+    exporters.console.enabled: true
+    exporters.otlp.enabled: false
+
+  staging:
+    tracing.sampler.ratio: 0.5
+    logging.level: info
+    metrics.interval: 30000
+    exporters.console.enabled: false
+    exporters.otlp.enabled: true
+
+  production:
+    tracing.sampler.ratio: 0.1
+    logging.level: warn
+    metrics.interval: 60000
+    exporters.console.enabled: false
+    exporters.otlp.enabled: true
+
+# Alerting thresholds (for integration with monitoring tools)
+alerting:
+  thresholds:
+    errorRate: 0.05 # Alert if error rate > 5%
+    latencyP99: 5000 # Alert if p99 latency > 5s
+    quotaUtilization: 0.9 # Alert if quota > 90% used
+    cacheHitRate: 0.5 # Alert if cache hit rate < 50%
