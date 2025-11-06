@@ -1,0 +1,11 @@
+# robots.txt for AI Bradaa
+
+User-agent: *
+Allow: /
+
+# Disallow sensitive areas
+Disallow: /api/
+Disallow: /*.json$
+
+# Sitemaps
+Sitemap: https://aibradaa.netlify.app/sitemap.xml
