@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en-MY">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Offline - AI Bradaa</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Orbitron', 'Share Tech Mono', monospace;
+        background: linear-gradient(135deg, #0a0e1a 0%, #1a1f2e 100%);
+        color: #ffffff;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      .offline-container {
+        text-align: center;
+        max-width: 600px;
+        animation: fadeIn 0.5s ease-in;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .icon {
+        font-size: 80px;
+        margin-bottom: 20px;
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.5;
+        }
+      }
+
+      h1 {
+        font-size: 32px;
+        margin-bottom: 16px;
+        background: linear-gradient(90deg, #d83f87 0%, #00f0ff 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      p {
+        font-size: 18px;
+        line-height: 1.6;
+        margin-bottom: 12px;
+        color: #a0a0a0;
+      }
+
+      .retry-button {
+        margin-top: 30px;
+        padding: 14px 32px;
+        font-size: 16px;
+        font-weight: bold;
+        color: #ffffff;
+        background: linear-gradient(90deg, #d83f87 0%, #00f0ff 100%);
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s;
+        font-family: 'Orbitron', sans-serif;
+      }
+
+      .retry-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(216, 63, 135, 0.4);
+      }
+
+      .retry-button:active {
+        transform: translateY(0);
+      }
+
+      .tips {
+        margin-top: 40px;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .tips h2 {
+        font-size: 20px;
+        margin-bottom: 12px;
+        color: #00f0ff;
+      }
+
+      .tips ul {
+        text-align: left;
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .tips li {
+        padding: 8px 0;
+        color: #a0a0a0;
+        font-size: 14px;
+      }
+
+      .tips li::before {
+        content: '→ ';
+        color: #d83f87;
+        font-weight: bold;
+        margin-right: 8px;
+      }
+
+      .status {
+        margin-top: 20px;
+        padding: 12px;
+        background: rgba(216, 63, 135, 0.1);
+        border-radius: 6px;
+        border: 1px solid #d83f87;
+        font-size: 14px;
+        color: #d83f87;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="offline-container">
+      <div class="icon">📡</div>
+
+      <h1>You're Offline, Lah</h1>
+
+      <p>
+        Cannot reach AI Bradaa servers right now. Check your internet connection and try again,
+        yeah?
+      </p>
+
+      <p style="font-size: 14px; margin-top: 20px">
+        Don't worry, we've saved your recent data locally. You can still browse cached content!
+      </p>
+
+      <button class="retry-button" onclick="window.location.reload()">Retry Connection</button>
+
+      <div class="status" id="status">
+        <strong>Status:</strong> <span id="connection-status">Checking connection...</span>
+      </div>
+
+      <div class="tips">
+        <h2>Offline Tips</h2>
+        <ul>
+          <li>Check if WiFi or mobile data is enabled</li>
+          <li>Try switching between WiFi and mobile data</li>
+          <li>Move to an area with better signal</li>
+          <li>Restart your router if using WiFi</li>
+          <li>Some cached pages may still work offline</li>
+        </ul>
+      </div>
+    </div>
+
+    <script>
+      // Check online status
+      function updateStatus() {
+        const statusEl = document.getElementById('connection-status');
+        if (navigator.onLine) {
+          statusEl.textContent = '✅ Connected! Reloading...';
+          statusEl.style.color = '#00f0ff';
+          setTimeout(() => {
+            window.location.reload();
+          }, 1000);
+        } else {
+          statusEl.textContent = '❌ Still offline';
+          statusEl.style.color = '#d83f87';
+        }
+      }
+
+      // Listen for online/offline events
+      window.addEventListener('online', updateStatus);
+      window.addEventListener('offline', updateStatus);
+
+      // Initial check
+      updateStatus();
+
+      // Periodic check every 5 seconds
+      setInterval(updateStatus, 5000);
+    </script>
+  </body>
+</html>
