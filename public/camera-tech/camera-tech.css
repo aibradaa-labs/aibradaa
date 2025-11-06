@@ -1,0 +1,171 @@
+/* Camera Tech Section Styles - Coming Soon */
+
+.camera-tech-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  text-align: center;
+}
+
+.coming-soon-animation {
+  margin-bottom: var(--spacing-xl);
+  position: relative;
+}
+
+.camera-icon {
+  font-size: 120px;
+  opacity: 0.3;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.coming-soon-title {
+  font-size: 48px;
+  margin-bottom: var(--spacing-lg);
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.coming-soon-subtitle {
+  font-size: var(--font-size-xl);
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-xl);
+  max-width: 600px;
+}
+
+.coming-soon-features {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
+  max-width: 800px;
+  width: 100%;
+}
+
+.features-title {
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--spacing-lg);
+  color: var(--text-primary);
+}
+
+.features-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-lg);
+  text-align: left;
+}
+
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+}
+
+.feature-icon {
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.feature-text {
+  flex: 1;
+}
+
+.feature-title {
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.feature-description {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+.coming-soon-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-lg);
+}
+
+.eta-badge {
+  padding: var(--spacing-md) var(--spacing-xl);
+  background: rgba(216, 63, 135, 0.1);
+  border: 2px solid var(--primary);
+  border-radius: var(--border-radius);
+  color: var(--primary);
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+}
+
+.notify-btn {
+  padding: var(--spacing-md) var(--spacing-xl);
+  background: var(--primary);
+  border: none;
+  border-radius: var(--border-radius-sm);
+  color: white;
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.notify-btn:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.roadmap-link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+  transition: color 0.2s ease;
+}
+
+.roadmap-link:hover {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .camera-tech-container {
+    padding: var(--spacing-lg);
+  }
+
+  .camera-icon {
+    font-size: 80px;
+  }
+
+  .coming-soon-title {
+    font-size: 36px;
+  }
+
+  .coming-soon-subtitle {
+    font-size: var(--font-size-lg);
+  }
+
+  .features-list {
+    grid-template-columns: 1fr;
+  }
+}

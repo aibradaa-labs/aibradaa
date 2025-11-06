@@ -1,0 +1,391 @@
+/* Intel Section Styles */
+
+.intel-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: var(--spacing-lg);
+}
+
+.intel-header {
+  margin-bottom: var(--spacing-xl);
+}
+
+.intel-title {
+  font-size: 36px;
+  margin-bottom: var(--spacing-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.pro-badge-large {
+  background: linear-gradient(135deg, var(--warning), #E67E22);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+}
+
+.intel-subtitle {
+  color: var(--text-secondary);
+  font-size: var(--font-size-lg);
+}
+
+/* Tabs */
+.intel-tabs {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-xl);
+  border-bottom: 2px solid var(--border-color);
+}
+
+.intel-tab {
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-weight: 600;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+}
+
+.intel-tab:hover {
+  color: var(--text-primary);
+}
+
+.intel-tab.active {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+}
+
+/* Price Drops Section */
+.price-drops-section {
+  display: none;
+}
+
+.price-drops-section.active {
+  display: block;
+}
+
+.price-drops-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.price-drops-filters {
+  display: flex;
+  gap: var(--spacing-md);
+  align-items: center;
+}
+
+.filter-dropdown {
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  color: var(--text-primary);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+}
+
+.refresh-btn {
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--primary);
+  border: none;
+  border-radius: var(--border-radius-sm);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  transition: all 0.2s ease;
+}
+
+.refresh-btn:hover {
+  background: var(--primary-dark);
+}
+
+/* Price Drops Grid */
+.price-drops-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.price-drop-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.price-drop-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary);
+}
+
+.urgency-badge {
+  position: absolute;
+  top: var(--spacing-md);
+  right: var(--spacing-md);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  z-index: 1;
+}
+
+.urgency-badge.high {
+  background: rgba(231, 76, 60, 0.9);
+  color: white;
+}
+
+.urgency-badge.medium {
+  background: rgba(243, 156, 18, 0.9);
+  color: white;
+}
+
+.urgency-badge.low {
+  background: rgba(52, 152, 219, 0.9);
+  color: white;
+}
+
+.price-drop-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  background: var(--bg-tertiary);
+}
+
+.price-drop-content {
+  padding: var(--spacing-lg);
+}
+
+.price-drop-brand {
+  font-size: var(--font-size-sm);
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--spacing-xs);
+}
+
+.price-drop-name {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-md);
+}
+
+.price-info {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.current-price {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.original-price {
+  font-size: var(--font-size-lg);
+  color: var(--text-tertiary);
+  text-decoration: line-through;
+}
+
+.discount-badge {
+  padding: 4px 8px;
+  background: var(--success);
+  color: white;
+  border-radius: 4px;
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+}
+
+.savings-label {
+  font-size: var(--font-size-sm);
+  color: var(--success);
+  font-weight: 600;
+  margin-bottom: var(--spacing-md);
+}
+
+.price-drop-stats {
+  display: flex;
+  gap: var(--spacing-lg);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--border-color);
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+/* Trending Badge */
+.trending-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(231, 76, 60, 0.1);
+  color: var(--error);
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  margin-left: var(--spacing-sm);
+}
+
+/* Price Alerts Section */
+.price-alerts-section {
+  display: none;
+}
+
+.price-alerts-section.active {
+  display: block;
+}
+
+.alerts-empty {
+  text-align: center;
+  padding: var(--spacing-xl) * 2;
+  color: var(--text-tertiary);
+}
+
+.alerts-empty-icon {
+  font-size: 64px;
+  margin-bottom: var(--spacing-md);
+  opacity: 0.5;
+}
+
+.create-alert-btn {
+  margin-top: var(--spacing-lg);
+  padding: var(--spacing-md) var(--spacing-xl);
+  background: var(--primary);
+  border: none;
+  border-radius: var(--border-radius-sm);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.create-alert-btn:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* News Section */
+.news-section {
+  display: none;
+}
+
+.news-section.active {
+  display: block;
+}
+
+.news-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.news-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-lg);
+  transition: all 0.2s ease;
+}
+
+.news-card:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-md);
+}
+
+.news-meta {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  font-size: var(--font-size-sm);
+  color: var(--text-tertiary);
+}
+
+.news-title {
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.news-excerpt {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--spacing-md);
+}
+
+.read-more {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.read-more:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .price-drops-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .intel-container {
+    padding: var(--spacing-md);
+  }
+
+  .intel-title {
+    font-size: 28px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .intel-tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .price-drops-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spacing-md);
+  }
+
+  .price-drops-filters {
+    flex-direction: column;
+  }
+
+  .price-drops-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,299 @@
+/* Versus Section Styles */
+
+.versus-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: var(--spacing-xl);
+}
+
+.versus-header {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+/* Laptop Selection */
+.laptop-selection {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+  align-items: center;
+}
+
+.laptop-selector {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-lg);
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.laptop-selector:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-md);
+}
+
+.laptop-selector.selected {
+  border-color: var(--primary);
+}
+
+.selector-placeholder {
+  text-align: center;
+  color: var(--text-tertiary);
+}
+
+.selector-icon {
+  font-size: 48px;
+  margin-bottom: var(--spacing-md);
+}
+
+.selector-label {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+}
+
+.selector-hint {
+  font-size: var(--font-size-sm);
+  margin-top: var(--spacing-sm);
+}
+
+.laptop-preview {
+  text-align: center;
+}
+
+.laptop-preview-image {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  margin-bottom: var(--spacing-md);
+}
+
+.laptop-preview-name {
+  font-weight: 600;
+  margin-bottom: var(--spacing-xs);
+}
+
+.laptop-preview-price {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.vs-badge {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  font-weight: 900;
+  color: white;
+  box-shadow: var(--shadow-lg);
+}
+
+/* Comparison View */
+.comparison-view {
+  display: none;
+}
+
+.comparison-view.active {
+  display: block;
+}
+
+/* Radar Chart */
+.radar-chart-container {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
+  text-align: center;
+}
+
+.radar-chart {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Specs Comparison Table */
+.specs-table {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  margin-bottom: var(--spacing-xl);
+}
+
+.specs-table-header {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: var(--spacing-md);
+  background: var(--bg-tertiary);
+  padding: var(--spacing-md);
+  font-weight: 600;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.specs-table-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  border-bottom: 1px solid var(--border-color);
+  transition: background 0.2s ease;
+}
+
+.specs-table-row:hover {
+  background: var(--bg-tertiary);
+}
+
+.specs-table-row:last-child {
+  border-bottom: none;
+}
+
+.spec-label {
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.spec-value {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.spec-value.winner {
+  color: var(--success);
+}
+
+.spec-value.loser {
+  color: var(--text-tertiary);
+}
+
+/* Winner Badge */
+.winner-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  background: rgba(46, 204, 113, 0.1);
+  color: var(--success);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+}
+
+/* Pros/Cons */
+.pros-cons-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+}
+
+.pros-cons-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-lg);
+}
+
+.pros-cons-title {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  margin-bottom: var(--spacing-md);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.pros-list {
+  list-style: none;
+}
+
+.pros-list li {
+  padding: var(--spacing-sm) 0;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+}
+
+.pros-list li::before {
+  content: '✓';
+  color: var(--success);
+  font-weight: 700;
+}
+
+.cons-list {
+  list-style: none;
+}
+
+.cons-list li {
+  padding: var(--spacing-sm) 0;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+}
+
+.cons-list li::before {
+  content: '✗';
+  color: var(--error);
+  font-weight: 700;
+}
+
+/* Action Buttons */
+.comparison-actions {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-md);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .laptop-selection {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+
+  .vs-badge {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+  }
+
+  .specs-table-header,
+  .specs-table-row {
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: var(--spacing-sm);
+  }
+
+  .pros-cons-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .versus-container {
+    padding: var(--spacing-lg);
+  }
+
+  .specs-table-header,
+  .specs-table-row {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .spec-label {
+    justify-content: center;
+  }
+}
