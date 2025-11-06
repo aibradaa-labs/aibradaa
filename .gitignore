@@ -1,0 +1,57 @@
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Environment variables
+.env
+.env.local
+.env.production
+
+# Build outputs
+dist/
+build/
+.cache/
+
+# Logs
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Testing
+coverage/
+.nyc_output/
+playwright-report/
+test-results/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Data files (keep structure, ignore content)
+data/quarantine/*
+!data/quarantine/.gitkeep
+data/archive/*
+!data/archive/.gitkeep
+data/reports/*.json
+
+# Secrets
+*.key
+*.pem
+credentials.json
