@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Matchmaker - AI Bradaa</title>
+  <link rel="stylesheet" href="/styles/app.css">
+  <link rel="stylesheet" href="matchmaker.css">
+</head>
+<body>
+  <div class="matchmaker-container">
+
+    <div class="matchmaker-header">
+      <h1>🎯 Matchmaker</h1>
+      <p>Answer 5 quick questions to find your perfect laptop</p>
+    </div>
+
+    <div class="progress-bar">
+      <div class="progress-steps">
+        <div class="progress-step active" data-step="1">
+          <div class="progress-step-circle">1</div>
+          <div class="progress-step-label">Budget</div>
+        </div>
+        <div class="progress-step" data-step="2">
+          <div class="progress-step-circle">2</div>
+          <div class="progress-step-label">Use Case</div>
+        </div>
+        <div class="progress-step" data-step="3">
+          <div class="progress-step-circle">3</div>
+          <div class="progress-step-label">Specs</div>
+        </div>
+        <div class="progress-step" data-step="4">
+          <div class="progress-step-circle">4</div>
+          <div class="progress-step-label">Priorities</div>
+        </div>
+        <div class="progress-step" data-step="5">
+          <div class="progress-step-circle">5</div>
+          <div class="progress-step-label">Preferences</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="questionContainer"></div>
+
+    <div id="resultsContainer" style="display: none;"></div>
+
+  </div>
+
+  <script type="module">
+    import { Matchmaker } from '/app/matchmaker/matchmaker.mjs';
+
+    const matchmaker = new Matchmaker();
+    matchmaker.init();
+  </script>
+</body>
+</html>

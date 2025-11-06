@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explorer - AI Bradaa</title>
+  <link rel="stylesheet" href="/styles/app.css">
+  <link rel="stylesheet" href="explorer.css">
+</head>
+<body>
+  <div class="explorer-container">
+
+    <aside class="filters-sidebar" id="filtersSidebar">
+      <div class="filters-header">
+        <h3 class="filters-title">Filters</h3>
+        <button class="filters-clear" id="clearFilters">Clear All</button>
+      </div>
+
+      <div id="filtersContent"></div>
+    </aside>
+
+    <main class="explorer-main">
+      <div class="explorer-toolbar">
+        <div class="toolbar-left">
+          <div class="results-count" id="resultsCount">
+            Showing <strong>0</strong> laptops
+          </div>
+        </div>
+
+        <div class="toolbar-right">
+          <select class="sort-select" id="sortSelect">
+            <option value="rank">Best Match</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="rating">Highest Rated</option>
+            <option value="popular">Most Popular</option>
+            <option value="newest">Newest First</option>
+          </select>
+
+          <div class="view-toggle">
+            <button class="view-btn active" id="gridViewBtn" data-view="grid">
+              <span>⊞</span>
+            </button>
+            <button class="view-btn" id="listViewBtn" data-view="list">
+              <span>☰</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="laptops-grid" id="laptopsGrid"></div>
+
+      <div class="empty-state" id="emptyState" style="display: none;">
+        <div class="empty-state-icon">🔍</div>
+        <h3>No laptops found</h3>
+        <p>Try adjusting your filters</p>
+      </div>
+    </main>
+
+    <button class="mobile-filters-btn" id="mobileFiltersBtn">🔧</button>
+    <div class="filters-overlay" id="filtersOverlay"></div>
+
+  </div>
+
+  <script type="module">
+    import { Explorer } from '/app/explorer/explorer.mjs';
+
+    const explorer = new Explorer();
+    explorer.init();
+  </script>
+</body>
+</html>

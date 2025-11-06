@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Camera Tech - AI Bradaa</title>
+  <link rel="stylesheet" href="/styles/app.css">
+  <link rel="stylesheet" href="camera-tech.css">
+</head>
+<body>
+  <div class="camera-tech-container">
+
+    <div class="coming-soon-animation">
+      <div class="camera-icon">📸</div>
+    </div>
+
+    <h1 class="coming-soon-title">Camera Tech</h1>
+    <p class="coming-soon-subtitle">
+      Comprehensive webcam specs, ratings, and comparisons
+    </p>
+
+    <div class="coming-soon-features">
+      <h3 class="features-title">What's Coming</h3>
+      <div class="features-list">
+        <div class="feature-item">
+          <div class="feature-icon">🎥</div>
+          <div class="feature-text">
+            <div class="feature-title">Webcam Database</div>
+            <div class="feature-description">Complete specs for every laptop webcam</div>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">⭐</div>
+          <div class="feature-text">
+            <div class="feature-title">DxOMark Integration</div>
+            <div class="feature-description">Professional quality ratings</div>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">🔬</div>
+          <div class="feature-text">
+            <div class="feature-title">Detailed Analysis</div>
+            <div class="feature-description">Resolution, FPS, low-light performance</div>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">📊</div>
+          <div class="feature-text">
+            <div class="feature-title">Comparison Tools</div>
+            <div class="feature-description">Compare webcams side-by-side</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="coming-soon-cta">
+      <div class="eta-badge">📅 Expected: Q2 2025</div>
+      <button class="notify-btn">
+        <span>🔔</span>
+        <span>Notify Me When Available</span>
+      </button>
+      <a href="#roadmap" class="roadmap-link">View Full Roadmap →</a>
+    </div>
+
+  </div>
+
+  <script type="module">
+    import { CameraTech } from '/app/camera_tech/camera-tech.mjs';
+
+    const cameraTech = new CameraTech();
+    cameraTech.init();
+  </script>
+</body>
+</html>

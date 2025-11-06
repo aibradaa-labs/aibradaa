@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Versus - AI Bradaa</title>
+  <link rel="stylesheet" href="/styles/app.css">
+  <link rel="stylesheet" href="versus.css">
+</head>
+<body>
+  <div class="versus-container">
+
+    <div class="versus-header">
+      <h1>⚔️ Versus</h1>
+      <p>Compare laptops side-by-side with AI insights</p>
+    </div>
+
+    <div class="laptop-selection">
+      <div class="laptop-selector" id="selector1">
+        <div class="selector-placeholder">
+          <div class="selector-icon">💻</div>
+          <div class="selector-label">Select Laptop 1</div>
+          <div class="selector-hint">Click to choose</div>
+        </div>
+      </div>
+
+      <div class="vs-badge">VS</div>
+
+      <div class="laptop-selector" id="selector2">
+        <div class="selector-placeholder">
+          <div class="selector-icon">💻</div>
+          <div class="selector-label">Select Laptop 2</div>
+          <div class="selector-hint">Click to choose</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comparison-view" id="comparisonView">
+      <div class="radar-chart-container">
+        <h3>Performance Comparison</h3>
+        <canvas id="radarChart" class="radar-chart"></canvas>
+      </div>
+
+      <div class="specs-table" id="specsTable"></div>
+
+      <div class="pros-cons-grid" id="prosConsGrid"></div>
+
+      <div class="comparison-actions">
+        <button class="btn btn-primary">Save Comparison</button>
+        <button class="btn btn-secondary">Share</button>
+        <button class="btn btn-secondary">Reset</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script type="module">
+    import { Versus } from '/app/versus/versus.mjs';
+
+    const versus = new Versus();
+    versus.init();
+  </script>
+</body>
+</html>

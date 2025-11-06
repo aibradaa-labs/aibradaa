@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Appendices - AI Bradaa</title>
+  <link rel="stylesheet" href="/styles/app.css">
+  <link rel="stylesheet" href="appendices.css">
+</head>
+<body>
+  <div class="appendices-container">
+
+    <div class="appendices-header">
+      <h1 class="appendices-title">📚 Appendices</h1>
+      <p class="appendices-subtitle">Complete catalog of Top 100 laptops in Malaysia</p>
+    </div>
+
+    <div class="catalog-controls">
+      <div class="search-bar">
+        <input
+          type="text"
+          class="search-input"
+          id="catalogSearch"
+          placeholder="Search by brand, model, specs..."
+        />
+        <button class="search-btn">Search</button>
+      </div>
+
+      <div class="quick-filters">
+        <button class="quick-filter-chip active" data-filter="all">All</button>
+        <button class="quick-filter-chip" data-filter="gaming">Gaming</button>
+        <button class="quick-filter-chip" data-filter="business">Business</button>
+        <button class="quick-filter-chip" data-filter="creative">Creative</button>
+        <button class="quick-filter-chip" data-filter="budget">Budget</button>
+        <button class="quick-filter-chip" data-filter="ultrabook">Ultrabook</button>
+      </div>
+    </div>
+
+    <div class="catalog-list" id="catalogList"></div>
+
+    <div class="pagination" id="pagination">
+      <button class="page-btn" id="prevBtn" disabled>←</button>
+      <button class="page-btn active">1</button>
+      <button class="page-btn">2</button>
+      <button class="page-btn">3</button>
+      <button class="page-btn">4</button>
+      <button class="page-btn">5</button>
+      <button class="page-btn" id="nextBtn">→</button>
+    </div>
+
+  </div>
+
+  <script type="module">
+    import { Appendices } from '/app/appendices/appendices.mjs';
+
+    const appendices = new Appendices();
+    appendices.init();
+  </script>
+</body>
+</html>
