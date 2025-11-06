@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en-MY">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Intel - AI Bradaa</title>
+  <link rel="stylesheet" href="/styles/tailwind.css">
+  <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body class="bg-gray-50">
+  <div id="app">
+    <main class="container mx-auto px-4 py-8">
+      <div class="mb-8">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">📊 Intel</h1>
+        <p class="text-xl text-gray-600">Deep technical insights and benchmark data</p>
+      </div>
+
+      <!-- Category Tabs -->
+      <div class="bg-white rounded-lg shadow-md mb-8">
+        <div class="border-b">
+          <nav class="flex overflow-x-auto">
+            <button class="px-6 py-4 font-semibold border-b-2 border-indigo-600 text-indigo-600">
+              Processors
+            </button>
+            <button class="px-6 py-4 font-semibold text-gray-600 hover:text-indigo-600">
+              Graphics
+            </button>
+            <button class="px-6 py-4 font-semibold text-gray-600 hover:text-indigo-600">
+              Displays
+            </button>
+            <button class="px-6 py-4 font-semibold text-gray-600 hover:text-indigo-600">
+              Storage
+            </button>
+            <button class="px-6 py-4 font-semibold text-gray-600 hover:text-indigo-600">
+              Battery
+            </button>
+          </nav>
+        </div>
+
+        <!-- Content Area -->
+        <div class="p-6">
+          <h2 class="text-2xl font-bold mb-6">Processor Deep Dive</h2>
+
+          <!-- Benchmark Comparison -->
+          <div class="mb-8">
+            <h3 class="text-xl font-semibold mb-4">Latest CPU Benchmarks</h3>
+            <div class="overflow-x-auto">
+              <table class="w-full">
+                <thead class="bg-gray-50">
+                  <tr>
+                    <th class="px-4 py-3 text-left">Processor</th>
+                    <th class="px-4 py-3 text-right">Single-Core</th>
+                    <th class="px-4 py-3 text-right">Multi-Core</th>
+                    <th class="px-4 py-3 text-right">TDP</th>
+                    <th class="px-4 py-3 text-right">Price Tier</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y">
+                  <tr class="hover:bg-gray-50">
+                    <td class="px-4 py-3 font-medium">Apple M4</td>
+                    <td class="px-4 py-3 text-right">3,800</td>
+                    <td class="px-4 py-3 text-right">14,500</td>
+                    <td class="px-4 py-3 text-right">20W</td>
+                    <td class="px-4 py-3 text-right">Premium</td>
+                  </tr>
+                  <tr class="hover:bg-gray-50">
+                    <td class="px-4 py-3 font-medium">Intel Core Ultra 9</td>
+                    <td class="px-4 py-3 text-right">2,900</td>
+                    <td class="px-4 py-3 text-right">16,200</td>
+                    <td class="px-4 py-3 text-right">45W</td>
+                    <td class="px-4 py-3 text-right">Premium</td>
+                  </tr>
+                  <tr class="hover:bg-gray-50">
+                    <td class="px-4 py-3 font-medium">AMD Ryzen 9</td>
+                    <td class="px-4 py-3 text-right">2,800</td>
+                    <td class="px-4 py-3 text-right">15,800</td>
+                    <td class="px-4 py-3 text-right">54W</td>
+                    <td class="px-4 py-3 text-right">Premium</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Explainer Cards -->
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-indigo-50 rounded-lg p-6">
+              <h4 class="text-lg font-semibold mb-3">💡 What is TDP?</h4>
+              <p class="text-gray-700 mb-3">
+                Thermal Design Power (TDP) indicates how much heat a processor generates.
+                Lower TDP = better battery life and cooler operation.
+              </p>
+              <p class="text-sm text-gray-600">
+                <strong>Rule of thumb:</strong> Below 28W is excellent for battery life,
+                above 45W means shorter battery but higher performance.
+              </p>
+            </div>
+
+            <div class="bg-green-50 rounded-lg p-6">
+              <h4 class="text-lg font-semibold mb-3">🎯 Which Score Matters?</h4>
+              <p class="text-gray-700 mb-3">
+                Single-core: Daily tasks, web browsing, office work<br>
+                Multi-core: Video editing, 3D rendering, heavy multitasking
+              </p>
+              <p class="text-sm text-gray-600">
+                <strong>For most users:</strong> Single-core is more important for smooth everyday experience.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Educational Content -->
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <div class="text-4xl mb-3">📚</div>
+          <h3 class="text-xl font-bold mb-2">Learn</h3>
+          <p class="text-gray-600 mb-4">Comprehensive guides on laptop components</p>
+          <a href="#" class="text-indigo-600 font-semibold">Read guides →</a>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <div class="text-4xl mb-3">📈</div>
+          <h3 class="text-xl font-bold mb-2">Benchmarks</h3>
+          <p class="text-gray-600 mb-4">Real-world performance data</p>
+          <a href="#" class="text-indigo-600 font-semibold">View data →</a>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <div class="text-4xl mb-3">🔬</div>
+          <h3 class="text-xl font-bold mb-2">Deep Dives</h3>
+          <p class="text-gray-600 mb-4">Technical analysis and comparisons</p>
+          <a href="#" class="text-indigo-600 font-semibold">Explore →</a>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
