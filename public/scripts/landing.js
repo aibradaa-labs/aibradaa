@@ -5,40 +5,53 @@
 
 // Mobile Menu Toggle
 const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-const navLinks = document.querySelector('.nav-links');
+const mobileNavOverlay = document.querySelector('.mobile-nav-overlay');
 
-if (mobileMenuToggle) {
+if (mobileMenuToggle && mobileNavOverlay) {
   mobileMenuToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
+    const isHidden = mobileNavOverlay.getAttribute('aria-hidden') === 'true';
+
+    // Toggle overlay
+    mobileNavOverlay.setAttribute('aria-hidden', !isHidden);
+    mobileMenuToggle.setAttribute('aria-expanded', isHidden);
 
     // Animate hamburger icon
     const spans = mobileMenuToggle.querySelectorAll('span');
-    spans[0].style.transform = navLinks.classList.contains('active')
-      ? 'rotate(45deg) translateY(8px)'
-      : 'none';
-    spans[1].style.opacity = navLinks.classList.contains('active') ? '0' : '1';
-    spans[2].style.transform = navLinks.classList.contains('active')
-      ? 'rotate(-45deg) translateY(-8px)'
-      : 'none';
-  });
-
-  // Close mobile menu when clicking a link
-  navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      navLinks.classList.remove('active');
-      const spans = mobileMenuToggle.querySelectorAll('span');
+    if (isHidden) {
+      spans[0].style.transform = 'rotate(45deg) translateY(8px)';
+      spans[1].style.opacity = '0';
+      spans[2].style.transform = 'rotate(-45deg) translateY(-8px)';
+    } else {
       spans[0].style.transform = 'none';
       spans[1].style.opacity = '1';
       spans[2].style.transform = 'none';
-    });
+    }
   });
+
+  // Close mobile menu when clicking a link
+  const mobileNav = document.querySelector('.mobile-nav');
+  if (mobileNav) {
+    mobileNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileNavOverlay.setAttribute('aria-hidden', 'true');
+        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+        const spans = mobileMenuToggle.querySelectorAll('span');
+        spans[0].style.transform = 'none';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = 'none';
+      });
+    });
+  }
 }
 
 // Smooth Scrolling for Anchor Links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
+    const href = this.getAttribute('href');
+    if (href === '#') return;
+
     e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
+    const target = document.querySelector(href);
     if (target) {
       target.scrollIntoView({
         behavior: 'smooth',
@@ -49,44 +62,61 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // Header Scroll Effect
-const header = document.querySelector('header');
-let lastScroll = 0;
+const header = document.querySelector('header, .site-header');
+if (header) {
+  let lastScroll = 0;
 
-window.addEventListener('scroll', () => {
-  const currentScroll = window.pageYOffset;
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
 
-  // Add scrolled class for styling
-  if (currentScroll > 50) {
-    header.classList.add('scrolled');
-  } else {
-    header.classList.remove('scrolled');
-  }
+    // Add scrolled class for styling
+    if (currentScroll > 50) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
 
-  lastScroll = currentScroll;
-});
+    lastScroll = currentScroll;
+  });
+}
 
 // Tool Preview Switching
-const previewButtons = document.querySelectorAll('.preview-btn');
+const toolButtons = document.querySelectorAll('.tool-btn');
 const previewPanels = document.querySelectorAll('.preview-panel');
+const previewToolName = document.querySelector('#preview-tool-name');
 
-previewButtons.forEach((button, index) => {
-  button.addEventListener('click', () => {
-    // Remove active class from all buttons and panels
-    previewButtons.forEach(btn => btn.classList.remove('active'));
-    previewPanels.forEach(panel => panel.classList.remove('active'));
+if (toolButtons.length > 0 && previewPanels.length > 0) {
+  toolButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const toolName = button.getAttribute('data-tool');
 
-    // Add active class to clicked button and corresponding panel
-    button.classList.add('active');
-    if (previewPanels[index]) {
-      previewPanels[index].classList.add('active');
-    }
+      // Remove active class from all buttons
+      toolButtons.forEach(btn => btn.classList.remove('active'));
+
+      // Remove active class from all panels
+      previewPanels.forEach(panel => panel.classList.remove('active'));
+
+      // Add active class to clicked button
+      button.classList.add('active');
+
+      // Show corresponding panel
+      const targetPanel = document.querySelector(`.preview-panel[data-panel="${toolName}"]`);
+      if (targetPanel) {
+        targetPanel.classList.add('active');
+      }
+
+      // Update preview title
+      if (previewToolName) {
+        const toolText = button.querySelector('span').textContent;
+        previewToolName.textContent = toolText;
+      }
+    });
   });
-});
 
-// Activate first preview by default
-if (previewButtons.length > 0 && previewPanels.length > 0) {
-  previewButtons[0].classList.add('active');
-  previewPanels[0].classList.add('active');
+  // Activate first tool by default
+  if (toolButtons[0]) {
+    toolButtons[0].click();
+  }
 }
 
 // Scroll Reveal Animation
@@ -130,7 +160,7 @@ function animateCounter(element, target, duration = 2000) {
 const metricObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      const valueElement = entry.target.querySelector('.metric-value');
+      const valueElement = entry.target.querySelector('.metric-number');
       if (valueElement) {
         const targetText = valueElement.textContent;
         const targetNumber = parseInt(targetText.replace(/[^0-9]/g, ''));
@@ -143,8 +173,8 @@ const metricObserver = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.5 });
 
-document.querySelectorAll('.metric-card').forEach(card => {
-  metricObserver.observe(card);
+document.querySelectorAll('.metric-item').forEach(item => {
+  metricObserver.observe(item);
 });
 
 // Watch Demo Button Handler
@@ -152,36 +182,26 @@ const watchDemoButtons = document.querySelectorAll('[data-action="watch-demo"]')
 watchDemoButtons.forEach(button => {
   button.addEventListener('click', (e) => {
     e.preventDefault();
-    // Could open a modal with demo video or redirect to app preview section
-    document.querySelector('#app-preview')?.scrollIntoView({ behavior: 'smooth' });
+    const appPreview = document.querySelector('#app-preview');
+    if (appPreview) {
+      appPreview.scrollIntoView({ behavior: 'smooth' });
+    }
   });
 });
 
-// Mentor Dots Interactive Effect
-const mentorDots = document.querySelectorAll('.mentor-dot');
-mentorDots.forEach((dot, index) => {
-  // Random animation delays for more organic feel
-  dot.style.animationDelay = `${Math.random() * 3}s`;
+// Feature Card Interaction
+const featureCards = document.querySelectorAll('.feature-card');
+featureCards.forEach(card => {
+  card.addEventListener('mouseenter', function() {
+    this.style.transform = 'translateY(-8px)';
+  });
 
-  // Click effect
-  dot.addEventListener('click', () => {
-    dot.style.animation = 'none';
-    setTimeout(() => {
-      dot.style.animation = '';
-    }, 10);
+  card.addEventListener('mouseleave', function() {
+    this.style.transform = 'translateY(0)';
   });
 });
 
-// Pricing Card Hover Effect Enhancement
-const pricingCards = document.querySelectorAll('.pricing-card');
-pricingCards.forEach(card => {
-  card.addEventListener('mouseenter', () => {
-    // Slight scale effect on hover
-    card.style.transition = 'all 0.3s ease';
-  });
-});
-
-// Performance: Debounce scroll events
+// Performance: Debounce function
 function debounce(func, wait = 10) {
   let timeout;
   return function executedFunction(...args) {
@@ -194,41 +214,6 @@ function debounce(func, wait = 10) {
   };
 }
 
-// Apply debouncing to scroll handlers
-const debouncedScroll = debounce(() => {
-  // Any additional scroll-based animations can go here
-}, 10);
-
-window.addEventListener('scroll', debouncedScroll);
-
-// Feature Card Interaction
-const featureCards = document.querySelectorAll('.feature-card');
-featureCards.forEach(card => {
-  card.addEventListener('mouseenter', function() {
-    this.style.transform = 'translateY(-8px) rotateX(2deg)';
-  });
-
-  card.addEventListener('mouseleave', function() {
-    this.style.transform = 'translateY(0) rotateX(0)';
-  });
-});
-
-// Initialize AOS (Animate On Scroll) alternative
-document.addEventListener('DOMContentLoaded', () => {
-  // Add fade-in classes to sections for initial load animation
-  const sections = document.querySelectorAll('section');
-  sections.forEach((section, index) => {
-    section.style.opacity = '0';
-    section.style.transform = 'translateY(20px)';
-    section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-
-    setTimeout(() => {
-      section.style.opacity = '1';
-      section.style.transform = 'translateY(0)';
-    }, 100 * index);
-  });
-});
-
 // Console Easter Egg
 console.log('%c🤖 AI Bradaa', 'font-size: 24px; font-weight: bold; background: linear-gradient(135deg, #00f3ff 0%, #d946ef 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;');
 console.log('%cPowered by 84 AI Mentors 🧠', 'font-size: 14px; color: #00f3ff;');
@@ -237,12 +222,15 @@ console.log('%cInterested in the tech? Check out our GitHub!', 'font-size: 12px;
 // Add keyboard navigation for accessibility
 document.addEventListener('keydown', (e) => {
   // ESC to close mobile menu
-  if (e.key === 'Escape' && navLinks.classList.contains('active')) {
-    navLinks.classList.remove('active');
-    const spans = mobileMenuToggle.querySelectorAll('span');
-    spans[0].style.transform = 'none';
-    spans[1].style.opacity = '1';
-    spans[2].style.transform = 'none';
+  if (e.key === 'Escape' && mobileNavOverlay) {
+    if (mobileNavOverlay.getAttribute('aria-hidden') === 'false') {
+      mobileNavOverlay.setAttribute('aria-hidden', 'true');
+      mobileMenuToggle.setAttribute('aria-expanded', 'false');
+      const spans = mobileMenuToggle.querySelectorAll('span');
+      spans[0].style.transform = 'none';
+      spans[1].style.opacity = '1';
+      spans[2].style.transform = 'none';
+    }
   }
 });
 
