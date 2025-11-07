@@ -16,16 +16,25 @@ const schemaPath = path.join(__dirname, 'toon_schema.yaml');
 const schema = yaml.load(fs.readFileSync(schemaPath, 'utf8'));
 
 // Abbreviation maps
-const ABBREV_TO_FULL = schema.abbreviations;
-const FULL_TO_ABBREV = Object.fromEntries(
-  Object.entries(ABBREV_TO_FULL).map(([k, v]) => [v, k])
+// Note: schema.abbreviations maps full_name → abbreviation (e.g., "brand" → "br")
+const FULL_TO_ABBREV = schema.abbreviations;
+const ABBREV_TO_FULL = Object.fromEntries(
+  Object.entries(FULL_TO_ABBREV).map(([k, v]) => [v, k])
 );
 
 // Symbol maps
-const SYMBOL_TO_WORD = schema.symbols;
-const WORD_TO_SYMBOL = Object.fromEntries(
-  Object.entries(SYMBOL_TO_WORD).map(([k, v]) => [v, k])
+// Note: schema.symbols maps word → symbol (e.g., "true" → "+")
+const WORD_TO_SYMBOL = schema.symbols;
+const SYMBOL_TO_WORD = Object.fromEntries(
+  Object.entries(WORD_TO_SYMBOL).map(([k, v]) => [v, k])
 );
+
+/**
+ * Escape special regex characters
+ */
+function escapeRegex(str) {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
 
 /**
  * Convert JSON to TOON format
@@ -45,28 +54,52 @@ export function jsonToToon(json) {
  */
 export function toonToJson(toon) {
   try {
-    // Expand abbreviations
+    // Expand abbreviations (abbrev → full)
     let expanded = toon;
-    Object.entries(FULL_TO_ABBREV).forEach(([abbrev, full]) => {
-      const regex = new RegExp(`\\b${abbrev}:`, 'g');
-      expanded = expanded.replace(regex, `${full}:`);
+    Object.entries(ABBREV_TO_FULL).forEach(([abbrev, full]) => {
+      const regex = new RegExp(`\\b${escapeRegex(abbrev)}:`, 'g');
+      expanded = expanded.replace(regex, `"${full}":`);
     });
 
-    // Replace symbols
-    Object.entries(WORD_TO_SYMBOL).forEach(([word, symbol]) => {
-      expanded = expanded.replace(new RegExp(`\\b${symbol}\\b`, 'g'), word);
+    // Replace symbols with their word equivalents
+    Object.entries(SYMBOL_TO_WORD).forEach(([symbol, word]) => {
+      if (symbol === '+') {
+        expanded = expanded.replace(/:\+(\s|,|})/g, ':true$1');
+      } else if (symbol === '-') {
+        expanded = expanded.replace(/:-(\s|,|})/g, ':false$1');
+      } else {
+        expanded = expanded.replace(new RegExp(`:${escapeRegex(symbol)}(\\s|,|})`, 'g'), `:"${word}"$1`);
+      }
     });
 
-    // Convert compact syntax to JSON
-    expanded = expanded.replace(/(\w+):/g, '"$1":'); // Add quotes to keys
-    expanded = expanded.replace(/}(\w)/g, '},"$1'); // Add commas between objects
+    // Quote unquoted keys
+    expanded = expanded.replace(/\b([a-zA-Z_][a-zA-Z0-9_]*):/g, '"$1":');
+
+    // Quote unquoted string values (but not numbers, booleans, or already quoted)
+    expanded = expanded.replace(/:([a-zA-Z][a-zA-Z0-9_.-]*)/g, (match, value) => {
+      if (value === 'true' || value === 'false' || value === 'null') {
+        return `:${value}`;
+      }
+      return `:"${value}"`;
+    });
+
+    // Add commas between key-value pairs on separate lines
+    expanded = expanded.replace(/\n\s*"/g, ',\n"');
+
+    // Add commas before nested objects
+    expanded = expanded.replace(/(["}])\s*\n\s*"/g, '$1,\n"');
 
     // Parse as JSON
     return JSON.parse(expanded);
   } catch (error) {
-    console.error('Failed to parse TOON:', error);
+    console.error('Failed to parse TOON:', error.message);
+    console.error('Expanded TOON:', expanded);
     // Fallback: try parsing as JSON directly
-    return JSON.parse(toon);
+    try {
+      return JSON.parse(toon);
+    } catch (fallbackError) {
+      throw new Error(`Failed to parse TOON: ${error.message}`);
+    }
   }
 }
 

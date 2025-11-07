@@ -14,6 +14,7 @@ import {
 } from './utils/response.mjs';
 import { getUserFromEvent } from './utils/auth.mjs';
 import { applyRateLimit } from './utils/rateLimiter.mjs';
+import { compressForAI } from './utils/toon.mjs';
 
 // Initialize Gemini AI
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || '');
@@ -26,12 +27,17 @@ async function getRecommendations({ budget, usage, preferences, userId }) {
     model: process.env.GEMINI_MODEL || 'gemini-2.0-flash-exp'
   });
 
+  // Use TOON compression for preferences (30-60% token savings)
+  const preferencesStr = preferences && Object.keys(preferences).length > 0
+    ? compressForAI(preferences, { indent: false })
+    : 'none';
+
   const prompt = `You are an expert laptop advisor for AI Bradaa, a Malaysia-first laptop recommendation service.
 
 User Requirements:
 - Budget: MYR ${budget}
 - Primary Usage: ${usage}
-- Preferences: ${JSON.stringify(preferences || {})}
+- Preferences (TOON format): ${preferencesStr}
 
 Based on these requirements, recommend the top 3 laptops that would be perfect for this user.
 Consider performance, value for money, and availability in Malaysia.

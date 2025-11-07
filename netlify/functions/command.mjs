@@ -14,6 +14,7 @@ import {
 } from './utils/response.mjs';
 import { getUserFromEvent } from './utils/auth.mjs';
 import { applyRateLimit } from './utils/rateLimiter.mjs';
+import { wrapForAI, calculateSavings } from './utils/toon.mjs';
 
 // Initialize Gemini AI
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || '');
@@ -63,7 +64,24 @@ async function processCommand(body, user) {
 
   // Build prompts
   const systemPrompt = buildSystemPrompt(user?.tier || 'free');
-  const userPrompt = `${query}\n\nContext: ${JSON.stringify(context)}`;
+
+  // Use TOON compression for context if it has data (30-60% token savings)
+  let contextString;
+  let toonSavings = null;
+
+  if (context && Object.keys(context).length > 0) {
+    try {
+      contextString = wrapForAI(context, 'Context');
+      toonSavings = calculateSavings(context);
+    } catch (error) {
+      console.warn('TOON compression failed, falling back to JSON:', error.message);
+      contextString = `Context: ${JSON.stringify(context)}`;
+    }
+  } else {
+    contextString = '';
+  }
+
+  const userPrompt = contextString ? `${query}\n\n${contextString}` : query;
 
   // Generate response
   const result = await model.generateContent([
@@ -87,6 +105,7 @@ async function processCommand(body, user) {
       prompt: promptTokenCount,
       completion: completionTokens,
       total: promptTokenCount + completionTokens,
+      ...(toonSavings ? { toonSavings } : {}), // Include TOON savings if used
     },
     meta: {
       timestamp: new Date().toISOString(),
