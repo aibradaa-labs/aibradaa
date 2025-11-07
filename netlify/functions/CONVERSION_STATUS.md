@@ -8,7 +8,7 @@
 
 ## Conversion Progress
 
-### ✅ Completed (2/11 routes)
+### ✅ Completed (5/11 routes)
 
 1. **health.mjs** - Health check endpoints
    - Routes: `/`, `/detailed`, `/ready`, `/live`, `/metrics`, `/version`
@@ -21,27 +21,29 @@
    - `utils/rateLimiter.mjs` - Rate limiting (in-memory, upgrade to Redis for production)
    - Status: ✅ Complete
 
+3. **command.mjs** - AI Command processing ✅
+   - Routes: `/` (POST), `/parse` (POST)
+   - Status: ✅ Fully converted
+   - Features: Gemini AI integration, intent parsing, tier-based rate limiting
+   - File: `netlify/functions/command.mjs`
+
+4. **auth.mjs** - Authentication endpoints ✅
+   - Routes: `/register`, `/login`, `/magic-link`, `/verify/:token`
+   - Status: ✅ Fully converted
+   - Features: JWT generation, bcrypt password hashing, magic link support
+   - File: `netlify/functions/auth.mjs`
+
+5. **deck.mjs** - Deck card generation ✅
+   - Routes: `/generate`, `/export`
+   - Status: ✅ Fully converted
+   - Features: 8-card Deck generation, MD/JSON/TXT export formats
+   - File: `netlify/functions/deck.mjs`
+
 ### ⏳ In Progress (0/11)
 
 None currently
 
-### 📋 Pending (9/11 routes)
-
-3. **auth.mjs** - Authentication endpoints
-   - Routes: `/login`, `/register`, `/refresh`, `/logout`
-   - Complexity: Medium (JWT generation, password hashing)
-   - Dependencies: jsonwebtoken, bcryptjs
-
-4. **command.mjs** - AI Command processing
-   - Routes: `/` (POST), `/parse` (POST)
-   - Complexity: High (Gemini AI integration, tier-based rate limiting)
-   - Dependencies: @google/generative-ai
-   - **Critical:** Core AI functionality
-
-5. **deck.mjs** - Deck card generation
-   - Routes: `/export`, `/cards`
-   - Complexity: Medium (card generation, export formats)
-   - **Critical:** User-facing feature
+### 📋 Pending (6/11 routes)
 
 6. **recommendations.mjs** - Laptop recommendations
    - Routes: `/` (GET/POST)
@@ -88,10 +90,10 @@ None currently
 - [x] Update `netlify.toml` to point to new directory
 - [x] Convert `health.mjs` as reference implementation
 
-### Phase 2: Critical Routes (Next Priority)
-- [ ] Convert `command.mjs` (AI Command - core functionality)
-- [ ] Convert `deck.mjs` (Deck export - user-facing)
-- [ ] Convert `auth.mjs` (Authentication - required for protected routes)
+### Phase 2: Critical Routes (✅ Complete)
+- [x] Convert `command.mjs` (AI Command - core functionality)
+- [x] Convert `deck.mjs` (Deck export - user-facing)
+- [x] Convert `auth.mjs` (Authentication - required for protected routes)
 
 ### Phase 3: User Features
 - [ ] Convert `recommendations.mjs`
@@ -273,6 +275,7 @@ API calls to `/api/*` are redirected to `/.netlify/functions/*`:
 
 ---
 
-**Last Updated:** 2025-11-07 09:45 MYT
-**Progress:** 2/11 routes converted (18%)
-**ETA for completion:** ~8-12 hours of focused work
+**Last Updated:** 2025-11-07 10:15 MYT
+**Progress:** 5/11 routes converted (45%)
+**Status:** All P0 critical routes complete! ✅
+**ETA for completion:** ~4-6 hours for remaining routes
