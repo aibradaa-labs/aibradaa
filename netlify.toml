@@ -1,19 +1,20 @@
 [build]
-  command = "npm run build"
-  publish = "dist"
-  functions = "api"
+  command = "echo 'No build needed - serving static files'"
+  publish = "public"
 
 [build.environment]
   NODE_VERSION = "18.0.0"
 
+# API routes (if using Netlify Functions)
 [[redirects]]
   from = "/api/*"
   to = "/.netlify/functions/:splat"
   status = 200
 
+# SPA fallback - redirect all routes to app.html
 [[redirects]]
   from = "/*"
-  to = "/index.html"
+  to = "/app.html"
   status = 200
 
 [[headers]]
