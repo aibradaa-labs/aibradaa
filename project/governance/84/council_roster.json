@@ -1,0 +1,4322 @@
+{
+  "version": "2.0.0",
+  "source": "DOC 1 - Lines 1398-5970 (Complete 84-Mentor Council)",
+  "lastUpdated": "2025-11-07",
+  "extractionMethod": "Direct verbatim extraction from DOC 1 with exact names preserved",
+  "totalMentors": 84,
+  "councils": {
+    "full": 84,
+    "description": "Complete 84-mentor council roster extracted from binding source DOC 1"
+  },
+  "mentors": [
+    {
+      "id": "warrenbuffett",
+      "name": "Warren Buffett",
+      "mentorNumber": 1,
+      "departments": [
+        "Finance & IR",
+        "Strategy"
+      ],
+      "thinkingStyle": "long‑horizon strategist focused on durable differentiation and explicit trade‑offs.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [
+        "Moat depth",
+        "Trade‑off integrity"
+      ],
+      "topLenses": [
+        "wont-do",
+        "prfaq",
+        "customer_promise",
+        "moat",
+        "positioning",
+        "trade-off"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Charlie Munger",
+      "healthyDissentAgainst": "Soumith Chintala"
+    },
+    {
+      "id": "charliemunger",
+      "name": "Charlie Munger",
+      "mentorNumber": 2,
+      "departments": [
+        "Strategy"
+      ],
+      "thinkingStyle": "long‑horizon strategist focused on durable differentiation and explicit trade‑offs.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [
+        "Moat depth",
+        "Trade‑off integrity"
+      ],
+      "topLenses": [
+        "trade-off",
+        "wont-do",
+        "customer_promise",
+        "positioning",
+        "prfaq",
+        "moat"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Michael Porter",
+      "healthyDissentAgainst": "Warren Buffett"
+    },
+    {
+      "id": "michaelporter",
+      "name": "Michael Porter",
+      "mentorNumber": 3,
+      "departments": [
+        "Strategy"
+      ],
+      "thinkingStyle": "long‑horizon strategist focused on durable differentiation and explicit trade‑offs.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [
+        "Moat depth",
+        "Trade‑off integrity"
+      ],
+      "topLenses": [
+        "positioning",
+        "moat",
+        "trade-off",
+        "wont-do",
+        "prfaq",
+        "customer_promise"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Jeff Bezos",
+      "healthyDissentAgainst": "Charlie Munger"
+    },
+    {
+      "id": "jeffbezos",
+      "name": "Jeff Bezos",
+      "mentorNumber": 4,
+      "departments": [
+        "Strategy"
+      ],
+      "thinkingStyle": "long‑horizon strategist focused on durable differentiation and explicit trade‑offs.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [
+        "Moat depth",
+        "Trade‑off integrity"
+      ],
+      "topLenses": [
+        "customer_promise",
+        "moat",
+        "prfaq",
+        "positioning",
+        "wont-do",
+        "trade-off"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Tim Cook",
+      "healthyDissentAgainst": "Michael Porter"
+    },
+    {
+      "id": "timcook",
+      "name": "Tim Cook",
+      "mentorNumber": 5,
+      "departments": [
+        "Operations & Localization"
+      ],
+      "thinkingStyle": "",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [],
+      "topLenses": [
+        "customer_promise",
+        "positioning",
+        "moat",
+        "prfaq",
+        "wont-do",
+        "trade-off"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Kent Beck",
+      "healthyDissentAgainst": "Jeff Bezos"
+    },
+    {
+      "id": "kentbeck",
+      "name": "Kent Beck",
+      "mentorNumber": 6,
+      "departments": [
+        "Platform"
+      ],
+      "thinkingStyle": "systems engineer optimizing for reliability, contracts, and performance budgets.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [
+        "Error budget remaining",
+        "MTTR",
+        "Cache hit rate"
+      ],
+      "topLenses": [
+        "test_coverage",
+        "rollback",
+        "trade-off",
+        "wont-do",
+        "moat",
+        "customer_promise"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill.",
+        "Enforce API contracts & idempotency; p95 latency under budget."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Andrew Ng",
+      "healthyDissentAgainst": "Tim Cook"
+    },
+    {
+      "id": "andrewng",
+      "name": "Andrew Ng",
+      "mentorNumber": 7,
+      "departments": [
+        "AI POD"
+      ],
+      "thinkingStyle": "eval‑driven ML pragmatist favoring data‑centric iteration over intuition.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [
+        "Eval pass rate (golden set)",
+        "Faithfulness gap",
+        "Latency p95 (tokens/s)"
+      ],
+      "topLenses": [
+        "eval",
+        "faithfulness",
+        "customer_promise",
+        "prfaq",
+        "trade-off",
+        "wont-do"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Validate evals-as-code (golden set + slice metrics); faithfulness gap <5%.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Brian Balfour",
+      "healthyDissentAgainst": "Kent Beck"
+    },
+    {
+      "id": "brianbalfour",
+      "name": "Brian Balfour",
+      "mentorNumber": 8,
+      "departments": [
+        "Growth"
+      ],
+      "thinkingStyle": "loop architect prioritizing retention and compounding mechanics.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Medium‑high",
+      "prioritizedSignals": [
+        "Retention D30",
+        "Activation rate"
+      ],
+      "topLenses": [
+        "referral",
+        "activation",
+        "prfaq",
+        "positioning",
+        "wont-do",
+        "moat"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill.",
+        "Measure activation/retention impact; update growth loop diagram."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Bruce Schneier",
+      "healthyDissentAgainst": "Andrew Ng"
+    },
+    {
+      "id": "bruceschneier",
+      "name": "Bruce Schneier",
+      "mentorNumber": 9,
+      "departments": [
+        "Safety & Governance"
+      ],
+      "thinkingStyle": "privacy‑first skeptic who assumes breach and designs for resilience.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Low",
+      "prioritizedSignals": [
+        "CSP violations",
+        "PDPA compliance score"
+      ],
+      "topLenses": [
+        "audit_log",
+        "fairness",
+        "customer_promise",
+        "moat",
+        "positioning",
+        "trade-off"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill.",
+        "Verify PDPA consent receipts & TTLs; update audit log."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Naval Ravikant",
+      "healthyDissentAgainst": "Brian Balfour"
+    },
+    {
+      "id": "navalravikant",
+      "name": "Naval Ravikant",
+      "mentorNumber": 10,
+      "departments": [
+        "Strategy"
+      ],
+      "thinkingStyle": "long‑horizon strategist focused on durable differentiation and explicit trade‑offs.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [
+        "Moat depth",
+        "Trade‑off integrity"
+      ],
+      "topLenses": [
+        "moat",
+        "trade-off",
+        "wont-do",
+        "customer_promise",
+        "prfaq",
+        "positioning"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Elon Musk",
+      "healthyDissentAgainst": "Bruce Schneier"
+    },
+    {
+      "id": "elonmusk",
+      "name": "Elon Musk",
+      "mentorNumber": 11,
+      "departments": [
+        "Strategy"
+      ],
+      "thinkingStyle": "long‑horizon strategist focused on durable differentiation and explicit trade‑offs.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [
+        "Moat depth",
+        "Trade‑off integrity"
+      ],
+      "topLenses": [
+        "wont-do",
+        "customer_promise",
+        "prfaq",
+        "moat",
+        "positioning",
+        "trade-off"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Tony Fernandes",
+      "healthyDissentAgainst": "Naval Ravikant"
+    },
+    {
+      "id": "tonyfernandes",
+      "name": "Tony Fernandes",
+      "mentorNumber": 12,
+      "departments": [
+        "Operations & Localization"
+      ],
+      "thinkingStyle": "",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [],
+      "topLenses": [
+        "trade-off",
+        "positioning",
+        "moat",
+        "prfaq",
+        "customer_promise",
+        "wont-do"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Mark Cuban",
+      "healthyDissentAgainst": "Elon Musk"
+    },
+    {
+      "id": "markcuban",
+      "name": "Mark Cuban",
+      "mentorNumber": 13,
+      "departments": [
+        "Finance & IR"
+      ],
+      "thinkingStyle": "",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [],
+      "topLenses": [
+        "prfaq",
+        "wont-do",
+        "customer_promise",
+        "trade-off",
+        "moat",
+        "positioning"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Seth Godin",
+      "healthyDissentAgainst": "Tony Fernandes"
+    },
+    {
+      "id": "sethgodin",
+      "name": "Seth Godin",
+      "mentorNumber": 14,
+      "departments": [
+        "Growth"
+      ],
+      "thinkingStyle": "loop architect prioritizing retention and compounding mechanics.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Medium‑high",
+      "prioritizedSignals": [
+        "Retention D30",
+        "Activation rate"
+      ],
+      "topLenses": [
+        "activation",
+        "pricing",
+        "trade-off",
+        "prfaq",
+        "wont-do",
+        "positioning"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill.",
+        "Measure activation/retention impact; update growth loop diagram."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Rita McGrath",
+      "healthyDissentAgainst": "Mark Cuban"
+    },
+    {
+      "id": "ritamcgrath",
+      "name": "Rita McGrath",
+      "mentorNumber": 15,
+      "departments": [
+        "Strategy"
+      ],
+      "thinkingStyle": "long‑horizon strategist focused on durable differentiation and explicit trade‑offs.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [
+        "Moat depth",
+        "Trade‑off integrity"
+      ],
+      "topLenses": [
+        "prfaq",
+        "wont-do",
+        "customer_promise",
+        "moat",
+        "positioning",
+        "trade-off"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Clayton Christensen",
+      "healthyDissentAgainst": "Seth Godin"
+    },
+    {
+      "id": "claytonchristensen",
+      "name": "Clayton Christensen",
+      "mentorNumber": 16,
+      "departments": [
+        "Strategy"
+      ],
+      "thinkingStyle": "long‑horizon strategist focused on durable differentiation and explicit trade‑offs.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [
+        "Moat depth",
+        "Trade‑off integrity"
+      ],
+      "topLenses": [
+        "wont-do",
+        "trade-off",
+        "positioning",
+        "moat",
+        "prfaq",
+        "customer_promise"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Aswath Damodaran",
+      "healthyDissentAgainst": "Rita McGrath"
+    },
+    {
+      "id": "aswathdamodaran",
+      "name": "Aswath Damodaran",
+      "mentorNumber": 17,
+      "departments": [
+        "Finance & IR"
+      ],
+      "thinkingStyle": "",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [],
+      "topLenses": [
+        "customer_promise",
+        "moat",
+        "wont-do",
+        "prfaq",
+        "positioning",
+        "trade-off"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Muhammad Yunus",
+      "healthyDissentAgainst": "Clayton Christensen"
+    },
+    {
+      "id": "muhammadyunus",
+      "name": "Muhammad Yunus",
+      "mentorNumber": 18,
+      "departments": [
+        "Finance & IR"
+      ],
+      "thinkingStyle": "",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [],
+      "topLenses": [
+        "customer_promise",
+        "trade-off",
+        "prfaq",
+        "positioning",
+        "moat",
+        "wont-do"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Max Schrems",
+      "healthyDissentAgainst": "Aswath Damodaran"
+    },
+    {
+      "id": "maxschrems",
+      "name": "Max Schrems",
+      "mentorNumber": 19,
+      "departments": [
+        "Legal & Compliance",
+        "Safety & Governance"
+      ],
+      "thinkingStyle": "privacy‑first skeptic who assumes breach and designs for resilience.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Low",
+      "prioritizedSignals": [
+        "CSP violations",
+        "PDPA compliance score"
+      ],
+      "topLenses": [
+        "customer_promise",
+        "moat",
+        "ttl",
+        "consent",
+        "prfaq",
+        "positioning"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill.",
+        "Verify PDPA consent receipts & TTLs; update audit log."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Julie Brill",
+      "healthyDissentAgainst": "Muhammad Yunus"
+    },
+    {
+      "id": "juliebrill",
+      "name": "Julie Brill",
+      "mentorNumber": 20,
+      "departments": [
+        "Legal & Compliance",
+        "Safety & Governance"
+      ],
+      "thinkingStyle": "privacy‑first skeptic who assumes breach and designs for resilience.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Low",
+      "prioritizedSignals": [
+        "CSP violations",
+        "PDPA compliance score"
+      ],
+      "topLenses": [
+        "moat",
+        "customer_promise",
+        "fairness",
+        "audit_log",
+        "positioning",
+        "wont-do"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill.",
+        "Verify PDPA consent receipts & TTLs; update audit log."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Cory Doctorow",
+      "healthyDissentAgainst": "Max Schrems"
+    },
+    {
+      "id": "corydoctorow",
+      "name": "Cory Doctorow",
+      "mentorNumber": 21,
+      "departments": [
+        "Legal & Compliance",
+        "Safety & Governance"
+      ],
+      "thinkingStyle": "privacy‑first skeptic who assumes breach and designs for resilience.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Low",
+      "prioritizedSignals": [
+        "CSP violations",
+        "PDPA compliance score"
+      ],
+      "topLenses": [
+        "prfaq",
+        "trade-off",
+        "fairness",
+        "consent",
+        "wont-do",
+        "customer_promise"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill.",
+        "Verify PDPA consent receipts & TTLs; update audit log."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Muhammad Taqi Usmani",
+      "healthyDissentAgainst": "Julie Brill"
+    },
+    {
+      "id": "muhammadtaqiusmani",
+      "name": "Muhammad Taqi Usmani",
+      "mentorNumber": 22,
+      "departments": [
+        "Legal & Compliance"
+      ],
+      "thinkingStyle": "",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [],
+      "topLenses": [
+        "prfaq",
+        "wont-do",
+        "moat",
+        "customer_promise",
+        "positioning",
+        "trade-off"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Mufti Menk",
+      "healthyDissentAgainst": "Cory Doctorow"
+    },
+    {
+      "id": "muftimenk",
+      "name": "Mufti Menk",
+      "mentorNumber": 23,
+      "departments": [
+        "Safety & Governance"
+      ],
+      "thinkingStyle": "privacy‑first skeptic who assumes breach and designs for resilience.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Low",
+      "prioritizedSignals": [
+        "CSP violations",
+        "PDPA compliance score"
+      ],
+      "topLenses": [
+        "pdpa",
+        "csp",
+        "customer_promise",
+        "wont-do",
+        "prfaq",
+        "moat"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill.",
+        "Verify PDPA consent receipts & TTLs; update audit log."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Gene Kim",
+      "healthyDissentAgainst": "Muhammad Taqi Usmani"
+    },
+    {
+      "id": "genekim",
+      "name": "Gene Kim",
+      "mentorNumber": 24,
+      "departments": [
+        "Platform"
+      ],
+      "thinkingStyle": "systems engineer optimizing for reliability, contracts, and performance budgets.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [
+        "Error budget remaining",
+        "MTTR",
+        "Cache hit rate"
+      ],
+      "topLenses": [
+        "rollback",
+        "api_contract",
+        "trade-off",
+        "positioning",
+        "prfaq",
+        "wont-do"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill.",
+        "Enforce API contracts & idempotency; p95 latency under budget."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Melanie Perkins",
+      "healthyDissentAgainst": "Mufti Menk"
+    },
+    {
+      "id": "melanieperkins",
+      "name": "Melanie Perkins",
+      "mentorNumber": 25,
+      "departments": [
+        "Customer & Design"
+      ],
+      "thinkingStyle": "",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [],
+      "topLenses": [
+        "moat",
+        "wont-do",
+        "customer_promise",
+        "trade-off",
+        "prfaq",
+        "positioning"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Marty Cagan",
+      "healthyDissentAgainst": "Gene Kim"
+    },
+    {
+      "id": "martycagan",
+      "name": "Marty Cagan",
+      "mentorNumber": 26,
+      "departments": [
+        "Customer & Design"
+      ],
+      "thinkingStyle": "",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [],
+      "topLenses": [
+        "positioning",
+        "prfaq",
+        "customer_promise",
+        "moat",
+        "wont-do",
+        "trade-off"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Don Norman",
+      "healthyDissentAgainst": "Melanie Perkins"
+    },
+    {
+      "id": "donnorman",
+      "name": "Don Norman",
+      "mentorNumber": 27,
+      "departments": [
+        "Customer & Design"
+      ],
+      "thinkingStyle": "",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [],
+      "topLenses": [
+        "customer_promise",
+        "moat",
+        "prfaq",
+        "wont-do",
+        "trade-off",
+        "positioning"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Paula Scher",
+      "healthyDissentAgainst": "Marty Cagan"
+    },
+    {
+      "id": "paulascher",
+      "name": "Paula Scher",
+      "mentorNumber": 28,
+      "departments": [
+        "Customer & Design"
+      ],
+      "thinkingStyle": "",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [],
+      "topLenses": [
+        "moat",
+        "wont-do",
+        "positioning",
+        "customer_promise",
+        "prfaq",
+        "trade-off"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Chris Do",
+      "healthyDissentAgainst": "Don Norman"
+    },
+    {
+      "id": "chrisdo",
+      "name": "Chris Do",
+      "mentorNumber": 29,
+      "departments": [
+        "Customer & Design"
+      ],
+      "thinkingStyle": "",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [],
+      "topLenses": [
+        "trade-off",
+        "positioning",
+        "wont-do",
+        "customer_promise",
+        "moat",
+        "prfaq"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Casey Neistat",
+      "healthyDissentAgainst": "Paula Scher"
+    },
+    {
+      "id": "caseyneistat",
+      "name": "Casey Neistat",
+      "mentorNumber": 30,
+      "departments": [
+        "Growth"
+      ],
+      "thinkingStyle": "loop architect prioritizing retention and compounding mechanics.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Medium‑high",
+      "prioritizedSignals": [
+        "Retention D30",
+        "Activation rate"
+      ],
+      "topLenses": [
+        "retention",
+        "pricing",
+        "wont-do",
+        "trade-off",
+        "positioning",
+        "prfaq"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill.",
+        "Measure activation/retention impact; update growth loop diagram."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Ann Handley",
+      "healthyDissentAgainst": "Chris Do"
+    },
+    {
+      "id": "annhandley",
+      "name": "Ann Handley",
+      "mentorNumber": 31,
+      "departments": [
+        "Customer & Design"
+      ],
+      "thinkingStyle": "",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [],
+      "topLenses": [
+        "customer_promise",
+        "moat",
+        "trade-off",
+        "positioning",
+        "wont-do",
+        "prfaq"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Guido van Rossum",
+      "healthyDissentAgainst": "Casey Neistat"
+    },
+    {
+      "id": "guidovanrossum",
+      "name": "Guido van Rossum",
+      "mentorNumber": 32,
+      "departments": [
+        "Platform"
+      ],
+      "thinkingStyle": "systems engineer optimizing for reliability, contracts, and performance budgets.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [
+        "Error budget remaining",
+        "MTTR",
+        "Cache hit rate"
+      ],
+      "topLenses": [
+        "error_budget",
+        "api_contract",
+        "prfaq",
+        "trade-off",
+        "wont-do",
+        "positioning"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill.",
+        "Enforce API contracts & idempotency; p95 latency under budget."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "John Carmack",
+      "healthyDissentAgainst": "Ann Handley"
+    },
+    {
+      "id": "johncarmack",
+      "name": "John Carmack",
+      "mentorNumber": 33,
+      "departments": [
+        "Platform"
+      ],
+      "thinkingStyle": "systems engineer optimizing for reliability, contracts, and performance budgets.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [
+        "Error budget remaining",
+        "MTTR",
+        "Cache hit rate"
+      ],
+      "topLenses": [
+        "api_contract",
+        "slo",
+        "positioning",
+        "customer_promise",
+        "prfaq",
+        "wont-do"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill.",
+        "Enforce API contracts & idempotency; p95 latency under budget."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Nate Silver",
+      "healthyDissentAgainst": "Guido van Rossum"
+    },
+    {
+      "id": "natesilver",
+      "name": "Nate Silver",
+      "mentorNumber": 34,
+      "departments": [
+        "AI POD"
+      ],
+      "thinkingStyle": "eval‑driven ML pragmatist favoring data‑centric iteration over intuition.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [
+        "Eval pass rate (golden set)",
+        "Faithfulness gap",
+        "Latency p95 (tokens/s)"
+      ],
+      "topLenses": [
+        "offline_online",
+        "slice_metrics",
+        "trade-off",
+        "wont-do",
+        "moat",
+        "customer_promise"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Validate evals-as-code (golden set + slice metrics); faithfulness gap <5%.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Andrew Chen",
+      "healthyDissentAgainst": "John Carmack"
+    },
+    {
+      "id": "andrewchen",
+      "name": "Andrew Chen",
+      "mentorNumber": 35,
+      "departments": [
+        "Growth"
+      ],
+      "thinkingStyle": "loop architect prioritizing retention and compounding mechanics.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Medium‑high",
+      "prioritizedSignals": [
+        "Retention D30",
+        "Activation rate"
+      ],
+      "topLenses": [
+        "growth_loop",
+        "activation",
+        "wont-do",
+        "prfaq",
+        "customer_promise",
+        "positioning"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill.",
+        "Measure activation/retention impact; update growth loop diagram."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Monica Rogati",
+      "healthyDissentAgainst": "Nate Silver"
+    },
+    {
+      "id": "monicarogati",
+      "name": "Monica Rogati",
+      "mentorNumber": 36,
+      "departments": [
+        "AI POD"
+      ],
+      "thinkingStyle": "eval‑driven ML pragmatist favoring data‑centric iteration over intuition.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [
+        "Eval pass rate (golden set)",
+        "Faithfulness gap",
+        "Latency p95 (tokens/s)"
+      ],
+      "topLenses": [
+        "faithfulness",
+        "retrieval",
+        "wont-do",
+        "prfaq",
+        "trade-off",
+        "positioning"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Validate evals-as-code (golden set + slice metrics); faithfulness gap <5%.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Sean Ellis",
+      "healthyDissentAgainst": "Andrew Chen"
+    },
+    {
+      "id": "seanellis",
+      "name": "Sean Ellis",
+      "mentorNumber": 37,
+      "departments": [
+        "Growth"
+      ],
+      "thinkingStyle": "loop architect prioritizing retention and compounding mechanics.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Medium‑high",
+      "prioritizedSignals": [
+        "Retention D30",
+        "Activation rate"
+      ],
+      "topLenses": [
+        "retention",
+        "activation",
+        "customer_promise",
+        "positioning",
+        "trade-off",
+        "moat"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill.",
+        "Measure activation/retention impact; update growth loop diagram."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Casey Winters",
+      "healthyDissentAgainst": "Monica Rogati"
+    },
+    {
+      "id": "caseywinters",
+      "name": "Casey Winters",
+      "mentorNumber": 38,
+      "departments": [
+        "Growth"
+      ],
+      "thinkingStyle": "loop architect prioritizing retention and compounding mechanics.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Medium‑high",
+      "prioritizedSignals": [
+        "Retention D30",
+        "Activation rate"
+      ],
+      "topLenses": [
+        "referral",
+        "growth_loop",
+        "trade-off",
+        "positioning",
+        "prfaq",
+        "wont-do"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill.",
+        "Measure activation/retention impact; update growth loop diagram."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Neil Patel",
+      "healthyDissentAgainst": "Sean Ellis"
+    },
+    {
+      "id": "neilpatel",
+      "name": "Neil Patel",
+      "mentorNumber": 39,
+      "departments": [
+        "Growth"
+      ],
+      "thinkingStyle": "loop architect prioritizing retention and compounding mechanics.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Medium‑high",
+      "prioritizedSignals": [
+        "Retention D30",
+        "Activation rate"
+      ],
+      "topLenses": [
+        "activation",
+        "retention",
+        "wont-do",
+        "customer_promise",
+        "positioning",
+        "trade-off"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill.",
+        "Measure activation/retention impact; update growth loop diagram."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Rory Sutherland",
+      "healthyDissentAgainst": "Casey Winters"
+    },
+    {
+      "id": "rorysutherland",
+      "name": "Rory Sutherland",
+      "mentorNumber": 40,
+      "departments": [
+        "Growth"
+      ],
+      "thinkingStyle": "loop architect prioritizing retention and compounding mechanics.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Medium‑high",
+      "prioritizedSignals": [
+        "Retention D30",
+        "Activation rate"
+      ],
+      "topLenses": [
+        "cohort",
+        "referral",
+        "positioning",
+        "trade-off",
+        "customer_promise",
+        "moat"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill.",
+        "Measure activation/retention impact; update growth loop diagram."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Ben Thompson",
+      "healthyDissentAgainst": "Neil Patel"
+    },
+    {
+      "id": "benthompson",
+      "name": "Ben Thompson",
+      "mentorNumber": 41,
+      "departments": [
+        "Strategy"
+      ],
+      "thinkingStyle": "long‑horizon strategist focused on durable differentiation and explicit trade‑offs.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [
+        "Moat depth",
+        "Trade‑off integrity"
+      ],
+      "topLenses": [
+        "customer_promise",
+        "moat",
+        "wont-do",
+        "positioning",
+        "trade-off",
+        "prfaq"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Laszlo Bock",
+      "healthyDissentAgainst": "Rory Sutherland"
+    },
+    {
+      "id": "laszlobock",
+      "name": "Laszlo Bock",
+      "mentorNumber": 42,
+      "departments": [
+        "Operations & Localization"
+      ],
+      "thinkingStyle": "",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [],
+      "topLenses": [
+        "moat",
+        "prfaq",
+        "wont-do",
+        "trade-off",
+        "customer_promise",
+        "positioning"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Patty McCord",
+      "healthyDissentAgainst": "Ben Thompson"
+    },
+    {
+      "id": "pattymccord",
+      "name": "Patty McCord",
+      "mentorNumber": 43,
+      "departments": [
+        "Operations & Localization"
+      ],
+      "thinkingStyle": "",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [],
+      "topLenses": [
+        "moat",
+        "wont-do",
+        "positioning",
+        "trade-off",
+        "customer_promise",
+        "prfaq"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Charity Majors",
+      "healthyDissentAgainst": "Laszlo Bock"
+    },
+    {
+      "id": "charitymajors",
+      "name": "Charity Majors",
+      "mentorNumber": 44,
+      "departments": [
+        "Platform"
+      ],
+      "thinkingStyle": "systems engineer optimizing for reliability, contracts, and performance budgets.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [
+        "Error budget remaining",
+        "MTTR",
+        "Cache hit rate"
+      ],
+      "topLenses": [
+        "slo",
+        "api_contract",
+        "customer_promise",
+        "positioning",
+        "moat",
+        "wont-do"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill.",
+        "Enforce API contracts & idempotency; p95 latency under budget."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Danielle Citron",
+      "healthyDissentAgainst": "Patty McCord"
+    },
+    {
+      "id": "daniellecitron",
+      "name": "Danielle Citron",
+      "mentorNumber": 45,
+      "departments": [
+        "Legal & Compliance",
+        "Safety & Governance"
+      ],
+      "thinkingStyle": "privacy‑first skeptic who assumes breach and designs for resilience.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Low",
+      "prioritizedSignals": [
+        "CSP violations",
+        "PDPA compliance score"
+      ],
+      "topLenses": [
+        "moat",
+        "wont-do",
+        "fairness",
+        "audit_log",
+        "prfaq",
+        "customer_promise"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill.",
+        "Verify PDPA consent receipts & TTLs; update audit log."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Dario Amodei",
+      "healthyDissentAgainst": "Charity Majors"
+    },
+    {
+      "id": "darioamodei",
+      "name": "Dario Amodei",
+      "mentorNumber": 46,
+      "departments": [
+        "Safety & Governance"
+      ],
+      "thinkingStyle": "privacy‑first skeptic who assumes breach and designs for resilience.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Low",
+      "prioritizedSignals": [
+        "CSP violations",
+        "PDPA compliance score"
+      ],
+      "topLenses": [
+        "pdpa",
+        "audit_log",
+        "positioning",
+        "customer_promise",
+        "prfaq",
+        "wont-do"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill.",
+        "Verify PDPA consent receipts & TTLs; update audit log."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Jakob Nielsen",
+      "healthyDissentAgainst": "Danielle Citron"
+    },
+    {
+      "id": "jakobnielsen",
+      "name": "Jakob Nielsen",
+      "mentorNumber": 47,
+      "departments": [
+        "Customer & Design"
+      ],
+      "thinkingStyle": "",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [],
+      "topLenses": [
+        "prfaq",
+        "positioning",
+        "moat",
+        "trade-off",
+        "customer_promise",
+        "wont-do"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Jenny Lay-Flurrie",
+      "healthyDissentAgainst": "Dario Amodei"
+    },
+    {
+      "id": "jennylayflurrie",
+      "name": "Jenny Lay-Flurrie",
+      "mentorNumber": 48,
+      "departments": [
+        "Customer & Design"
+      ],
+      "thinkingStyle": "",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [],
+      "topLenses": [
+        "moat",
+        "trade-off",
+        "prfaq",
+        "customer_promise",
+        "positioning",
+        "wont-do"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Jez Humble",
+      "healthyDissentAgainst": "Jakob Nielsen"
+    },
+    {
+      "id": "jezhumble",
+      "name": "Jez Humble",
+      "mentorNumber": 49,
+      "departments": [
+        "Platform"
+      ],
+      "thinkingStyle": "systems engineer optimizing for reliability, contracts, and performance budgets.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [
+        "Error budget remaining",
+        "MTTR",
+        "Cache hit rate"
+      ],
+      "topLenses": [
+        "api_contract",
+        "perf_budget",
+        "positioning",
+        "customer_promise",
+        "trade-off",
+        "prfaq"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill.",
+        "Enforce API contracts & idempotency; p95 latency under budget."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "J.R. Storment",
+      "healthyDissentAgainst": "Jenny Lay-Flurrie"
+    },
+    {
+      "id": "jrstorment",
+      "name": "J.R. Storment",
+      "mentorNumber": 50,
+      "departments": [
+        "Finance & IR"
+      ],
+      "thinkingStyle": "",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [],
+      "topLenses": [
+        "wont-do",
+        "customer_promise",
+        "prfaq",
+        "positioning",
+        "moat",
+        "trade-off"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Mike Fuller",
+      "healthyDissentAgainst": "Jez Humble"
+    },
+    {
+      "id": "mikefuller",
+      "name": "Mike Fuller",
+      "mentorNumber": 51,
+      "departments": [
+        "Finance & IR"
+      ],
+      "thinkingStyle": "",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [],
+      "topLenses": [
+        "wont-do",
+        "trade-off",
+        "moat",
+        "positioning",
+        "customer_promise",
+        "prfaq"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Nadiem Makarim",
+      "healthyDissentAgainst": "J.R. Storment"
+    },
+    {
+      "id": "nadiemmakarim",
+      "name": "Nadiem Makarim",
+      "mentorNumber": 52,
+      "departments": [
+        "Operations & Localization"
+      ],
+      "thinkingStyle": "",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [],
+      "topLenses": [
+        "trade-off",
+        "prfaq",
+        "moat",
+        "wont-do",
+        "customer_promise",
+        "positioning"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Nicole Forsgren",
+      "healthyDissentAgainst": "Mike Fuller"
+    },
+    {
+      "id": "nicoleforsgren",
+      "name": "Nicole Forsgren",
+      "mentorNumber": 53,
+      "departments": [
+        "Platform"
+      ],
+      "thinkingStyle": "systems engineer optimizing for reliability, contracts, and performance budgets.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [
+        "Error budget remaining",
+        "MTTR",
+        "Cache hit rate"
+      ],
+      "topLenses": [
+        "api_contract",
+        "perf_budget",
+        "positioning",
+        "trade-off",
+        "customer_promise",
+        "moat"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill.",
+        "Enforce API contracts & idempotency; p95 latency under budget."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Stuart Russell",
+      "healthyDissentAgainst": "Nadiem Makarim"
+    },
+    {
+      "id": "stuartrussell",
+      "name": "Stuart Russell",
+      "mentorNumber": 54,
+      "departments": [
+        "Safety & Governance"
+      ],
+      "thinkingStyle": "privacy‑first skeptic who assumes breach and designs for resilience.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Low",
+      "prioritizedSignals": [
+        "CSP violations",
+        "PDPA compliance score"
+      ],
+      "topLenses": [
+        "csp",
+        "pdpa",
+        "customer_promise",
+        "positioning",
+        "wont-do",
+        "moat"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill.",
+        "Verify PDPA consent receipts & TTLs; update audit log."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Tan Hooi Ling",
+      "healthyDissentAgainst": "Nicole Forsgren"
+    },
+    {
+      "id": "tanhooiling",
+      "name": "Tan Hooi Ling",
+      "mentorNumber": 55,
+      "departments": [
+        "Operations & Localization"
+      ],
+      "thinkingStyle": "",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [],
+      "topLenses": [
+        "positioning",
+        "wont-do",
+        "prfaq",
+        "customer_promise",
+        "trade-off",
+        "moat"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Geoffrey Hinton",
+      "healthyDissentAgainst": "Stuart Russell"
+    },
+    {
+      "id": "geoffreyhinton",
+      "name": "Geoffrey Hinton",
+      "mentorNumber": 56,
+      "departments": [
+        "AI POD"
+      ],
+      "thinkingStyle": "eval‑driven ML pragmatist favoring data‑centric iteration over intuition.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [
+        "Eval pass rate (golden set)",
+        "Faithfulness gap",
+        "Latency p95 (tokens/s)"
+      ],
+      "topLenses": [
+        "offline_online",
+        "retrieval",
+        "moat",
+        "wont-do",
+        "customer_promise",
+        "prfaq"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Validate evals-as-code (golden set + slice metrics); faithfulness gap <5%.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Yoshua Bengio",
+      "healthyDissentAgainst": "Tan Hooi Ling"
+    },
+    {
+      "id": "yoshuabengio",
+      "name": "Yoshua Bengio",
+      "mentorNumber": 57,
+      "departments": [
+        "AI POD"
+      ],
+      "thinkingStyle": "eval‑driven ML pragmatist favoring data‑centric iteration over intuition.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [
+        "Eval pass rate (golden set)",
+        "Faithfulness gap",
+        "Latency p95 (tokens/s)"
+      ],
+      "topLenses": [
+        "slice_metrics",
+        "eval",
+        "customer_promise",
+        "positioning",
+        "wont-do",
+        "trade-off"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Validate evals-as-code (golden set + slice metrics); faithfulness gap <5%.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Yann LeCun",
+      "healthyDissentAgainst": "Geoffrey Hinton"
+    },
+    {
+      "id": "yannlecun",
+      "name": "Yann LeCun",
+      "mentorNumber": 58,
+      "departments": [
+        "AI POD"
+      ],
+      "thinkingStyle": "eval‑driven ML pragmatist favoring data‑centric iteration over intuition.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [
+        "Eval pass rate (golden set)",
+        "Faithfulness gap",
+        "Latency p95 (tokens/s)"
+      ],
+      "topLenses": [
+        "slice_metrics",
+        "offline_online",
+        "positioning",
+        "customer_promise",
+        "prfaq",
+        "trade-off"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Validate evals-as-code (golden set + slice metrics); faithfulness gap <5%.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Demis Hassabis",
+      "healthyDissentAgainst": "Yoshua Bengio"
+    },
+    {
+      "id": "demishassabis",
+      "name": "Demis Hassabis",
+      "mentorNumber": 59,
+      "departments": [
+        "AI POD"
+      ],
+      "thinkingStyle": "eval‑driven ML pragmatist favoring data‑centric iteration over intuition.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [
+        "Eval pass rate (golden set)",
+        "Faithfulness gap",
+        "Latency p95 (tokens/s)"
+      ],
+      "topLenses": [
+        "retrieval",
+        "prompt_versioning",
+        "trade-off",
+        "prfaq",
+        "customer_promise",
+        "moat"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Validate evals-as-code (golden set + slice metrics); faithfulness gap <5%.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Jeff Dean",
+      "healthyDissentAgainst": "Yann LeCun"
+    },
+    {
+      "id": "jeffdean",
+      "name": "Jeff Dean",
+      "mentorNumber": 60,
+      "departments": [
+        "Platform"
+      ],
+      "thinkingStyle": "systems engineer optimizing for reliability, contracts, and performance budgets.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [
+        "Error budget remaining",
+        "MTTR",
+        "Cache hit rate"
+      ],
+      "topLenses": [
+        "observability",
+        "perf_budget",
+        "moat",
+        "customer_promise",
+        "prfaq",
+        "wont-do"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill.",
+        "Enforce API contracts & idempotency; p95 latency under budget."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Chris Lattner",
+      "healthyDissentAgainst": "Demis Hassabis"
+    },
+    {
+      "id": "chrislattner",
+      "name": "Chris Lattner",
+      "mentorNumber": 61,
+      "departments": [
+        "Platform"
+      ],
+      "thinkingStyle": "systems engineer optimizing for reliability, contracts, and performance budgets.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [
+        "Error budget remaining",
+        "MTTR",
+        "Cache hit rate"
+      ],
+      "topLenses": [
+        "rollback",
+        "error_budget",
+        "moat",
+        "positioning",
+        "trade-off",
+        "wont-do"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill.",
+        "Enforce API contracts & idempotency; p95 latency under budget."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Andrej Karpathy",
+      "healthyDissentAgainst": "Jeff Dean"
+    },
+    {
+      "id": "andrejkarpathy",
+      "name": "Andrej Karpathy",
+      "mentorNumber": 62,
+      "departments": [
+        "AI POD"
+      ],
+      "thinkingStyle": "eval‑driven ML pragmatist favoring data‑centric iteration over intuition.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [
+        "Eval pass rate (golden set)",
+        "Faithfulness gap",
+        "Latency p95 (tokens/s)"
+      ],
+      "topLenses": [
+        "offline_online",
+        "retrieval",
+        "moat",
+        "positioning",
+        "customer_promise",
+        "trade-off"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Validate evals-as-code (golden set + slice metrics); faithfulness gap <5%.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Sebastian Thrun",
+      "healthyDissentAgainst": "Chris Lattner"
+    },
+    {
+      "id": "sebastianthrun",
+      "name": "Sebastian Thrun",
+      "mentorNumber": 63,
+      "departments": [
+        "AI POD"
+      ],
+      "thinkingStyle": "eval‑driven ML pragmatist favoring data‑centric iteration over intuition.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [
+        "Eval pass rate (golden set)",
+        "Faithfulness gap",
+        "Latency p95 (tokens/s)"
+      ],
+      "topLenses": [
+        "retrieval",
+        "prompt_versioning",
+        "moat",
+        "prfaq",
+        "trade-off",
+        "wont-do"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Validate evals-as-code (golden set + slice metrics); faithfulness gap <5%.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Fei-Fei Li",
+      "healthyDissentAgainst": "Andrej Karpathy"
+    },
+    {
+      "id": "feifeili",
+      "name": "Fei-Fei Li",
+      "mentorNumber": 64,
+      "departments": [
+        "AI POD"
+      ],
+      "thinkingStyle": "eval‑driven ML pragmatist favoring data‑centric iteration over intuition.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [
+        "Eval pass rate (golden set)",
+        "Faithfulness gap",
+        "Latency p95 (tokens/s)"
+      ],
+      "topLenses": [
+        "retrieval",
+        "eval",
+        "prfaq",
+        "positioning",
+        "wont-do",
+        "moat"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Validate evals-as-code (golden set + slice metrics); faithfulness gap <5%.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Alan Cooper",
+      "healthyDissentAgainst": "Sebastian Thrun"
+    },
+    {
+      "id": "alancooper",
+      "name": "Alan Cooper",
+      "mentorNumber": 65,
+      "departments": [
+        "Strategy"
+      ],
+      "thinkingStyle": "long‑horizon strategist focused on durable differentiation and explicit trade‑offs.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [
+        "Moat depth",
+        "Trade‑off integrity"
+      ],
+      "topLenses": [
+        "trade-off",
+        "moat",
+        "prfaq",
+        "positioning",
+        "wont-do",
+        "customer_promise"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Susan Weinschenk",
+      "healthyDissentAgainst": "Fei-Fei Li"
+    },
+    {
+      "id": "susanweinschenk",
+      "name": "Susan Weinschenk",
+      "mentorNumber": 66,
+      "departments": [
+        "Strategy"
+      ],
+      "thinkingStyle": "long‑horizon strategist focused on durable differentiation and explicit trade‑offs.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [
+        "Moat depth",
+        "Trade‑off integrity"
+      ],
+      "topLenses": [
+        "positioning",
+        "trade-off",
+        "wont-do",
+        "moat",
+        "customer_promise",
+        "prfaq"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Donella Meadows",
+      "healthyDissentAgainst": "Alan Cooper"
+    },
+    {
+      "id": "donellameadows",
+      "name": "Donella Meadows",
+      "mentorNumber": 67,
+      "departments": [
+        "Strategy"
+      ],
+      "thinkingStyle": "long‑horizon strategist focused on durable differentiation and explicit trade‑offs.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [
+        "Moat depth",
+        "Trade‑off integrity"
+      ],
+      "topLenses": [
+        "positioning",
+        "customer_promise",
+        "wont-do",
+        "trade-off",
+        "moat",
+        "prfaq"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "W. Edwards Deming",
+      "healthyDissentAgainst": "Susan Weinschenk"
+    },
+    {
+      "id": "wedwardsdeming",
+      "name": "W. Edwards Deming",
+      "mentorNumber": 68,
+      "departments": [
+        "Strategy"
+      ],
+      "thinkingStyle": "long‑horizon strategist focused on durable differentiation and explicit trade‑offs.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [
+        "Moat depth",
+        "Trade‑off integrity"
+      ],
+      "topLenses": [
+        "prfaq",
+        "positioning",
+        "trade-off",
+        "moat",
+        "wont-do",
+        "customer_promise"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Teresa Torres",
+      "healthyDissentAgainst": "Donella Meadows"
+    },
+    {
+      "id": "teresatorres",
+      "name": "Teresa Torres",
+      "mentorNumber": 69,
+      "departments": [
+        "AI POD"
+      ],
+      "thinkingStyle": "eval‑driven ML pragmatist favoring data‑centric iteration over intuition.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [
+        "Eval pass rate (golden set)",
+        "Faithfulness gap",
+        "Latency p95 (tokens/s)"
+      ],
+      "topLenses": [
+        "faithfulness",
+        "prompt_versioning",
+        "trade-off",
+        "wont-do",
+        "prfaq",
+        "customer_promise"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Validate evals-as-code (golden set + slice metrics); faithfulness gap <5%.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "John Cutler",
+      "healthyDissentAgainst": "W. Edwards Deming"
+    },
+    {
+      "id": "johncutler",
+      "name": "John Cutler",
+      "mentorNumber": 70,
+      "departments": [
+        "AI POD"
+      ],
+      "thinkingStyle": "eval‑driven ML pragmatist favoring data‑centric iteration over intuition.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [
+        "Eval pass rate (golden set)",
+        "Faithfulness gap",
+        "Latency p95 (tokens/s)"
+      ],
+      "topLenses": [
+        "faithfulness",
+        "prompt_versioning",
+        "trade-off",
+        "customer_promise",
+        "wont-do",
+        "moat"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Validate evals-as-code (golden set + slice metrics); faithfulness gap <5%.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "John Doerr",
+      "healthyDissentAgainst": "Teresa Torres"
+    },
+    {
+      "id": "johndoerr",
+      "name": "John Doerr",
+      "mentorNumber": 71,
+      "departments": [
+        "Strategy"
+      ],
+      "thinkingStyle": "long‑horizon strategist focused on durable differentiation and explicit trade‑offs.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [
+        "Moat depth",
+        "Trade‑off integrity"
+      ],
+      "topLenses": [
+        "customer_promise",
+        "trade-off",
+        "moat",
+        "wont-do",
+        "prfaq",
+        "positioning"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Eric Ries",
+      "healthyDissentAgainst": "John Cutler"
+    },
+    {
+      "id": "ericries",
+      "name": "Eric Ries",
+      "mentorNumber": 72,
+      "departments": [
+        "Strategy"
+      ],
+      "thinkingStyle": "long‑horizon strategist focused on durable differentiation and explicit trade‑offs.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [
+        "Moat depth",
+        "Trade‑off integrity"
+      ],
+      "topLenses": [
+        "positioning",
+        "moat",
+        "prfaq",
+        "trade-off",
+        "wont-do",
+        "customer_promise"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Steve Blank",
+      "healthyDissentAgainst": "John Doerr"
+    },
+    {
+      "id": "steveblank",
+      "name": "Steve Blank",
+      "mentorNumber": 73,
+      "departments": [
+        "Strategy"
+      ],
+      "thinkingStyle": "long‑horizon strategist focused on durable differentiation and explicit trade‑offs.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [
+        "Moat depth",
+        "Trade‑off integrity"
+      ],
+      "topLenses": [
+        "customer_promise",
+        "prfaq",
+        "wont-do",
+        "trade-off",
+        "positioning",
+        "moat"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Ben Treynor Sloss",
+      "healthyDissentAgainst": "Eric Ries"
+    },
+    {
+      "id": "bentreynorsloss",
+      "name": "Ben Treynor Sloss",
+      "mentorNumber": 74,
+      "departments": [
+        "Platform"
+      ],
+      "thinkingStyle": "systems engineer optimizing for reliability, contracts, and performance budgets.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [
+        "Error budget remaining",
+        "MTTR",
+        "Cache hit rate"
+      ],
+      "topLenses": [
+        "error_budget",
+        "perf_budget",
+        "customer_promise",
+        "prfaq",
+        "moat",
+        "positioning"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill.",
+        "Enforce API contracts & idempotency; p95 latency under budget."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Alan Kay",
+      "healthyDissentAgainst": "Steve Blank"
+    },
+    {
+      "id": "alankay",
+      "name": "Alan Kay",
+      "mentorNumber": 75,
+      "departments": [
+        "Platform"
+      ],
+      "thinkingStyle": "systems engineer optimizing for reliability, contracts, and performance budgets.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [
+        "Error budget remaining",
+        "MTTR",
+        "Cache hit rate"
+      ],
+      "topLenses": [
+        "perf_budget",
+        "error_budget",
+        "positioning",
+        "trade-off",
+        "moat",
+        "customer_promise"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill.",
+        "Enforce API contracts & idempotency; p95 latency under budget."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Barbara Liskov",
+      "healthyDissentAgainst": "Ben Treynor Sloss"
+    },
+    {
+      "id": "barbaraliskov",
+      "name": "Barbara Liskov",
+      "mentorNumber": 76,
+      "departments": [
+        "Platform"
+      ],
+      "thinkingStyle": "systems engineer optimizing for reliability, contracts, and performance budgets.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [
+        "Error budget remaining",
+        "MTTR",
+        "Cache hit rate"
+      ],
+      "topLenses": [
+        "rollback",
+        "api_contract",
+        "moat",
+        "wont-do",
+        "trade-off",
+        "positioning"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill.",
+        "Enforce API contracts & idempotency; p95 latency under budget."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Donald Knuth",
+      "healthyDissentAgainst": "Alan Kay"
+    },
+    {
+      "id": "donaldknuth",
+      "name": "Donald Knuth",
+      "mentorNumber": 77,
+      "departments": [
+        "Platform"
+      ],
+      "thinkingStyle": "systems engineer optimizing for reliability, contracts, and performance budgets.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [
+        "Error budget remaining",
+        "MTTR",
+        "Cache hit rate"
+      ],
+      "topLenses": [
+        "observability",
+        "slo",
+        "trade-off",
+        "customer_promise",
+        "prfaq",
+        "moat"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill.",
+        "Enforce API contracts & idempotency; p95 latency under budget."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Linus Torvalds",
+      "healthyDissentAgainst": "Barbara Liskov"
+    },
+    {
+      "id": "linustorvalds",
+      "name": "Linus Torvalds",
+      "mentorNumber": 78,
+      "departments": [
+        "Platform"
+      ],
+      "thinkingStyle": "systems engineer optimizing for reliability, contracts, and performance budgets.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [
+        "Error budget remaining",
+        "MTTR",
+        "Cache hit rate"
+      ],
+      "topLenses": [
+        "observability",
+        "slo",
+        "customer_promise",
+        "positioning",
+        "moat",
+        "trade-off"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill.",
+        "Enforce API contracts & idempotency; p95 latency under budget."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Bjarne Stroustrup",
+      "healthyDissentAgainst": "Donald Knuth"
+    },
+    {
+      "id": "bjarnestroustrup",
+      "name": "Bjarne Stroustrup",
+      "mentorNumber": 79,
+      "departments": [
+        "Platform"
+      ],
+      "thinkingStyle": "systems engineer optimizing for reliability, contracts, and performance budgets.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [
+        "Error budget remaining",
+        "MTTR",
+        "Cache hit rate"
+      ],
+      "topLenses": [
+        "observability",
+        "api_contract",
+        "moat",
+        "customer_promise",
+        "wont-do",
+        "positioning"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill.",
+        "Enforce API contracts & idempotency; p95 latency under budget."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Brendan Eich",
+      "healthyDissentAgainst": "Linus Torvalds"
+    },
+    {
+      "id": "brendaneich",
+      "name": "Brendan Eich",
+      "mentorNumber": 80,
+      "departments": [
+        "Platform"
+      ],
+      "thinkingStyle": "systems engineer optimizing for reliability, contracts, and performance budgets.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [
+        "Error budget remaining",
+        "MTTR",
+        "Cache hit rate"
+      ],
+      "topLenses": [
+        "api_contract",
+        "error_budget",
+        "moat",
+        "prfaq",
+        "positioning",
+        "wont-do"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill.",
+        "Enforce API contracts & idempotency; p95 latency under budget."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Sanjay Ghemawat",
+      "healthyDissentAgainst": "Bjarne Stroustrup"
+    },
+    {
+      "id": "sanjayghemawat",
+      "name": "Sanjay Ghemawat",
+      "mentorNumber": 81,
+      "departments": [
+        "Platform"
+      ],
+      "thinkingStyle": "systems engineer optimizing for reliability, contracts, and performance budgets.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [
+        "Error budget remaining",
+        "MTTR",
+        "Cache hit rate"
+      ],
+      "topLenses": [
+        "observability",
+        "slo",
+        "prfaq",
+        "customer_promise",
+        "wont-do",
+        "moat"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill.",
+        "Enforce API contracts & idempotency; p95 latency under budget."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Margaret Hamilton",
+      "healthyDissentAgainst": "Brendan Eich"
+    },
+    {
+      "id": "margarethamilton",
+      "name": "Margaret Hamilton",
+      "mentorNumber": 82,
+      "departments": [
+        "Platform"
+      ],
+      "thinkingStyle": "systems engineer optimizing for reliability, contracts, and performance budgets.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [
+        "Error budget remaining",
+        "MTTR",
+        "Cache hit rate"
+      ],
+      "topLenses": [
+        "slo",
+        "rollback",
+        "prfaq",
+        "customer_promise",
+        "wont-do",
+        "moat"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill.",
+        "Enforce API contracts & idempotency; p95 latency under budget."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Jeremy Howard",
+      "healthyDissentAgainst": "Sanjay Ghemawat"
+    },
+    {
+      "id": "jeremyhoward",
+      "name": "Jeremy Howard",
+      "mentorNumber": 83,
+      "departments": [
+        "AI POD"
+      ],
+      "thinkingStyle": "eval‑driven ML pragmatist favoring data‑centric iteration over intuition.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [
+        "Eval pass rate (golden set)",
+        "Faithfulness gap",
+        "Latency p95 (tokens/s)"
+      ],
+      "topLenses": [
+        "offline_online",
+        "retrieval",
+        "wont-do",
+        "positioning",
+        "customer_promise",
+        "trade-off"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Validate evals-as-code (golden set + slice metrics); faithfulness gap <5%.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Soumith Chintala",
+      "healthyDissentAgainst": "Margaret Hamilton"
+    },
+    {
+      "id": "soumithchintala",
+      "name": "Soumith Chintala",
+      "mentorNumber": 84,
+      "departments": [
+        "AI POD"
+      ],
+      "thinkingStyle": "eval‑driven ML pragmatist favoring data‑centric iteration over intuition.",
+      "problemSolvingPattern": [
+        "Frame the problem and define success/constraints explicitly.",
+        "Invert failure modes; identify highest‑risk assumptions.",
+        "Design a minimal, falsifiable test aligned to SLOs.",
+        "Instrument decisions and dependencies; log dissent.",
+        "Execute small‑batch change; gather evidence.",
+        "Decide based on thresholds; document trade‑offs.",
+        "Ship behind flag with rollback and runbook.",
+        "Observe, compare forecast vs actuals; iterate or kill."
+      ],
+      "riskAppetite": "Balanced",
+      "prioritizedSignals": [
+        "Eval pass rate (golden set)",
+        "Faithfulness gap",
+        "Latency p95 (tokens/s)"
+      ],
+      "topLenses": [
+        "offline_online",
+        "slice_metrics",
+        "prfaq",
+        "customer_promise",
+        "trade-off",
+        "moat"
+      ],
+      "executionPlaybook": [
+        "Frame the objective in one sentence (no jargon).",
+        "List explicit assumptions; mark testable vs non-testable.",
+        "Design a minimal experiment with binary success criteria.",
+        "Validate evals-as-code (golden set + slice metrics); faithfulness gap <5%.",
+        "Instrument with OTEL spans/metrics; define pass thresholds.",
+        "Run on canary (1%→5%→25%); track SLOs & error budget.",
+        "Decide go/no-go from evidence; record dissent ledger.",
+        "Ship behind feature flag plus rollback script tested in staging.",
+        "Observe 7 days; compare forecast vs actuals; iterate or kill."
+      ],
+      "crisisPosture": [
+        "P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.",
+        "Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.",
+        "Eval regression >10%: revert last prompt/model; re‑baseline golden set.",
+        "Budget overrun >20%: freeze non‑essentials; audit top cost drivers; set new cap.",
+        "User churn spike >3σ: convene Growth + Strategy; root‑cause in 48h; ship fix within 7 days."
+      ],
+      "pairsWellWith": "Warren Buffett",
+      "healthyDissentAgainst": "Jeremy Howard"
+    }
+  ]
+}
