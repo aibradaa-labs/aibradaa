@@ -1,0 +1,51 @@
+{
+  "surface": "versus",
+  "description": "Slice specifications for fairness and quality analysis",
+  "version": "1.0.0",
+  "lastUpdated": "2025-11-07",
+
+  "slices": [
+    {
+      "dimension": "locale",
+      "segments": ["en", "ms"],
+      "parity_threshold": 0.05,
+      "description": "English vs Bahasa Malaysia - ensure translation quality parity",
+      "rationale": "Malaysian users should get equal quality regardless of language"
+    },
+    {
+      "dimension": "brand",
+      "segments": ["Lenovo", "HP", "Dell", "Asus", "Acer", "Apple", "Microsoft"],
+      "parity_threshold": 0.05,
+      "description": "No brand bias in recommendations",
+      "rationale": "Recommendations should be merit-based, not brand-biased"
+    },
+    {
+      "dimension": "price",
+      "segments": ["under_3k", "3k_5k", "over_5k"],
+      "parity_threshold": 0.05,
+      "description": "Quality across price ranges (RM)",
+      "rationale": "Budget users deserve equally good advice"
+    },
+    {
+      "dimension": "tier",
+      "segments": ["guest", "free", "pro"],
+      "parity_threshold": 0.05,
+      "description": "Quality parity across user tiers",
+      "rationale": "Core advice quality should not degrade by tier (features differ, not quality)"
+    },
+    {
+      "dimension": "use_case",
+      "segments": ["student", "professional", "gaming", "content_creation"],
+      "parity_threshold": 0.05,
+      "description": "Quality across different use cases",
+      "rationale": "All use cases should be equally well-supported"
+    }
+  ],
+
+  "notes": [
+    "Parity threshold Δ ≤5% means no segment should be >5% worse than best segment",
+    "Example: If 'en' accuracy is 96% and 'ms' is 90%, parity Δ = 6% (FAIL)",
+    "Slice analysis runs automatically in eval runner",
+    "Violations trigger AMBER risk posture and executive review"
+  ]
+}

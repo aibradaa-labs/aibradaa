@@ -1,0 +1,435 @@
+{
+  "version": "2.0.0",
+  "lastUpdated": "2025-11-07",
+  "description": "Complete lens taxonomy for decision-making frameworks (INTERNAL ONLY)",
+  "totalLenses": 31,
+
+  "categories": {
+    "strategy": ["moat", "positioning", "trade-off", "wont-do", "prfaq", "customer_promise"],
+    "technical": ["slo", "error_budget", "observability", "perf_budget", "rollback", "test_coverage", "api_contract"],
+    "ai_ml": ["eval", "faithfulness", "offline_online", "slice_metrics", "prompt_versioning", "retrieval"],
+    "growth": ["activation", "retention", "cohort", "growth_loop", "referral", "pricing"],
+    "compliance": ["pdpa", "consent", "ttl", "audit_log", "csp", "fairness"]
+  },
+
+  "lenses": [
+    {
+      "id": "moat",
+      "name": "Moat Analysis",
+      "category": "strategy",
+      "description": "Assess defensibility and competitive differentiation",
+      "keyQuestions": [
+        "What prevents competitors from replicating this?",
+        "Does this deepen our moat or commoditize our advantage?",
+        "What's the switching cost for users?"
+      ],
+      "usageNotes": "Apply to strategic decisions, feature prioritization, and market positioning",
+      "antiPatterns": ["Building features competitors can easily copy", "Neglecting network effects", "Ignoring data moats"]
+    },
+    {
+      "id": "positioning",
+      "name": "Market Positioning",
+      "category": "strategy",
+      "description": "Define clear differentiation in market perception",
+      "keyQuestions": [
+        "How does this position us vs. alternatives?",
+        "What job-to-be-done do we own?",
+        "Can we articulate our unique value in one sentence?"
+      ],
+      "usageNotes": "Critical for messaging, product strategy, and competitive analysis",
+      "antiPatterns": ["Trying to be everything to everyone", "Copying competitors' positioning", "Undefined target segments"]
+    },
+    {
+      "id": "trade-off",
+      "name": "Explicit Trade-offs",
+      "category": "strategy",
+      "description": "Surface and document costs vs. benefits",
+      "keyQuestions": [
+        "What are we explicitly NOT doing?",
+        "What's the opportunity cost?",
+        "Can we quantify the trade-off dimensions?"
+      ],
+      "usageNotes": "Apply to all major decisions; forces clarity on constraints",
+      "antiPatterns": ["Claiming no trade-offs exist", "Hidden costs", "Failing to quantify impact"]
+    },
+    {
+      "id": "wont-do",
+      "name": "Won't-Do List",
+      "category": "strategy",
+      "description": "Define explicit boundaries and constraints",
+      "keyQuestions": [
+        "What are we committing NOT to do?",
+        "What temptations should we resist?",
+        "What's explicitly out of scope?"
+      ],
+      "usageNotes": "Essential for focus and preventing scope creep",
+      "antiPatterns": ["Vague boundaries", "Everything is a priority", "No strategic constraints"]
+    },
+    {
+      "id": "prfaq",
+      "name": "PR/FAQ Framework",
+      "category": "strategy",
+      "description": "Working backwards from customer announcement",
+      "keyQuestions": [
+        "What's the press release headline?",
+        "What customer problem does this solve?",
+        "What are the top 5 FAQs customers will ask?"
+      ],
+      "usageNotes": "Use for product launches and major features",
+      "antiPatterns": ["Starting with technology, not customer need", "Vague value propositions", "Inside-out thinking"]
+    },
+    {
+      "id": "customer_promise",
+      "name": "Customer Promise",
+      "category": "strategy",
+      "description": "Define and honor explicit commitments to users",
+      "keyQuestions": [
+        "What have we promised customers?",
+        "Does this honor or violate our promise?",
+        "How do we measure promise delivery?"
+      ],
+      "usageNotes": "Critical for trust and brand integrity",
+      "antiPatterns": ["Overpromising", "Implicit promises not documented", "Promise drift over time"]
+    },
+    {
+      "id": "slo",
+      "name": "Service Level Objectives",
+      "category": "technical",
+      "description": "Define and track reliability targets",
+      "keyQuestions": [
+        "What's our latency p95/p99 target?",
+        "What's our availability SLO?",
+        "What happens when we breach?"
+      ],
+      "usageNotes": "Required for all production services",
+      "antiPatterns": ["No SLOs defined", "Unmeasured SLOs", "SLOs without error budgets"]
+    },
+    {
+      "id": "error_budget",
+      "name": "Error Budget",
+      "category": "technical",
+      "description": "Balance reliability vs. velocity with budgets",
+      "keyQuestions": [
+        "How much budget have we consumed?",
+        "Should we freeze features or push forward?",
+        "What's our burn rate?"
+      ],
+      "usageNotes": "Tied to SLOs; enables data-driven risk decisions",
+      "antiPatterns": ["No budget tracking", "Ignoring budget exhaustion", "Arbitrary freeze decisions"]
+    },
+    {
+      "id": "observability",
+      "name": "Observability",
+      "category": "technical",
+      "description": "Ensure systems are debuggable and transparent",
+      "keyQuestions": [
+        "Can we diagnose this failure from telemetry?",
+        "What OTEL spans are instrumented?",
+        "Are our metrics actionable?"
+      ],
+      "usageNotes": "Apply to all new features and infrastructure",
+      "antiPatterns": ["Logging without structure", "Metrics without SLIs", "Blind spots in critical paths"]
+    },
+    {
+      "id": "perf_budget",
+      "name": "Performance Budget",
+      "category": "technical",
+      "description": "Define and enforce performance ceilings",
+      "keyQuestions": [
+        "What's our latency/size/cost ceiling?",
+        "Does this exceed our budget?",
+        "How do we enforce budgets in CI?"
+      ],
+      "usageNotes": "Critical for UX and cost control",
+      "antiPatterns": ["No budget defined", "Budget violations unnoticed", "Regression without alerts"]
+    },
+    {
+      "id": "rollback",
+      "name": "Rollback Readiness",
+      "category": "technical",
+      "description": "Ensure every change is reversible",
+      "keyQuestions": [
+        "Can we rollback in <15 minutes?",
+        "What's our rollback runbook?",
+        "Have we tested rollback in staging?"
+      ],
+      "usageNotes": "Required for progressive delivery and safe deploys",
+      "antiPatterns": ["No rollback plan", "Untested rollbacks", "Data migrations without backups"]
+    },
+    {
+      "id": "test_coverage",
+      "name": "Test Coverage",
+      "category": "technical",
+      "description": "Ensure critical paths are tested",
+      "keyQuestions": [
+        "What's our coverage on this path?",
+        "Are edge cases tested?",
+        "Do we have regression tests?"
+      ],
+      "usageNotes": "Balance coverage goals with velocity",
+      "antiPatterns": ["Coverage theater", "Untested critical paths", "Flaky tests tolerated"]
+    },
+    {
+      "id": "api_contract",
+      "name": "API Contract",
+      "category": "technical",
+      "description": "Define and version API commitments",
+      "keyQuestions": [
+        "What's our API contract?",
+        "How do we handle breaking changes?",
+        "Is this change backward compatible?"
+      ],
+      "usageNotes": "Essential for client stability and trust",
+      "antiPatterns": ["Unversioned APIs", "Surprise breaking changes", "Implicit contracts"]
+    },
+    {
+      "id": "eval",
+      "name": "Evaluation Framework",
+      "category": "ai_ml",
+      "description": "Measure AI quality systematically",
+      "keyQuestions": [
+        "What's our eval suite coverage?",
+        "What's the pass rate vs. baseline?",
+        "Are evals automated in CI?"
+      ],
+      "usageNotes": "Required before any prompt or model change",
+      "antiPatterns": ["Manual-only evals", "No baselines", "Evals not blocking deploys"]
+    },
+    {
+      "id": "faithfulness",
+      "name": "Faithfulness",
+      "category": "ai_ml",
+      "description": "Ensure AI responses are grounded in sources",
+      "keyQuestions": [
+        "Can we trace this claim to a source?",
+        "What's our hallucination rate?",
+        "Are citations accurate and verifiable?"
+      ],
+      "usageNotes": "Critical for trust and accuracy",
+      "antiPatterns": ["Unchecked hallucinations", "No citation requirements", "Stale sources"]
+    },
+    {
+      "id": "offline_online",
+      "name": "Offline/Online Eval Parity",
+      "category": "ai_ml",
+      "description": "Ensure offline evals predict online performance",
+      "keyQuestions": [
+        "Does offline performance match production?",
+        "What's the correlation?",
+        "Why do they diverge?"
+      ],
+      "usageNotes": "Essential for confident iteration",
+      "antiPatterns": ["Only offline evals", "Ignoring online metrics", "No A/B testing"]
+    },
+    {
+      "id": "slice_metrics",
+      "name": "Slice Metrics",
+      "category": "ai_ml",
+      "description": "Measure performance across user segments",
+      "keyQuestions": [
+        "How does this perform by locale?",
+        "Are there fairness gaps by segment?",
+        "What's our worst-performing slice?"
+      ],
+      "usageNotes": "Required for fairness and comprehensive quality",
+      "antiPatterns": ["Aggregate metrics only", "Hidden bias in slices", "No segment tracking"]
+    },
+    {
+      "id": "prompt_versioning",
+      "name": "Prompt Versioning",
+      "category": "ai_ml",
+      "description": "Track and version prompt changes rigorously",
+      "keyQuestions": [
+        "What version is this prompt?",
+        "Can we reproduce results?",
+        "Is prompt drift detected?"
+      ],
+      "usageNotes": "Critical for reproducibility and debugging",
+      "antiPatterns": ["Unversioned prompts", "Inline prompt changes", "No drift detection"]
+    },
+    {
+      "id": "retrieval",
+      "name": "Retrieval Quality",
+      "category": "ai_ml",
+      "description": "Assess RAG retrieval relevance and coverage",
+      "keyQuestions": [
+        "What's our retrieval precision/recall?",
+        "Are we retrieving the right context?",
+        "What's our grounding coverage?"
+      ],
+      "usageNotes": "Essential for RAG-based systems",
+      "antiPatterns": ["No retrieval metrics", "Stale embeddings", "Poor chunking strategy"]
+    },
+    {
+      "id": "activation",
+      "name": "User Activation",
+      "category": "growth",
+      "description": "Measure new user engagement and aha moments",
+      "keyQuestions": [
+        "What's our activation rate?",
+        "When do users reach their aha moment?",
+        "What drives successful activation?"
+      ],
+      "usageNotes": "Critical for converting signups to active users",
+      "antiPatterns": ["No activation metric", "Unclear aha moment", "Long time-to-value"]
+    },
+    {
+      "id": "retention",
+      "name": "Retention",
+      "category": "growth",
+      "description": "Measure user stickiness over time",
+      "keyQuestions": [
+        "What's our D7/D30 retention?",
+        "What features drive retention?",
+        "Why do users churn?"
+      ],
+      "usageNotes": "Leading indicator of product-market fit",
+      "antiPatterns": ["No retention tracking", "Focusing only on acquisition", "Ignoring churn reasons"]
+    },
+    {
+      "id": "cohort",
+      "name": "Cohort Analysis",
+      "category": "growth",
+      "description": "Track user behavior by cohort over time",
+      "keyQuestions": [
+        "How do cohorts compare?",
+        "Are newer cohorts better?",
+        "What changed between cohorts?"
+      ],
+      "usageNotes": "Essential for understanding product improvements",
+      "antiPatterns": ["No cohort tracking", "Mixing cohorts in analysis", "Ignoring cohort degradation"]
+    },
+    {
+      "id": "growth_loop",
+      "name": "Growth Loop",
+      "category": "growth",
+      "description": "Design sustainable, compounding growth mechanisms",
+      "keyQuestions": [
+        "What's our primary growth loop?",
+        "Is it compounding?",
+        "What's the loop cycle time?"
+      ],
+      "usageNotes": "Focus on sustainable vs. one-time growth tactics",
+      "antiPatterns": ["No sustainable loops", "Only paid acquisition", "Ignoring viral mechanics"]
+    },
+    {
+      "id": "referral",
+      "name": "Referral Mechanics",
+      "category": "growth",
+      "description": "Enable and measure word-of-mouth growth",
+      "keyQuestions": [
+        "What's our referral rate?",
+        "What motivates users to refer?",
+        "How do we attribute referrals?"
+      ],
+      "usageNotes": "Highest-quality growth channel when optimized",
+      "antiPatterns": ["No referral tracking", "Generic incentives", "Poor attribution"]
+    },
+    {
+      "id": "pricing",
+      "name": "Pricing Strategy",
+      "category": "growth",
+      "description": "Design and test pricing for value capture",
+      "keyQuestions": [
+        "What's our value metric?",
+        "Are we capturing fair value?",
+        "How do tiers differentiate?"
+      ],
+      "usageNotes": "Balance monetization with growth",
+      "antiPatterns": ["Random pricing", "No tier differentiation", "Pricing not tied to value"]
+    },
+    {
+      "id": "pdpa",
+      "name": "PDPA Compliance",
+      "category": "compliance",
+      "description": "Ensure Malaysian data protection compliance",
+      "keyQuestions": [
+        "Do we collect minimum necessary data?",
+        "Is consent explicit and documented?",
+        "Can users export/delete data?"
+      ],
+      "usageNotes": "Mandatory for all data collection and processing",
+      "antiPatterns": ["Implicit consent", "Excessive data collection", "No deletion workflow"]
+    },
+    {
+      "id": "consent",
+      "name": "Consent Management",
+      "category": "compliance",
+      "description": "Obtain and track user consent properly",
+      "keyQuestions": [
+        "Is consent granular and revocable?",
+        "Do we have consent receipts?",
+        "Can users see what they've consented to?"
+      ],
+      "usageNotes": "Required before any data collection",
+      "antiPatterns": ["Bundle consent", "Irrevocable consent", "No audit trail"]
+    },
+    {
+      "id": "ttl",
+      "name": "Time-to-Live Policies",
+      "category": "compliance",
+      "description": "Define and enforce data retention limits",
+      "keyQuestions": [
+        "What's the TTL for this data type?",
+        "Is expiry automated?",
+        "What's our deletion verification?"
+      ],
+      "usageNotes": "Required for PDPA and data minimization",
+      "antiPatterns": ["Infinite retention", "Manual deletion", "No TTL enforcement"]
+    },
+    {
+      "id": "audit_log",
+      "name": "Audit Logging",
+      "category": "compliance",
+      "description": "Maintain tamper-proof activity records",
+      "keyQuestions": [
+        "What's logged and for how long?",
+        "Is the log tamper-proof?",
+        "Can we reconstruct events?"
+      ],
+      "usageNotes": "Essential for security and compliance",
+      "antiPatterns": ["No audit logs", "Modifiable logs", "Insufficient detail"]
+    },
+    {
+      "id": "csp",
+      "name": "Content Security Policy",
+      "category": "compliance",
+      "description": "Enforce strict CSP to prevent XSS/injection",
+      "keyQuestions": [
+        "Is our CSP strict (no unsafe-inline)?",
+        "Are violations monitored?",
+        "Is SRI enforced on external scripts?"
+      ],
+      "usageNotes": "Critical security baseline for web apps",
+      "antiPatterns": ["Permissive CSP", "Ignored violations", "No SRI"]
+    },
+    {
+      "id": "fairness",
+      "name": "Algorithmic Fairness",
+      "category": "compliance",
+      "description": "Ensure equitable treatment across segments",
+      "keyQuestions": [
+        "Are outcomes fair across demographics?",
+        "What's our bias testing approach?",
+        "Can we explain disparities?"
+      ],
+      "usageNotes": "Required for AI/ML systems affecting users",
+      "antiPatterns": ["No fairness metrics", "Hidden bias", "Unexplained disparities"]
+    }
+  ],
+
+  "usageGuidelines": {
+    "perDecision": "Typical decision recruits 3-6 lenses based on decision type",
+    "prioritization": "Higher-weight lenses (safety, compliance) take precedence",
+    "combination": "Multiple lenses provide balanced perspective",
+    "evolution": "Lens catalog reviewed quarterly; new lenses added as needed"
+  },
+
+  "exampleApplications": {
+    "strategy": ["moat", "positioning", "trade-off", "wont-do", "prfaq", "customer_promise"],
+    "product_prfaq": ["prfaq", "customer_promise", "trade-off", "activation", "retention"],
+    "infra_slo": ["slo", "error_budget", "observability", "perf_budget", "rollback", "test_coverage"],
+    "safety_release": ["pdpa", "consent", "csp", "audit_log", "rollback", "ttl"],
+    "capital_allocation": ["pricing", "moat", "trade-off", "growth_loop", "cohort"]
+  }
+}

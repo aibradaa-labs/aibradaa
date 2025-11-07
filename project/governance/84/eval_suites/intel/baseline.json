@@ -1,0 +1,43 @@
+{
+  "surface": "intel",
+  "version": "v1.0.0",
+  "date": "2025-11-07",
+  "model": "gemini-2.5-pro-001",
+  "prompt_version": "command_think_v1.0.0",
+  "sample_size": 3,
+  "note": "Initial baseline template - to be populated after first eval run with n≥200",
+
+  "metrics": {
+    "accuracy": null,
+    "faithfulness": null,
+    "citation_rate": null,
+    "toxicity": null,
+    "latency_p50_ms": null,
+    "latency_p95_ms": null,
+    "latency_p99_ms": null,
+    "tokens_in_avg": null,
+    "tokens_out_avg": null
+  },
+
+  "slices": {
+    "by_locale": {
+      "en": {"accuracy": null, "faithfulness": null},
+      "ms": {"accuracy": null, "faithfulness": null}
+    },
+    "by_brand": {
+      "Lenovo": {"accuracy": null},
+      "HP": {"accuracy": null},
+      "Dell": {"accuracy": null},
+      "Asus": {"accuracy": null},
+      "Acer": {"accuracy": null}
+    },
+    "by_price": {
+      "under_3k": {"accuracy": null},
+      "3k_5k": {"accuracy": null},
+      "over_5k": {"accuracy": null}
+    }
+  },
+
+  "status": "template",
+  "next_action": "Run eval suite with n≥200 to establish baseline"
+}

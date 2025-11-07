@@ -1,0 +1,242 @@
+{
+  "version": "2.0.0",
+  "lastUpdated": "2025-11-07",
+  "description": "Executive Board composition and escalation triggers (INTERNAL ONLY)",
+
+  "board": {
+    "name": "Executive Board",
+    "size": 10,
+    "purpose": "Final approval for major decisions, cross-cutting risk, and escalations",
+    "quorum": 0.70,
+    "passingScore": 9.0,
+    "votingWeight": 2.0
+  },
+
+  "executives": [
+    {
+      "mentorNumber": 1,
+      "name": "Warren Buffett",
+      "role": "Primary Chair",
+      "departments": ["Finance & IR", "Strategy"],
+      "expertise": ["Long-term strategy", "Risk management", "Capital allocation"],
+      "votingWeight": 1.5,
+      "hasVeto": false
+    },
+    {
+      "mentorNumber": 2,
+      "name": "Charlie Munger",
+      "role": "Vice Chair",
+      "departments": ["Strategy"],
+      "expertise": ["Mental models", "Decision frameworks", "Trade-off analysis"],
+      "votingWeight": 1.5,
+      "hasVeto": false
+    },
+    {
+      "mentorNumber": 15,
+      "name": "Bruce Schneier",
+      "role": "Chief Security Advisor",
+      "departments": ["Safety & Governance"],
+      "expertise": ["Security architecture", "Cryptography", "Risk assessment"],
+      "votingWeight": 2.0,
+      "hasVeto": true,
+      "vetoScope": ["security", "privacy", "safety"]
+    },
+    {
+      "mentorNumber": 22,
+      "name": "Muhammad Taqi Usmani",
+      "role": "Chief Ethics Officer",
+      "departments": ["Strategy", "Legal & Compliance", "Safety & Governance"],
+      "expertise": ["Ethics", "Compliance", "Governance"],
+      "votingWeight": 1.8,
+      "hasVeto": true,
+      "vetoScope": ["ethics", "compliance", "pdpa"]
+    },
+    {
+      "mentorNumber": 24,
+      "name": "Gene Kim",
+      "role": "Chief Platform Advisor",
+      "departments": ["AI POD", "Platform"],
+      "expertise": ["DevOps", "Reliability", "Continuous delivery"],
+      "votingWeight": 1.5,
+      "hasVeto": false
+    },
+    {
+      "mentorNumber": 25,
+      "name": "Sam Altman",
+      "role": "Chief AI Strategist",
+      "departments": ["AI POD", "Strategy"],
+      "expertise": ["AI strategy", "Product vision", "Market timing"],
+      "votingWeight": 1.5,
+      "hasVeto": false
+    },
+    {
+      "mentorNumber": 4,
+      "name": "Ben Horowitz",
+      "role": "Chief Operations Advisor",
+      "departments": ["Platform", "Operations & Localization"],
+      "expertise": ["Scaling teams", "Crisis management", "Execution"],
+      "votingWeight": 1.3,
+      "hasVeto": false
+    },
+    {
+      "mentorNumber": 32,
+      "name": "Jeff Bezos",
+      "role": "Chief Scale Officer",
+      "departments": ["Operations & Localization", "Strategy"],
+      "expertise": ["Day 1 thinking", "Customer obsession", "Long-term scaling"],
+      "votingWeight": 1.4,
+      "hasVeto": false
+    },
+    {
+      "mentorNumber": 10,
+      "name": "Satya Nadella",
+      "role": "Chief Platform Officer",
+      "departments": ["Platform", "Strategy"],
+      "expertise": ["Platform strategy", "Cloud architecture", "Culture transformation"],
+      "votingWeight": 1.3,
+      "hasVeto": false
+    },
+    {
+      "mentorNumber": 12,
+      "name": "Julie Zhuo",
+      "role": "Chief Product Officer",
+      "departments": ["Customer & Design"],
+      "expertise": ["Product design", "User research", "Team leadership"],
+      "votingWeight": 1.2,
+      "hasVeto": false
+    }
+  ],
+
+  "escalationTriggers": {
+    "automatic": [
+      {
+        "trigger": "safety_release with RED risk posture",
+        "description": "Any safety/security decision flagged as RED",
+        "priority": "P0",
+        "responseTime": "immediate",
+        "requiredVotes": 8
+      },
+      {
+        "trigger": "cost impact > RM10,000",
+        "description": "Any decision with financial impact exceeding RM10,000",
+        "priority": "P1",
+        "responseTime": "<24h",
+        "requiredVotes": 7
+      },
+      {
+        "trigger": "PDPA violation risk",
+        "description": "Any decision that could violate PDPA or data privacy regulations",
+        "priority": "P0",
+        "responseTime": "immediate",
+        "requiredVotes": 8
+      },
+      {
+        "trigger": "cross-cutting impact (3+ departments)",
+        "description": "Decisions affecting 3 or more departments simultaneously",
+        "priority": "P1",
+        "responseTime": "<48h",
+        "requiredVotes": 7
+      },
+      {
+        "trigger": "composite score <99",
+        "description": "Any P1 decision failing to meet composite score threshold",
+        "priority": "P1",
+        "responseTime": "<72h",
+        "requiredVotes": 7
+      },
+      {
+        "trigger": "safety_governance dissent",
+        "description": "Any dissent from Safety & Governance department",
+        "priority": "P1",
+        "responseTime": "<48h",
+        "requiredVotes": 8
+      }
+    ],
+
+    "discretionary": [
+      {
+        "trigger": "productive dissent deadlock",
+        "description": "When productive dissent pairs cannot reach consensus",
+        "priority": "P2",
+        "responseTime": "<1 week",
+        "requiredVotes": 7
+      },
+      {
+        "trigger": "novel decision pattern",
+        "description": "Decisions outside established routing patterns",
+        "priority": "P2",
+        "responseTime": "<1 week",
+        "requiredVotes": 7
+      },
+      {
+        "trigger": "strategic pivot",
+        "description": "Major changes to product direction or business model",
+        "priority": "P1",
+        "responseTime": "<72h",
+        "requiredVotes": 8
+      }
+    ]
+  },
+
+  "decisionFramework": {
+    "process": [
+      "Escalation trigger identified",
+      "Executive Board convened (quorum check)",
+      "Context presented: decision, recruited advisors, votes, dissent",
+      "Board deliberation with full advisor context",
+      "Board vote (weighted)",
+      "Veto check (if applicable)",
+      "Decision logged to dissent_ledger.md",
+      "Implementation or further iteration"
+    ],
+
+    "vetoPowers": {
+      "description": "Only Bruce Schneier (Security) and Muhammad Taqi Usmani (Ethics) have veto power",
+      "scope": {
+        "schneier": ["security", "privacy", "safety"],
+        "usmani": ["ethics", "compliance", "pdpa"]
+      },
+      "override": "Veto can only be overridden by unanimous 10/10 board vote",
+      "loggingRequired": true
+    },
+
+    "compositeScoreAdjustment": {
+      "description": "Executive Board can adjust composite score up/down by max ±5 points",
+      "justificationRequired": true,
+      "loggingRequired": true,
+      "maxAdjustment": 5.0
+    }
+  },
+
+  "meetingCadence": {
+    "regular": "Monthly review of all P1 decisions",
+    "emergency": "On-demand for P0 escalations (within response time)",
+    "retrospective": "Quarterly review of dissent patterns and decision quality"
+  },
+
+  "reportingRequirements": {
+    "monthly": [
+      "Total escalations by trigger type",
+      "Average response time by priority",
+      "Composite score distribution",
+      "Veto usage (if any)",
+      "Top dissent axes"
+    ],
+    "quarterly": [
+      "Governance effectiveness review",
+      "Advisor recruitment pattern analysis",
+      "Executive Board composition review"
+    ]
+  },
+
+  "healthMetrics": {
+    "targetResponseTimes": {
+      "P0": "<4h",
+      "P1": "<48h",
+      "P2": "<1 week"
+    },
+    "vetoRate": "<5% of escalations",
+    "overrideRate": "<1% of vetoes",
+    "compositeAdjustmentRate": "<10% of escalations"
+  }
+}
