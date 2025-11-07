@@ -271,7 +271,7 @@ Product development roadmap for AI Bradaa's evolution.
 - [ ] Comparison history
 - [ ] Recently viewed laptops
 - [ ] Advanced search filters
-- [ ] Dark mode support
+- [x] Dark mode support ✅ (Completed 2025-11-07)
 
 ### Medium Priority
 

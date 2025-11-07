@@ -1,0 +1,354 @@
+/**
+ * AI Bradaa - Theme System
+ * Dual theme support: Dark (default cyberpunk) and Light (cyberpunk light)
+ * Uses CSS custom properties for easy theme switching
+ */
+
+/* ========================================
+   DARK THEME (DEFAULT - Cyberpunk)
+   ======================================== */
+
+:root,
+[data-theme="dark"] {
+  /* Cyberpunk Color Palette */
+  --cyber-blue: #00f3ff;
+  --cyber-pink: #ff2a6d;
+  --cyber-purple: #d946ef;
+  --cyber-yellow: #fbbf24;
+  --cyber-green: #05ffa1;
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, var(--cyber-blue) 0%, var(--cyber-purple) 100%);
+  --gradient-secondary: linear-gradient(135deg, var(--cyber-pink) 0%, var(--cyber-purple) 100%);
+  --gradient-accent: linear-gradient(135deg, var(--cyber-yellow) 0%, var(--cyber-pink) 100%);
+  --gradient-success: linear-gradient(135deg, var(--cyber-green) 0%, var(--cyber-blue) 100%);
+
+  /* Dark Theme Base */
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #141419;
+  --bg-tertiary: #1a1a24;
+  --bg-card: rgba(20, 20, 25, 0.8);
+  --bg-card-hover: rgba(26, 26, 36, 0.9);
+  --bg-overlay: rgba(10, 10, 15, 0.95);
+
+  /* Text Colors */
+  --text-primary: #ffffff;
+  --text-secondary: #b4b4c8;
+  --text-muted: #6b6b7f;
+  --text-inverse: #0a0a0f;
+
+  /* Border & Divider */
+  --border-color: rgba(0, 243, 255, 0.2);
+  --border-hover: rgba(0, 243, 255, 0.4);
+  --divider-color: rgba(255, 255, 255, 0.1);
+
+  /* Effects */
+  --glow-blue: 0 0 20px rgba(0, 243, 255, 0.5);
+  --glow-pink: 0 0 20px rgba(255, 42, 109, 0.5);
+  --glow-purple: 0 0 20px rgba(217, 70, 239, 0.5);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.6);
+
+  /* UI Elements */
+  --input-bg: rgba(20, 20, 25, 0.9);
+  --input-border: rgba(0, 243, 255, 0.3);
+  --input-focus: rgba(0, 243, 255, 0.6);
+  --button-bg: var(--cyber-blue);
+  --button-bg-hover: var(--cyber-purple);
+  --button-text: #0a0a0f;
+
+  /* Status Colors */
+  --success: var(--cyber-green);
+  --warning: var(--cyber-yellow);
+  --error: var(--cyber-pink);
+  --info: var(--cyber-blue);
+
+  /* Aurora Effect */
+  --aurora-1: rgba(0, 243, 255, 0.1);
+  --aurora-2: rgba(217, 70, 239, 0.1);
+  --aurora-3: rgba(255, 42, 109, 0.1);
+}
+
+/* ========================================
+   LIGHT THEME (Cyberpunk Light)
+   ======================================== */
+
+[data-theme="light"] {
+  /* Cyberpunk Color Palette (Adjusted for light) */
+  --cyber-blue: #0077ff;
+  --cyber-pink: #e91e63;
+  --cyber-purple: #9c27b0;
+  --cyber-yellow: #f59e0b;
+  --cyber-green: #10b981;
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, var(--cyber-blue) 0%, var(--cyber-purple) 100%);
+  --gradient-secondary: linear-gradient(135deg, var(--cyber-pink) 0%, var(--cyber-purple) 100%);
+  --gradient-accent: linear-gradient(135deg, var(--cyber-yellow) 0%, var(--cyber-pink) 100%);
+  --gradient-success: linear-gradient(135deg, var(--cyber-green) 0%, var(--cyber-blue) 100%);
+
+  /* Light Theme Base */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f5f7;
+  --bg-tertiary: #e8e8ed;
+  --bg-card: rgba(255, 255, 255, 0.9);
+  --bg-card-hover: rgba(248, 248, 250, 0.95);
+  --bg-overlay: rgba(255, 255, 255, 0.95);
+
+  /* Text Colors */
+  --text-primary: #1a1a1f;
+  --text-secondary: #4a4a5e;
+  --text-muted: #8a8a9e;
+  --text-inverse: #ffffff;
+
+  /* Border & Divider */
+  --border-color: rgba(0, 119, 255, 0.2);
+  --border-hover: rgba(0, 119, 255, 0.4);
+  --divider-color: rgba(26, 26, 31, 0.1);
+
+  /* Effects (Softer for light mode) */
+  --glow-blue: 0 0 15px rgba(0, 119, 255, 0.2);
+  --glow-pink: 0 0 15px rgba(233, 30, 99, 0.2);
+  --glow-purple: 0 0 15px rgba(156, 39, 176, 0.2);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.16);
+
+  /* UI Elements */
+  --input-bg: rgba(255, 255, 255, 0.9);
+  --input-border: rgba(0, 119, 255, 0.2);
+  --input-focus: rgba(0, 119, 255, 0.5);
+  --button-bg: var(--cyber-blue);
+  --button-bg-hover: var(--cyber-purple);
+  --button-text: #ffffff;
+
+  /* Status Colors */
+  --success: var(--cyber-green);
+  --warning: var(--cyber-yellow);
+  --error: var(--cyber-pink);
+  --info: var(--cyber-blue);
+
+  /* Aurora Effect (Subtle for light mode) */
+  --aurora-1: rgba(0, 119, 255, 0.03);
+  --aurora-2: rgba(156, 39, 176, 0.03);
+  --aurora-3: rgba(233, 30, 99, 0.03);
+}
+
+/* ========================================
+   THEME-SPECIFIC ADJUSTMENTS
+   ======================================== */
+
+/* Light mode specific overrides */
+[data-theme="light"] .aurora-bg {
+  opacity: 0.3; /* Reduce aurora effect in light mode */
+}
+
+[data-theme="light"] .grid-overlay {
+  opacity: 0.15; /* Subtle grid in light mode */
+  background-image: linear-gradient(var(--border-color) 1px, transparent 1px),
+                    linear-gradient(90deg, var(--border-color) 1px, transparent 1px);
+}
+
+/* Ensure text remains readable in both themes */
+[data-theme="light"] .text-gradient {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Button adjustments for light mode */
+[data-theme="light"] .btn-primary {
+  color: var(--button-text);
+  box-shadow: var(--shadow-sm);
+}
+
+[data-theme="light"] .btn-secondary {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 2px solid var(--border-color);
+}
+
+/* Card adjustments */
+[data-theme="light"] .card,
+[data-theme="light"] .feature-card {
+  background: var(--bg-card);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-color);
+}
+
+/* Input adjustments */
+[data-theme="light"] input,
+[data-theme="light"] textarea,
+[data-theme="light"] select {
+  background: var(--input-bg);
+  color: var(--text-primary);
+  border-color: var(--input-border);
+}
+
+/* ========================================
+   THEME TRANSITION
+   ======================================== */
+
+/* Smooth transitions when switching themes */
+html,
+body,
+.card,
+.btn,
+input,
+textarea,
+select {
+  transition: background-color 0.3s ease,
+              color 0.3s ease,
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
+/* Prevent transition on page load */
+html.no-transition,
+html.no-transition *,
+html.no-transition *:before,
+html.no-transition *:after {
+  transition: none !important;
+}
+
+/* ========================================
+   THEME TOGGLE BUTTON
+   ======================================== */
+
+.theme-toggle {
+  position: relative;
+  width: 60px;
+  height: 32px;
+  background: var(--bg-tertiary);
+  border-radius: 16px;
+  border: 2px solid var(--border-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  padding: 0 4px;
+}
+
+.theme-toggle:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--glow-blue);
+}
+
+.theme-toggle-slider {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  background: var(--gradient-primary);
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+}
+
+[data-theme="light"] .theme-toggle-slider {
+  transform: translateX(28px);
+  background: var(--gradient-accent);
+}
+
+.theme-toggle-icon {
+  width: 14px;
+  height: 14px;
+  color: var(--bg-primary);
+}
+
+/* Icons for theme toggle */
+.theme-toggle .icon-moon,
+.theme-toggle .icon-sun {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  transition: opacity 0.3s ease;
+}
+
+.theme-toggle .icon-moon {
+  left: 8px;
+  opacity: 1;
+}
+
+.theme-toggle .icon-sun {
+  right: 8px;
+  opacity: 0.5;
+}
+
+[data-theme="light"] .theme-toggle .icon-moon {
+  opacity: 0.5;
+}
+
+[data-theme="light"] .theme-toggle .icon-sun {
+  opacity: 1;
+}
+
+/* ========================================
+   ACCESSIBILITY
+   ======================================== */
+
+/* Ensure WCAG AA contrast ratios */
+@media (prefers-contrast: high) {
+  :root {
+    --text-secondary: #d4d4d8;
+    --border-color: rgba(0, 243, 255, 0.4);
+  }
+
+  [data-theme="light"] {
+    --text-secondary: #3a3a4e;
+    --border-color: rgba(0, 119, 255, 0.3);
+  }
+}
+
+/* Respect user's color scheme preference */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    /* Default to dark if no explicit theme set */
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    /* Optional: Could default to light if system prefers light */
+    /* For now, keeping dark as default for cyberpunk aesthetic */
+  }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  html,
+  body,
+  .card,
+  .btn,
+  .theme-toggle,
+  .theme-toggle-slider {
+    transition: none !important;
+  }
+
+  .aurora-bg {
+    animation: none !important;
+  }
+}
+
+/* ========================================
+   PRINT STYLES
+   ======================================== */
+
+@media print {
+  :root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #ffffff;
+    --text-primary: #000000;
+    --text-secondary: #333333;
+  }
+
+  .theme-toggle,
+  .aurora-bg,
+  .grid-overlay {
+    display: none !important;
+  }
+}
