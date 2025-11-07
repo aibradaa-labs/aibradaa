@@ -13,6 +13,11 @@ import {
 import { getUserFromEvent } from './utils/auth.mjs';
 import { applyRateLimit } from './utils/rateLimiter.mjs';
 import { GoogleGenerativeAI } from '@google/generative-ai';
+import {
+  identifyLaptopFromAnalysis,
+  findSimilarLaptops,
+  findBetterAlternatives
+} from './utils/laptopDb.mjs';
 
 // Initialize Gemini AI
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
@@ -112,14 +117,14 @@ Respond in JSON format:
     throw error;
   }
 
-  // Search database for matching laptop
-  const identified = await searchLaptopDatabase(analysisResult);
+  // Search database for matching laptop using real database
+  const identified = identifyLaptopFromAnalysis(analysisResult);
 
-  // Find similar laptops
-  const similar = identified ? await findSimilarLaptops(identified, 3) : [];
+  // Find similar laptops using real database
+  const similar = identified ? findSimilarLaptops(identified.id, 3) : [];
 
-  // Find better alternatives
-  const alternatives = identified ? await findBetterAlternatives(identified, 3) : [];
+  // Find better alternatives using real database
+  const alternatives = identified ? findBetterAlternatives(identified.id, 3) : [];
 
   const latency = Date.now() - startTime;
 
@@ -159,96 +164,7 @@ function getCapabilities() {
   };
 }
 
-/**
- * Helper: Search laptop database for matching model
- */
-async function searchLaptopDatabase(analysis) {
-  // In production, this would query a real database
-  // For now, return mock data based on brand
-
-  if (analysis.confidence === 'high' && analysis.model) {
-    // Mock database search (replace with actual DB query)
-    return {
-      id: 'laptop-' + Date.now(),
-      brand: analysis.brand,
-      model: analysis.model,
-      price_MYR: 5499, // Mock price
-      score_composite: 85,
-      description: 'Identified from your image',
-      image: null,
-      specs: {
-        cpu: analysis.estimatedSpecs?.processor || 'Intel Core i7',
-        ram: { gb: 16 },
-        storage: { gb: 512 },
-        display: analysis.estimatedSpecs?.screenSize || '15.6" FHD'
-      }
-    };
-  }
-
-  return null;
-}
-
-/**
- * Helper: Find similar laptops
- */
-async function findSimilarLaptops(laptop, limit = 3) {
-  // In production, find laptops with:
-  // - Same brand
-  // - Similar price range (±20%)
-  // - Similar screen size
-
-  // Mock similar laptops
-  return [
-    {
-      id: 'similar-1',
-      brand: laptop.brand,
-      model: laptop.model + ' (Alternative Config)',
-      price_MYR: Math.round(laptop.price_MYR * 0.9),
-      score_composite: laptop.score_composite - 5,
-      image: null
-    },
-    {
-      id: 'similar-2',
-      brand: laptop.brand,
-      model: laptop.model + ' Pro',
-      price_MYR: Math.round(laptop.price_MYR * 1.1),
-      score_composite: laptop.score_composite + 5,
-      image: null
-    }
-  ];
-}
-
-/**
- * Helper: Find better value alternatives
- */
-async function findBetterAlternatives(laptop, limit = 3) {
-  // In production, find laptops with:
-  // - Similar or lower price
-  // - Higher composite score
-  // - Different brand (for comparison)
-
-  // Mock alternatives
-  return [
-    {
-      id: 'alt-1',
-      brand: 'Lenovo',
-      model: 'ThinkBook 15',
-      price_MYR: Math.round(laptop.price_MYR * 0.95),
-      score_composite: laptop.score_composite + 8,
-      image: null,
-      reason: 'Better performance per ringgit'
-    },
-    {
-      id: 'alt-2',
-      brand: 'ASUS',
-      model: 'VivoBook Pro',
-      price_MYR: Math.round(laptop.price_MYR * 1.05),
-      score_composite: laptop.score_composite + 10,
-      image: null,
-      reason: 'Higher specs at similar price'
-    }
-  ];
-}
+// Mock helper functions removed - now using real database from laptopDb.mjs
 
 /**
  * Main handler
