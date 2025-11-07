@@ -11,11 +11,48 @@
   to = "/.netlify/functions/:splat"
   status = 200
 
-# SPA fallback - redirect all routes to app.html
+# Specific app routes go to app.html (SPA behavior for the app)
 [[redirects]]
-  from = "/*"
+  from = "/app"
   to = "/app.html"
   status = 200
+
+[[redirects]]
+  from = "/matchmaker"
+  to = "/app.html"
+  status = 200
+
+[[redirects]]
+  from = "/versus"
+  to = "/app.html"
+  status = 200
+
+[[redirects]]
+  from = "/explorer"
+  to = "/app.html"
+  status = 200
+
+[[redirects]]
+  from = "/command"
+  to = "/app.html"
+  status = 200
+
+[[redirects]]
+  from = "/intel"
+  to = "/app.html"
+  status = 200
+
+[[redirects]]
+  from = "/appendices"
+  to = "/app.html"
+  status = 200
+
+[[redirects]]
+  from = "/camera-tech"
+  to = "/app.html"
+  status = 200
+
+# Root serves the landing page (index.html) - NO REDIRECT
 
 [[headers]]
   for = "/*"
