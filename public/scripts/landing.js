@@ -234,9 +234,19 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-// Prevent FOUC (Flash of Unstyled Content)
+// Prevent FOUC (Flash of Unstyled Content) with timeout fallback
 document.documentElement.style.opacity = '0';
-window.addEventListener('load', () => {
-  document.documentElement.style.transition = 'opacity 0.3s ease';
-  document.documentElement.style.opacity = '1';
-});
+
+// Show page when loaded OR after 2 second timeout (whichever comes first)
+let pageShown = false;
+const showPage = () => {
+  if (!pageShown) {
+    pageShown = true;
+    document.documentElement.style.transition = 'opacity 0.3s ease';
+    document.documentElement.style.opacity = '1';
+  }
+};
+
+window.addEventListener('load', showPage);
+// Fallback: force show after 2 seconds even if load event doesn't fire
+setTimeout(showPage, 2000);

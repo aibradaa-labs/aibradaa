@@ -195,54 +195,87 @@
 
     // Initialize app
     async function initApp() {
-      // Initialize storage
-      await storage.init();
+      try {
+        // Initialize storage with timeout fallback
+        const initTimeout = new Promise((_, reject) =>
+          setTimeout(() => reject(new Error('Storage init timeout')), 3000)
+        );
 
-      // Check auth
-      const token = storage.getToken();
-      let user = null;
-
-      if (token) {
-        // Load user data if authenticated
         try {
-          const response = await apiClient.get('/api/auth/me');
-          user = response.data.user;
-
-          // Update UI
-          document.getElementById('userName').textContent = user.name || user.email;
-          document.getElementById('userTier').textContent = `${user.tier.charAt(0).toUpperCase() + user.tier.slice(1)} Tier`;
-
-          if (user.avatar) {
-            document.getElementById('userAvatar').src = user.avatar;
-          }
-        } catch (error) {
-          console.error('Failed to load user:', error);
+          await Promise.race([storage.init(), initTimeout]);
+        } catch (initError) {
+          console.warn('Storage initialization failed, continuing in demo mode:', initError);
         }
-      } else {
-        // Demo mode - show guest access
-        document.getElementById('userName').textContent = 'Demo Mode';
-        document.getElementById('userTier').textContent = 'Free Tier (Guest)';
 
-        // Add signup prompt
-        const userInfo = document.querySelector('.user-info');
-        const signupPrompt = document.createElement('div');
-        signupPrompt.className = 'signup-prompt';
-        signupPrompt.innerHTML = '<a href="/signup.html" class="btn-signup-small">Sign Up to Save</a>';
-        signupPrompt.style.marginTop = '8px';
-        userInfo.appendChild(signupPrompt);
+        // Check auth
+        let token = null;
+        try {
+          token = await storage.getToken();
+        } catch (e) {
+          console.warn('Failed to get token, continuing in demo mode:', e);
+        }
+
+        let user = null;
+
+        if (token) {
+          // Load user data if authenticated
+          try {
+            const response = await apiClient.get('/api/auth/me');
+            user = response.data.user;
+
+            // Update UI
+            document.getElementById('userName').textContent = user.name || user.email;
+            document.getElementById('userTier').textContent = `${user.tier.charAt(0).toUpperCase() + user.tier.slice(1)} Tier`;
+
+            if (user.avatar) {
+              document.getElementById('userAvatar').src = user.avatar;
+            }
+          } catch (error) {
+            console.error('Failed to load user, continuing in demo mode:', error);
+          }
+        }
+
+        if (!token || !user) {
+          // Demo mode - show guest access
+          document.getElementById('userName').textContent = 'Demo Mode';
+          document.getElementById('userTier').textContent = 'Free Tier (Guest)';
+
+          // Add signup prompt
+          const userInfo = document.querySelector('.user-info');
+          if (userInfo && !userInfo.querySelector('.signup-prompt')) {
+            const signupPrompt = document.createElement('div');
+            signupPrompt.className = 'signup-prompt';
+            signupPrompt.innerHTML = '<a href="/signup.html" class="btn-signup-small">Sign Up to Save</a>';
+            signupPrompt.style.marginTop = '8px';
+            userInfo.appendChild(signupPrompt);
+          }
+        }
+
+        // Setup navigation
+        setupNavigation();
+
+        // Setup menu toggle
+        setupMenuToggle();
+
+        // Setup user menu
+        setupUserMenu();
+
+      } catch (error) {
+        console.error('App initialization failed:', error);
+        // Show error message to user
+        const loadingText = document.querySelector('.loading-text');
+        if (loadingText) {
+          loadingText.textContent = 'Failed to initialize app. Continuing in demo mode...';
+        }
+      } finally {
+        // ALWAYS hide loading overlay, even if errors occurred
+        setTimeout(() => {
+          const loadingOverlay = document.getElementById('loadingOverlay');
+          if (loadingOverlay) {
+            loadingOverlay.classList.add('hidden');
+          }
+        }, 500);
       }
-
-      // Setup navigation
-      setupNavigation();
-
-      // Setup menu toggle
-      setupMenuToggle();
-
-      // Setup user menu
-      setupUserMenu();
-
-      // Hide loading overlay
-      document.getElementById('loadingOverlay').classList.add('hidden');
     }
 
     // Navigation
