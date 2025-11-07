@@ -200,26 +200,36 @@
 
       // Check auth
       const token = storage.getToken();
-      if (!token) {
-        // Redirect to signup if not authenticated
-        window.location.href = '/signup.html';
-        return;
-      }
+      let user = null;
 
-      // Load user data
-      try {
-        const response = await apiClient.get('/api/auth/me');
-        const user = response.data.user;
+      if (token) {
+        // Load user data if authenticated
+        try {
+          const response = await apiClient.get('/api/auth/me');
+          user = response.data.user;
 
-        // Update UI
-        document.getElementById('userName').textContent = user.name || user.email;
-        document.getElementById('userTier').textContent = `${user.tier.charAt(0).toUpperCase() + user.tier.slice(1)} Tier`;
+          // Update UI
+          document.getElementById('userName').textContent = user.name || user.email;
+          document.getElementById('userTier').textContent = `${user.tier.charAt(0).toUpperCase() + user.tier.slice(1)} Tier`;
 
-        if (user.avatar) {
-          document.getElementById('userAvatar').src = user.avatar;
+          if (user.avatar) {
+            document.getElementById('userAvatar').src = user.avatar;
+          }
+        } catch (error) {
+          console.error('Failed to load user:', error);
         }
-      } catch (error) {
-        console.error('Failed to load user:', error);
+      } else {
+        // Demo mode - show guest access
+        document.getElementById('userName').textContent = 'Demo Mode';
+        document.getElementById('userTier').textContent = 'Free Tier (Guest)';
+
+        // Add signup prompt
+        const userInfo = document.querySelector('.user-info');
+        const signupPrompt = document.createElement('div');
+        signupPrompt.className = 'signup-prompt';
+        signupPrompt.innerHTML = '<a href="/signup.html" class="btn-signup-small">Sign Up to Save</a>';
+        signupPrompt.style.marginTop = '8px';
+        userInfo.appendChild(signupPrompt);
       }
 
       // Setup navigation
