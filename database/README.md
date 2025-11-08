@@ -116,13 +116,13 @@ You should see 7 tables created.
 
 ## Usage Quotas (Buffett Requirement)
 
-**Financial Red Lines Enforced:**
+**Financial Red Lines Enforced (MYR PRICING - Nov 2025):**
 
-| Tier | Tokens/Month | Requests/Month | Cost Ceiling |
-|------|--------------|----------------|--------------|
-| **Free** | 50,000 | 100 | $2.00 |
-| **Pro** | 500,000 | 1,000 | $10.00 |
-| **Ultimate** | 5,000,000 | 10,000 | $50.00 |
+| Tier | Price | Tokens/Month | Requests/Month | Cost Ceiling |
+|------|-------|--------------|----------------|--------------|
+| **Free** | RM0 | 30,000 | 50 | RM8 (~$1.80) |
+| **Pro** | RM30/mo | 400,000 | 800 | RM40 (~$9.00) |
+| **Ultimate** | RM80/mo | 3,000,000 | 5,000 | RM200 (~$45.00) |
 
 Quotas automatically:
 - Reset on 1st of each month
