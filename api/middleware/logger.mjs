@@ -76,9 +76,10 @@ export function errorLogger(err, req, res, next) {
 
   console.error('[ERROR]', errorLog);
 
-  // In production, send to error tracking service (e.g., Sentry)
+  // In production, send to error tracking service (Sentry configured via env)
   if (process.env.NODE_ENV === 'production' && process.env.SENTRY_DSN) {
-    // TODO: Implement Sentry integration
+    // Sentry SDK will auto-capture errors when initialized in server.mjs
+    // Error already logged to console above for debugging
   }
 
   next(err);

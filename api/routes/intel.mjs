@@ -144,7 +144,7 @@ function generateMockFeed(limit, offset, category) {
       category: itemCategory,
       title: `${itemCategory === 'news' ? 'Breaking' : 'Hot'}: Sample Intel Item ${i}`,
       description: 'This is a sample Intel feed item for testing.',
-      url: `https://example.com/intel/${i}`,
+      url: `${process.env.APP_URL || 'https://www.aibradaa.com'}/intel/${i}`,
       source: ['TechNave', 'SoyaCincau', 'Lowyat'][i % 3],
       timestamp: new Date(Date.now() - i * 3600000).toISOString(),
       metadata: {
