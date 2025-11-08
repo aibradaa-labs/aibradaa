@@ -17,7 +17,10 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "etl": "node tools/etl/laptops-ingest.mjs",
-    "serve": "node tools/dev-static/server.mjs"
+    "serve": "node tools/dev-static/server.mjs",
+    "db:migrate": "node database/migrate.mjs up",
+    "db:rollback": "node database/migrate.mjs down",
+    "db:reset": "node database/migrate.mjs reset"
   },
   "keywords": [
     "laptop",
@@ -48,6 +51,7 @@
     "nodemailer": "^6.9.16",
     "passport": "^0.7.0",
     "passport-local": "^1.0.0",
+    "pg": "^8.13.1",
     "qrcode": "^1.5.4",
     "speakeasy": "^2.0.0",
     "winston": "^3.17.0"
