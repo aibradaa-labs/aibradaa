@@ -133,10 +133,10 @@ CREATE TABLE usage_quotas (
     period_start TIMESTAMP WITH TIME ZONE NOT NULL,
     period_end TIMESTAMP WITH TIME ZONE NOT NULL,
 
-    -- Limits based on tier
-    -- Free: 50,000 tokens/month
-    -- Pro: 500,000 tokens/month
-    -- Ultimate: 5,000,000 tokens/month
+    -- Limits based on tier (MYR PRICING - Nov 2025)
+    -- Free (RM0): 30,000 tokens/month
+    -- Pro (RM30): 400,000 tokens/month
+    -- Ultimate (RM80): 3,000,000 tokens/month
     tokens_limit INTEGER NOT NULL,
     tokens_used INTEGER DEFAULT 0 NOT NULL,
 
@@ -144,8 +144,8 @@ CREATE TABLE usage_quotas (
     requests_limit INTEGER NOT NULL,
     requests_used INTEGER DEFAULT 0 NOT NULL,
 
-    -- Cost tracking
-    cost_limit_cents INTEGER NOT NULL, -- Free: 200 cents ($2), Pro: 1000 ($10), Ultimate: 5000 ($50)
+    -- Cost tracking (MYR cents: 1 MYR = 100 sen)
+    cost_limit_cents INTEGER NOT NULL, -- Free: 800 sen (RM8), Pro: 4000 sen (RM40), Ultimate: 20000 sen (RM200)
     cost_used_cents INTEGER DEFAULT 0 NOT NULL,
 
     -- Timestamps
@@ -322,20 +322,20 @@ DECLARE
     v_period_start TIMESTAMP WITH TIME ZONE;
     v_period_end TIMESTAMP WITH TIME ZONE;
 BEGIN
-    -- Set limits based on tier
+    -- Set limits based on tier (MYR PRICING - Nov 2025)
     CASE p_tier
         WHEN 'free' THEN
-            v_tokens_limit := 50000;
-            v_requests_limit := 100;
-            v_cost_limit_cents := 200; -- $2
+            v_tokens_limit := 30000;        -- 30k tokens/month
+            v_requests_limit := 50;         -- 50 requests/month (anti-abuse)
+            v_cost_limit_cents := 800;      -- RM8 (~$1.80 USD)
         WHEN 'pro' THEN
-            v_tokens_limit := 500000;
-            v_requests_limit := 1000;
-            v_cost_limit_cents := 1000; -- $10
+            v_tokens_limit := 400000;       -- 400k tokens/month
+            v_requests_limit := 800;        -- 800 requests/month
+            v_cost_limit_cents := 4000;     -- RM40 (~$9.00 USD)
         WHEN 'ultimate' THEN
-            v_tokens_limit := 5000000;
-            v_requests_limit := 10000;
-            v_cost_limit_cents := 5000; -- $50
+            v_tokens_limit := 3000000;      -- 3M tokens/month
+            v_requests_limit := 5000;       -- 5k requests/month
+            v_cost_limit_cents := 20000;    -- RM200 (~$45.00 USD)
     END CASE;
 
     -- Calculate period
@@ -408,4 +408,4 @@ COMMENT ON TABLE audit_log IS 'Security audit trail for all sensitive operations
 COMMENT ON COLUMN users.password_hash IS 'bcrypt hash, NULL for OAuth-only users';
 COMMENT ON COLUMN users.google_id IS 'Google OAuth subject identifier';
 COMMENT ON COLUMN users.data_retention_days IS 'PDPA: Auto-delete user data after N days of inactivity';
-COMMENT ON COLUMN usage_quotas.cost_limit_cents IS 'Financial red line: max spend per user per month (Free: $2, Pro: $10, Ultimate: $50)';
+COMMENT ON COLUMN usage_quotas.cost_limit_cents IS 'Financial red line: max spend per user per month in MYR sen (Free: RM8, Pro: RM40, Ultimate: RM200)';
