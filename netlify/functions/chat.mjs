@@ -4,7 +4,6 @@
  * Routes: POST /, POST /stream
  */
 
-import { GoogleGenerativeAI } from '@google/generative-ai';
 import {
   successResponse,
   errorResponse,
@@ -14,34 +13,51 @@ import {
 } from './utils/response.mjs';
 import { getUserFromEvent } from './utils/auth.mjs';
 import { applyRateLimit } from './utils/rateLimiter.mjs';
+import { getGeminiClient } from './utils/gemini.mjs';
+import { enforceQuota } from './utils/quota.mjs';
+import {
+  detectEmotion,
+  emotionalizeResponse,
+} from '../../ai_pod/personas/catchphrases.mjs';
 
-// Initialize Gemini AI
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || '');
+// Initialize Gemini client
+const gemini = getGeminiClient(process.env.GEMINI_API_KEY);
 
 /**
- * Chat with Gemini
+ * Chat with Gemini + AI Bradaa personality
  */
 async function chatWithGemini({ message, context, userId }) {
-  const model = genAI.getGenerativeModel({
-    model: process.env.GEMINI_MODEL || 'gemini-2.0-flash-exp'
-  });
-
   // Build conversation history from context
   const history = (context || []).map(msg => ({
     role: msg.role === 'assistant' ? 'model' : 'user',
     parts: [{ text: msg.content }]
   }));
 
-  // Start chat with history
-  const chat = model.startChat({ history });
+  // Generate response with Gemini
+  const result = await gemini.chat(history, message, {
+    model: process.env.GEMINI_MODEL || 'gemini-2.0-flash-exp',
+  });
 
-  // Send message
-  const result = await chat.sendMessage(message);
-  const response = await result.response;
+  // Detect emotion and add catchphrase
+  const emotionContext = {
+    userMessage: message,
+    conversationHistory: context || [],
+    responseText: result.text,
+  };
+
+  const emotion = detectEmotion(emotionContext);
+  const emotionalizedText = emotionalizeResponse(
+    result.text,
+    emotionContext,
+    'greeting' // Add catchphrase at start of response
+  );
 
   return {
-    message: response.text(),
-    role: 'assistant'
+    message: emotionalizedText,
+    role: 'assistant',
+    emotion: emotion.name,
+    tokens: result.tokens,
+    cost: result.cost,
   };
 }
 
@@ -88,14 +104,42 @@ export async function handler(event, context) {
       // Regular chat
       validateRequired(body, ['message']);
 
+      // Enforce quota BEFORE AI call
+      const quotaCheck = await enforceQuota(user);
+      if (!quotaCheck.allowed) {
+        return quotaCheck.response;
+      }
+
+      // Generate AI response
       const response = await chatWithGemini({
         message: body.message,
         context: body.context || [],
         userId: user?.id
       });
 
+      // Record usage AFTER AI call
+      await quotaCheck.recordUsage(
+        response.tokens.total,
+        response.cost.sen,
+        '/.netlify/functions/chat',
+        {
+          model: process.env.GEMINI_MODEL || 'gemini-2.0-flash-exp',
+          emotion: response.emotion,
+          messageLength: body.message.length,
+        }
+      );
+
       return successResponse({
-        response,
+        response: {
+          message: response.message,
+          role: response.role,
+          emotion: response.emotion,
+        },
+        usage: {
+          tokens: response.tokens,
+          cost: response.cost,
+        },
+        quota: quotaCheck.status.remaining,
         timestamp: new Date().toISOString(),
         userId: user?.id
       });

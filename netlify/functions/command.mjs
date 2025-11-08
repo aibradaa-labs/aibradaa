@@ -4,7 +4,6 @@
  * Routes: POST /, POST /parse
  */
 
-import { GoogleGenerativeAI } from '@google/generative-ai';
 import {
   successResponse,
   errorResponse,
@@ -15,9 +14,15 @@ import {
 import { getUserFromEvent } from './utils/auth.mjs';
 import { applyRateLimit } from './utils/rateLimiter.mjs';
 import { wrapForAI, calculateSavings } from './utils/toon.mjs';
+import { getGeminiClient } from './utils/gemini.mjs';
+import { enforceQuota } from './utils/quota.mjs';
+import {
+  detectEmotion,
+  emotionalizeResponse,
+} from '../../ai_pod/personas/catchphrases.mjs';
 
-// Initialize Gemini AI
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || '');
+// Initialize Gemini client
+const gemini = getGeminiClient(process.env.GEMINI_API_KEY);
 
 /**
  * Get model configuration
@@ -60,7 +65,6 @@ async function processCommand(body, user) {
 
   // Select model based on mode
   const modelName = getModelConfig(mode);
-  const model = genAI.getGenerativeModel({ model: modelName });
 
   // Build prompts
   const systemPrompt = buildSystemPrompt(user?.tier || 'free');
@@ -81,32 +85,38 @@ async function processCommand(body, user) {
     contextString = '';
   }
 
-  const userPrompt = contextString ? `${query}\n\n${contextString}` : query;
+  const fullPrompt = `${systemPrompt}\n\n${contextString ? `${query}\n\n${contextString}` : query}`;
 
-  // Generate response
-  const result = await model.generateContent([
-    { text: systemPrompt },
-    { text: userPrompt }
-  ]);
+  // Generate response with GeminiClient
+  const result = await gemini.generate(fullPrompt, {
+    model: modelName,
+  });
 
-  const response = await result.response;
-  const text = response.text();
+  // Detect emotion and add catchphrase
+  const emotionContext = {
+    userMessage: query,
+    conversationHistory: [],
+    responseText: result.text,
+    hasContext: Object.keys(context).length > 0,
+  };
 
-  // Extract metadata
-  const promptTokenCount = (await model.countTokens([systemPrompt, userPrompt])).totalTokens;
-  const candidates = response.candidates || [];
-  const completionTokens = candidates[0]?.tokenCount || 0;
+  const emotion = detectEmotion(emotionContext);
+  const emotionalizedText = emotionalizeResponse(
+    result.text,
+    emotionContext,
+    'greeting'
+  );
 
   return {
-    response: text,
+    response: emotionalizedText,
+    emotion: emotion.name,
     mode,
     model: modelName,
     tokens: {
-      prompt: promptTokenCount,
-      completion: completionTokens,
-      total: promptTokenCount + completionTokens,
+      ...result.tokens,
       ...(toonSavings ? { toonSavings } : {}), // Include TOON savings if used
     },
+    cost: result.cost,
     meta: {
       timestamp: new Date().toISOString(),
       userId: user?.id,
@@ -193,10 +203,32 @@ export async function handler(event, context) {
 
     if (path === '' || path === '/') {
       // Main command processing
+
+      // Enforce quota BEFORE AI call
+      const quotaCheck = await enforceQuota(user);
+      if (!quotaCheck.allowed) {
+        return quotaCheck.response;
+      }
+
       const result = await processCommand(body, user);
+
+      // Record usage AFTER AI call
+      await quotaCheck.recordUsage(
+        result.tokens.total,
+        result.cost.sen,
+        '/.netlify/functions/command',
+        {
+          model: result.model,
+          mode: result.mode,
+          emotion: result.emotion,
+          queryLength: body.query?.length || 0,
+        }
+      );
+
       return successResponse({
         success: true,
-        data: result
+        data: result,
+        quota: quotaCheck.status.remaining,
       });
     } else if (path === '/parse') {
       // Intent parsing
