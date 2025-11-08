@@ -242,15 +242,10 @@ export class VersusApp {
         this.analytics.comparison(this.selectedLaptops.map(l => l.id));
       }
 
-      // Get AI insights
-      const response = await this.api.request('/api/compare', {
-        method: 'POST',
-        body: JSON.stringify({
-          laptopIds: this.selectedLaptops.map(l => l.id)
-        })
+      // Get AI insights from recommendations/compare endpoint
+      const data = await this.api.post('/recommendations/compare', {
+        laptopIds: this.selectedLaptops.map(l => l.id)
       });
-
-      const data = await response.json();
 
       // Render comparison
       this.renderComparison(data.insights);

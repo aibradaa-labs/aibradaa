@@ -448,12 +448,19 @@ export class MatchmakerApp {
         this.analytics.recommendationRequest(this.answers);
       }
 
-      const response = await this.api.request('/api/recommendations', {
-        method: 'POST',
-        body: JSON.stringify(this.answers)
-      });
+      // Transform answers to match backend API format
+      const requestData = {
+        budget: this.answers.budget,
+        usage: this.answers.usage || [],
+        preferences: {
+          ...(this.answers.portability && { portability: this.answers.portability }),
+          ...(this.answers.screen_size && { screen_size: this.answers.screen_size }),
+          ...(this.answers.preferences && { features: this.answers.preferences }),
+          ...(this.answers.brand && { brands: this.answers.brand }),
+        }
+      };
 
-      const data = await response.json();
+      const data = await this.api.post('/recommendations', requestData);
 
       // Track funnel complete
       this.funnel.complete({ resultCount: data.recommendations.length });
