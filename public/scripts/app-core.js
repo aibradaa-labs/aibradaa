@@ -142,6 +142,9 @@ class AppCore {
       // Setup routing
       this.setupRouting();
 
+      // Initialize Phase 4 integrations
+      await this.initPhase4Integrations();
+
       // Load initial tool from URL
       await this.loadToolFromURL();
 
@@ -153,6 +156,178 @@ class AppCore {
     } catch (error) {
       console.error('[AppCore] Initialization failed:', error);
       this.showError('Application initialization failed. Some features may not work.', true);
+    }
+  }
+
+  /**
+   * Initialize Phase 4 integrations
+   * Phase 4: Data sync, AI integration, catchphrase system
+   */
+  async initPhase4Integrations() {
+    try {
+      console.log('[AppCore] Initializing Phase 4 integrations...');
+
+      // Initialize Data Sync Manager
+      if (window.dataSyncManager) {
+        await window.dataSyncManager.init();
+
+        // Listen for data sync events
+        window.dataSyncManager.addListener(this.handleDataSyncEvent.bind(this));
+
+        console.log('[AppCore] Data Sync Manager initialized');
+      }
+
+      // Initialize Catchphrase Manager (One Piece v4.0)
+      if (window.catchphraseManager) {
+        await window.catchphraseManager.init();
+        console.log('[AppCore] Catchphrase Manager initialized');
+      }
+
+      // Initialize AI Integration (Gemini 2.0 Flash)
+      if (window.aiIntegration) {
+        const userTier = this.state.user?.tier || 'free';
+        await window.aiIntegration.init(userTier);
+        console.log('[AppCore] AI Integration initialized');
+      }
+
+      // Setup manual refresh button handlers
+      this.setupManualRefreshHandlers();
+
+      console.log('[AppCore] Phase 4 integrations complete');
+
+    } catch (error) {
+      console.error('[AppCore] Phase 4 integration failed:', error);
+      // Don't throw - allow app to continue with fallbacks
+    }
+  }
+
+  /**
+   * Setup manual refresh button handlers
+   * Customer Council: User control over data refresh
+   */
+  setupManualRefreshHandlers() {
+    // Find all refresh buttons in the app
+    const refreshButtons = document.querySelectorAll('[data-action="refresh"], .refresh-btn');
+
+    refreshButtons.forEach(button => {
+      button.addEventListener('click', async () => {
+        await this.handleManualRefresh(button);
+      });
+    });
+
+    // Create a global refresh function for inline handlers
+    window.refreshData = async () => {
+      await this.handleManualRefresh();
+    };
+
+    console.log('[AppCore] Manual refresh handlers setup');
+  }
+
+  /**
+   * Handle manual refresh
+   * Customer Council: Clear feedback, loading states
+   */
+  async handleManualRefresh(button = null) {
+    try {
+      console.log('[AppCore] Manual refresh triggered');
+
+      // Show loading state
+      if (button) {
+        button.disabled = true;
+        button.classList.add('loading');
+      }
+
+      this.showToast({
+        message: 'Refreshing data...',
+        type: 'info',
+        duration: 2000
+      });
+
+      // Trigger data sync
+      if (window.dataSyncManager) {
+        await window.dataSyncManager.manualRefresh();
+      }
+
+      // Success feedback handled by data sync event listener
+
+    } catch (error) {
+      console.error('[AppCore] Manual refresh failed:', error);
+
+      this.showToast({
+        message: 'Failed to refresh data. Please try again.',
+        type: 'error',
+        duration: 5000
+      });
+
+    } finally {
+      // Reset button state
+      if (button) {
+        button.disabled = false;
+        button.classList.remove('loading');
+      }
+    }
+  }
+
+  /**
+   * Handle data sync events
+   * Customer Council: Real-time feedback on data operations
+   */
+  handleDataSyncEvent(event) {
+    console.log('[AppCore] Data sync event:', event);
+
+    switch (event.type) {
+      case 'data':
+        // Data updated
+        if (event.source === 'network') {
+          this.showToast({
+            message: `Data refreshed! ${event.data?.length || 0} laptops loaded.`,
+            type: 'success',
+            duration: 3000
+          });
+        }
+        break;
+
+      case 'refresh':
+        // Manual refresh completed
+        if (event.status === 'success') {
+          this.showToast({
+            message: event.message || 'Data refreshed successfully!',
+            type: 'success',
+            duration: 3000
+          });
+        } else if (event.status === 'error') {
+          this.showToast({
+            message: event.message || 'Failed to refresh data.',
+            type: 'error',
+            duration: 5000
+          });
+        }
+        break;
+
+      case 'sync':
+        // Sync status change
+        if (event.status === 'start') {
+          // Could show a sync indicator
+          console.log('[AppCore] Sync started');
+        } else if (event.status === 'end') {
+          console.log('[AppCore] Sync ended');
+        }
+        break;
+
+      case 'network':
+        // Network status change (already handled by networkMonitor)
+        break;
+
+      case 'cache':
+        // Cache operations
+        if (event.status === 'cleared') {
+          this.showToast({
+            message: 'Cache cleared successfully',
+            type: 'success',
+            duration: 3000
+          });
+        }
+        break;
     }
   }
 

@@ -412,6 +412,7 @@ export class Command {
 
   /**
    * Show daily "Yo nakama!" greeting (One Piece v4.0)
+   * Phase 4: Wire with Catchphrase Manager
    */
   async showDailyGreeting() {
     const today = new Date().toDateString();
@@ -419,19 +420,34 @@ export class Command {
 
     if (lastGreeting !== today) {
       // Add greeting to conversation
-      setTimeout(() => {
-        const greetings = [
-          'Yo nakama! Ready to find your dream laptop today?',
-          'Wah! Welcome back! Let\'s hunt for the perfect laptop lah!',
-          'Oi oi! What laptop are you looking for today, bradaa?',
-          'Yo! Ready for some laptop matchmaking, bro?'
-        ];
+      setTimeout(async () => {
+        let greeting;
 
-        const randomGreeting = greetings[Math.floor(Math.random() * greetings.length)];
+        // Phase 4: Try to get from Catchphrase Manager
+        if (window.catchphraseManager && window.catchphraseManager.state.isInitialized) {
+          try {
+            greeting = await window.catchphraseManager.loadDailyGreeting();
+            console.log('[Command] Daily greeting from Catchphrase Manager');
+          } catch (error) {
+            console.warn('[Command] Catchphrase Manager failed, using fallback');
+            greeting = null;
+          }
+        }
+
+        // Fallback to hardcoded greetings
+        if (!greeting) {
+          const greetings = [
+            'Yo nakama! Ready to find your dream laptop today?',
+            'Wah! Welcome back! Let\'s hunt for the perfect laptop lah!',
+            'Oi oi! What laptop are you looking for today, bradaa?',
+            'Yo! Ready for some laptop matchmaking, bro?'
+          ];
+          greeting = greetings[Math.floor(Math.random() * greetings.length)];
+        }
 
         this.conversationHistory.push({
           role: 'assistant',
-          content: randomGreeting,
+          content: greeting,
           timestamp: Date.now()
         });
 
@@ -510,24 +526,68 @@ export class Command {
     if (this.sendBtn) this.sendBtn.disabled = true;
 
     try {
-      // Call AI API
-      const response = await apiClient.executeCommand(message, {
-        conversationHistory: this.conversationHistory.slice(-5), // Last 5 messages for context
-        mode: this.currentMode,
-        tier: this.userTier
-      });
+      // Phase 4: Use AI Integration (Gemini 2.0 Flash)
+      let response;
 
-      // Remove typing indicator
-      this.removeTypingIndicator();
+      if (window.aiIntegration && window.aiIntegration.state) {
+        console.log('[Command] Using AI Integration (Gemini 2.0 Flash)');
 
-      // Add assistant response
-      const assistantMessage = {
-        role: 'assistant',
-        content: response.data.response,
-        metadata: response.data.metadata,
-        timestamp: Date.now()
-      };
-      this.conversationHistory.push(assistantMessage);
+        // Get laptop data context from Data Sync Manager
+        let laptopContext = {};
+        if (window.dataSyncManager && window.dataSyncManager.state.laptopCache) {
+          laptopContext = {
+            totalLaptops: window.dataSyncManager.state.laptopCache.length,
+            lastUpdate: window.dataSyncManager.getLastSyncTime()
+          };
+        }
+
+        // Call Gemini via AI Integration
+        response = await window.aiIntegration.chat(message, {
+          mode: this.currentMode,
+          context: laptopContext,
+          toolId: 'command'
+        });
+
+        // Remove typing indicator
+        this.removeTypingIndicator();
+
+        // Add assistant response with emotion
+        const assistantMessage = {
+          role: 'assistant',
+          content: response.response,
+          emotion: response.emotion,
+          metadata: {
+            model: response.model,
+            tokens: response.tokens?.total || 0,
+            cost: response.cost?.total || 0,
+            emotion: response.emotion
+          },
+          timestamp: Date.now()
+        };
+        this.conversationHistory.push(assistantMessage);
+
+      } else {
+        // Fallback to legacy API client
+        console.log('[Command] Fallback to API client');
+
+        response = await apiClient.executeCommand(message, {
+          conversationHistory: this.conversationHistory.slice(-5), // Last 5 messages for context
+          mode: this.currentMode,
+          tier: this.userTier
+        });
+
+        // Remove typing indicator
+        this.removeTypingIndicator();
+
+        // Add assistant response
+        const assistantMessage = {
+          role: 'assistant',
+          content: response.data.response,
+          metadata: response.data.metadata,
+          timestamp: Date.now()
+        };
+        this.conversationHistory.push(assistantMessage);
+      }
 
       // Save to cache
       await this.saveToCache();
@@ -540,7 +600,11 @@ export class Command {
 
       let errorMessage = 'Wah, sorry bro! Something went wrong lah. Please try again.';
 
-      if (error.status === 429) {
+      if (error.message && error.message.includes('Rate limit')) {
+        errorMessage = `⚠️ ${error.message} Please wait a moment before trying again.`;
+      } else if (error.message && error.message.includes('quota exceeded')) {
+        errorMessage = '⚠️ You\'ve hit your quota limit. Upgrade to PRO for more requests!';
+      } else if (error.status === 429) {
         errorMessage = '⚠️ You\'ve hit your quota limit for this month. Upgrade to Ultimate for unlimited queries!';
       } else if (error.status === 401) {
         errorMessage = '⚠️ Session expired. Please refresh and log in again.';

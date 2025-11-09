@@ -470,7 +470,7 @@ export class Versus {
     });
   }
 
-  renderComparison() {
+  async renderComparison() {
     // Show comparison view
     this.comparisonView.style.display = 'block';
 
@@ -481,6 +481,9 @@ export class Versus {
     this.renderRadarChart();
     this.renderSpecsTable();
     this.renderProsConsGrid();
+
+    // Phase 4: Render AI Insights
+    await this.renderAIInsights();
   }
 
   renderRadarChart() {
@@ -797,6 +800,172 @@ export class Versus {
           </div>
         </div>
       </div>
+    `;
+  }
+
+  /**
+   * Render AI-powered insights (Phase 4: Gemini AI Integration)
+   * AI POD Council: Intelligent analysis with emotional context
+   */
+  async renderAIInsights() {
+    // Find or create AI insights container
+    let aiInsightsContainer = document.getElementById('aiInsights');
+
+    if (!aiInsightsContainer) {
+      // Create container after pros/cons grid
+      aiInsightsContainer = document.createElement('div');
+      aiInsightsContainer.id = 'aiInsights';
+      aiInsightsContainer.className = 'versus-ai-insights';
+
+      // Insert after prosConsGrid
+      if (this.prosConsGrid && this.prosConsGrid.parentNode) {
+        this.prosConsGrid.parentNode.insertBefore(aiInsightsContainer, this.prosConsGrid.nextSibling);
+      } else {
+        this.comparisonView.appendChild(aiInsightsContainer);
+      }
+    }
+
+    // Show loading state
+    aiInsightsContainer.innerHTML = `
+      <h3>🤖 AI-Powered Insights</h3>
+      <div class="versus-ai-loading">
+        <div class="loading-spinner"></div>
+        <p>Analyzing laptops with Gemini AI...</p>
+      </div>
+    `;
+
+    try {
+      // Phase 4: Get insights from AI Integration
+      const laptop1 = this.selectedLaptops[0];
+      const laptop2 = this.selectedLaptops[1];
+
+      if (window.aiIntegration && window.aiIntegration.state) {
+        console.log('[Versus] Fetching AI insights...');
+
+        const insights = await window.aiIntegration.getComparisonInsights(laptop1, laptop2);
+
+        // Display insights
+        aiInsightsContainer.innerHTML = `
+          <h3>🤖 AI-Powered Insights</h3>
+          <div class="versus-ai-content">
+            <div class="ai-insights-text">
+              ${this.formatAIInsights(insights.insights)}
+            </div>
+            ${insights.recommendation ? `
+              <div class="ai-recommendation">
+                <h4>💡 Recommendation</h4>
+                <p>${insights.recommendation}</p>
+              </div>
+            ` : ''}
+            <div class="ai-metadata">
+              <span class="ai-badge">Powered by Gemini 2.0 Flash</span>
+              ${insights.rawResponse?.tokens ? `<span class="ai-badge">Tokens: ${insights.rawResponse.tokens.total}</span>` : ''}
+            </div>
+          </div>
+        `;
+
+        console.log('[Versus] AI insights rendered successfully');
+
+      } else {
+        // Fallback to rule-based analysis
+        console.warn('[Versus] AI Integration not available, using fallback');
+
+        const fallbackInsight = this.generateFallbackInsight(laptop1, laptop2);
+
+        aiInsightsContainer.innerHTML = `
+          <h3>📊 Comparison Analysis</h3>
+          <div class="versus-ai-content">
+            <div class="ai-insights-text">
+              <p>${fallbackInsight}</p>
+            </div>
+            <div class="ai-metadata">
+              <span class="ai-badge">Rule-based Analysis</span>
+            </div>
+          </div>
+        `;
+      }
+
+    } catch (error) {
+      console.error('[Versus] Failed to get AI insights:', error);
+
+      // Show error with fallback
+      const laptop1 = this.selectedLaptops[0];
+      const laptop2 = this.selectedLaptops[1];
+      const fallbackInsight = this.generateFallbackInsight(laptop1, laptop2);
+
+      aiInsightsContainer.innerHTML = `
+        <h3>📊 Comparison Analysis</h3>
+        <div class="versus-ai-content">
+          <div class="ai-insights-text">
+            <p>${fallbackInsight}</p>
+          </div>
+          <div class="ai-metadata">
+            <span class="ai-badge">Fallback Analysis</span>
+            <span class="ai-badge ai-badge-warning">AI temporarily unavailable</span>
+          </div>
+        </div>
+      `;
+    }
+  }
+
+  /**
+   * Format AI insights text for display
+   */
+  formatAIInsights(insightsText) {
+    if (!insightsText) return '<p>No insights available.</p>';
+
+    // Convert markdown-like formatting to HTML
+    let formatted = insightsText
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.*?)\*/g, '<em>$1</em>')
+      .replace(/`(.*?)`/g, '<code>$1</code>');
+
+    // Split into paragraphs
+    const paragraphs = formatted.split('\n\n').filter(p => p.trim());
+
+    // Format as HTML
+    return paragraphs.map(p => {
+      // Check if it's a list
+      if (p.includes('\n- ') || p.includes('\n* ') || p.match(/^\d+\./)) {
+        const items = p.split('\n').filter(line => line.trim());
+        const listItems = items.map(item => {
+          const cleaned = item.replace(/^[-*]\s*|\d+\.\s*/, '');
+          return `<li>${cleaned}</li>`;
+        }).join('');
+        return `<ul>${listItems}</ul>`;
+      }
+
+      return `<p>${p}</p>`;
+    }).join('');
+  }
+
+  /**
+   * Generate fallback insight (rule-based)
+   */
+  generateFallbackInsight(laptop1, laptop2) {
+    const priceDiff = Math.abs(laptop1.price_myr - laptop2.price_myr);
+    const cheaper = laptop1.price_myr < laptop2.price_myr ? laptop1 : laptop2;
+    const expensive = laptop1.price_myr > laptop2.price_myr ? laptop1 : laptop2;
+
+    const perfScore1 = this.calculatePerformanceScore(laptop1);
+    const perfScore2 = this.calculatePerformanceScore(laptop2);
+
+    const valueScore1 = this.calculateValueScore(laptop1);
+    const valueScore2 = this.calculateValueScore(laptop2);
+
+    const betterPerformance = perfScore1 > perfScore2 ? laptop1 : laptop2;
+    const betterValue = valueScore1 > valueScore2 ? laptop1 : laptop2;
+
+    return `
+      <strong>Price Comparison:</strong> The ${cheaper.brand} ${cheaper.model} is RM${this.formatPrice(priceDiff)} cheaper than the ${expensive.brand} ${expensive.model}.
+      <br><br>
+      <strong>Performance:</strong> The ${betterPerformance.brand} ${betterPerformance.model} offers better raw performance with a score of ${Math.round(perfScore1 > perfScore2 ? perfScore1 : perfScore2)}/100.
+      <br><br>
+      <strong>Value for Money:</strong> The ${betterValue.brand} ${betterValue.model} provides better value at RM${this.formatPrice(betterValue.price_myr)}, balancing performance and price effectively.
+      <br><br>
+      <strong>Recommendation:</strong> ${betterValue === cheaper ?
+        `The ${cheaper.brand} ${cheaper.model} is the better overall choice, offering good performance at a lower price point.` :
+        `Consider the ${betterValue.brand} ${betterValue.model} if performance is your priority, or the ${cheaper.brand} ${cheaper.model} if budget is more important.`}
     `;
   }
 
