@@ -18,25 +18,45 @@ import { retry } from './retry.mjs';
 
 /**
  * Gemini model configurations
+ * Phase 5: Updated to Gemini 2.5 models
  */
 const MODELS = {
-  FLASH: 'gemini-2.0-flash-exp',
-  PRO: 'gemini-2.0-pro-exp',
-  THINKING: 'gemini-2.0-flash-thinking-exp',
+  // Gemini 2.5 (Phase 5 - Production)
+  FLASH: 'gemini-2.5-flash',
+  PRO: 'gemini-2.5-pro',
+  FLASH_VISION: 'gemini-2.5-flash',  // Vision support
+  PRO_VISION: 'gemini-2.5-pro',      // Vision support
+
+  // Legacy Gemini 2.0 (fallback)
+  LEGACY_FLASH: 'gemini-2.0-flash-exp',
+  LEGACY_PRO: 'gemini-2.0-pro-exp',
+  LEGACY_THINKING: 'gemini-2.0-flash-thinking-exp',
 };
 
 /**
  * Cost per 1M tokens (USD)
  * Source: https://ai.google.dev/pricing
+ * Updated: January 2025 for Gemini 2.5
  */
 const PRICING = {
+  // Gemini 2.5 pricing (estimated - update when official pricing released)
+  'gemini-2.5-flash': {
+    input: 0.10,   // $0.10 per 1M tokens (cheaper than 2.0)
+    output: 0.40,  // $0.40 per 1M tokens
+  },
+  'gemini-2.5-pro': {
+    input: 0.25,   // $0.25 per 1M tokens
+    output: 1.00,  // $1.00 per 1M tokens
+  },
+
+  // Legacy Gemini 2.0 pricing
   'gemini-2.0-flash-exp': {
-    input: 0.15,   // $0.15 per 1M tokens
-    output: 0.60,  // $0.60 per 1M tokens
+    input: 0.15,
+    output: 0.60,
   },
   'gemini-2.0-pro-exp': {
-    input: 0.30,   // $0.30 per 1M tokens
-    output: 1.20,  // $1.20 per 1M tokens
+    input: 0.30,
+    output: 1.20,
   },
   'gemini-2.0-flash-thinking-exp': {
     input: 0.15,
@@ -334,6 +354,170 @@ export class GeminiClient {
     );
 
     return result.totalTokens;
+  }
+
+  /**
+   * Generate content with vision (multimodal)
+   * Phase 5: Vision API support for image analysis
+   *
+   * @param {string} prompt - Analysis prompt
+   * @param {Object} imageData - { data: base64String, mimeType: string }
+   * @param {Object} options - Generation options
+   * @returns {Promise<Object>} Response with analysis
+   *
+   * @example
+   * const response = await geminiClient.generateWithVision(
+   *   'What laptop is this?',
+   *   { data: base64Image, mimeType: 'image/jpeg' },
+   *   { model: 'gemini-2.5-flash' }
+   * );
+   */
+  async generateWithVision(prompt, imageData, options = {}) {
+    const modelName = options.model || MODELS.FLASH_VISION;
+    const model = this.getModel(modelName, options.config);
+
+    // Prepare multimodal content
+    const parts = [
+      { text: prompt },
+      {
+        inlineData: {
+          data: imageData.data,
+          mimeType: imageData.mimeType
+        }
+      }
+    ];
+
+    // Retry wrapper
+    const result = await retry(
+      async () => {
+        const response = await model.generateContent(parts);
+        return response;
+      },
+      this.retryOptions
+    );
+
+    // Extract response
+    const response = result.response;
+    const text = response.text();
+
+    // Count tokens (estimated)
+    const inputTokens = this.estimateTokens(prompt) + 258; // ~258 tokens per image
+    const outputTokens = this.estimateTokens(text);
+    const totalTokens = inputTokens + outputTokens;
+
+    // Calculate cost
+    const costSen = this.calculateCost(inputTokens, outputTokens, modelName);
+
+    return {
+      text,
+      tokens: {
+        input: inputTokens,
+        output: outputTokens,
+        total: totalTokens,
+      },
+      cost: {
+        sen: costSen,
+        myr: costSen / 100,
+        usd: (costSen / 100) / EXCHANGE_RATE_USD_TO_MYR,
+      },
+      model: modelName,
+      metadata: {
+        finishReason: response.candidates?.[0]?.finishReason,
+        safetyRatings: response.candidates?.[0]?.safetyRatings,
+      },
+    };
+  }
+
+  /**
+   * Generate content with search grounding
+   * Phase 5: Google Search grounding for real-time data
+   *
+   * @param {string} prompt - User prompt
+   * @param {Object} options - Generation options
+   * @param {string} options.searchGroundingMode - 'dynamic' or 'google_search_retrieval'
+   * @param {number} options.dynamicThreshold - Threshold for dynamic grounding (0-1)
+   * @returns {Promise<Object>} Response with grounding sources
+   *
+   * @example
+   * const response = await geminiClient.generateWithSearchGrounding(
+   *   'What are the latest gaming laptops in 2025?',
+   *   { model: 'gemini-2.5-pro' }
+   * );
+   */
+  async generateWithSearchGrounding(prompt, options = {}) {
+    const modelName = options.model || MODELS.PRO;
+
+    // Get model with tools configuration
+    const model = this.genAI.getGenerativeModel({
+      model: modelName,
+      safetySettings: SAFETY_SETTINGS,
+      generationConfig: { ...GENERATION_CONFIG, ...options.config },
+      tools: [
+        {
+          googleSearch: {
+            // Dynamic grounding - let Gemini decide when to search
+            dynamicRetrievalConfig: {
+              mode: options.searchGroundingMode || 'dynamic',
+              dynamicThreshold: options.dynamicThreshold || 0.7
+            }
+          }
+        }
+      ]
+    });
+
+    // Retry wrapper
+    const result = await retry(
+      async () => {
+        const response = await model.generateContent(prompt);
+        return response;
+      },
+      this.retryOptions
+    );
+
+    // Extract response
+    const response = result.response;
+    const text = response.text();
+
+    // Extract grounding metadata
+    const groundingMetadata = response.candidates?.[0]?.groundingMetadata;
+    const searchQueries = groundingMetadata?.searchEntryPoint?.renderedContent;
+    const groundingSupports = groundingMetadata?.groundingSupports || [];
+
+    // Count tokens
+    const inputTokens = this.estimateTokens(prompt);
+    const outputTokens = this.estimateTokens(text);
+    const totalTokens = inputTokens + outputTokens;
+
+    // Calculate cost
+    const costSen = this.calculateCost(inputTokens, outputTokens, modelName);
+
+    return {
+      text,
+      tokens: {
+        input: inputTokens,
+        output: outputTokens,
+        total: totalTokens,
+      },
+      cost: {
+        sen: costSen,
+        myr: costSen / 100,
+        usd: (costSen / 100) / EXCHANGE_RATE_USD_TO_MYR,
+      },
+      model: modelName,
+      grounding: {
+        isGrounded: groundingSupports.length > 0,
+        searchQueries,
+        sources: groundingSupports.map(support => ({
+          url: support.groundingChunkIndices?.[0],
+          segment: support.segment
+        })),
+        metadata: groundingMetadata
+      },
+      metadata: {
+        finishReason: response.candidates?.[0]?.finishReason,
+        safetyRatings: response.candidates?.[0]?.safetyRatings,
+      },
+    };
   }
 }
 

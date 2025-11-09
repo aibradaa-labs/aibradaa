@@ -76,21 +76,27 @@
   ],
   "shortcuts": [
     {
-      "name": "Find Laptops",
+      "name": "Matchmaker",
       "short_name": "Find",
-      "url": "/matchmaker",
+      "url": "/app.html#matchmaker",
       "icons": [{ "src": "/icons/shortcut-matchmaker.png", "sizes": "96x96" }]
     },
     {
-      "name": "Compare",
+      "name": "Versus",
       "short_name": "Compare",
-      "url": "/versus",
+      "url": "/app.html#versus",
       "icons": [{ "src": "/icons/shortcut-versus.png", "sizes": "96x96" }]
     },
     {
-      "name": "Chat with AI",
+      "name": "Explorer",
+      "short_name": "Explore",
+      "url": "/app.html#explorer",
+      "icons": [{ "src": "/icons/shortcut-explorer.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Command",
       "short_name": "Chat",
-      "url": "/command",
+      "url": "/app.html#command",
       "icons": [{ "src": "/icons/shortcut-chat.png", "sizes": "96x96" }]
     }
   ],

@@ -1,0 +1,696 @@
+/**
+ * AI Bradaa - Psychological & Physiological UI/UX Enhancements
+ * World-class styling for attention cues, scarcity, social proof, and micro-interactions
+ */
+
+/* ============================================================================
+   LIVE METRICS & SOCIAL PROOF
+   ============================================================================ */
+
+.live-indicator {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: #00F0FF;
+  border-radius: 50%;
+  animation: pulse-live 2s ease-in-out infinite;
+  margin-right: 4px;
+}
+
+@keyframes pulse-live {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 8px rgba(0, 240, 255, 0.6);
+  }
+  50% {
+    opacity: 0.5;
+    box-shadow: 0 0 20px rgba(0, 240, 255, 1);
+  }
+}
+
+.social-proof-banner {
+  margin-top: 32px;
+  padding: 16px 24px;
+  background: rgba(0, 240, 255, 0.05);
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  border-radius: 12px;
+  animation: slideInUp 0.6s ease forwards, fadeInScale 0.8s ease infinite alternate;
+}
+
+.proof-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: #E6EDF3;
+}
+
+.proof-icon {
+  font-size: 18px;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.proof-time {
+  margin-left: auto;
+  font-size: 12px;
+  color: #A8B2CC;
+}
+
+/* ============================================================================
+   ABO-84 LIVE CONSULTATION INTERFACE
+   ============================================================================ */
+
+.abo-live-demo {
+  display: grid;
+  gap: 32px;
+}
+
+.abo-consultation-panel {
+  padding: 32px;
+  background: linear-gradient(135deg, rgba(0, 240, 255, 0.03), rgba(216, 63, 135, 0.03));
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  border-radius: 16px;
+}
+
+.consultation-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.consultation-header h3 {
+  font-size: 24px;
+  color: #E6EDF3;
+  margin: 0;
+}
+
+.consultation-query {
+  margin-bottom: 24px;
+}
+
+.query-bubble {
+  display: inline-block;
+  padding: 16px 24px;
+  background: rgba(0, 240, 255, 0.1);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  border-radius: 20px;
+  font-size: 16px;
+  color: #E6EDF3;
+}
+
+.consultation-results {
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.consultation-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+  text-align: center;
+  color: #A8B2CC;
+}
+
+.placeholder-icon {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 24px;
+  opacity: 0.5;
+}
+
+.consultation-loading {
+  text-align: center;
+  padding: 48px;
+  font-size: 18px;
+  color: #00F0FF;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Expert Opinion Cards */
+.expert-opinion {
+  display: flex;
+  gap: 16px;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  border-radius: 12px;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.expert-opinion.animate-in {
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.expert-avatar {
+  font-size: 36px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 240, 255, 0.1);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.expert-content {
+  flex: 1;
+}
+
+.expert-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.expert-name {
+  font-weight: 600;
+  font-size: 16px;
+  color: #E6EDF3;
+}
+
+.expert-domain {
+  font-size: 13px;
+  color: #A8B2CC;
+  padding: 4px 12px;
+  background: rgba(0, 240, 255, 0.1);
+  border-radius: 12px;
+}
+
+.expert-vote {
+  margin-left: auto;
+  font-size: 18px;
+  padding: 6px 12px;
+  border-radius: 8px;
+}
+
+.expert-vote.vote-approve {
+  background: rgba(0, 240, 255, 0.2);
+  color: #00F0FF;
+}
+
+.expert-vote.vote-caution {
+  background: rgba(255, 215, 0, 0.2);
+  color: #FFD700;
+}
+
+.expert-opinion-text {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #C9D1D9;
+  margin-bottom: 12px;
+}
+
+.expert-confidence {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.confidence-bar {
+  flex: 1;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.confidence-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #00F0FF, #D83F87);
+  border-radius: 3px;
+  transition: width 1s ease;
+}
+
+.confidence-label {
+  font-size: 12px;
+  color: #A8B2CC;
+  white-space: nowrap;
+}
+
+/* Composite Score Display */
+.composite-score-container {
+  margin-top: 32px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.composite-score-display {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.score-circle {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  flex-shrink: 0;
+}
+
+.score-circle svg {
+  transform: rotate(-90deg);
+}
+
+.score-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.score-number {
+  display: block;
+  font-size: 32px;
+  font-weight: 700;
+  font-family: 'Orbitron', sans-serif;
+  background: linear-gradient(135deg, #00F0FF, #D83F87);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.score-label {
+  font-size: 14px;
+  color: #A8B2CC;
+}
+
+.score-details h4 {
+  font-size: 20px;
+  color: #E6EDF3;
+  margin-bottom: 12px;
+}
+
+.score-details p {
+  font-size: 15px;
+  color: #C9D1D9;
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+.score-verdict {
+  font-size: 16px !important;
+  font-weight: 600;
+  margin-top: 16px !important;
+  padding: 12px 20px;
+  background: rgba(0, 240, 255, 0.1);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  border-radius: 8px;
+  display: inline-block;
+}
+
+/* ABO Stats Grid */
+.abo-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.abo-stat-card {
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  border-radius: 12px;
+  display: flex;
+  gap: 16px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.abo-stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(0, 240, 255, 0.2);
+}
+
+.stat-icon {
+  font-size: 40px;
+  flex-shrink: 0;
+}
+
+.stat-content {
+  flex: 1;
+}
+
+.stat-number {
+  font-size: 36px;
+  font-weight: 700;
+  font-family: 'Orbitron', sans-serif;
+  background: linear-gradient(135deg, #00F0FF, #D83F87);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #E6EDF3;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.stat-description {
+  font-size: 13px;
+  color: #A8B2CC;
+  line-height: 1.5;
+}
+
+/* ABO Benefits Section */
+.abo-benefits {
+  margin-top: 48px;
+  padding: 32px;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+}
+
+.benefits-title {
+  font-size: 24px;
+  color: #E6EDF3;
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+}
+
+.benefit-item {
+  padding: 20px;
+  background: rgba(0, 240, 255, 0.05);
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  border-radius: 12px;
+}
+
+.benefit-icon {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #00F0FF, #D83F87);
+  color: #0D1117;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.benefit-item h4 {
+  font-size: 16px;
+  color: #E6EDF3;
+  margin-bottom: 8px;
+}
+
+.benefit-item p {
+  font-size: 14px;
+  color: #A8B2CC;
+  line-height: 1.5;
+}
+
+/* ============================================================================
+   SCARCITY & URGENCY TRIGGERS
+   ============================================================================ */
+
+.scarcity-banner {
+  background: linear-gradient(135deg, rgba(255, 69, 0, 0.2), rgba(255, 140, 0, 0.2));
+  border: 1px solid rgba(255, 140, 0, 0.4);
+  border-radius: 8px 8px 0 0;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  animation: pulse-scarcity 2s ease-in-out infinite;
+}
+
+@keyframes pulse-scarcity {
+  0%, 100% {
+    background: linear-gradient(135deg, rgba(255, 69, 0, 0.2), rgba(255, 140, 0, 0.2));
+  }
+  50% {
+    background: linear-gradient(135deg, rgba(255, 69, 0, 0.3), rgba(255, 140, 0, 0.3));
+  }
+}
+
+.scarcity-icon {
+  font-size: 18px;
+  animation: flame 1.5s ease-in-out infinite;
+}
+
+@keyframes flame {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+.scarcity-text {
+  font-size: 14px;
+  color: #FFD700;
+  font-weight: 500;
+}
+
+.scarcity-text strong {
+  color: #FFA500;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.pricing-countdown {
+  margin-top: 16px;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  border-radius: 8px;
+}
+
+.countdown-label {
+  font-size: 12px;
+  color: #A8B2CC;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.countdown-timer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  font-family: 'Orbitron', monospace;
+}
+
+.countdown-segment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.countdown-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: #00F0FF;
+  background: rgba(0, 240, 255, 0.1);
+  padding: 8px 12px;
+  border-radius: 6px;
+  min-width: 40px;
+  text-align: center;
+}
+
+.countdown-label {
+  font-size: 10px;
+  color: #A8B2CC;
+  margin-top: 4px;
+}
+
+.countdown-separator {
+  font-size: 20px;
+  color: #00F0FF;
+  font-weight: 700;
+  padding: 0 4px;
+}
+
+/* ============================================================================
+   MICRO-INTERACTIONS & ATTENTION CUES
+   ============================================================================ */
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.02);
+  }
+}
+
+/* Button glow enhancements */
+.btn-glow {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn-glow::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(0, 240, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn-glow:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* Feature cards with 3D effect */
+.feature-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+.feature-card:hover {
+  transform: translateY(-8px) rotateX(2deg);
+  box-shadow: 0 20px 40px rgba(0, 240, 255, 0.2);
+}
+
+/* Holographic effect on cards */
+.holo-card {
+  position: relative;
+  transition: transform 0.3s ease;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+/* Live quality score animation */
+.live-quality-score {
+  animation: count-up 2s ease-out forwards;
+}
+
+@keyframes count-up {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .social-proof-banner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .proof-time {
+    margin-left: 0;
+    margin-top: 8px;
+  }
+
+  .abo-consultation-panel {
+    padding: 20px;
+  }
+
+  .consultation-header {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .composite-score-display {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .expert-opinion {
+    flex-direction: column;
+  }
+
+  .expert-avatar {
+    width: 50px;
+    height: 50px;
+    font-size: 28px;
+  }
+
+  .abo-stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .benefits-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .countdown-timer {
+    font-size: 14px;
+  }
+
+  .countdown-value {
+    font-size: 16px;
+    padding: 6px 10px;
+    min-width: 35px;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
