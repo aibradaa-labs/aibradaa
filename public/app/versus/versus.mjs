@@ -1,6 +1,11 @@
 /**
  * Versus Tool - Side-by-Side Laptop Comparison
- * AI Bradaa - Compare up to 3 laptops with radar charts
+ * AI Bradaa - Compare 2 laptops with radar charts
+ *
+ * ARCHITECTURE: Hybrid Enhancement Pattern
+ * - HTML provides static structure (selectors, containers)
+ * - JavaScript enhances with dynamic content (radar chart, tables, modals)
+ * - Progressive enhancement approach (no innerHTML replacement)
  */
 
 import { apiClient } from '../shared/utils/api.mjs';
@@ -8,8 +13,7 @@ import { storage } from '../shared/utils/storage.mjs';
 
 export class Versus {
   constructor() {
-    this.selectedLaptops = [];
-    this.maxSelections = 3;
+    this.selectedLaptops = [null, null]; // 2 laptops max
     this.laptopDatabase = [];
     this.comparisonMetrics = [
       { key: 'performance', label: 'Performance', weight: 1 },
@@ -19,12 +23,47 @@ export class Versus {
       { key: 'value', label: 'Value', weight: 1 },
       { key: 'build', label: 'Build Quality', weight: 1 }
     ];
+
+    // DOM references (existing elements)
+    this.selector1 = null;
+    this.selector2 = null;
+    this.comparisonView = null;
+    this.radarChart = null;
+    this.specsTable = null;
+    this.prosConsGrid = null;
+    this.modal = null;
+    this.currentSelectorIndex = null;
   }
 
   async init() {
+    // Get existing DOM elements
+    this.selector1 = document.getElementById('selector1');
+    this.selector2 = document.getElementById('selector2');
+    this.comparisonView = document.getElementById('comparisonView');
+    this.radarChart = document.getElementById('radarChart');
+    this.specsTable = document.getElementById('specsTable');
+    this.prosConsGrid = document.getElementById('prosConsGrid');
+
+    // Validation
+    if (!this.selector1 || !this.selector2 || !this.comparisonView) {
+      console.error('Required elements not found! versus.mjs needs #selector1, #selector2, #comparisonView');
+      return;
+    }
+
+    // Load laptop database
     await this.loadLaptopDatabase();
-    this.render();
+
+    // Create search modal (not in static HTML)
+    this.createSearchModal();
+
+    // Attach event listeners
     this.attachEventListeners();
+
+    // Hide comparison view initially
+    this.comparisonView.style.display = 'none';
+
+    // Load from cache if available
+    await this.loadFromCache();
   }
 
   async loadLaptopDatabase() {
@@ -38,272 +77,320 @@ export class Versus {
 
       // Fetch from server
       const response = await fetch('/data/laptops.json');
+      if (!response.ok) throw new Error('Failed to fetch laptop database');
+
       this.laptopDatabase = await response.json();
 
       // Cache for 1 hour
       await storage.setCache('laptops_db', this.laptopDatabase, 3600000);
     } catch (error) {
       console.error('Failed to load laptop database:', error);
-      this.showError('Failed to load laptop database');
+      this.showNotification('Failed to load laptop database. Using demo data.', 'error');
+      this.laptopDatabase = this.getDemoData();
     }
   }
 
-  render() {
-    const container = document.getElementById('versusContainer') || document.body;
-
-    container.innerHTML = `
-      <div class="versus-wrapper">
-
-        <!-- Header -->
-        <div class="versus-header">
-          <h1>⚔️ Versus Mode</h1>
-          <p>Compare up to 3 laptops side-by-side</p>
-        </div>
-
-        <!-- Selection Area -->
-        <div class="versus-selection">
-          <div class="selection-grid">
-            ${[0, 1, 2].map(index => this.renderSelectionSlot(index)).join('')}
-          </div>
-        </div>
-
-        <!-- Search/Browse -->
-        <div class="versus-search">
-          <input type="text"
-                 id="laptopSearch"
-                 class="search-input"
-                 placeholder="Search laptops by brand, model, or specs...">
-          <div class="search-results" id="searchResults"></div>
-        </div>
-
-        <!-- Comparison View (Hidden until 2+ selected) -->
-        <div class="versus-comparison" id="comparisonView" style="display: none;">
-          <div class="comparison-header">
-            <h2>Comparison Results</h2>
-            <button class="btn btn-secondary" id="resetBtn">Reset Comparison</button>
+  createSearchModal() {
+    // Create modal for laptop selection
+    const modalHTML = `
+      <div class="versus-modal" id="laptopSearchModal" style="display: none;">
+        <div class="versus-modal-backdrop"></div>
+        <div class="versus-modal-content">
+          <div class="versus-modal-header">
+            <h3>Select a Laptop</h3>
+            <button class="versus-modal-close" id="modalCloseBtn">&times;</button>
           </div>
 
-          <!-- Radar Chart -->
-          <div class="radar-container">
-            <canvas id="radarChart" width="600" height="600"></canvas>
+          <div class="versus-modal-search">
+            <input
+              type="text"
+              class="versus-search-input"
+              id="modalSearchInput"
+              placeholder="Search by brand, model, specs..."
+              autocomplete="off"
+            />
           </div>
 
-          <!-- Detailed Comparison Table -->
-          <div class="comparison-table" id="comparisonTable"></div>
+          <div class="versus-modal-filters">
+            <button class="versus-filter-chip active" data-category="all">All</button>
+            <button class="versus-filter-chip" data-category="gaming">Gaming</button>
+            <button class="versus-filter-chip" data-category="business">Business</button>
+            <button class="versus-filter-chip" data-category="creative">Creative</button>
+            <button class="versus-filter-chip" data-category="budget">Budget</button>
+          </div>
 
-          <!-- AI Advisor (Pro Feature) -->
-          <div class="ai-advisor" id="aiAdvisor">
-            <div class="advisor-header">
-              <h3>🤖 AI Bradaa's Recommendation</h3>
-              <span class="pro-badge">PRO</span>
-            </div>
-            <div class="advisor-content" id="advisorContent">
-              <p class="loading-text">Analyzing comparison...</p>
-            </div>
+          <div class="versus-modal-results" id="modalSearchResults">
+            <div class="versus-results-loading">Loading laptops...</div>
           </div>
         </div>
-
       </div>
     `;
 
-    this.updateSelectionSlots();
-  }
-
-  renderSelectionSlot(index) {
-    const laptop = this.selectedLaptops[index];
-
-    if (!laptop) {
-      return `
-        <div class="selection-slot empty" data-index="${index}">
-          <div class="slot-icon">+</div>
-          <div class="slot-label">Add Laptop ${index + 1}</div>
-        </div>
-      `;
-    }
-
-    return `
-      <div class="selection-slot filled" data-index="${index}">
-        <button class="slot-remove" data-index="${index}" aria-label="Remove">&times;</button>
-        <div class="slot-image">
-          <img src="${laptop.image || '/assets/default-laptop.png'}" alt="${laptop.brand} ${laptop.model}">
-        </div>
-        <div class="slot-info">
-          <h4>${laptop.brand}</h4>
-          <p>${laptop.model}</p>
-          <p class="slot-price">RM${this.formatPrice(laptop.price_myr)}</p>
-        </div>
-      </div>
-    `;
-  }
-
-  updateSelectionSlots() {
-    const grid = document.querySelector('.selection-grid');
-    if (grid) {
-      grid.innerHTML = [0, 1, 2].map(index => this.renderSelectionSlot(index)).join('');
-      this.attachSlotListeners();
-    }
-
-    // Show/hide comparison view
-    if (this.selectedLaptops.length >= 2) {
-      document.getElementById('comparisonView').style.display = 'block';
-      this.renderComparison();
-    } else {
-      document.getElementById('comparisonView').style.display = 'none';
-    }
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+    this.modal = document.getElementById('laptopSearchModal');
   }
 
   attachEventListeners() {
-    // Search input
-    const searchInput = document.getElementById('laptopSearch');
-    if (searchInput) {
-      searchInput.addEventListener('input', (e) => {
-        this.handleSearch(e.target.value);
-      });
-    }
+    // Selector 1 click - open modal
+    this.selector1.addEventListener('click', () => {
+      this.currentSelectorIndex = 0;
+      this.openSearchModal();
+    });
 
-    // Reset button
-    const resetBtn = document.getElementById('resetBtn');
-    if (resetBtn) {
-      resetBtn.addEventListener('click', () => {
-        this.selectedLaptops = [];
-        this.updateSelectionSlots();
-      });
-    }
+    // Selector 2 click - open modal
+    this.selector2.addEventListener('click', () => {
+      this.currentSelectorIndex = 1;
+      this.openSearchModal();
+    });
 
-    this.attachSlotListeners();
-  }
+    // Modal close
+    const closeBtn = document.getElementById('modalCloseBtn');
+    const backdrop = this.modal.querySelector('.versus-modal-backdrop');
 
-  attachSlotListeners() {
-    // Remove buttons
-    document.querySelectorAll('.slot-remove').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        const index = parseInt(e.target.dataset.index);
-        this.selectedLaptops.splice(index, 1);
-        this.updateSelectionSlots();
+    closeBtn.addEventListener('click', () => this.closeSearchModal());
+    backdrop.addEventListener('click', () => this.closeSearchModal());
+
+    // Modal search input
+    const searchInput = document.getElementById('modalSearchInput');
+    searchInput.addEventListener('input', (e) => {
+      this.handleModalSearch(e.target.value);
+    });
+
+    // Modal category filters
+    const filterChips = this.modal.querySelectorAll('.versus-filter-chip');
+    filterChips.forEach(chip => {
+      chip.addEventListener('click', (e) => {
+        filterChips.forEach(c => c.classList.remove('active'));
+        e.target.classList.add('active');
+        this.handleModalSearch(searchInput.value, e.target.dataset.category);
       });
     });
 
-    // Empty slots - trigger search focus
-    document.querySelectorAll('.selection-slot.empty').forEach(slot => {
-      slot.addEventListener('click', () => {
-        document.getElementById('laptopSearch').focus();
-      });
+    // Comparison actions buttons
+    const buttons = document.querySelectorAll('.comparison-actions .btn');
+    buttons.forEach((btn, index) => {
+      if (index === 0) btn.addEventListener('click', () => this.saveComparison());
+      if (index === 1) btn.addEventListener('click', () => this.shareComparison());
+      if (index === 2) btn.addEventListener('click', () => this.resetComparison());
     });
   }
 
-  handleSearch(query) {
-    const resultsContainer = document.getElementById('searchResults');
+  openSearchModal() {
+    this.modal.style.display = 'block';
+    document.body.style.overflow = 'hidden'; // Prevent background scroll
 
-    if (!query || query.length < 2) {
-      resultsContainer.innerHTML = '';
-      resultsContainer.style.display = 'none';
+    // Focus search input
+    setTimeout(() => {
+      document.getElementById('modalSearchInput').focus();
+    }, 100);
+
+    // Render all laptops initially
+    this.renderModalResults(this.laptopDatabase);
+  }
+
+  closeSearchModal() {
+    this.modal.style.display = 'none';
+    document.body.style.overflow = '';
+
+    // Clear search
+    document.getElementById('modalSearchInput').value = '';
+  }
+
+  handleModalSearch(query, category = 'all') {
+    let filtered = this.laptopDatabase;
+
+    // Filter by category
+    if (category !== 'all') {
+      filtered = filtered.filter(laptop =>
+        laptop.category?.includes(category)
+      );
+    }
+
+    // Filter by search query
+    if (query && query.length >= 2) {
+      const searchLower = query.toLowerCase();
+      filtered = filtered.filter(laptop => {
+        const searchStr = `${laptop.brand} ${laptop.model} ${laptop.cpu?.gen || ''} ${laptop.category?.join(' ') || ''}`.toLowerCase();
+        return searchStr.includes(searchLower);
+      });
+    }
+
+    this.renderModalResults(filtered);
+  }
+
+  renderModalResults(laptops) {
+    const resultsContainer = document.getElementById('modalSearchResults');
+
+    if (laptops.length === 0) {
+      resultsContainer.innerHTML = '<div class="versus-no-results">No laptops found</div>';
       return;
     }
 
-    const results = this.laptopDatabase.filter(laptop => {
-      const searchStr = `${laptop.brand} ${laptop.model} ${laptop.cpu?.gen || ''} ${laptop.category?.join(' ') || ''}`.toLowerCase();
-      return searchStr.includes(query.toLowerCase());
-    }).slice(0, 10); // Limit to 10 results
-
-    if (results.length === 0) {
-      resultsContainer.innerHTML = '<div class="no-results">No laptops found</div>';
-      resultsContainer.style.display = 'block';
-      return;
-    }
-
-    resultsContainer.innerHTML = results.map(laptop => `
-      <div class="search-result-item" data-id="${laptop.id}">
-        <div class="result-image-small">
-          <img src="${laptop.image || '/assets/default-laptop.png'}" alt="${laptop.brand} ${laptop.model}">
+    resultsContainer.innerHTML = laptops.slice(0, 20).map(laptop => `
+      <div class="versus-result-card" data-id="${laptop.id}">
+        <div class="versus-result-image">
+          <img src="${laptop.image || '/assets/default-laptop.png'}" alt="${laptop.brand} ${laptop.model}" loading="lazy">
         </div>
-        <div class="result-info-small">
-          <h5>${laptop.brand} ${laptop.model}</h5>
-          <p class="result-specs-small">${laptop.cpu?.gen || 'N/A'} • ${laptop.ram?.gb || 0}GB RAM</p>
-          <p class="result-price-small">RM${this.formatPrice(laptop.price_myr)}</p>
+        <div class="versus-result-info">
+          <h4 class="versus-result-brand">${laptop.brand}</h4>
+          <p class="versus-result-model">${laptop.model}</p>
+          <div class="versus-result-specs">
+            <span>${laptop.cpu?.gen || 'N/A'}</span>
+            <span>•</span>
+            <span>${laptop.ram?.gb || 0}GB RAM</span>
+            <span>•</span>
+            <span>${laptop.gpu?.chip || 'Integrated'}</span>
+          </div>
+          <p class="versus-result-price">RM${this.formatPrice(laptop.price_myr)}</p>
         </div>
-        <button class="btn btn-small add-to-compare" data-id="${laptop.id}">
-          ${this.selectedLaptops.find(l => l.id === laptop.id) ? 'Remove' : 'Add'}
-        </button>
+        <button class="versus-result-select" data-id="${laptop.id}">Select</button>
       </div>
     `).join('');
 
-    resultsContainer.style.display = 'block';
-
-    // Attach click handlers
-    resultsContainer.querySelectorAll('.add-to-compare').forEach(btn => {
+    // Attach click handlers to select buttons
+    resultsContainer.querySelectorAll('.versus-result-select').forEach(btn => {
       btn.addEventListener('click', (e) => {
+        e.stopPropagation();
         const laptopId = e.target.dataset.id;
-        this.toggleLaptop(laptopId);
+        this.selectLaptop(laptopId);
+      });
+    });
+
+    // Also allow clicking entire card
+    resultsContainer.querySelectorAll('.versus-result-card').forEach(card => {
+      card.addEventListener('click', (e) => {
+        if (!e.target.classList.contains('versus-result-select')) {
+          const laptopId = card.dataset.id;
+          this.selectLaptop(laptopId);
+        }
       });
     });
   }
 
-  toggleLaptop(laptopId) {
+  selectLaptop(laptopId) {
     const laptop = this.laptopDatabase.find(l => l.id === laptopId);
     if (!laptop) return;
 
-    const existingIndex = this.selectedLaptops.findIndex(l => l.id === laptopId);
+    // Set selected laptop
+    this.selectedLaptops[this.currentSelectorIndex] = laptop;
 
-    if (existingIndex > -1) {
-      // Remove
-      this.selectedLaptops.splice(existingIndex, 1);
-    } else {
-      // Add (max 3)
-      if (this.selectedLaptops.length < this.maxSelections) {
-        this.selectedLaptops.push(laptop);
-      } else {
-        alert('Maximum 3 laptops for comparison');
-        return;
-      }
+    // Update selector display
+    this.updateSelector(this.currentSelectorIndex, laptop);
+
+    // Close modal
+    this.closeSearchModal();
+
+    // Save to cache
+    this.saveToCache();
+
+    // If both laptops selected, show comparison
+    if (this.selectedLaptops[0] && this.selectedLaptops[1]) {
+      this.renderComparison();
+    }
+  }
+
+  updateSelector(index, laptop) {
+    const selector = index === 0 ? this.selector1 : this.selector2;
+
+    if (!laptop) {
+      // Reset to placeholder
+      selector.innerHTML = `
+        <div class="selector-placeholder">
+          <div class="selector-icon">💻</div>
+          <div class="selector-label">Select Laptop ${index + 1}</div>
+          <div class="selector-hint">Click to choose</div>
+        </div>
+      `;
+      return;
     }
 
-    this.updateSelectionSlots();
-    this.handleSearch(document.getElementById('laptopSearch').value); // Refresh search results
+    // Show selected laptop
+    selector.innerHTML = `
+      <div class="selector-selected">
+        <button class="selector-remove" title="Remove">&times;</button>
+        <div class="selector-image">
+          <img src="${laptop.image || '/assets/default-laptop.png'}" alt="${laptop.brand} ${laptop.model}">
+        </div>
+        <div class="selector-info">
+          <h4 class="selector-brand">${laptop.brand}</h4>
+          <p class="selector-model">${laptop.model}</p>
+          <p class="selector-price">RM${this.formatPrice(laptop.price_myr)}</p>
+        </div>
+        <div class="selector-change-btn">Change</div>
+      </div>
+    `;
+
+    // Attach remove button handler
+    const removeBtn = selector.querySelector('.selector-remove');
+    removeBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      this.selectedLaptops[index] = null;
+      this.updateSelector(index, null);
+      this.comparisonView.style.display = 'none';
+      this.saveToCache();
+    });
   }
 
   renderComparison() {
+    // Show comparison view
+    this.comparisonView.style.display = 'block';
+
+    // Scroll to comparison view
+    this.comparisonView.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    // Render all comparison components
     this.renderRadarChart();
-    this.renderComparisonTable();
-    this.getAIRecommendation();
+    this.renderSpecsTable();
+    this.renderProsConsGrid();
   }
 
   renderRadarChart() {
-    const canvas = document.getElementById('radarChart');
-    if (!canvas) return;
+    if (!this.radarChart) return;
 
-    const ctx = canvas.getContext('2d');
+    const ctx = this.radarChart.getContext('2d');
+    const canvas = this.radarChart;
+
+    // Set canvas size
+    const size = Math.min(canvas.parentElement.clientWidth, 500);
+    canvas.width = size;
+    canvas.height = size;
+
     const centerX = canvas.width / 2;
     const centerY = canvas.height / 2;
-    const radius = 200;
+    const radius = Math.min(centerX, centerY) * 0.6;
 
     // Clear canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     // Calculate scores for each laptop
-    const laptopScores = this.selectedLaptops.map(laptop =>
-      this.calculateMetricScores(laptop)
-    );
+    const scores1 = this.calculateMetricScores(this.selectedLaptops[0]);
+    const scores2 = this.calculateMetricScores(this.selectedLaptops[1]);
 
     // Draw radar grid
     this.drawRadarGrid(ctx, centerX, centerY, radius);
 
-    // Draw each laptop's polygon
-    const colors = ['#00F0FF', '#D83F87', '#FFD700'];
-    laptopScores.forEach((scores, index) => {
-      this.drawRadarPolygon(ctx, centerX, centerY, radius, scores, colors[index], 0.3);
-      this.drawRadarPolygon(ctx, centerX, centerY, radius, scores, colors[index], 1, true); // outline
-    });
+    // Draw polygons
+    const color1 = '#00F0FF'; // Cyan
+    const color2 = '#D83F87'; // Pink
+
+    // Draw filled polygons
+    this.drawRadarPolygon(ctx, centerX, centerY, radius, scores1, color1, 0.2);
+    this.drawRadarPolygon(ctx, centerX, centerY, radius, scores2, color2, 0.2);
+
+    // Draw outlined polygons
+    this.drawRadarPolygon(ctx, centerX, centerY, radius, scores1, color1, 1, true);
+    this.drawRadarPolygon(ctx, centerX, centerY, radius, scores2, color2, 1, true);
 
     // Draw legend
-    this.drawRadarLegend(ctx, colors);
+    this.drawRadarLegend(ctx, [color1, color2], canvas.width);
   }
 
   drawRadarGrid(ctx, centerX, centerY, radius) {
     const metrics = this.comparisonMetrics;
     const angleStep = (Math.PI * 2) / metrics.length;
 
-    // Draw concentric circles
-    ctx.strokeStyle = '#30363d';
+    // Draw concentric circles (5 levels)
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
     ctx.lineWidth = 1;
     for (let i = 1; i <= 5; i++) {
       ctx.beginPath();
@@ -312,25 +399,28 @@ export class Versus {
     }
 
     // Draw spokes and labels
-    ctx.strokeStyle = '#30363d';
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
     ctx.fillStyle = '#A8B2CC';
-    ctx.font = '12px Inter';
+    ctx.font = 'bold 12px Inter, system-ui';
     ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
 
     metrics.forEach((metric, i) => {
       const angle = angleStep * i - Math.PI / 2;
       const x = centerX + Math.cos(angle) * radius;
       const y = centerY + Math.sin(angle) * radius;
 
-      // Spoke
+      // Spoke line
       ctx.beginPath();
       ctx.moveTo(centerX, centerY);
       ctx.lineTo(x, y);
       ctx.stroke();
 
-      // Label
-      const labelX = centerX + Math.cos(angle) * (radius + 30);
-      const labelY = centerY + Math.sin(angle) * (radius + 30);
+      // Label positioning (outside the circle)
+      const labelDistance = radius + 30;
+      const labelX = centerX + Math.cos(angle) * labelDistance;
+      const labelY = centerY + Math.sin(angle) * labelDistance;
+
       ctx.fillText(metric.label, labelX, labelY);
     });
   }
@@ -355,32 +445,41 @@ export class Versus {
 
     if (outline) {
       ctx.strokeStyle = color;
-      ctx.lineWidth = 2;
+      ctx.lineWidth = 3;
       ctx.stroke();
     } else {
-      ctx.fillStyle = color.replace(')', `, ${alpha})`).replace('rgb', 'rgba');
+      // Convert hex to rgba
+      const r = parseInt(color.slice(1, 3), 16);
+      const g = parseInt(color.slice(3, 5), 16);
+      const b = parseInt(color.slice(5, 7), 16);
+      ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${alpha})`;
       ctx.fill();
     }
   }
 
-  drawRadarLegend(ctx, colors) {
-    ctx.font = '14px Inter';
+  drawRadarLegend(ctx, colors, canvasWidth) {
+    ctx.font = '14px Inter, system-ui';
     ctx.textAlign = 'left';
+    ctx.textBaseline = 'middle';
 
     this.selectedLaptops.forEach((laptop, i) => {
-      const y = 30 + i * 25;
+      if (!laptop) return;
+
+      const y = 20 + i * 30;
 
       // Color box
       ctx.fillStyle = colors[i];
-      ctx.fillRect(20, y - 10, 15, 15);
+      ctx.fillRect(20, y - 8, 20, 16);
 
       // Label
       ctx.fillStyle = '#E6EDF3';
-      ctx.fillText(`${laptop.brand} ${laptop.model}`, 45, y + 2);
+      ctx.fillText(`${laptop.brand} ${laptop.model}`, 50, y);
     });
   }
 
   calculateMetricScores(laptop) {
+    if (!laptop) return [0, 0, 0, 0, 0, 0];
+
     return this.comparisonMetrics.map(metric => {
       switch (metric.key) {
         case 'performance':
@@ -445,9 +544,11 @@ export class Versus {
     return Math.min(score, 100);
   }
 
-  renderComparisonTable() {
-    const table = document.getElementById('comparisonTable');
-    if (!table) return;
+  renderSpecsTable() {
+    if (!this.specsTable) return;
+
+    const laptop1 = this.selectedLaptops[0];
+    const laptop2 = this.selectedLaptops[1];
 
     const specs = [
       { label: 'Processor', key: 'cpu.gen' },
@@ -456,7 +557,7 @@ export class Versus {
       { label: 'VRAM', key: 'gpu.vram', unit: 'GB' },
       { label: 'RAM', key: 'ram.gb', unit: 'GB' },
       { label: 'Storage', key: 'storage.gb', unit: 'GB' },
-      { label: 'Display', key: 'display.size', unit: '"' },
+      { label: 'Display Size', key: 'display.size', unit: '"' },
       { label: 'Resolution', key: 'display.res' },
       { label: 'Refresh Rate', key: 'display.refresh', unit: 'Hz' },
       { label: 'Battery', key: 'battery_wh', unit: 'Wh' },
@@ -464,66 +565,232 @@ export class Versus {
       { label: 'Price', key: 'price_myr', formatter: (v) => `RM${this.formatPrice(v)}` }
     ];
 
-    table.innerHTML = `
-      <table class="comparison-table-grid">
+    this.specsTable.innerHTML = `
+      <h3>Detailed Specifications</h3>
+      <table class="versus-table">
         <thead>
           <tr>
-            <th>Spec</th>
-            ${this.selectedLaptops.map(laptop => `
-              <th>${laptop.brand} ${laptop.model}</th>
-            `).join('')}
+            <th>Specification</th>
+            <th>${laptop1.brand} ${laptop1.model}</th>
+            <th>${laptop2.brand} ${laptop2.model}</th>
           </tr>
         </thead>
         <tbody>
-          ${specs.map(spec => `
-            <tr>
-              <td class="spec-label">${spec.label}</td>
-              ${this.selectedLaptops.map(laptop => {
-                const value = this.getNestedValue(laptop, spec.key);
-                const formatted = spec.formatter ? spec.formatter(value) : value;
-                const display = formatted ? `${formatted}${spec.unit || ''}` : 'N/A';
-                return `<td>${display}</td>`;
-              }).join('')}
-            </tr>
-          `).join('')}
+          ${specs.map(spec => {
+            const value1 = this.getNestedValue(laptop1, spec.key);
+            const value2 = this.getNestedValue(laptop2, spec.key);
+
+            const formatted1 = spec.formatter ? spec.formatter(value1) : value1;
+            const formatted2 = spec.formatter ? spec.formatter(value2) : value2;
+
+            const display1 = formatted1 ? `${formatted1}${spec.unit || ''}` : 'N/A';
+            const display2 = formatted2 ? `${formatted2}${spec.unit || ''}` : 'N/A';
+
+            // Highlight winner (for numeric values)
+            let class1 = '';
+            let class2 = '';
+            if (typeof value1 === 'number' && typeof value2 === 'number') {
+              // Lower is better for weight and price
+              const lowerIsBetter = ['weight_kg', 'price_myr'].some(k => spec.key.includes(k));
+              if (lowerIsBetter) {
+                if (value1 < value2) class1 = 'winner';
+                else if (value2 < value1) class2 = 'winner';
+              } else {
+                if (value1 > value2) class1 = 'winner';
+                else if (value2 > value1) class2 = 'winner';
+              }
+            }
+
+            return `
+              <tr>
+                <td class="spec-label">${spec.label}</td>
+                <td class="${class1}">${display1}</td>
+                <td class="${class2}">${display2}</td>
+              </tr>
+            `;
+          }).join('')}
         </tbody>
       </table>
     `;
   }
 
-  async getAIRecommendation() {
-    const advisorContent = document.getElementById('advisorContent');
-    if (!advisorContent) return;
+  renderProsConsGrid() {
+    if (!this.prosConsGrid) return;
 
-    try {
-      const response = await apiClient.compareDevices(this.selectedLaptops.map(l => l.id));
+    const laptop1 = this.selectedLaptops[0];
+    const laptop2 = this.selectedLaptops[1];
 
-      advisorContent.innerHTML = `
-        <div class="advisor-recommendation">
-          <p>${response.data.recommendation}</p>
-          <div class="advisor-winner">
-            <strong>Winner:</strong> ${response.data.winner}
+    const analysis1 = this.analyzeProsConsLaptop(laptop1, laptop2);
+    const analysis2 = this.analyzeProsConsLaptop(laptop2, laptop1);
+
+    this.prosConsGrid.innerHTML = `
+      <h3>Pros & Cons Analysis</h3>
+      <div class="versus-pros-cons-container">
+        <div class="versus-pros-cons-card">
+          <h4>${laptop1.brand} ${laptop1.model}</h4>
+          <div class="versus-pros">
+            <h5>✅ Pros</h5>
+            <ul>
+              ${analysis1.pros.map(pro => `<li>${pro}</li>`).join('')}
+            </ul>
           </div>
-          <div class="advisor-reasoning">
-            <p><em>${response.data.reasoning}</em></p>
+          <div class="versus-cons">
+            <h5>❌ Cons</h5>
+            <ul>
+              ${analysis1.cons.map(con => `<li>${con}</li>`).join('')}
+            </ul>
           </div>
         </div>
-      `;
 
-      // Save to history
-      await storage.addHistory({
-        type: 'versus',
-        laptops: this.selectedLaptops.map(l => ({ id: l.id, brand: l.brand, model: l.model })),
-        recommendation: response.data
+        <div class="versus-pros-cons-card">
+          <h4>${laptop2.brand} ${laptop2.model}</h4>
+          <div class="versus-pros">
+            <h5>✅ Pros</h5>
+            <ul>
+              ${analysis2.pros.map(pro => `<li>${pro}</li>`).join('')}
+            </ul>
+          </div>
+          <div class="versus-cons">
+            <h5>❌ Cons</h5>
+            <ul>
+              ${analysis2.cons.map(con => `<li>${con}</li>`).join('')}
+            </ul>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  analyzeProsConsLaptop(laptop, competitor) {
+    const pros = [];
+    const cons = [];
+
+    // Price comparison
+    if (laptop.price_myr < competitor.price_myr) {
+      pros.push(`More affordable (RM${this.formatPrice(laptop.price_myr)} vs RM${this.formatPrice(competitor.price_myr)})`);
+    } else if (laptop.price_myr > competitor.price_myr * 1.2) {
+      cons.push(`Significantly more expensive (RM${this.formatPrice(laptop.price_myr)} vs RM${this.formatPrice(competitor.price_myr)})`);
+    }
+
+    // Performance
+    if ((laptop.cpu?.cores || 0) > (competitor.cpu?.cores || 0)) {
+      pros.push(`More CPU cores (${laptop.cpu.cores} vs ${competitor.cpu.cores})`);
+    }
+    if ((laptop.ram?.gb || 0) > (competitor.ram?.gb || 0)) {
+      pros.push(`More RAM (${laptop.ram.gb}GB vs ${competitor.ram.gb}GB)`);
+    }
+    if (laptop.gpu?.vram && !competitor.gpu?.vram) {
+      pros.push(`Dedicated GPU (${laptop.gpu.chip})`);
+    }
+
+    // Display
+    if ((laptop.display?.refresh || 60) > (competitor.display?.refresh || 60)) {
+      pros.push(`Higher refresh rate (${laptop.display.refresh}Hz vs ${competitor.display.refresh}Hz)`);
+    }
+    if ((laptop.display?.nits || 0) > (competitor.display?.nits || 0)) {
+      pros.push(`Brighter display (${laptop.display.nits} nits vs ${competitor.display.nits} nits)`);
+    }
+
+    // Portability
+    if ((laptop.weight_kg || 999) < (competitor.weight_kg || 999)) {
+      pros.push(`Lighter and more portable (${laptop.weight_kg}kg vs ${competitor.weight_kg}kg)`);
+    } else if ((laptop.weight_kg || 0) > (competitor.weight_kg || 0) * 1.2) {
+      cons.push(`Heavier (${laptop.weight_kg}kg vs ${competitor.weight_kg}kg)`);
+    }
+
+    // Battery
+    if ((laptop.battery_wh || 0) > (competitor.battery_wh || 0)) {
+      pros.push(`Larger battery capacity (${laptop.battery_wh}Wh vs ${competitor.battery_wh}Wh)`);
+    }
+
+    // Storage
+    if ((laptop.storage?.gb || 0) > (competitor.storage?.gb || 0)) {
+      pros.push(`More storage (${laptop.storage.gb}GB vs ${competitor.storage.gb}GB)`);
+    }
+
+    // AI capabilities
+    if (laptop.npu_tops > 20 && competitor.npu_tops < 20) {
+      pros.push(`AI-ready with NPU (${laptop.npu_tops} TOPS)`);
+    }
+
+    // If no pros/cons found, add generic ones
+    if (pros.length === 0) {
+      pros.push('Solid overall specifications');
+      pros.push('Reliable brand reputation');
+    }
+    if (cons.length === 0) {
+      cons.push('No major drawbacks compared to competitor');
+    }
+
+    return { pros, cons };
+  }
+
+  saveComparison() {
+    if (!this.selectedLaptops[0] || !this.selectedLaptops[1]) return;
+
+    storage.addHistory({
+      type: 'versus',
+      timestamp: Date.now(),
+      laptops: this.selectedLaptops.map(l => ({
+        id: l.id,
+        brand: l.brand,
+        model: l.model,
+        price: l.price_myr
+      }))
+    }).then(() => {
+      this.showNotification('Comparison saved to history', 'success');
+    });
+  }
+
+  shareComparison() {
+    if (!this.selectedLaptops[0] || !this.selectedLaptops[1]) return;
+
+    const laptop1 = this.selectedLaptops[0];
+    const laptop2 = this.selectedLaptops[1];
+
+    const shareText = `AI Bradaa Comparison:\n${laptop1.brand} ${laptop1.model} vs ${laptop2.brand} ${laptop2.model}`;
+    const shareUrl = `${window.location.origin}/versus?ids=${laptop1.id},${laptop2.id}`;
+
+    if (navigator.share) {
+      navigator.share({
+        title: 'AI Bradaa Laptop Comparison',
+        text: shareText,
+        url: shareUrl
+      }).catch(err => console.log('Share failed:', err));
+    } else {
+      // Fallback: Copy to clipboard
+      navigator.clipboard.writeText(`${shareText}\n${shareUrl}`).then(() => {
+        this.showNotification('Share link copied to clipboard', 'success');
       });
+    }
+  }
 
-    } catch (error) {
-      advisorContent.innerHTML = `
-        <div class="advisor-error">
-          <p>⚠️ AI analysis unavailable. ${error.message}</p>
-          <p class="hint">Upgrade to Pro for AI-powered recommendations</p>
-        </div>
-      `;
+  resetComparison() {
+    this.selectedLaptops = [null, null];
+    this.updateSelector(0, null);
+    this.updateSelector(1, null);
+    this.comparisonView.style.display = 'none';
+    this.saveToCache();
+  }
+
+  async saveToCache() {
+    if (this.selectedLaptops[0] || this.selectedLaptops[1]) {
+      await storage.setCache('versus_selection', this.selectedLaptops, 86400000); // 24 hours
+    } else {
+      await storage.clearCache('versus_selection');
+    }
+  }
+
+  async loadFromCache() {
+    const cached = await storage.getCache('versus_selection');
+    if (cached && Array.isArray(cached)) {
+      this.selectedLaptops = cached;
+      this.updateSelector(0, cached[0]);
+      this.updateSelector(1, cached[1]);
+
+      if (cached[0] && cached[1]) {
+        this.renderComparison();
+      }
     }
   }
 
@@ -536,26 +803,66 @@ export class Versus {
     return price.toLocaleString('en-MY');
   }
 
-  showError(message) {
-    const container = document.getElementById('versusContainer') || document.body;
-    container.innerHTML = `
-      <div class="error-state">
-        <div class="error-icon">⚠️</div>
-        <h3>Error</h3>
-        <p>${message}</p>
-        <button class="btn btn-primary" onclick="location.reload()">Retry</button>
-      </div>
+  showNotification(message, type = 'info') {
+    // Simple notification (could be enhanced with a toast component)
+    const notification = document.createElement('div');
+    notification.className = `versus-notification versus-notification-${type}`;
+    notification.textContent = message;
+    notification.style.cssText = `
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 12px 20px;
+      background: ${type === 'error' ? '#D83F87' : '#00F0FF'};
+      color: #0D1117;
+      border-radius: 8px;
+      font-weight: 600;
+      z-index: 10000;
+      animation: slideIn 0.3s ease;
     `;
+
+    document.body.appendChild(notification);
+
+    setTimeout(() => {
+      notification.style.animation = 'slideOut 0.3s ease';
+      setTimeout(() => notification.remove(), 300);
+    }, 3000);
+  }
+
+  getDemoData() {
+    // Fallback demo data if fetch fails
+    return [
+      {
+        id: 'demo-1',
+        brand: 'Apple',
+        model: 'MacBook Air M3',
+        price_myr: 5299,
+        cpu: { gen: 'M3', cores: 8 },
+        ram: { gb: 16 },
+        gpu: { chip: 'M3 GPU', vram: 0 },
+        storage: { gb: 512 },
+        display: { size: 13.6, res: '2560x1664', refresh: 60, nits: 500 },
+        battery_wh: 52,
+        weight_kg: 1.24,
+        category: ['ultrabook', 'creative']
+      },
+      {
+        id: 'demo-2',
+        brand: 'Lenovo',
+        model: 'Legion 5 Pro',
+        price_myr: 4999,
+        cpu: { gen: 'AMD Ryzen 7 7735H', cores: 8 },
+        ram: { gb: 16 },
+        gpu: { chip: 'RTX 4060', vram: 8 },
+        storage: { gb: 512 },
+        display: { size: 16, res: '2560x1600', refresh: 165, nits: 500 },
+        battery_wh: 80,
+        weight_kg: 2.5,
+        category: ['gaming']
+      }
+    ];
   }
 }
 
-// Auto-initialize if container exists
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => {
-    const versus = new Versus();
-    versus.init();
-  });
-} else {
-  const versus = new Versus();
-  versus.init();
-}
+// Export for module usage
+export default Versus;

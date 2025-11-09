@@ -1,6 +1,11 @@
 /**
- * Command Tool - AI Bradaa Command Interface
- * AI Bradaa - Natural language laptop queries (Pro/Ultimate only)
+ * Command Tool - AI Bradaa Command Interface (Syeddy Chat)
+ * AI Bradaa - Natural language laptop queries with soul visualization
+ *
+ * ARCHITECTURE: Hybrid Enhancement Pattern
+ * - HTML provides static structure (header, soul canvas, mode selector, input)
+ * - JavaScript enhances with dynamic content (messages, soul animation, AI responses)
+ * - Progressive enhancement approach (no innerHTML replacement)
  */
 
 import { apiClient } from '../shared/utils/api.mjs';
@@ -10,18 +15,65 @@ export class Command {
   constructor() {
     this.conversationHistory = [];
     this.isProcessing = false;
-    this.userTier = 'free';
+    this.userTier = 'free'; // 'free', 'pro', 'ultimate'
+    this.currentMode = 'fast'; // 'fast' or 'think'
+
+    // DOM references (existing elements)
+    this.soulCanvas = null;
+    this.messagesContainer = null;
+    this.messageInput = null;
+    this.sendBtn = null;
+    this.fastModeBtn = null;
+    this.thinkModeBtn = null;
+
+    // Soul animation
+    this.soulAnimation = null;
   }
 
   async init() {
+    // Get existing DOM elements
+    this.soulCanvas = document.getElementById('soulCanvas');
+    this.messagesContainer = document.getElementById('messagesContainer');
+    this.messageInput = document.getElementById('messageInput');
+    this.sendBtn = document.getElementById('sendBtn');
+    this.fastModeBtn = document.getElementById('fastModeBtn');
+    this.thinkModeBtn = document.getElementById('thinkModeBtn');
+
+    // Validation
+    if (!this.messagesContainer || !this.messageInput || !this.sendBtn) {
+      console.error('Required elements not found! command.mjs needs #messagesContainer, #messageInput, #sendBtn');
+      return;
+    }
+
+    // Load user tier and conversation history
     await this.loadUserTier();
     await this.loadConversationHistory();
-    this.render();
+
+    // Initialize soul canvas animation
+    if (this.soulCanvas) {
+      this.initSoulAnimation();
+    }
+
+    // Render messages
+    this.renderMessages();
+
+    // Attach event listeners
     this.attachEventListeners();
+
+    // Check tier and show upgrade prompt if needed
+    if (this.userTier === 'free') {
+      this.showUpgradePrompt();
+    }
   }
 
   async loadUserTier() {
     try {
+      const token = await storage.getToken();
+      if (!token) {
+        this.userTier = 'free';
+        return;
+      }
+
       const response = await apiClient.getUserProfile();
       this.userTier = response.data.user.tier || 'free';
     } catch (error) {
@@ -31,314 +83,323 @@ export class Command {
   }
 
   async loadConversationHistory() {
-    const history = await storage.getHistory(20);
-    this.conversationHistory = history
-      .filter(h => h.type === 'command')
-      .map(h => ({ role: h.role, content: h.content }))
-      .reverse()
-      .slice(0, 10); // Last 10 messages
+    const cached = await storage.getCache('command_conversation');
+    if (cached && Array.isArray(cached)) {
+      this.conversationHistory = cached.slice(-20); // Last 20 messages
+    } else {
+      // Add welcome message
+      this.conversationHistory = [{
+        role: 'assistant',
+        content: 'Wah, hello! I\'m Syeddy, your AI laptop advisor lah! 🇲🇾\n\nAsk me anything about laptops - gaming, business, budget, whatever you need. I\'ll help you find the perfect match!\n\nTry asking: "Best gaming laptop under RM5000?"',
+        timestamp: Date.now()
+      }];
+    }
   }
 
-  render() {
-    const container = document.getElementById('commandContainer') || document.body;
+  initSoulAnimation() {
+    if (!this.soulCanvas) return;
 
-    if (this.userTier === 'free') {
-      container.innerHTML = this.renderUpgradePrompt();
-      return;
+    const canvas = this.soulCanvas;
+    const ctx = canvas.getContext('2d');
+
+    // Set canvas size
+    canvas.width = 120;
+    canvas.height = 120;
+
+    // Soul animation state
+    const state = {
+      particles: [],
+      time: 0,
+      energy: 0.5 // 0-1, increases when thinking
+    };
+
+    // Create particles
+    for (let i = 0; i < 50; i++) {
+      state.particles.push({
+        angle: Math.random() * Math.PI * 2,
+        radius: Math.random() * 40 + 10,
+        speed: Math.random() * 0.02 + 0.01,
+        size: Math.random() * 3 + 1
+      });
     }
 
-    container.innerHTML = `
-      <div class="command-wrapper">
+    // Animation loop
+    const animate = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        <!-- Header -->
-        <div class="command-header">
-          <h1>🤖 AI Bradaa Command</h1>
-          <p>Ask me anything in plain English or Manglish</p>
-          <div class="tier-badge ${this.userTier}">${this.userTier.toUpperCase()}</div>
-        </div>
+      const centerX = canvas.width / 2;
+      const centerY = canvas.height / 2;
 
-        <!-- Conversation Area -->
-        <div class="conversation-container" id="conversationArea">
-          ${this.conversationHistory.length === 0 ? this.renderWelcomeMessage() : ''}
-          ${this.conversationHistory.map(msg => this.renderMessage(msg)).join('')}
-        </div>
+      // Pulse effect
+      const pulse = Math.sin(state.time * 2) * 0.2 + 0.8;
 
-        <!-- Input Area -->
-        <div class="command-input-area">
-          <div class="input-wrapper">
-            <textarea
-              id="commandInput"
-              class="command-textarea"
-              placeholder='Type your question... e.g., "Best laptop for AutoCAD under RM5k?"'
-              rows="1"
-              ${this.isProcessing ? 'disabled' : ''}
-            ></textarea>
-            <button
-              id="sendBtn"
-              class="send-btn"
-              ${this.isProcessing ? 'disabled' : ''}
-              aria-label="Send message">
-              ${this.isProcessing ? '⏳' : '➤'}
-            </button>
-          </div>
-          <div class="input-hints">
-            <button class="hint-btn" data-prompt="Best gaming laptop under RM6000?">
-              Gaming under RM6k
-            </button>
-            <button class="hint-btn" data-prompt="Compare MacBook Pro vs ThinkPad X1">
-              MacBook vs ThinkPad
-            </button>
-            <button class="hint-btn" data-prompt="Lightest laptop with good battery?">
-              Light + Long battery
-            </button>
-          </div>
-        </div>
+      // Draw core
+      const gradient = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, 30 * pulse);
+      gradient.addColorStop(0, `rgba(0, 240, 255, ${state.energy})`);
+      gradient.addColorStop(0.5, `rgba(216, 63, 135, ${state.energy * 0.5})`);
+      gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
 
-        <!-- Quick Actions -->
-        <div class="quick-actions">
-          <button class="action-btn" id="clearConversationBtn">
-            <span>🗑️</span> Clear Conversation
-          </button>
-          <button class="action-btn" id="exportBtn">
-            <span>📥</span> Export Chat
-          </button>
-        </div>
+      ctx.fillStyle = gradient;
+      ctx.beginPath();
+      ctx.arc(centerX, centerY, 30 * pulse, 0, Math.PI * 2);
+      ctx.fill();
 
-      </div>
-    `;
+      // Draw particles
+      state.particles.forEach(particle => {
+        particle.angle += particle.speed;
 
+        const x = centerX + Math.cos(particle.angle) * particle.radius * pulse;
+        const y = centerY + Math.sin(particle.angle) * particle.radius * pulse;
+
+        ctx.fillStyle = `rgba(0, 240, 255, ${state.energy * 0.6})`;
+        ctx.beginPath();
+        ctx.arc(x, y, particle.size, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      // Update state
+      state.time += 0.05;
+
+      // Decay energy towards idle (0.5)
+      if (state.energy > 0.5) {
+        state.energy -= 0.01;
+      } else if (state.energy < 0.5) {
+        state.energy += 0.01;
+      }
+
+      this.soulAnimation = requestAnimationFrame(animate);
+    };
+
+    animate();
+    this.soulState = state; // Store reference for external control
+  }
+
+  setSoulEnergy(energy) {
+    if (this.soulState) {
+      this.soulState.energy = Math.max(0, Math.min(1, energy));
+    }
+  }
+
+  renderMessages() {
+    if (!this.messagesContainer) return;
+
+    // Keep the initial assistant welcome message
+    const existingWelcome = this.messagesContainer.querySelector('.message.assistant');
+
+    this.messagesContainer.innerHTML = this.conversationHistory.map(msg =>
+      this.renderMessage(msg)
+    ).join('');
+
+    // Scroll to bottom
     this.scrollToBottom();
-    this.attachEventListeners();
-  }
-
-  renderUpgradePrompt() {
-    return `
-      <div class="upgrade-prompt">
-        <div class="upgrade-icon">🤖</div>
-        <h2>AI Bradaa Command</h2>
-        <p class="upgrade-subtitle">
-          Talk to AI Bradaa in natural language and get personalized laptop recommendations
-        </p>
-
-        <div class="upgrade-features">
-          <div class="feature-item">
-            <span class="feature-icon">💬</span>
-            <div>
-              <h4>Natural Language Queries</h4>
-              <p>Ask in plain English or Manglish</p>
-            </div>
-          </div>
-          <div class="feature-item">
-            <span class="feature-icon">🧠</span>
-            <div>
-              <h4>AI-Powered Insights</h4>
-              <p>Get expert recommendations backed by 84-mentor system</p>
-            </div>
-          </div>
-          <div class="feature-item">
-            <span class="feature-icon">🎯</span>
-            <div>
-              <h4>Context-Aware Responses</h4>
-              <p>Remembers your preferences and past questions</p>
-            </div>
-          </div>
-          <div class="feature-item">
-            <span class="feature-icon">📊</span>
-            <div>
-              <h4>Detailed Comparisons</h4>
-              <p>Ask to compare laptops and get in-depth analysis</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="upgrade-cta">
-          <a href="/pricing.html#pro" class="btn btn-primary btn-large">
-            Upgrade to Pro - RM30/month
-          </a>
-          <p class="upgrade-note">or try <strong>Ultimate</strong> for RM80/month with unlimited queries</p>
-        </div>
-
-        <div class="free-alternatives">
-          <h4>Free Alternative Tools:</h4>
-          <a href="#matchmaker" class="alt-link">🎯 Matchmaker (5-question wizard)</a>
-          <a href="#explorer" class="alt-link">🔍 Explorer (browse top 35 laptops)</a>
-        </div>
-      </div>
-    `;
-  }
-
-  renderWelcomeMessage() {
-    return `
-      <div class="welcome-message">
-        <div class="assistant-message">
-          <div class="message-avatar">🤖</div>
-          <div class="message-content">
-            <p><strong>Yo, what's up! I'm AI Bradaa, your laptop bradaa.</strong></p>
-            <p>Ask me anything lah — best laptop for gaming, coding, video editing, whatever you need. I got you covered with 100+ laptops analyzed and 84 mentors backing every recommendation.</p>
-            <p><em>Try asking: "Best laptop for software development under RM7k?"</em></p>
-          </div>
-        </div>
-      </div>
-    `;
   }
 
   renderMessage(message) {
     const isUser = message.role === 'user';
 
     return `
-      <div class="${isUser ? 'user-message' : 'assistant-message'}">
-        ${!isUser ? '<div class="message-avatar">🤖</div>' : ''}
+      <div class="message ${isUser ? 'user' : 'assistant'}">
+        <div class="message-avatar">${isUser ? '👤' : '🤖'}</div>
         <div class="message-content">
-          ${this.formatMessageContent(message.content)}
+          <div class="message-bubble">
+            ${this.formatMessageContent(message.content)}
+          </div>
+          <div class="message-time">${this.formatTime(message.timestamp)}</div>
           ${message.metadata ? this.renderMetadata(message.metadata) : ''}
         </div>
-        ${isUser ? '<div class="message-avatar user-avatar">👤</div>' : ''}
       </div>
     `;
   }
 
   formatMessageContent(content) {
-    // Simple markdown-like formatting
+    if (!content) return '';
+
+    // Convert markdown-like syntax to HTML
     let formatted = content
       .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
       .replace(/\*(.*?)\*/g, '<em>$1</em>')
-      .replace(/\n/g, '<br>');
+      .replace(/`(.*?)`/g, '<code>$1</code>')
+      .split('\n')
+      .map(line => `<p>${line || '<br>'}</p>`)
+      .join('');
 
-    return `<p>${formatted}</p>`;
+    return formatted;
+  }
+
+  formatTime(timestamp) {
+    if (!timestamp) return 'Just now';
+
+    const date = new Date(timestamp);
+    const now = new Date();
+    const diff = now - date;
+
+    if (diff < 60000) return 'Just now';
+    if (diff < 3600000) return `${Math.floor(diff / 60000)}m ago`;
+    if (diff < 86400000) return `${Math.floor(diff / 3600000)}h ago`;
+
+    return date.toLocaleDateString('en-MY');
   }
 
   renderMetadata(metadata) {
     if (!metadata) return '';
 
-    return `
-      <div class="message-metadata">
-        ${metadata.composite_score ? `<span class="metadata-badge">Score: ${metadata.composite_score}/100</span>` : ''}
-        ${metadata.mentors_consulted ? `<span class="metadata-badge">${metadata.mentors_consulted} mentors</span>` : ''}
-        ${metadata.tokens_used ? `<span class="metadata-badge">${metadata.tokens_used} tokens</span>` : ''}
-      </div>
-    `;
+    const badges = [];
+
+    if (metadata.composite_score) {
+      badges.push(`<span class="metadata-badge">Score: ${metadata.composite_score}/100</span>`);
+    }
+    if (metadata.mentors_consulted) {
+      badges.push(`<span class="metadata-badge">${metadata.mentors_consulted} mentors</span>`);
+    }
+    if (metadata.response_time) {
+      badges.push(`<span class="metadata-badge">${metadata.response_time}ms</span>`);
+    }
+
+    return badges.length > 0 ? `<div class="message-metadata">${badges.join('')}</div>` : '';
   }
 
   attachEventListeners() {
     // Send button
-    const sendBtn = document.getElementById('sendBtn');
-    const commandInput = document.getElementById('commandInput');
+    this.sendBtn?.addEventListener('click', () => {
+      this.handleSendMessage();
+    });
 
-    if (sendBtn) {
-      sendBtn.addEventListener('click', () => this.handleSendMessage());
-    }
-
-    if (commandInput) {
+    // Input textarea
+    this.messageInput?.addEventListener('input', (e) => {
       // Auto-resize textarea
-      commandInput.addEventListener('input', (e) => {
-        e.target.style.height = 'auto';
-        e.target.style.height = Math.min(e.target.scrollHeight, 200) + 'px';
-      });
+      e.target.style.height = 'auto';
+      e.target.style.height = Math.min(e.target.scrollHeight, 120) + 'px';
+    });
 
+    this.messageInput?.addEventListener('keydown', (e) => {
       // Send on Enter (Shift+Enter for new line)
-      commandInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' && !e.shiftKey) {
-          e.preventDefault();
-          this.handleSendMessage();
-        }
-      });
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        this.handleSendMessage();
+      }
+    });
 
-      // Focus input
-      commandInput.focus();
-    }
+    // Mode selector buttons
+    this.fastModeBtn?.addEventListener('click', () => {
+      this.currentMode = 'fast';
+      this.fastModeBtn.classList.add('active');
+      this.thinkModeBtn?.classList.remove('active');
+      this.showNotification('Fast Mode: Quick responses', 'info');
+    });
 
-    // Hint buttons
-    document.querySelectorAll('.hint-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        const prompt = e.target.dataset.prompt;
-        if (commandInput) {
-          commandInput.value = prompt;
-          commandInput.focus();
+    this.thinkModeBtn?.addEventListener('click', () => {
+      this.currentMode = 'think';
+      this.thinkModeBtn.classList.add('active');
+      this.fastModeBtn?.classList.remove('active');
+      this.showNotification('Think Mode: Deep analysis (may take longer)', 'info');
+    });
+
+    // Shortcut chips
+    document.querySelectorAll('.shortcut-chip').forEach(chip => {
+      chip.addEventListener('click', (e) => {
+        const shortcut = e.target.dataset.shortcut;
+        if (shortcut && this.messageInput) {
+          let prompt = '';
+
+          switch (shortcut) {
+            case '/match':
+              prompt = 'Help me find the perfect laptop for my needs';
+              break;
+            case '/vs':
+              prompt = 'Compare two laptops for me';
+              break;
+            case '/deals':
+              prompt = 'What are the best deals right now?';
+              break;
+            case '/gaming':
+              prompt = 'Best gaming laptops under RM6000?';
+              break;
+            default:
+              prompt = shortcut;
+          }
+
+          this.messageInput.value = prompt;
+          this.messageInput.focus();
         }
       });
     });
 
-    // Clear conversation
-    const clearBtn = document.getElementById('clearConversationBtn');
-    if (clearBtn) {
-      clearBtn.addEventListener('click', () => {
-        if (confirm('Clear entire conversation?')) {
-          this.conversationHistory = [];
-          this.render();
-        }
-      });
-    }
-
-    // Export
-    const exportBtn = document.getElementById('exportBtn');
-    if (exportBtn) {
-      exportBtn.addEventListener('click', () => this.exportConversation());
-    }
+    // Focus input on load
+    this.messageInput?.focus();
   }
 
   async handleSendMessage() {
-    const input = document.getElementById('commandInput');
-    const message = input?.value.trim();
+    const message = this.messageInput?.value.trim();
 
     if (!message || this.isProcessing) return;
 
-    // Add user message
-    this.conversationHistory.push({
+    // Check tier for Command feature
+    if (this.userTier === 'free') {
+      this.showUpgradePrompt();
+      return;
+    }
+
+    // Add user message to history
+    const userMessage = {
       role: 'user',
       content: message,
       timestamp: Date.now()
-    });
+    };
+    this.conversationHistory.push(userMessage);
 
     // Clear input and render
-    input.value = '';
-    input.style.height = 'auto';
+    this.messageInput.value = '';
+    this.messageInput.style.height = 'auto';
     this.isProcessing = true;
-    this.render();
+    this.renderMessages();
 
-    // Save to storage
-    await storage.addHistory({
-      type: 'command',
-      role: 'user',
-      content: message
-    });
+    // Increase soul energy (thinking)
+    this.setSoulEnergy(1.0);
 
     // Show typing indicator
     this.showTypingIndicator();
 
+    // Disable input
+    if (this.messageInput) this.messageInput.disabled = true;
+    if (this.sendBtn) this.sendBtn.disabled = true;
+
     try {
       // Call AI API
       const response = await apiClient.executeCommand(message, {
-        conversationHistory: this.conversationHistory.slice(-5) // Last 5 messages for context
+        conversationHistory: this.conversationHistory.slice(-5), // Last 5 messages for context
+        mode: this.currentMode,
+        tier: this.userTier
       });
 
       // Remove typing indicator
       this.removeTypingIndicator();
 
       // Add assistant response
-      this.conversationHistory.push({
+      const assistantMessage = {
         role: 'assistant',
         content: response.data.response,
         metadata: response.data.metadata,
         timestamp: Date.now()
-      });
+      };
+      this.conversationHistory.push(assistantMessage);
 
-      // Save to storage
-      await storage.addHistory({
-        type: 'command',
-        role: 'assistant',
-        content: response.data.response,
-        metadata: response.data.metadata
-      });
+      // Save to cache
+      await this.saveToCache();
+
+      // Re-render messages
+      this.renderMessages();
 
     } catch (error) {
       this.removeTypingIndicator();
 
-      let errorMessage = 'Sorry bro, something went wrong. Please try again.';
+      let errorMessage = 'Wah, sorry bro! Something went wrong lah. Please try again.';
 
       if (error.status === 429) {
-        errorMessage = '⚠️ You\'ve hit your quota limit for this month. Upgrade to Pro for more queries!';
+        errorMessage = '⚠️ You\'ve hit your quota limit for this month. Upgrade to Ultimate for unlimited queries!';
       } else if (error.status === 401) {
         errorMessage = '⚠️ Session expired. Please refresh and log in again.';
+      } else if (error.status === 503) {
+        errorMessage = '⚠️ AI service is temporarily unavailable. Please try again in a few moments.';
       }
 
       this.conversationHistory.push({
@@ -346,29 +407,37 @@ export class Command {
         content: errorMessage,
         timestamp: Date.now()
       });
+
+      this.renderMessages();
     } finally {
       this.isProcessing = false;
-      this.render();
+      if (this.messageInput) this.messageInput.disabled = false;
+      if (this.sendBtn) this.sendBtn.disabled = false;
+      this.setSoulEnergy(0.5); // Return to idle
+      this.messageInput?.focus();
     }
   }
 
   showTypingIndicator() {
-    const conversationArea = document.getElementById('conversationArea');
-    if (!conversationArea) return;
+    if (!this.messagesContainer) return;
 
     const indicator = document.createElement('div');
-    indicator.className = 'typing-indicator';
+    indicator.className = 'message assistant typing-indicator';
     indicator.id = 'typingIndicator';
     indicator.innerHTML = `
       <div class="message-avatar">🤖</div>
-      <div class="typing-dots">
-        <span></span>
-        <span></span>
-        <span></span>
+      <div class="message-content">
+        <div class="message-bubble">
+          <div class="typing-dots">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
       </div>
     `;
 
-    conversationArea.appendChild(indicator);
+    this.messagesContainer.appendChild(indicator);
     this.scrollToBottom();
   }
 
@@ -381,38 +450,197 @@ export class Command {
 
   scrollToBottom() {
     setTimeout(() => {
-      const conversationArea = document.getElementById('conversationArea');
-      if (conversationArea) {
-        conversationArea.scrollTop = conversationArea.scrollHeight;
+      if (this.messagesContainer) {
+        this.messagesContainer.scrollTop = this.messagesContainer.scrollHeight;
       }
-    }, 100);
+    }, 50);
+  }
+
+  showUpgradePrompt() {
+    // Create modal overlay
+    const modal = document.createElement('div');
+    modal.className = 'command-upgrade-modal';
+    modal.innerHTML = `
+      <div class="modal-backdrop"></div>
+      <div class="modal-content">
+        <button class="modal-close">&times;</button>
+        <div class="upgrade-content">
+          <div class="upgrade-icon">🤖</div>
+          <h2>AI Bradaa Command (Pro Feature)</h2>
+          <p class="upgrade-subtitle">
+            Chat with Syeddy in natural language and get personalized AI-powered recommendations
+          </p>
+
+          <div class="upgrade-features">
+            <div class="feature-item">
+              <span class="feature-icon">💬</span>
+              <div>
+                <h4>Natural Language</h4>
+                <p>Ask in plain English or Manglish</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">🧠</span>
+              <div>
+                <h4>84-Mentor System</h4>
+                <p>Backed by 84 expert mentors</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">⚡</span>
+              <div>
+                <h4>Fast & Think Modes</h4>
+                <p>Quick responses or deep analysis</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">📊</span>
+              <div>
+                <h4>Context-Aware</h4>
+                <p>Remembers your preferences</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="pricing-options">
+            <div class="pricing-card">
+              <h3>Pro</h3>
+              <div class="price">
+                <span class="currency">RM</span>
+                <span class="amount">30</span>
+                <span class="period">/month</span>
+              </div>
+              <ul>
+                <li>50 AI queries/month</li>
+                <li>Fast & Think modes</li>
+                <li>All tools unlocked</li>
+              </ul>
+              <a href="/pricing#pro" class="btn-primary">Choose Pro</a>
+            </div>
+
+            <div class="pricing-card recommended">
+              <div class="recommended-badge">Best Value</div>
+              <h3>Ultimate</h3>
+              <div class="price">
+                <span class="currency">RM</span>
+                <span class="amount">80</span>
+                <span class="period">/month</span>
+              </div>
+              <ul>
+                <li>Unlimited AI queries</li>
+                <li>Priority support</li>
+                <li>Advanced analytics</li>
+              </ul>
+              <a href="/pricing#ultimate" class="btn-primary">Choose Ultimate</a>
+            </div>
+          </div>
+
+          <div class="free-alternatives">
+            <p><strong>Free alternatives:</strong></p>
+            <a href="/matchmaker" class="alt-link">🎯 Matchmaker</a>
+            <a href="/explorer" class="alt-link">🔍 Explorer</a>
+            <a href="/versus" class="alt-link">⚔️ Versus</a>
+          </div>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    // Add active class for animation
+    setTimeout(() => modal.classList.add('active'), 10);
+
+    // Close handlers
+    const close = () => {
+      modal.classList.remove('active');
+      setTimeout(() => modal.remove(), 300);
+    };
+
+    modal.querySelector('.modal-close').addEventListener('click', close);
+    modal.querySelector('.modal-backdrop').addEventListener('click', close);
+
+    return modal;
+  }
+
+  async saveToCache() {
+    await storage.setCache('command_conversation', this.conversationHistory, 86400000); // 24 hours
+  }
+
+  async clearConversation() {
+    if (confirm('Clear entire conversation history?')) {
+      this.conversationHistory = [{
+        role: 'assistant',
+        content: 'Conversation cleared! Ask me anything lah!',
+        timestamp: Date.now()
+      }];
+      this.renderMessages();
+      await this.saveToCache();
+      this.showNotification('Conversation cleared', 'success');
+    }
   }
 
   async exportConversation() {
     const markdown = this.conversationHistory
       .map(msg => {
-        const role = msg.role === 'user' ? '**You:**' : '**AI Bradaa:**';
-        return `${role}\n${msg.content}\n`;
+        const role = msg.role === 'user' ? '**You:**' : '**AI Bradaa (Syeddy):**';
+        const time = this.formatTime(msg.timestamp);
+        return `${role} (${time})\n${msg.content}\n`;
       })
       .join('\n---\n\n');
 
-    const blob = new Blob([markdown], { type: 'text/markdown' });
+    const header = `# AI Bradaa Conversation Export\nExported: ${new Date().toLocaleString('en-MY')}\n\n---\n\n`;
+
+    const blob = new Blob([header + markdown], { type: 'text/markdown' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
     a.download = `ai-bradaa-conversation-${Date.now()}.md`;
     a.click();
     URL.revokeObjectURL(url);
+
+    this.showNotification('Conversation exported', 'success');
+  }
+
+  showNotification(message, type = 'info') {
+    const notification = document.createElement('div');
+    notification.className = `command-notification command-notification-${type}`;
+    notification.textContent = message;
+
+    const bgColors = {
+      success: '#00F0FF',
+      error: '#D83F87',
+      warning: '#FFD700',
+      info: '#A8B2CC'
+    };
+
+    notification.style.cssText = `
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 12px 20px;
+      background: ${bgColors[type] || bgColors.info};
+      color: #0D1117;
+      border-radius: 8px;
+      font-weight: 600;
+      z-index: 10000;
+      animation: slideIn 0.3s ease;
+    `;
+
+    document.body.appendChild(notification);
+
+    setTimeout(() => {
+      notification.style.animation = 'slideOut 0.3s ease';
+      setTimeout(() => notification.remove(), 300);
+    }, 3000);
+  }
+
+  destroy() {
+    // Cleanup animation frame
+    if (this.soulAnimation) {
+      cancelAnimationFrame(this.soulAnimation);
+    }
   }
 }
 
-// Auto-initialize
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => {
-    const command = new Command();
-    command.init();
-  });
-} else {
-  const command = new Command();
-  command.init();
-}
+// Export for module usage
+export default Command;
