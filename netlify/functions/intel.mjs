@@ -13,6 +13,15 @@ import {
 } from './utils/response.mjs';
 import { getUserFromEvent, requireTier } from './utils/auth.mjs';
 import { applyRateLimit } from './utils/rateLimiter.mjs';
+import { getGeminiClient } from './utils/gemini.mjs';
+import { enforceQuota } from './utils/quota.mjs';
+import {
+  detectEmotion,
+  emotionalizeResponse,
+} from '../../ai_pod/personas/catchphrases.mjs';
+
+// Initialize Gemini client
+const gemini = getGeminiClient(process.env.GEMINI_API_KEY);
 
 /**
  * Generate mock Intel feed
@@ -60,6 +69,51 @@ function getIntelFeed(queryParams) {
       total: 100, // Mock total
     },
   };
+}
+
+/**
+ * Generate AI-powered insights for Intel feed
+ *
+ * @param {Array} items - Feed items
+ * @returns {Promise<Object>} AI insights
+ */
+async function generateIntelInsights(items) {
+  if (!items || items.length === 0) {
+    return null;
+  }
+
+  // Summarize top items for AI
+  const topItems = items.slice(0, 5).map(item => ({
+    title: item.title,
+    category: item.category,
+    source: item.source,
+  }));
+
+  const prompt = `You are AI Bradaa's Intel analyst. Summarize these recent laptop tech news for Malaysian users:
+
+${topItems.map((item, i) => `${i + 1}. [${item.category}] ${item.title} - ${item.source}`).join('\n')}
+
+Provide:
+1. Brief overall summary (2-3 sentences)
+2. Top trend or highlight
+3. Key takeaway for laptop buyers
+
+Keep it concise and exciting! Use light Manglish if appropriate.`;
+
+  try {
+    const result = await gemini.generate(prompt, {
+      model: 'gemini-2.0-flash-exp',
+    });
+
+    return {
+      summary: result.text,
+      tokens: result.tokens,
+      cost: result.cost,
+    };
+  } catch (error) {
+    console.error('[Intel] AI insights generation failed:', error);
+    return null;
+  }
 }
 
 /**
@@ -169,9 +223,46 @@ export async function handler(event, context) {
     // GET /feed
     if (path === '/feed' && event.httpMethod === 'GET') {
       const result = getIntelFeed(queryParams);
+
+      // Optional AI insights (enabled via ?insights=true query param)
+      const enableInsights = queryParams.insights === 'true';
+      let aiInsights = null;
+
+      if (enableInsights && gemini) {
+        // Enforce quota BEFORE AI call
+        const quotaCheck = await enforceQuota(user);
+        if (!quotaCheck.allowed) {
+          // Return feed without AI insights if quota exceeded
+          return successResponse({
+            success: true,
+            data: result,
+            note: 'AI insights unavailable (quota exceeded)',
+          });
+        }
+
+        aiInsights = await generateIntelInsights(result.items);
+
+        // Record usage AFTER AI call
+        if (aiInsights) {
+          await quotaCheck.recordUsage(
+            aiInsights.tokens.total,
+            aiInsights.cost.sen,
+            '/.netlify/functions/intel/feed',
+            {
+              itemCount: result.items.length,
+              category: queryParams.category || 'all',
+            }
+          );
+        }
+      }
+
       return successResponse({
         success: true,
-        data: result
+        data: {
+          ...result,
+          aiInsights: aiInsights ? aiInsights.summary : null,
+        },
+        ...(aiInsights ? { quota: user?.id ? (await enforceQuota(user)).status.remaining : null } : {}),
       });
     }
 

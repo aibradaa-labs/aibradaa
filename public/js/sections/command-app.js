@@ -172,24 +172,20 @@ Go ahead, ask me anything about laptops! 😊`,
       }));
 
       // Call chat API
-      const response = await this.api.request('/api/chat', {
-        method: 'POST',
-        body: JSON.stringify({
-          message: userMessage,
-          context
-        })
+      const data = await this.api.post('/chat', {
+        message: userMessage,
+        context
       });
-
-      const data = await response.json();
 
       // Remove typing indicator
       this.removeTypingIndicator(typingId);
 
-      // Add AI response
+      // Add AI response (backend returns { response: { message, role, emotion }, usage, quota })
       this.addMessage({
         role: 'assistant',
-        content: data.response,
+        content: data.response?.message || data.response,
         timestamp: Date.now(),
+        emotion: data.response?.emotion,
         suggestions: data.suggestions || []
       });
 

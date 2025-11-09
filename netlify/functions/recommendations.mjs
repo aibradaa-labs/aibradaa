@@ -4,7 +4,6 @@
  * Routes: POST /, POST /compare
  */
 
-import { GoogleGenerativeAI } from '@google/generative-ai';
 import {
   successResponse,
   errorResponse,
@@ -20,9 +19,15 @@ import {
   compareLaptops as dbCompareLaptops,
   getLaptopById
 } from './utils/laptopDb.mjs';
+import { getGeminiClient } from './utils/gemini.mjs';
+import { enforceQuota } from './utils/quota.mjs';
+import {
+  detectEmotion,
+  emotionalizeResponse,
+} from '../../ai_pod/personas/catchphrases.mjs';
 
-// Initialize Gemini AI
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || '');
+// Initialize Gemini client
+const gemini = getGeminiClient(process.env.GEMINI_API_KEY);
 
 /**
  * Get laptop recommendations using real database + AI insights
@@ -44,10 +49,6 @@ async function getRecommendations({ budget, usage, preferences, userId }) {
   }
 
   // Use AI to generate reasoning and insights for each recommendation
-  const model = genAI.getGenerativeModel({
-    model: process.env.GEMINI_MODEL || 'gemini-2.0-flash-exp'
-  });
-
   // Use TOON compression for laptop data (30-60% token savings)
   const laptopsCompressed = compressForAI(
     recommendedLaptops.map(l => ({
@@ -98,10 +99,15 @@ Respond in JSON:
   ]
 }`;
 
+  let aiResult = null;
+
   try {
-    const result = await model.generateContent(prompt);
-    const response = await result.response;
-    const text = response.text();
+    // Generate AI insights with GeminiClient
+    aiResult = await gemini.generate(prompt, {
+      model: process.env.GEMINI_MODEL || 'gemini-2.0-flash-exp',
+    });
+
+    const text = aiResult.text;
 
     // Parse AI insights
     const jsonMatch = text.match(/\{[\s\S]*\}/);
@@ -139,11 +145,25 @@ Respond in JSON:
       };
     });
 
+    // Add AI Bradaa personality to the overall response message
+    const emotionContext = {
+      userMessage: `Find laptop for ${usageArray.join(', ')} under MYR ${budget}`,
+      responseText: `Found ${recommendations.length} great laptops`,
+      isSuccess: true,
+    };
+
+    const emotion = detectEmotion(emotionContext);
+
     return {
       recommendations,
       count: recommendations.length,
       budget,
-      usage: usageArray
+      usage: usageArray,
+      emotion: emotion.name,
+      aiUsage: aiResult ? {
+        tokens: aiResult.tokens,
+        cost: aiResult.cost,
+      } : null,
     };
 
   } catch (error) {
@@ -202,10 +222,6 @@ async function compareLaptops(laptopIds, userId) {
   const { laptops, comparison: dbComparison } = comparisonData;
 
   // Use AI to generate insights
-  const model = genAI.getGenerativeModel({
-    model: process.env.GEMINI_MODEL || 'gemini-2.0-flash-exp'
-  });
-
   // Use TOON compression for laptop data
   const laptopsCompressed = compressForAI(
     laptops.map(l => ({
@@ -260,10 +276,15 @@ Respond in JSON:
   }
 }`;
 
+  let aiResult = null;
+
   try {
-    const result = await model.generateContent(prompt);
-    const response = await result.response;
-    const text = response.text();
+    // Generate comparison insights with GeminiClient
+    aiResult = await gemini.generate(prompt, {
+      model: process.env.GEMINI_MODEL || 'gemini-2.0-flash-exp',
+    });
+
+    const text = aiResult.text;
 
     // Parse AI insights
     const jsonMatch = text.match(/\{[\s\S]*\}/);
@@ -300,6 +321,15 @@ Respond in JSON:
       };
     });
 
+    // Add AI Bradaa personality to comparison
+    const emotionContext = {
+      userMessage: `Compare laptops: ${laptopIds.join(', ')}`,
+      responseText: `Compared ${laptops.length} laptops`,
+      isSuccess: true,
+    };
+
+    const emotion = detectEmotion(emotionContext);
+
     return {
       comparison: {
         laptops: enrichedLaptops,
@@ -326,7 +356,12 @@ Respond in JSON:
             hours: dbComparison.longestBattery.specs.batteryLife
           }
         }
-      }
+      },
+      emotion: emotion.name,
+      aiUsage: aiResult ? {
+        tokens: aiResult.tokens,
+        cost: aiResult.cost,
+      } : null,
     };
 
   } catch (error) {
@@ -411,6 +446,12 @@ export async function handler(event, context) {
       // Get recommendations
       validateRequired(body, ['budget', 'usage']);
 
+      // Enforce quota BEFORE AI call
+      const quotaCheck = await enforceQuota(user);
+      if (!quotaCheck.allowed) {
+        return quotaCheck.response;
+      }
+
       const result = await getRecommendations({
         budget: body.budget,
         usage: body.usage,
@@ -418,8 +459,24 @@ export async function handler(event, context) {
         userId: user?.id
       });
 
+      // Record usage AFTER AI call (if AI was used)
+      if (result.aiUsage) {
+        await quotaCheck.recordUsage(
+          result.aiUsage.tokens.total,
+          result.aiUsage.cost.sen,
+          '/.netlify/functions/recommendations',
+          {
+            budget: body.budget,
+            usage: body.usage,
+            recommendationCount: result.count,
+            emotion: result.emotion,
+          }
+        );
+      }
+
       return successResponse({
         ...result,
+        quota: quotaCheck.status.remaining,
         metadata: {
           timestamp: new Date().toISOString(),
           userId: user?.id,
@@ -434,10 +491,31 @@ export async function handler(event, context) {
         return errorResponse('At least 2 laptop IDs required for comparison', 400);
       }
 
+      // Enforce quota BEFORE AI call
+      const quotaCheck = await enforceQuota(user);
+      if (!quotaCheck.allowed) {
+        return quotaCheck.response;
+      }
+
       const result = await compareLaptops(body.laptopIds, user?.id);
+
+      // Record usage AFTER AI call (if AI was used)
+      if (result.aiUsage) {
+        await quotaCheck.recordUsage(
+          result.aiUsage.tokens.total,
+          result.aiUsage.cost.sen,
+          '/.netlify/functions/recommendations/compare',
+          {
+            laptopIds: body.laptopIds,
+            laptopCount: body.laptopIds.length,
+            emotion: result.emotion,
+          }
+        );
+      }
 
       return successResponse({
         ...result,
+        quota: quotaCheck.status.remaining,
         metadata: {
           timestamp: new Date().toISOString(),
           userId: user?.id
