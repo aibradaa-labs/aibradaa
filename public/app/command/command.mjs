@@ -17,6 +17,9 @@ export class Command {
     this.isProcessing = false;
     this.userTier = 'free'; // 'free', 'pro', 'ultimate'
     this.currentMode = 'fast'; // 'fast' or 'think'
+    this.voiceRecognition = null; // Web Speech API
+    this.isListening = false;
+    this.manglishCounter = 0; // For One Piece v4.0 Manglish integration
 
     // DOM references (existing elements)
     this.soulCanvas = null;
@@ -25,6 +28,7 @@ export class Command {
     this.sendBtn = null;
     this.fastModeBtn = null;
     this.thinkModeBtn = null;
+    this.voiceBtn = null;
 
     // Soul animation
     this.soulAnimation = null;
@@ -324,8 +328,150 @@ export class Command {
       });
     });
 
+    // Voice input button
+    this.voiceBtn = document.getElementById('voiceInputBtn');
+    if (this.voiceBtn) {
+      this.voiceBtn.addEventListener('click', () => this.toggleVoiceInput());
+    }
+
+    // Initialize voice recognition
+    this.initVoiceRecognition();
+
     // Focus input on load
     this.messageInput?.focus();
+
+    // Daily greeting check
+    this.showDailyGreeting();
+  }
+
+  /**
+   * Initialize Web Speech API for voice input
+   */
+  initVoiceRecognition() {
+    if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+      console.warn('Speech recognition not supported in this browser');
+      if (this.voiceBtn) this.voiceBtn.style.display = 'none';
+      return;
+    }
+
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    this.voiceRecognition = new SpeechRecognition();
+
+    this.voiceRecognition.continuous = false;
+    this.voiceRecognition.interimResults = false;
+    this.voiceRecognition.lang = 'en-US';
+
+    this.voiceRecognition.onstart = () => {
+      this.isListening = true;
+      this.voiceBtn?.classList.add('listening');
+      this.showNotification('Listening... Speak now', 'info');
+    };
+
+    this.voiceRecognition.onresult = (event) => {
+      const transcript = event.results[0][0].transcript;
+      if (this.messageInput) {
+        this.messageInput.value = transcript;
+        this.messageInput.focus();
+      }
+      this.showNotification(`Recognized: "${transcript}"`, 'success');
+    };
+
+    this.voiceRecognition.onerror = (event) => {
+      console.error('Speech recognition error:', event.error);
+      this.showNotification('Voice input failed. Please try again.', 'error');
+      this.isListening = false;
+      this.voiceBtn?.classList.remove('listening');
+    };
+
+    this.voiceRecognition.onend = () => {
+      this.isListening = false;
+      this.voiceBtn?.classList.remove('listening');
+    };
+  }
+
+  /**
+   * Toggle voice input
+   */
+  toggleVoiceInput() {
+    if (!this.voiceRecognition) {
+      this.showNotification('Voice input not supported in this browser', 'warning');
+      return;
+    }
+
+    if (this.isListening) {
+      this.voiceRecognition.stop();
+    } else {
+      try {
+        this.voiceRecognition.start();
+      } catch (error) {
+        console.error('Failed to start voice recognition:', error);
+        this.showNotification('Failed to start voice input', 'error');
+      }
+    }
+  }
+
+  /**
+   * Show daily "Yo nakama!" greeting (One Piece v4.0)
+   */
+  async showDailyGreeting() {
+    const today = new Date().toDateString();
+    const lastGreeting = await storage.getCache('last_greeting_date');
+
+    if (lastGreeting !== today) {
+      // Add greeting to conversation
+      setTimeout(() => {
+        const greetings = [
+          'Yo nakama! Ready to find your dream laptop today?',
+          'Wah! Welcome back! Let\'s hunt for the perfect laptop lah!',
+          'Oi oi! What laptop are you looking for today, bradaa?',
+          'Yo! Ready for some laptop matchmaking, bro?'
+        ];
+
+        const randomGreeting = greetings[Math.floor(Math.random() * greetings.length)];
+
+        this.conversationHistory.push({
+          role: 'assistant',
+          content: randomGreeting,
+          timestamp: Date.now()
+        });
+
+        this.renderMessages();
+        this.saveToCache();
+
+        // Save today's date
+        storage.setCache('last_greeting_date', today, 86400000); // 24 hours
+      }, 1000);
+    }
+  }
+
+  /**
+   * Inject Manglish into AI responses (1-2 words per 100 words)
+   * Part of One Piece v4.0 personality
+   */
+  injectManglish(text) {
+    const manglishWords = [
+      'lah', 'leh', 'lor', 'mah', 'wah', 'aiyo', 'walao',
+      'shiok', 'kan', 'la', 'alamak', 'ya', 'meh'
+    ];
+
+    const words = text.split(' ');
+    const targetWords = Math.floor(words.length / 50); // ~2 per 100 words
+
+    if (targetWords === 0) return text;
+
+    for (let i = 0; i < targetWords; i++) {
+      const randomIndex = Math.floor(Math.random() * words.length);
+      const randomManglish = manglishWords[Math.floor(Math.random() * manglishWords.length)];
+
+      // Add manglish at end of sentence or after punctuation
+      if (words[randomIndex].endsWith('.') || words[randomIndex].endsWith('!')) {
+        words[randomIndex] = words[randomIndex].slice(0, -1) + ' ' + randomManglish + words[randomIndex].slice(-1);
+      } else {
+        words[randomIndex] += ' ' + randomManglish;
+      }
+    }
+
+    return words.join(' ');
   }
 
   async handleSendMessage() {

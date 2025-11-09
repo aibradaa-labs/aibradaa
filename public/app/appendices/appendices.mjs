@@ -53,6 +53,11 @@ export class Appendices {
     await this.loadUserTier();
     await this.loadLaptopDatabase();
 
+    // Create additional content sections
+    this.createGlossary();
+    this.createFAQ();
+    this.createBuyingGuide();
+
     // Apply filters and render
     this.applyFilters();
     this.renderCatalog();
@@ -64,6 +69,240 @@ export class Appendices {
     if (this.userTier === 'free' && this.laptopDatabase.length > 35) {
       this.showTierLimitNotification();
     }
+  }
+
+  /**
+   * Transform laptop data from new JSON format to expected format
+   */
+  transformLaptopData(data) {
+    const laptops = data.laptops || data;
+
+    return laptops.map(laptop => ({
+      id: laptop.id,
+      brand: laptop.brandName || laptop.brand,
+      model: laptop.model || laptop.fullName,
+      price_myr: laptop.price,
+      cpu: {
+        gen: laptop.specs?.cpu?.model || 'N/A',
+        cores: laptop.specs?.cpu?.cores || 0
+      },
+      ram: {
+        gb: laptop.specs?.ram || 0
+      },
+      gpu: {
+        chip: laptop.specs?.gpu?.model || 'Integrated',
+        vram: laptop.specs?.gpu?.vram || 0
+      },
+      storage: {
+        gb: laptop.specs?.storage || 0
+      },
+      display: {
+        size: laptop.specs?.display?.size || 0,
+        res: laptop.specs?.display?.resolution || ''
+      },
+      category: [laptop.segment, laptop.tier].filter(Boolean),
+      image: laptop.image || `/assets/laptops/${laptop.id}.png`,
+      rating: laptop.rating || 0,
+      rank: laptop.rank || 999,
+      affiliate_url: laptop.affiliateUrl || `/out/${laptop.id}`
+    }));
+  }
+
+  /**
+   * Create glossary section
+   */
+  createGlossary() {
+    const glossarySection = document.createElement('section');
+    glossarySection.id = 'glossarySection';
+    glossarySection.className = 'appendix-section';
+    glossarySection.innerHTML = `
+      <h2>Tech Glossary</h2>
+      <p class="section-intro">Understanding laptop specifications made easy</p>
+
+      <div class="glossary-grid">
+        <div class="glossary-item">
+          <h4>CPU (Processor)</h4>
+          <p>The brain of your laptop. Higher core count and clock speed = better performance.</p>
+          <span class="glossary-example">Example: Intel Core i7-13700H</span>
+        </div>
+
+        <div class="glossary-item">
+          <h4>GPU (Graphics Card)</h4>
+          <p>Handles graphics and video. Essential for gaming and creative work.</p>
+          <span class="glossary-example">Example: NVIDIA RTX 4060 8GB</span>
+        </div>
+
+        <div class="glossary-item">
+          <h4>RAM (Memory)</h4>
+          <p>Temporary storage for running applications. More RAM = better multitasking.</p>
+          <span class="glossary-example">Recommended: 16GB+ for most users</span>
+        </div>
+
+        <div class="glossary-item">
+          <h4>SSD (Storage)</h4>
+          <p>Permanent storage for files and programs. SSDs are much faster than HDDs.</p>
+          <span class="glossary-example">Recommended: 512GB NVMe SSD</span>
+        </div>
+
+        <div class="glossary-item">
+          <h4>Display Refresh Rate</h4>
+          <p>How many times per second the screen updates. Higher = smoother.</p>
+          <span class="glossary-example">60Hz (standard), 120Hz/144Hz (gaming)</span>
+        </div>
+
+        <div class="glossary-item">
+          <h4>NPU (Neural Processing Unit)</h4>
+          <p>Dedicated AI chip for machine learning tasks. Measured in TOPS.</p>
+          <span class="glossary-example">AI-ready laptops: 40+ TOPS</span>
+        </div>
+
+        <div class="glossary-item">
+          <h4>TDP (Thermal Design Power)</h4>
+          <p>Power consumption and heat output. Lower TDP = better battery life.</p>
+          <span class="glossary-example">15W (ultrabook), 45W+ (gaming)</span>
+        </div>
+
+        <div class="glossary-item">
+          <h4>Color Gamut</h4>
+          <p>Range of colors a display can reproduce. Important for creative work.</p>
+          <span class="glossary-example">100% sRGB, 72% NTSC, DCI-P3</span>
+        </div>
+      </div>
+    `;
+
+    const container = document.querySelector('.appendices-container') || document.body;
+    container.appendChild(glossarySection);
+  }
+
+  /**
+   * Create FAQ section
+   */
+  createFAQ() {
+    const faqSection = document.createElement('section');
+    faqSection.id = 'faqSection';
+    faqSection.className = 'appendix-section';
+    faqSection.innerHTML = `
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>How do I choose the right laptop for me?</summary>
+          <p>Start with the Matchmaker tool to answer a few questions about your needs. It will recommend laptops based on your budget, usage, and preferences.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>What's the difference between Pro and Ultimate tiers?</summary>
+          <p>Pro gives you access to Command AI (50 queries/month) and Intel Feed. Ultimate offers unlimited AI queries, priority support, and advanced analytics.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Are the prices shown final prices?</summary>
+          <p>Prices are updated daily from our affiliate partners but may vary. Always check the retailer's website for the final price and availability.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>How does the AI recommendation work?</summary>
+          <p>Our AI uses Gemini 2.0 Flash backed by 84 expert mentors, analyzing your requirements against 100 verified laptops to find the best matches.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Can I compare more than 2 laptops?</summary>
+          <p>The Versus tool compares 2 laptops at once for detailed analysis. In Explorer, you can add up to 3 laptops to your compare list.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>How often is the laptop database updated?</summary>
+          <p>We update prices daily and add new models weekly. Our database includes 100 verified laptops optimized for the Malaysian market.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Do you earn commission from affiliate links?</summary>
+          <p>Yes, we earn a small commission when you purchase through our links. This helps us maintain and improve AI Bradaa at no extra cost to you.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>What payment methods do you accept for Pro/Ultimate?</summary>
+          <p>We accept credit/debit cards, online banking (FPX), and e-wallets via our payment partner Stripe.</p>
+        </details>
+      </div>
+    `;
+
+    const container = document.querySelector('.appendices-container') || document.body;
+    container.appendChild(faqSection);
+  }
+
+  /**
+   * Create buying guide section
+   */
+  createBuyingGuide() {
+    const guideSection = document.createElement('section');
+    guideSection.id = 'buyingGuideSection';
+    guideSection.className = 'appendix-section';
+    guideSection.innerHTML = `
+      <h2>Laptop Buying Guide</h2>
+
+      <div class="guide-categories">
+        <div class="guide-category">
+          <h3>For Students</h3>
+          <ul>
+            <li>Budget: RM2,500 - RM4,000</li>
+            <li>8GB RAM minimum, 16GB recommended</li>
+            <li>512GB SSD for storage</li>
+            <li>Long battery life (8+ hours)</li>
+            <li>Lightweight (under 2kg)</li>
+          </ul>
+          <button class="guide-cta" data-segment="student">Find Student Laptops →</button>
+        </div>
+
+        <div class="guide-category">
+          <h3>For Gaming</h3>
+          <ul>
+            <li>Budget: RM4,000 - RM8,000</li>
+            <li>Dedicated GPU (RTX 4050+)</li>
+            <li>16GB+ RAM</li>
+            <li>144Hz+ display</li>
+            <li>Good cooling system</li>
+          </ul>
+          <button class="guide-cta" data-segment="gaming">Find Gaming Laptops →</button>
+        </div>
+
+        <div class="guide-category">
+          <h3>For Business</h3>
+          <ul>
+            <li>Budget: RM4,000 - RM6,000</li>
+            <li>Intel vPro or AMD PRO</li>
+            <li>16GB RAM</li>
+            <li>Professional build quality</li>
+            <li>Security features (TPM, fingerprint)</li>
+          </ul>
+          <button class="guide-cta" data-segment="business">Find Business Laptops →</button>
+        </div>
+
+        <div class="guide-category">
+          <h3>For Creative Work</h3>
+          <ul>
+            <li>Budget: RM5,000 - RM10,000</li>
+            <li>High-end CPU & GPU</li>
+            <li>32GB+ RAM</li>
+            <li>Color-accurate display</li>
+            <li>Fast storage (1TB NVMe)</li>
+          </ul>
+          <button class="guide-cta" data-segment="creative">Find Creative Laptops →</button>
+        </div>
+      </div>
+    `;
+
+    const container = document.querySelector('.appendices-container') || document.body;
+    container.appendChild(guideSection);
+
+    // Attach event listeners
+    guideSection.querySelectorAll('.guide-cta').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const segment = e.target.dataset.segment;
+        // Navigate to explorer with filter
+        window.location.href = `/explorer?category=${segment}`;
+      });
+    });
   }
 
   async loadUserTier() {

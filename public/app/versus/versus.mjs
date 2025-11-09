@@ -79,7 +79,10 @@ export class Versus {
       const response = await fetch('/data/laptops.json');
       if (!response.ok) throw new Error('Failed to fetch laptop database');
 
-      this.laptopDatabase = await response.json();
+      const data = await response.json();
+
+      // Transform data from new format to expected format
+      this.laptopDatabase = this.transformLaptopData(data);
 
       // Cache for 1 hour
       await storage.setCache('laptops_db', this.laptopDatabase, 3600000);
@@ -88,6 +91,55 @@ export class Versus {
       this.showNotification('Failed to load laptop database. Using demo data.', 'error');
       this.laptopDatabase = this.getDemoData();
     }
+  }
+
+  /**
+   * Transform laptop data from new JSON format to expected format
+   * @param {Object} data - Raw laptop database with catalog metadata
+   * @returns {Array} Transformed laptop array
+   */
+  transformLaptopData(data) {
+    const laptops = data.laptops || data;
+
+    return laptops.map(laptop => ({
+      id: laptop.id,
+      brand: laptop.brandName || laptop.brand,
+      model: laptop.model || laptop.fullName,
+      price_myr: laptop.price,
+      cpu: {
+        gen: laptop.specs?.cpu?.model || 'N/A',
+        cores: laptop.specs?.cpu?.cores || 0
+      },
+      ram: {
+        gb: laptop.specs?.ram || 0
+      },
+      gpu: {
+        chip: laptop.specs?.gpu?.model || 'Integrated',
+        vram: laptop.specs?.gpu?.vram || 0
+      },
+      storage: {
+        gb: laptop.specs?.storage || 0
+      },
+      display: {
+        size: laptop.specs?.display?.size || 0,
+        res: laptop.specs?.display?.resolution || '',
+        refresh: laptop.specs?.display?.refreshRate || 60,
+        nits: laptop.specs?.display?.brightness || 0,
+        gamut: laptop.specs?.display?.colorGamut || ''
+      },
+      battery_wh: laptop.specs?.battery || 0,
+      weight_kg: laptop.specs?.weight || 0,
+      npu_tops: laptop.specs?.npu?.tops || 0,
+      category: [laptop.segment, laptop.tier].filter(Boolean),
+      image: laptop.image || `/assets/laptops/${laptop.id}.png`,
+      rating: laptop.rating || 0,
+      rank: laptop.rank || 999,
+      ports: Object.entries(laptop.specs?.ports || {}).map(([type, count]) => type),
+      wireless: [laptop.specs?.connectivity?.wifi, laptop.specs?.connectivity?.bluetooth].filter(Boolean),
+      release_date: laptop.releaseDate,
+      popularity: laptop.popularity || 0,
+      affiliate_url: laptop.affiliateUrl || `/out/${laptop.id}`
+    }));
   }
 
   createSearchModal() {
@@ -170,8 +222,95 @@ export class Versus {
     const buttons = document.querySelectorAll('.comparison-actions .btn');
     buttons.forEach((btn, index) => {
       if (index === 0) btn.addEventListener('click', () => this.saveComparison());
-      if (index === 1) btn.addEventListener('click', () => this.shareComparison());
-      if (index === 2) btn.addEventListener('click', () => this.resetComparison());
+      if (index === 1) btn.addEventListener('click', () => this.showExportMenu());
+      if (index === 2) btn.addEventListener('click', () => this.setupPriceAlert());
+      if (index === 3) btn.addEventListener('click', () => this.resetComparison());
+    });
+  }
+
+  /**
+   * Show export format menu
+   */
+  showExportMenu() {
+    const menu = document.createElement('div');
+    menu.className = 'export-menu';
+    menu.innerHTML = `
+      <div class="export-menu-backdrop"></div>
+      <div class="export-menu-content">
+        <h4>Export Comparison</h4>
+        <button class="export-option" data-format="png">
+          <span class="export-icon">📸</span>
+          <div class="export-info">
+            <strong>PNG Image</strong>
+            <small>High-quality screenshot</small>
+          </div>
+        </button>
+        <button class="export-option" data-format="pdf">
+          <span class="export-icon">📄</span>
+          <div class="export-info">
+            <strong>PDF Document</strong>
+            <small>Professional format</small>
+          </div>
+        </button>
+        <button class="export-option" data-format="md">
+          <span class="export-icon">📝</span>
+          <div class="export-info">
+            <strong>Markdown</strong>
+            <small>Plain text format</small>
+          </div>
+        </button>
+        <button class="export-option" data-format="share">
+          <span class="export-icon">🔗</span>
+          <div class="export-info">
+            <strong>Share Link</strong>
+            <small>Generate shareable URL</small>
+          </div>
+        </button>
+      </div>
+    `;
+
+    menu.style.cssText = `
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    `;
+
+    document.body.appendChild(menu);
+    setTimeout(() => menu.classList.add('active'), 10);
+
+    const close = () => {
+      menu.classList.remove('active');
+      setTimeout(() => menu.remove(), 300);
+    };
+
+    menu.querySelector('.export-menu-backdrop').addEventListener('click', close);
+
+    menu.querySelectorAll('.export-option').forEach(option => {
+      option.addEventListener('click', async () => {
+        const format = option.dataset.format;
+        close();
+
+        switch (format) {
+          case 'png':
+            await this.exportAsPNG();
+            break;
+          case 'pdf':
+            await this.exportAsPDF();
+            break;
+          case 'md':
+            this.exportAsMarkdown();
+            break;
+          case 'share':
+            this.shareComparison();
+            break;
+        }
+      });
     });
   }
 
@@ -725,20 +864,340 @@ export class Versus {
     return { pros, cons };
   }
 
-  saveComparison() {
+  async saveComparison() {
     if (!this.selectedLaptops[0] || !this.selectedLaptops[1]) return;
 
-    storage.addHistory({
-      type: 'versus',
-      timestamp: Date.now(),
-      laptops: this.selectedLaptops.map(l => ({
-        id: l.id,
-        brand: l.brand,
-        model: l.model,
-        price: l.price_myr
-      }))
-    }).then(() => {
+    try {
+      await storage.addHistory({
+        type: 'versus',
+        timestamp: Date.now(),
+        laptops: this.selectedLaptops.map(l => ({
+          id: l.id,
+          brand: l.brand,
+          model: l.model,
+          price: l.price_myr
+        }))
+      });
       this.showNotification('Comparison saved to history', 'success');
+    } catch (error) {
+      console.error('Failed to save comparison:', error);
+      this.showNotification('Failed to save comparison', 'error');
+    }
+  }
+
+  /**
+   * Export comparison as PNG screenshot
+   * Uses html2canvas library if available
+   */
+  async exportAsPNG() {
+    if (!this.comparisonView || !this.selectedLaptops[0] || !this.selectedLaptops[1]) return;
+
+    try {
+      this.showNotification('Generating screenshot...', 'info');
+
+      // Check if html2canvas is available
+      if (typeof html2canvas === 'undefined') {
+        throw new Error('html2canvas not loaded');
+      }
+
+      const canvas = await html2canvas(this.comparisonView, {
+        backgroundColor: '#0D1117',
+        scale: 2,
+        logging: false
+      });
+
+      canvas.toBlob((blob) => {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `versus-${this.selectedLaptops[0].id}-vs-${this.selectedLaptops[1].id}.png`;
+        a.click();
+        URL.revokeObjectURL(url);
+        this.showNotification('Screenshot downloaded', 'success');
+      });
+    } catch (error) {
+      console.error('Failed to export PNG:', error);
+      this.exportAsMarkdown(); // Fallback
+    }
+  }
+
+  /**
+   * Export comparison as Markdown
+   */
+  exportAsMarkdown() {
+    if (!this.selectedLaptops[0] || !this.selectedLaptops[1]) return;
+
+    const laptop1 = this.selectedLaptops[0];
+    const laptop2 = this.selectedLaptops[1];
+
+    const markdown = `# AI Bradaa Laptop Comparison
+
+## ${laptop1.brand} ${laptop1.model} vs ${laptop2.brand} ${laptop2.model}
+
+Generated: ${new Date().toLocaleDateString('en-MY', { dateStyle: 'full' })}
+
+---
+
+## Specifications Comparison
+
+| Specification | ${laptop1.brand} ${laptop1.model} | ${laptop2.brand} ${laptop2.model} |
+|--------------|------------------|------------------|
+| **Processor** | ${laptop1.cpu?.gen || 'N/A'} | ${laptop2.cpu?.gen || 'N/A'} |
+| **Cores** | ${laptop1.cpu?.cores || 'N/A'} | ${laptop2.cpu?.cores || 'N/A'} |
+| **GPU** | ${laptop1.gpu?.chip || 'Integrated'} | ${laptop2.gpu?.chip || 'Integrated'} |
+| **VRAM** | ${laptop1.gpu?.vram || 0}GB | ${laptop2.gpu?.vram || 0}GB |
+| **RAM** | ${laptop1.ram?.gb || 0}GB | ${laptop2.ram?.gb || 0}GB |
+| **Storage** | ${laptop1.storage?.gb || 0}GB | ${laptop2.storage?.gb || 0}GB |
+| **Display** | ${laptop1.display?.size || 0}" ${laptop1.display?.res || ''} @ ${laptop1.display?.refresh || 60}Hz | ${laptop2.display?.size || 0}" ${laptop2.display?.res || ''} @ ${laptop2.display?.refresh || 60}Hz |
+| **Battery** | ${laptop1.battery_wh || 'N/A'}Wh | ${laptop2.battery_wh || 'N/A'}Wh |
+| **Weight** | ${laptop1.weight_kg || 'N/A'}kg | ${laptop2.weight_kg || 'N/A'}kg |
+| **Price** | RM${this.formatPrice(laptop1.price_myr)} | RM${this.formatPrice(laptop2.price_myr)} |
+
+---
+
+## Performance Scores
+
+| Metric | ${laptop1.brand} | ${laptop2.brand} |
+|--------|----------|----------|
+| Performance | ${this.calculatePerformanceScore(laptop1)}/100 | ${this.calculatePerformanceScore(laptop2)}/100 |
+| Portability | ${this.calculatePortabilityScore(laptop1)}/100 | ${this.calculatePortabilityScore(laptop2)}/100 |
+| Battery Life | ${this.calculateBatteryScore(laptop1)}/100 | ${this.calculateBatteryScore(laptop2)}/100 |
+| Display Quality | ${this.calculateDisplayScore(laptop1)}/100 | ${this.calculateDisplayScore(laptop2)}/100 |
+| Value | ${this.calculateValueScore(laptop1)}/100 | ${this.calculateValueScore(laptop2)}/100 |
+| Build Quality | ${this.calculateBuildScore(laptop1)}/100 | ${this.calculateBuildScore(laptop2)}/100 |
+
+---
+
+*Generated by AI Bradaa - Your AI-Powered Laptop Advisor*
+*Visit: https://aibradaa.com*
+`;
+
+    const blob = new Blob([markdown], { type: 'text/markdown' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `versus-comparison-${Date.now()}.md`;
+    a.click();
+    URL.revokeObjectURL(url);
+
+    this.showNotification('Markdown exported successfully', 'success');
+  }
+
+  /**
+   * Export comparison as PDF
+   * Uses jsPDF library if available
+   */
+  async exportAsPDF() {
+    if (!this.selectedLaptops[0] || !this.selectedLaptops[1]) return;
+
+    try {
+      this.showNotification('Generating PDF...', 'info');
+
+      // Check if jsPDF is available
+      if (typeof jspdf === 'undefined' && typeof window.jspdf === 'undefined') {
+        throw new Error('jsPDF not loaded');
+      }
+
+      const { jsPDF } = window.jspdf || jspdf;
+      const doc = new jsPDF();
+
+      const laptop1 = this.selectedLaptops[0];
+      const laptop2 = this.selectedLaptops[1];
+
+      // Title
+      doc.setFontSize(20);
+      doc.text('AI Bradaa Laptop Comparison', 105, 20, { align: 'center' });
+
+      doc.setFontSize(16);
+      doc.text(`${laptop1.brand} ${laptop1.model}`, 50, 35, { align: 'center' });
+      doc.text('vs', 105, 35, { align: 'center' });
+      doc.text(`${laptop2.brand} ${laptop2.model}`, 160, 35, { align: 'center' });
+
+      // Specifications table
+      doc.setFontSize(12);
+      let yPos = 50;
+
+      const specs = [
+        ['Processor', laptop1.cpu?.gen || 'N/A', laptop2.cpu?.gen || 'N/A'],
+        ['GPU', laptop1.gpu?.chip || 'Integrated', laptop2.gpu?.chip || 'Integrated'],
+        ['RAM', `${laptop1.ram?.gb || 0}GB`, `${laptop2.ram?.gb || 0}GB`],
+        ['Storage', `${laptop1.storage?.gb || 0}GB`, `${laptop2.storage?.gb || 0}GB`],
+        ['Display', `${laptop1.display?.size}"`, `${laptop2.display?.size}"`],
+        ['Battery', `${laptop1.battery_wh}Wh`, `${laptop2.battery_wh}Wh`],
+        ['Weight', `${laptop1.weight_kg}kg`, `${laptop2.weight_kg}kg`],
+        ['Price', `RM${this.formatPrice(laptop1.price_myr)}`, `RM${this.formatPrice(laptop2.price_myr)}`]
+      ];
+
+      specs.forEach(([spec, val1, val2]) => {
+        doc.text(spec, 20, yPos);
+        doc.text(val1, 80, yPos);
+        doc.text(val2, 140, yPos);
+        yPos += 10;
+      });
+
+      // Footer
+      doc.setFontSize(10);
+      doc.text('Generated by AI Bradaa - aibradaa.com', 105, 280, { align: 'center' });
+
+      doc.save(`versus-comparison-${Date.now()}.pdf`);
+      this.showNotification('PDF downloaded successfully', 'success');
+    } catch (error) {
+      console.error('Failed to export PDF:', error);
+      this.exportAsMarkdown(); // Fallback
+    }
+  }
+
+  /**
+   * Get AI insights for comparison using Gemini API
+   * @returns {Promise<Object>} AI-generated insights
+   */
+  async getAIInsights() {
+    if (!this.selectedLaptops[0] || !this.selectedLaptops[1]) return null;
+
+    try {
+      const laptop1 = this.selectedLaptops[0];
+      const laptop2 = this.selectedLaptops[1];
+
+      // Call Gemini API through backend
+      const response = await apiClient.post('/ai/compare', {
+        laptop1: {
+          brand: laptop1.brand,
+          model: laptop1.model,
+          price: laptop1.price_myr,
+          cpu: laptop1.cpu?.gen,
+          gpu: laptop1.gpu?.chip,
+          ram: laptop1.ram?.gb,
+          category: laptop1.category
+        },
+        laptop2: {
+          brand: laptop2.brand,
+          model: laptop2.model,
+          price: laptop2.price_myr,
+          cpu: laptop2.cpu?.gen,
+          gpu: laptop2.gpu?.chip,
+          ram: laptop2.ram?.gb,
+          category: laptop2.category
+        }
+      });
+
+      return response.data.insights;
+    } catch (error) {
+      console.error('Failed to get AI insights:', error);
+      return this.getFallbackInsights();
+    }
+  }
+
+  /**
+   * Fallback insights when API is unavailable
+   */
+  getFallbackInsights() {
+    const laptop1 = this.selectedLaptops[0];
+    const laptop2 = this.selectedLaptops[1];
+
+    const perf1 = this.calculatePerformanceScore(laptop1);
+    const perf2 = this.calculatePerformanceScore(laptop2);
+    const value1 = this.calculateValueScore(laptop1);
+    const value2 = this.calculateValueScore(laptop2);
+
+    const winner = perf1 > perf2 ? laptop1 : laptop2;
+    const bestValue = value1 > value2 ? laptop1 : laptop2;
+
+    return {
+      summary: `The ${winner.brand} ${winner.model} offers superior performance, while the ${bestValue.brand} ${bestValue.model} provides better value for money.`,
+      verdict: perf1 > perf2 ? laptop1.id : laptop2.id,
+      recommendation: `Choose ${winner.brand} for performance-intensive tasks, or ${bestValue.brand} for budget-conscious buyers.`
+    };
+  }
+
+  /**
+   * Setup price tracking alert
+   */
+  async setupPriceAlert() {
+    if (!this.selectedLaptops[0] || !this.selectedLaptops[1]) return;
+
+    const modal = document.createElement('div');
+    modal.className = 'price-alert-modal';
+    modal.innerHTML = `
+      <div class="modal-backdrop"></div>
+      <div class="modal-content">
+        <button class="modal-close">&times;</button>
+        <div class="alert-setup">
+          <h3>Setup Price Drop Alerts</h3>
+          <p>Get notified when prices drop for these laptops</p>
+
+          <div class="alert-options">
+            <label class="alert-checkbox">
+              <input type="checkbox" id="alert-laptop1" checked>
+              <span>${this.selectedLaptops[0].brand} ${this.selectedLaptops[0].model}</span>
+              <span class="current-price">Current: RM${this.formatPrice(this.selectedLaptops[0].price_myr)}</span>
+            </label>
+
+            <label class="alert-checkbox">
+              <input type="checkbox" id="alert-laptop2" checked>
+              <span>${this.selectedLaptops[1].brand} ${this.selectedLaptops[1].model}</span>
+              <span class="current-price">Current: RM${this.formatPrice(this.selectedLaptops[1].price_myr)}</span>
+            </label>
+          </div>
+
+          <div class="alert-threshold">
+            <label>Notify me when price drops by:</label>
+            <select id="threshold-select">
+              <option value="5">5% or more</option>
+              <option value="10" selected>10% or more</option>
+              <option value="15">15% or more</option>
+              <option value="20">20% or more</option>
+            </select>
+          </div>
+
+          <div class="alert-email">
+            <label>Email address (optional):</label>
+            <input type="email" id="alert-email" placeholder="your@email.com">
+          </div>
+
+          <div class="alert-actions">
+            <button class="btn-primary" id="save-alert">Setup Alerts</button>
+            <button class="btn-secondary" id="cancel-alert">Cancel</button>
+          </div>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(modal);
+    setTimeout(() => modal.classList.add('active'), 10);
+
+    const close = () => {
+      modal.classList.remove('active');
+      setTimeout(() => modal.remove(), 300);
+    };
+
+    modal.querySelector('.modal-close').addEventListener('click', close);
+    modal.querySelector('.modal-backdrop').addEventListener('click', close);
+    modal.querySelector('#cancel-alert').addEventListener('click', close);
+
+    modal.querySelector('#save-alert').addEventListener('click', async () => {
+      const laptop1Checked = modal.querySelector('#alert-laptop1').checked;
+      const laptop2Checked = modal.querySelector('#alert-laptop2').checked;
+      const threshold = parseInt(modal.querySelector('#threshold-select').value);
+      const email = modal.querySelector('#alert-email').value;
+
+      const alerts = [];
+      if (laptop1Checked) alerts.push(this.selectedLaptops[0].id);
+      if (laptop2Checked) alerts.push(this.selectedLaptops[1].id);
+
+      try {
+        await storage.setCache('price_alerts', {
+          laptops: alerts,
+          threshold,
+          email,
+          createdAt: Date.now()
+        }, 2592000000); // 30 days
+
+        this.showNotification(`Price alerts set for ${alerts.length} laptop(s)`, 'success');
+        close();
+      } catch (error) {
+        console.error('Failed to setup alerts:', error);
+        this.showNotification('Failed to setup alerts', 'error');
+      }
     });
   }
 

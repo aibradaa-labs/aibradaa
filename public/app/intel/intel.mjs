@@ -121,8 +121,26 @@ export class Intel {
     }
   }
 
+  /**
+   * Transform laptop data from new JSON format to expected format
+   */
+  transformLaptopData(data) {
+    const laptops = data.laptops || data;
+
+    return laptops.map(laptop => ({
+      id: laptop.id,
+      brand: laptop.brandName || laptop.brand,
+      model: laptop.model || laptop.fullName,
+      price_myr: laptop.price,
+      originalPrice: laptop.originalPrice || laptop.price,
+      discount: laptop.discount || 0,
+      image: laptop.image || `/assets/laptops/${laptop.id}.png`,
+      category: [laptop.segment, laptop.tier].filter(Boolean)
+    }));
+  }
+
   loadDemoData() {
-    // Demo price drops
+    // Demo price drops - using more realistic data
     this.priceDrops = [
       {
         id: 'demo-drop-1',
@@ -135,7 +153,9 @@ export class Intel {
         source: 'Shopee',
         url: '#',
         image: '/assets/default-laptop.png',
-        timestamp: Date.now() - 7200000 // 2 hours ago
+        timestamp: Date.now() - 7200000, // 2 hours ago
+        savings: 1000,
+        trending: true
       },
       {
         id: 'demo-drop-2',
@@ -148,7 +168,24 @@ export class Intel {
         source: 'Lazada',
         url: '#',
         image: '/assets/default-laptop.png',
-        timestamp: Date.now() - 14400000 // 4 hours ago
+        timestamp: Date.now() - 14400000, // 4 hours ago
+        savings: 1300,
+        trending: true
+      },
+      {
+        id: 'demo-drop-3',
+        laptopId: 'demo-3',
+        brand: 'Apple',
+        model: 'MacBook Air M3',
+        oldPrice: 5799,
+        newPrice: 5299,
+        discount: 9,
+        source: 'Apple Store',
+        url: '#',
+        image: '/assets/default-laptop.png',
+        timestamp: Date.now() - 3600000, // 1 hour ago
+        savings: 500,
+        trending: false
       }
     ];
 

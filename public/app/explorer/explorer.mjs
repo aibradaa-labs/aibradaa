@@ -15,6 +15,7 @@ export class Explorer {
   constructor() {
     this.laptopDatabase = [];
     this.filteredLaptops = [];
+    this.displayedLaptops = []; // For infinite scroll
     this.currentView = 'grid'; // 'grid' or 'list'
     this.sortBy = 'rank';
     this.filters = {
@@ -26,6 +27,11 @@ export class Explorer {
       maxWeight: 5
     };
     this.compareList = [];
+    this.wishlist = []; // Persistent wishlist with IndexedDB
+    this.searchDebounce = null;
+    this.isLoading = false;
+    this.currentPage = 1;
+    this.itemsPerPage = 12; // Load 12 at a time for infinite scroll
 
     // DOM references (existing elements)
     this.filtersSidebar = null;
@@ -39,6 +45,8 @@ export class Explorer {
     this.clearFiltersBtn = null;
     this.mobileFiltersBtn = null;
     this.filtersOverlay = null;
+    this.wishlistDrawer = null;
+    this.scrollObserver = null;
   }
 
   async init() {
@@ -64,6 +72,12 @@ export class Explorer {
     // Load laptop database
     await this.loadLaptopDatabase();
 
+    // Load wishlist from IndexedDB
+    await this.loadWishlist();
+
+    // Create wishlist drawer
+    this.createWishlistDrawer();
+
     // Render filters (populate filtersContent)
     this.renderFilters();
 
@@ -73,6 +87,9 @@ export class Explorer {
 
     // Attach event listeners
     this.attachEventListeners();
+
+    // Setup infinite scroll observer
+    this.setupInfiniteScroll();
 
     // Load from cache
     await this.loadFromCache();
@@ -91,7 +108,10 @@ export class Explorer {
       const response = await fetch('/data/laptops.json');
       if (!response.ok) throw new Error('Failed to fetch laptop database');
 
-      this.laptopDatabase = await response.json();
+      const data = await response.json();
+
+      // Transform data from new format to expected format
+      this.laptopDatabase = this.transformLaptopData(data);
 
       // Cache for 1 hour
       await storage.setCache('laptops_db', this.laptopDatabase, 3600000);
@@ -99,6 +119,376 @@ export class Explorer {
       console.error('Failed to load laptop database:', error);
       this.showNotification('Failed to load laptop database. Using demo data.', 'error');
       this.laptopDatabase = this.getDemoData();
+    }
+  }
+
+  /**
+   * Transform laptop data from new JSON format to expected format
+   * @param {Object} data - Raw laptop database with catalog metadata
+   * @returns {Array} Transformed laptop array
+   */
+  transformLaptopData(data) {
+    const laptops = data.laptops || data;
+
+    return laptops.map(laptop => ({
+      id: laptop.id,
+      brand: laptop.brandName || laptop.brand,
+      model: laptop.model || laptop.fullName,
+      price_myr: laptop.price,
+      cpu: {
+        gen: laptop.specs?.cpu?.model || 'N/A',
+        cores: laptop.specs?.cpu?.cores || 0
+      },
+      ram: {
+        gb: laptop.specs?.ram || 0
+      },
+      gpu: {
+        chip: laptop.specs?.gpu?.model || 'Integrated',
+        vram: laptop.specs?.gpu?.vram || 0
+      },
+      storage: {
+        gb: laptop.specs?.storage || 0
+      },
+      display: {
+        size: laptop.specs?.display?.size || 0,
+        res: laptop.specs?.display?.resolution || '',
+        refresh: laptop.specs?.display?.refreshRate || 60
+      },
+      battery_wh: laptop.specs?.battery || 0,
+      weight_kg: laptop.specs?.weight || 0,
+      category: [laptop.segment, laptop.tier].filter(Boolean),
+      image: laptop.image || `/assets/laptops/${laptop.id}.png`,
+      rating: laptop.rating || 0,
+      rank: laptop.rank || 999,
+      release_date: laptop.releaseDate,
+      popularity: laptop.popularity || 0
+    }));
+  }
+
+  /**
+   * Load wishlist from IndexedDB
+   */
+  async loadWishlist() {
+    try {
+      this.wishlist = await storage.getCache('explorer_wishlist') || [];
+    } catch (error) {
+      console.warn('Failed to load wishlist:', error);
+      this.wishlist = [];
+    }
+  }
+
+  /**
+   * Save wishlist to IndexedDB
+   */
+  async saveWishlist() {
+    try {
+      await storage.setCache('explorer_wishlist', this.wishlist, 31536000000); // 1 year
+    } catch (error) {
+      console.error('Failed to save wishlist:', error);
+    }
+  }
+
+  /**
+   * Toggle laptop in wishlist
+   */
+  async toggleWishlist(laptopId) {
+    const index = this.wishlist.indexOf(laptopId);
+
+    if (index > -1) {
+      this.wishlist.splice(index, 1);
+      this.showNotification('Removed from wishlist', 'info');
+    } else {
+      this.wishlist.push(laptopId);
+      this.showNotification('Added to wishlist', 'success');
+    }
+
+    await this.saveWishlist();
+    this.updateWishlistDrawer();
+    this.renderLaptops(); // Re-render to update heart icons
+  }
+
+  /**
+   * Create wishlist drawer UI
+   */
+  createWishlistDrawer() {
+    const drawer = document.createElement('div');
+    drawer.id = 'wishlistDrawer';
+    drawer.className = 'wishlist-drawer';
+    drawer.innerHTML = `
+      <div class="wishlist-header">
+        <h3>My Wishlist</h3>
+        <button class="wishlist-close" id="wishlistCloseBtn">&times;</button>
+      </div>
+      <div class="wishlist-content" id="wishlistContent">
+        <div class="wishlist-empty">
+          <span class="wishlist-empty-icon">❤️</span>
+          <p>Your wishlist is empty</p>
+          <small>Click the heart icon on laptops to save them here</small>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(drawer);
+    this.wishlistDrawer = drawer;
+
+    // Add toggle button to toolbar
+    const toolbar = document.querySelector('.explorer-toolbar');
+    if (toolbar) {
+      const wishlistBtn = document.createElement('button');
+      wishlistBtn.className = 'wishlist-toggle-btn';
+      wishlistBtn.id = 'wishlistToggleBtn';
+      wishlistBtn.innerHTML = `
+        <span class="wishlist-icon">❤️</span>
+        <span class="wishlist-count">${this.wishlist.length}</span>
+      `;
+      wishlistBtn.title = 'View Wishlist';
+      toolbar.appendChild(wishlistBtn);
+
+      wishlistBtn.addEventListener('click', () => this.openWishlistDrawer());
+    }
+
+    // Close button
+    drawer.querySelector('#wishlistCloseBtn').addEventListener('click', () => this.closeWishlistDrawer());
+  }
+
+  /**
+   * Open wishlist drawer
+   */
+  openWishlistDrawer() {
+    if (this.wishlistDrawer) {
+      this.wishlistDrawer.classList.add('active');
+      this.updateWishlistDrawer();
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  /**
+   * Close wishlist drawer
+   */
+  closeWishlistDrawer() {
+    if (this.wishlistDrawer) {
+      this.wishlistDrawer.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  }
+
+  /**
+   * Update wishlist drawer content
+   */
+  updateWishlistDrawer() {
+    const content = document.getElementById('wishlistContent');
+    if (!content) return;
+
+    // Update count badge
+    const countBadge = document.querySelector('.wishlist-count');
+    if (countBadge) {
+      countBadge.textContent = this.wishlist.length;
+      countBadge.style.display = this.wishlist.length > 0 ? 'block' : 'none';
+    }
+
+    if (this.wishlist.length === 0) {
+      content.innerHTML = `
+        <div class="wishlist-empty">
+          <span class="wishlist-empty-icon">❤️</span>
+          <p>Your wishlist is empty</p>
+          <small>Click the heart icon on laptops to save them here</small>
+        </div>
+      `;
+      return;
+    }
+
+    const wishlistLaptops = this.laptopDatabase.filter(l => this.wishlist.includes(l.id));
+
+    content.innerHTML = wishlistLaptops.map(laptop => `
+      <div class="wishlist-item" data-id="${laptop.id}">
+        <div class="wishlist-item-image">
+          <img src="${laptop.image || '/assets/default-laptop.png'}" alt="${laptop.brand} ${laptop.model}">
+        </div>
+        <div class="wishlist-item-info">
+          <h4>${laptop.brand}</h4>
+          <p>${laptop.model}</p>
+          <span class="wishlist-item-price">RM${this.formatPrice(laptop.price_myr)}</span>
+        </div>
+        <div class="wishlist-item-actions">
+          <button class="wishlist-item-view" data-id="${laptop.id}">View</button>
+          <button class="wishlist-item-remove" data-id="${laptop.id}">✕</button>
+        </div>
+      </div>
+    `).join('');
+
+    // Attach listeners
+    content.querySelectorAll('.wishlist-item-view').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const id = e.target.dataset.id;
+        this.showLaptopDetails(id);
+      });
+    });
+
+    content.querySelectorAll('.wishlist-item-remove').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const id = e.target.dataset.id;
+        this.toggleWishlist(id);
+      });
+    });
+  }
+
+  /**
+   * Setup infinite scroll with Intersection Observer
+   */
+  setupInfiniteScroll() {
+    const options = {
+      root: null,
+      rootMargin: '200px',
+      threshold: 0.1
+    };
+
+    this.scrollObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !this.isLoading) {
+          this.loadMoreLaptops();
+        }
+      });
+    }, options);
+
+    // Create sentinel element
+    const sentinel = document.createElement('div');
+    sentinel.id = 'scrollSentinel';
+    sentinel.style.height = '1px';
+    this.laptopsGrid.parentElement.appendChild(sentinel);
+    this.scrollObserver.observe(sentinel);
+  }
+
+  /**
+   * Load more laptops for infinite scroll
+   */
+  async loadMoreLaptops() {
+    if (this.isLoading) return;
+
+    const start = this.displayedLaptops.length;
+    const end = start + this.itemsPerPage;
+    const nextBatch = this.filteredLaptops.slice(start, end);
+
+    if (nextBatch.length === 0) return; // No more items
+
+    this.isLoading = true;
+    this.showLoadingIndicator();
+
+    // Simulate network delay for smoother UX
+    await new Promise(resolve => setTimeout(resolve, 300));
+
+    this.displayedLaptops.push(...nextBatch);
+    this.appendLaptops(nextBatch);
+
+    this.hideLoadingIndicator();
+    this.isLoading = false;
+  }
+
+  /**
+   * Append new laptops to grid (for infinite scroll)
+   */
+  appendLaptops(laptops) {
+    if (!this.laptopsGrid) return;
+
+    const fragment = document.createDocumentFragment();
+    laptops.forEach(laptop => {
+      const card = this.createLaptopCardElement(laptop);
+      fragment.appendChild(card);
+    });
+
+    this.laptopsGrid.appendChild(fragment);
+    this.attachLaptopListeners();
+  }
+
+  /**
+   * Create laptop card DOM element
+   */
+  createLaptopCardElement(laptop) {
+    const div = document.createElement('div');
+    div.className = 'laptop-card';
+    div.dataset.id = laptop.id;
+
+    const isWishlisted = this.wishlist.includes(laptop.id);
+    const isCompared = this.compareList.includes(laptop.id);
+
+    div.innerHTML = `
+      <button class="wishlist-heart ${isWishlisted ? 'active' : ''}" data-id="${laptop.id}" title="${isWishlisted ? 'Remove from wishlist' : 'Add to wishlist'}">
+        ${isWishlisted ? '❤️' : '🤍'}
+      </button>
+      <div class="laptop-image">
+        <img src="${laptop.image || '/assets/default-laptop.png'}"
+             alt="${laptop.brand} ${laptop.model}"
+             loading="lazy">
+      </div>
+      <div class="laptop-info">
+        <h3 class="laptop-brand">${laptop.brand}</h3>
+        <p class="laptop-model">${laptop.model}</p>
+        <div class="laptop-specs">
+          <span class="spec-item" title="Processor">
+            <span class="spec-icon">💻</span>
+            <span class="spec-text">${this.truncate(laptop.cpu?.gen || 'N/A', 15)}</span>
+          </span>
+          <span class="spec-item" title="RAM">
+            <span class="spec-icon">🧠</span>
+            <span class="spec-text">${laptop.ram?.gb || 0}GB</span>
+          </span>
+          <span class="spec-item" title="Storage">
+            <span class="spec-icon">💾</span>
+            <span class="spec-text">${laptop.storage?.gb || 0}GB</span>
+          </span>
+          ${laptop.gpu?.vram ? `
+            <span class="spec-item" title="GPU">
+              <span class="spec-icon">🎮</span>
+              <span class="spec-text">${this.truncate(laptop.gpu.chip, 12)}</span>
+            </span>
+          ` : ''}
+        </div>
+      </div>
+      <div class="laptop-footer">
+        <div class="laptop-price">
+          <span class="price-label">RM</span>
+          <span class="price-amount">${this.formatPrice(laptop.price_myr)}</span>
+        </div>
+        <div class="laptop-actions">
+          <button class="btn-view" data-id="${laptop.id}" title="View details">
+            View
+          </button>
+          <button class="btn-compare ${isCompared ? 'active' : ''}"
+                  data-id="${laptop.id}"
+                  title="${isCompared ? 'Remove from compare' : 'Add to compare'}">
+            ${isCompared ? '✓' : '+'}
+          </button>
+        </div>
+      </div>
+    `;
+
+    return div;
+  }
+
+  /**
+   * Show loading indicator
+   */
+  showLoadingIndicator() {
+    let indicator = document.getElementById('loadingIndicator');
+    if (!indicator) {
+      indicator = document.createElement('div');
+      indicator.id = 'loadingIndicator';
+      indicator.className = 'loading-indicator';
+      indicator.innerHTML = `
+        <div class="loading-spinner"></div>
+        <p>Loading more laptops...</p>
+      `;
+      this.laptopsGrid.parentElement.appendChild(indicator);
+    }
+    indicator.style.display = 'flex';
+  }
+
+  /**
+   * Hide loading indicator
+   */
+  hideLoadingIndicator() {
+    const indicator = document.getElementById('loadingIndicator');
+    if (indicator) {
+      indicator.style.display = 'none';
     }
   }
 
@@ -378,9 +768,17 @@ export class Explorer {
     this.laptopsGrid.style.display = 'grid';
     if (this.emptyState) this.emptyState.style.display = 'none';
 
+    // Reset displayed laptops for infinite scroll
+    this.displayedLaptops = [];
+    this.laptopsGrid.innerHTML = '';
+
+    // Initial load (first batch)
+    const initialBatch = this.filteredLaptops.slice(0, this.itemsPerPage);
+    this.displayedLaptops = initialBatch;
+
     // Render based on current view
     if (this.currentView === 'grid') {
-      this.renderGridView();
+      this.appendLaptops(initialBatch);
     } else {
       this.renderListView();
     }
@@ -481,6 +879,15 @@ export class Explorer {
   }
 
   attachLaptopListeners() {
+    // Wishlist heart buttons
+    document.querySelectorAll('.wishlist-heart').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const laptopId = e.target.dataset.id;
+        this.toggleWishlist(laptopId);
+      });
+    });
+
     // View details buttons
     document.querySelectorAll('.btn-view').forEach(btn => {
       btn.addEventListener('click', (e) => {
@@ -504,7 +911,8 @@ export class Explorer {
       card.addEventListener('click', (e) => {
         // Don't trigger if clicking buttons
         if (e.target.classList.contains('btn-view') ||
-            e.target.classList.contains('btn-compare')) {
+            e.target.classList.contains('btn-compare') ||
+            e.target.classList.contains('wishlist-heart')) {
           return;
         }
         const laptopId = card.dataset.id;
