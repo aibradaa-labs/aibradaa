@@ -1,0 +1,295 @@
+{
+  "analysisMetadata": {
+    "fileName": "sample-code.js",
+    "analyzedAt": "2025-11-09T10:30:00Z",
+    "analyzer": "ABO-84 Beta v1.0.0",
+    "linesOfCode": 103,
+    "complexity": "Medium",
+    "executionTimeMs": 245
+  },
+  "summary": {
+    "totalIssues": 15,
+    "critical": 3,
+    "high": 5,
+    "medium": 4,
+    "low": 3,
+    "codeQualityScore": 42,
+    "securityScore": 35,
+    "performanceScore": 50,
+    "maintainabilityScore": 45,
+    "overallScore": 43
+  },
+  "criticalIssues": [
+    {
+      "id": "SEC-001",
+      "severity": "CRITICAL",
+      "category": "Security",
+      "line": 61,
+      "code": "return eval(rule);",
+      "issue": "Use of eval() creates security vulnerability",
+      "description": "eval() executes arbitrary code and can lead to code injection attacks. This is a critical security risk.",
+      "impact": "Attackers can execute malicious code in your application context",
+      "recommendation": "Remove eval() and use safer alternatives like Function constructor with proper validation, or redesign the custom rule system",
+      "autoFixable": false,
+      "references": [
+        "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval#never_use_eval!",
+        "OWASP: Code Injection"
+      ]
+    },
+    {
+      "id": "DOM-001",
+      "severity": "CRITICAL",
+      "category": "Architecture",
+      "line": 42,
+      "code": "document.getElementById('cart-total').innerHTML = this.calculateTotal();",
+      "issue": "Direct DOM manipulation in business logic layer",
+      "description": "Business logic should not manipulate DOM directly. This violates separation of concerns and makes code untestable.",
+      "impact": "Code cannot run in Node.js environments, difficult to test, tightly coupled",
+      "recommendation": "Separate UI updates into a dedicated view layer or use a framework's reactive binding",
+      "autoFixable": false
+    },
+    {
+      "id": "MEM-001",
+      "severity": "CRITICAL",
+      "category": "Memory",
+      "line": 48,
+      "code": "btn.addEventListener('click', () => { this.checkout(); });",
+      "issue": "Event listener added without cleanup mechanism",
+      "description": "Event listeners are never removed, causing memory leaks when cart instances are destroyed",
+      "impact": "Memory leaks in single-page applications, degraded performance over time",
+      "recommendation": "Store listener reference and implement cleanup method, or use AbortController",
+      "autoFixable": true,
+      "suggestedFix": "Add removeEventListener in a destroy() method or use AbortController pattern"
+    }
+  ],
+  "highIssues": [
+    {
+      "id": "PERF-001",
+      "severity": "HIGH",
+      "category": "Performance",
+      "line": 19,
+      "code": "Nested loops in calculateTotal()",
+      "issue": "O(n²) complexity for simple sum operation",
+      "description": "Using nested loops to calculate sum is inefficient. Should be O(n).",
+      "impact": "Performance degrades quadratically as cart grows. 100 items = 10,000 iterations instead of 100",
+      "recommendation": "Use single loop or reduce() method",
+      "autoFixable": true,
+      "suggestedFix": "return this.items.reduce((sum, item) => sum + (item.price * item.quantity), 0) - this.discount;"
+    },
+    {
+      "id": "ASYNC-001",
+      "severity": "HIGH",
+      "category": "Async Patterns",
+      "line": 29,
+      "code": "applyDiscount(code) { ... }",
+      "issue": "Synchronous operation simulating async behavior",
+      "description": "Real discount code validation would require API call, but method is not async",
+      "impact": "Application will block/freeze when API is added, breaking user experience",
+      "recommendation": "Make method async and return Promise",
+      "autoFixable": true,
+      "suggestedFix": "async applyDiscount(code) { ... await fetch(...) ... }"
+    },
+    {
+      "id": "ERR-001",
+      "severity": "HIGH",
+      "category": "Error Handling",
+      "line": 37,
+      "code": "this.discount = discounts[code];",
+      "issue": "No error handling for invalid discount codes",
+      "description": "If discount code doesn't exist, sets discount to undefined, breaking calculations",
+      "impact": "Cart total becomes NaN, breaking checkout flow",
+      "recommendation": "Add validation and throw error or return default value",
+      "autoFixable": true
+    },
+    {
+      "id": "VAL-001",
+      "severity": "HIGH",
+      "category": "Validation",
+      "line": 12,
+      "code": "addItem(item) { this.items.push(item); }",
+      "issue": "No input validation on addItem",
+      "description": "Method accepts any input without validating required properties (price, quantity, id)",
+      "impact": "Invalid items break calculateTotal() and other methods",
+      "recommendation": "Add input validation schema (e.g., using Joi or Zod)",
+      "autoFixable": false
+    },
+    {
+      "id": "NULL-001",
+      "severity": "HIGH",
+      "category": "Null Safety",
+      "line": 66,
+      "code": "return this.items.filter(item => item.id === id)[0];",
+      "issue": "No null/undefined check on filter result",
+      "description": "Returns undefined when item not found, but callers may not expect this",
+      "impact": "Potential null reference errors in calling code",
+      "recommendation": "Return null explicitly or throw error when not found",
+      "autoFixable": true
+    }
+  ],
+  "mediumIssues": [
+    {
+      "id": "GLOBAL-001",
+      "severity": "MEDIUM",
+      "category": "Global Variables",
+      "line": 75,
+      "code": "var cart = new ShoppingCart();",
+      "issue": "Global variable pollution",
+      "description": "Creates global variable that can conflict with other code",
+      "recommendation": "Use module pattern or import/export",
+      "autoFixable": true
+    },
+    {
+      "id": "VAR-001",
+      "severity": "MEDIUM",
+      "category": "Modern JavaScript",
+      "line": 78,
+      "code": "for (var i = 0; i < 5; i++)",
+      "issue": "Using 'var' instead of 'let/const'",
+      "description": "var has function scope and causes common bugs (closure issue in setTimeout)",
+      "recommendation": "Replace var with let",
+      "autoFixable": true
+    },
+    {
+      "id": "CMP-001",
+      "severity": "MEDIUM",
+      "category": "Type Safety",
+      "line": 86,
+      "code": "return cart.items.length == 0;",
+      "issue": "Using == instead of ===",
+      "description": "Loose equality can cause type coercion bugs",
+      "recommendation": "Always use === for comparisons",
+      "autoFixable": true
+    },
+    {
+      "id": "MUT-001",
+      "severity": "MEDIUM",
+      "category": "Immutability",
+      "line": 72,
+      "code": "items.pop(); this.items = items;",
+      "issue": "Mutating input parameter",
+      "description": "Modifying function parameters is unexpected and can cause bugs",
+      "recommendation": "Create copy before modifying: const newItems = [...items]; newItems.pop();",
+      "autoFixable": true
+    }
+  ],
+  "lowIssues": [
+    {
+      "id": "STRICT-001",
+      "severity": "LOW",
+      "category": "Code Quality",
+      "line": 5,
+      "issue": "Missing 'use strict' directive",
+      "recommendation": "Add 'use strict' at top of file or use ES6 modules (which are strict by default)",
+      "autoFixable": true
+    },
+    {
+      "id": "RET-001",
+      "severity": "LOW",
+      "category": "Logic Error",
+      "line": 91,
+      "code": "function getCartValue(cart) { const total = cart.calculateTotal(); }",
+      "issue": "Missing return statement",
+      "description": "Function calculates value but doesn't return it",
+      "recommendation": "Add: return total;",
+      "autoFixable": true
+    },
+    {
+      "id": "UNUSED-001",
+      "severity": "LOW",
+      "category": "Dead Code",
+      "line": 96,
+      "code": "const unusedVariable = 'This is never used';",
+      "issue": "Unused variable declaration",
+      "recommendation": "Remove unused code",
+      "autoFixable": true
+    }
+  ],
+  "codeSmells": [
+    "Class has too many responsibilities (business logic + UI + event handling)",
+    "No unit tests detected",
+    "No JSDoc comments for public methods",
+    "Magic numbers without named constants (discounts hardcoded)"
+  ],
+  "suggestions": [
+    {
+      "category": "Architecture",
+      "suggestion": "Split ShoppingCart into separate classes: CartModel, CartView, CartController",
+      "benefit": "Better separation of concerns, easier testing, more maintainable"
+    },
+    {
+      "category": "Testing",
+      "suggestion": "Add unit tests for all public methods",
+      "benefit": "Catch bugs early, document expected behavior, enable refactoring"
+    },
+    {
+      "category": "TypeScript",
+      "suggestion": "Convert to TypeScript for type safety",
+      "benefit": "Catch type errors at compile time, better IDE support, improved documentation"
+    },
+    {
+      "category": "State Management",
+      "suggestion": "Consider using immutable state updates",
+      "benefit": "Easier to track changes, better for debugging, enables time-travel debugging"
+    }
+  ],
+  "metrics": {
+    "cyclomaticComplexity": 12,
+    "maintainabilityIndex": 45,
+    "linesOfCode": 103,
+    "commentRatio": 0.05,
+    "testCoverage": 0,
+    "dependencies": 0,
+    "codeToTestRatio": "∞ (no tests)"
+  },
+  "securityScan": {
+    "vulnerabilities": [
+      {
+        "type": "Code Injection",
+        "severity": "CRITICAL",
+        "cwe": "CWE-94",
+        "line": 61
+      }
+    ],
+    "safetyScore": 35,
+    "recommendation": "Address eval() usage immediately before production deployment"
+  },
+  "aiInsights": {
+    "primaryConcerns": [
+      "Security vulnerability with eval() is deployment-blocking",
+      "Performance will degrade significantly with cart growth due to O(n²) algorithm",
+      "Architecture violates separation of concerns, making code hard to test and maintain"
+    ],
+    "estimatedRefactoringEffort": "4-6 hours",
+    "priorityOrder": [
+      "Fix eval() security issue (30 min)",
+      "Optimize calculateTotal() performance (15 min)",
+      "Add input validation (1 hour)",
+      "Separate UI logic from business logic (2-3 hours)",
+      "Add proper error handling (1 hour)",
+      "Fix remaining issues (1 hour)"
+    ],
+    "technicalDebtScore": 7.2
+  },
+  "autoFixAvailable": {
+    "totalAutoFixable": 9,
+    "estimatedFixTime": "< 1 minute",
+    "fixes": [
+      "MEM-001: Add AbortController pattern",
+      "PERF-001: Replace nested loops with reduce()",
+      "ASYNC-001: Add async/await",
+      "ERR-001: Add try-catch and validation",
+      "NULL-001: Add explicit null check",
+      "GLOBAL-001: Wrap in module",
+      "VAR-001: Replace var with let",
+      "CMP-001: Replace == with ===",
+      "MUT-001: Create copy before mutation",
+      "RET-001: Add return statement",
+      "UNUSED-001: Remove unused code"
+    ],
+    "manualReviewRequired": [
+      "SEC-001: eval() usage requires architectural decision",
+      "DOM-001: Requires refactoring into MVC/MVVM pattern",
+      "VAL-001: Requires schema design decisions"
+    ]
+  }
+}

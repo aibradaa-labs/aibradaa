@@ -1,0 +1,84 @@
+{
+  "lastUpdated": "2025-11-09",
+  "systems": {
+    "syeddyOrchestrator": {
+      "version": "1.0.0",
+      "description": "Project execution and governance system",
+      "status": "production",
+      "internalOnly": true,
+      "publicName": "Intelligent System Coordinator"
+    },
+    "aiPod": {
+      "version": "1.0.0",
+      "description": "AI centralization layer (Gemini, RAG, etc.)",
+      "status": "production",
+      "internalOnly": true,
+      "publicName": "AI Engine"
+    },
+    "aiBradaa": {
+      "version": "1.0.0",
+      "description": "Public-facing AI agent (7 tools + brand)",
+      "status": "production",
+      "internalOnly": false,
+      "publicName": "AI Bradaa"
+    },
+    "syeddyDebugger": {
+      "version": "1.0.0-prototype",
+      "description": "Automated project debugger (300+ signals)",
+      "status": "prototype",
+      "internalOnly": true,
+      "publicName": "Advanced Diagnostics"
+    },
+    "abo84Beta": {
+      "version": "1.0.0-beta",
+      "description": "Coding agent (downloadable, Ultimate tier)",
+      "status": "beta",
+      "internalOnly": false,
+      "publicName": "AI Coding Assistant Beta"
+    }
+  },
+  "brandingGuidelines": {
+    "internalTerms": {
+      "neverShowPublicly": [
+        "84-Mentor Council",
+        "Syeddy Orchestrator",
+        "AI Pod",
+        "Syeddy Debugger",
+        "ABO-84 Beta",
+        "Council Departments",
+        "Mentor names (Warren Buffett, etc.)"
+      ],
+      "publicAlternatives": {
+        "84-Mentor Council": "Expert AI System",
+        "Syeddy Orchestrator": "Intelligent System Coordinator",
+        "AI Pod": "AI Engine",
+        "Syeddy Debugger": "Advanced Diagnostics",
+        "ABO-84 Beta": "AI Coding Assistant Beta",
+        "Council Departments": "AI Capabilities",
+        "Strategy • Product • Design • Engineering • Security • Finance • Growth • Operations • AI/ML • Hardware • Platform • Network Effects": "Technology • User Experience • Security • Performance • Innovation"
+      }
+    },
+    "honestyPrinciples": {
+      "noFakeMetrics": true,
+      "onlyRealData": true,
+      "transparentPricing": true,
+      "noExaggeration": true
+    }
+  },
+  "changeLog": [
+    {
+      "version": "1.0.0",
+      "date": "2025-11-09",
+      "phase": "Phase 7 - Production Polish + Public Branding Safety",
+      "changes": [
+        "Implemented semantic versioning for all 5 systems",
+        "Removed all internal references from public-facing pages",
+        "Fixed fake metrics (honesty breach)",
+        "Created public branding guidelines",
+        "ABO-84 now shows coding demo instead of laptop demo",
+        "New pricing model with 20-user beta",
+        "Mobile-first design implementation"
+      ]
+    }
+  ]
+}
