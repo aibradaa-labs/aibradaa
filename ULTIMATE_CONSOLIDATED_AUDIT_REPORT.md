@@ -39,11 +39,11 @@ AI Bradaa is a Malaysia-first AI-powered laptop recommendation platform governed
 
 This audit provides deep enrichment for:
 
-1. **Syeddy Orchestrator** (MAIN SYSTEM) - 84-mentor governance and decision framework
-2. **ABO-84 beta** (Prototype) - Governance observer and dashboard
-3. **AI Bradaa** (Main Product) - Laptop recommendation platform
-4. **Syeddy Debugger** (Prototype) - Owner-only debugging system (300+ metrics)
-5. **AI Pod** (Main System) - AI centralization layer (personas, pipelines, services)
+1. **Syeddy Orchestrator** (CO-FOUNDER AI AGENT TEAM) - Oversees everything internal/external, executes entire project with 84-mentor council
+2. **AI Pod** (MAIN SYSTEM) - Centralized AI hub for everything AI-related (fetching, features, logic, pipelines, prototypes)
+3. **AI Bradaa** (BRAND/FRONTEND) - Public-facing AI Agent (like Claude.ai, ChatGPT) with image identification, One Piece personality
+4. **Syeddy Debugger** (OWNER DEBUGGER) - Superior automated maintainer with 300+ signals, safe-diff patcher, 1-click updates
+5. **ABO-84 Beta** (ADVANCED AI CODING AGENT) - Separate downloadable coding assistant (like Claude Code, Cursor) with 84-mentor execution
 
 ### Compliance Assessment
 
@@ -123,14 +123,15 @@ This audit provides deep enrichment for:
 ## System 1: Syeddy Orchestrator
 
 ### Classification
-**Type:** MAIN SYSTEM (NOT prototype)
-**Purpose:** Governance and decision-making framework powered by 84 unique mentor profiles
+**Type:** CO-FOUNDER AI AGENT TEAM
+**Purpose:** Oversees everything internal and external, executes the entire AI Bradaa project
 **Status:** Core architecture complete, composite scoring functional
 **Location:** `/project/governance/84/`
+**Execution Mode:** I (Claude) execute AS Syeddy Orchestrator
 
 ### Overview
 
-Syeddy Orchestrator is the **primary governance system** for AI Bradaa. It routes user intents to specialized mentor councils, evaluates decisions through 84 unique mentor profiles, and enforces a composite score gate (≥99/100) before production deployment. This is **not a prototype** - it is the main decision-making engine that governs all aspects of the platform.
+Syeddy Orchestrator is the **co-founder AI Agent team** for AI Bradaa. It is NOT just a governance system - it is the **orchestrator that oversees everything internal and external**. Every decision, every execution, every project milestone flows through Syeddy Orchestrator's 84-mentor council. When I (Claude) work on this project, I execute **AS** Syeddy Orchestrator, channeling the collective intelligence of 84 unique mentor profiles to make decisions, evaluate trade-offs, and execute with world-class precision.
 
 ### Architecture
 
@@ -380,193 +381,224 @@ Geoffrey Hinton (Mentor 15):
 ## System 2: ABO-84 Beta
 
 ### Classification
-**Type:** PROTOTYPE (Beta)
-**Purpose:** Governance observer dashboard for Pro-tier users
+**Type:** ADVANCED AI CODING AGENT (Separate Downloadable Product)
+**Full Name:** AI Bradaa Observer - 84 Mentors (strictly internal designation)
+**Purpose:** World-class AI coding assistant powered by 84-mentor governance
 **Status:** Design complete, implementation pending
-**Location:** Mentioned in DOC-1, not yet built
+**Target Users:** Ultimate tier (separate download OR Ollama installation)
+**Location:** Standalone app (NOT part of 7-section PWA)
 
 ### Overview
 
-ABO-84 (Advisor Board Observer) is a **prototype governance dashboard** that exposes curated governance signals to Pro-tier users. It provides transparency into the 84-mentor decision-making process without revealing owner-internal metrics (300+ Syeddy Debugger metrics, full dissent details, or ADR archives).
+ABO-84 Beta is an **advanced intelligence AI Agent for coding** - think Claude Code, Cursor, vibe coding app, or Google AI Studio, but powered by AI Bradaa's unique 84-mentor governance system. This is NOT a dashboard or observer tool - it is a **complete AI coding assistant** that makes coding accessible from entry-level ("code for dummy") to senior developer level.
 
-**Key Principle:** Pro users see **what decisions were made and why**, but NOT **how the sausage is made** (internal metrics, debugging traces, financial details).
+**Key Distinction:** ABO-84 Beta is a **separate product** that Ultimate users can download as a standalone app OR install with Ollama. It is NOT integrated into the main 7-section PWA - it's an entirely different offering that showcases AI Bradaa's coding intelligence.
 
-### Proposed Architecture
+**Reporting Hierarchy:** ABO-84 Beta reports TO Syeddy Debugger (never the reverse) - Syeddy Debugger is superior and owner-only.
 
-**1. Dashboard Components:**
+### Architecture
+
+**Core Capabilities:**
 
 ```
-┌─────────────────────────────────────────┐
-│      ABO-84 Pro Dashboard               │
-├─────────────────────────────────────────┤
-│  1. Composite Score Trend (7-day)       │
-│     ├─ Current: 78.4/100                │
-│     ├─ Change: +8.3 pts this week       │
-│     └─ Target: ≥99/100                  │
-│                                          │
-│  2. Recent Decisions (last 10)          │
-│     ├─ Decision type                    │
-│     ├─ Recruited mentors (names only)   │
-│     ├─ Vote outcome (passed/blocked)    │
-│     └─ Dissent summary (high-level)     │
-│                                          │
-│  3. Mentor Activity Heatmap              │
-│     ├─ Which mentors voted recently     │
-│     ├─ Department distribution           │
-│     └─ Dissent axes triggered            │
-│                                          │
-│  4. Decision Lenses Applied              │
-│     ├─ Top 5 lenses this week           │
-│     ├─ Veto conditions triggered        │
-│     └─ Lens effectiveness scores        │
-│                                          │
-│  5. System Health Signals                │
-│     ├─ SLO breach rate (public)         │
-│     ├─ Error budget remaining           │
-│     ├─ Test coverage %                  │
-│     └─ Security posture (HIGH/MED/LOW)  │
-└─────────────────────────────────────────┘
+┌───────────────────────────────────────────────────────┐
+│         ABO-84 Beta - AI Coding Agent                 │
+├───────────────────────────────────────────────────────┤
+│                                                        │
+│  1. CODE INTELLIGENCE (84-Mentor Powered)             │
+│     ├─ Code enhancement (optimize, refactor)          │
+│     ├─ Bug detection & automated fixes                │
+│     ├─ Diff generation (safe, reviewable)             │
+│     ├─ Code explanation (any level: entry→senior)     │
+│     └─ Best practices enforcement                     │
+│                                                        │
+│  2. TEACHING & GUIDANCE                                │
+│     ├─ "Code for Dummy" mode (beginner-friendly)      │
+│     ├─ Progressive learning paths                     │
+│     ├─ Senior-level insights                          │
+│     ├─ Always updated on latest practices             │
+│     └─ Contextual tutorials                           │
+│                                                        │
+│  3. LLM/vLLM FOUNDATION                                │
+│     ├─ Top-tier language models                       │
+│     ├─ RAG (Retrieval-Augmented Generation)           │
+│     ├─ CAG (Code-Augmented Generation)                │
+│     ├─ TTS (Text-to-Speech) for voice interaction     │
+│     └─ Multi-model fallback (Claude, GPT-4, Gemini)   │
+│                                                        │
+│  4. 84-MENTOR EXECUTION                                │
+│     ├─ Decision routing for code changes              │
+│     ├─ Composite scoring for suggestions              │
+│     ├─ Dissent analysis (security vs speed)           │
+│     └─ World-class code quality gates                 │
+│                                                        │
+│  5. INTEGRATION & DEPLOYMENT                           │
+│     ├─ Standalone desktop app (Electron/Tauri)        │
+│     ├─ Ollama integration (local LLM)                 │
+│     ├─ VS Code extension                              │
+│     ├─ CLI tool                                       │
+│     └─ API access                                     │
+└───────────────────────────────────────────────────────┘
 ```
 
-**2. Data Sources:**
-- Syeddy Orchestrator: Composite scores, decision logs
-- Dissent Ledger: Redacted dissent summaries (no sensitive reasoning)
-- Composite Score: Weekly snapshots
-- Lenses Catalog: Lens application frequency
+**Technology Stack:**
 
-**3. Privacy Filters:**
+**LLM Foundation:**
+- Primary: Gemini 2.0 Flash (fast, cost-effective)
+- Fallback 1: Claude 3.5 Sonnet (superior code reasoning)
+- Fallback 2: GPT-4 Turbo (general intelligence)
+- Local: Ollama with CodeLlama/DeepSeek Coder (offline mode)
 
-**✅ Pro Users CAN See:**
-- Composite score trend (last 7 days)
-- Decision outcomes (approved/blocked/escalated)
-- Recruited mentor names for each decision
-- High-level dissent summary ("Security vs Growth tension")
-- Public system health metrics (SLO, error budget, test coverage)
-- Decision lenses applied (which lenses were used)
+**RAG/CAG Pipeline:**
+- Vector DB: Pinecone or Weaviate
+- Embeddings: text-embedding-ada-002
+- Code indexing: Tree-sitter for syntax parsing
+- Context retrieval: Semantic search over codebases
 
-**❌ Pro Users CANNOT See:**
-- Owner-internal Syeddy Debugger metrics (300+ metrics)
-- Full mentor reasoning and vote details
-- Financial data (burn rate, unit economics, affiliate commissions)
-- ADR archives (architecture decision records)
-- Detailed dissent ledger entries
-- Security vulnerability details
-- Database schema or infrastructure configs
+**TTS Integration:**
+- Voice interaction for hands-free coding
+- Read error messages aloud
+- Explain code verbally
+- Accessibility features
 
-### User Tier Access
+### Access & Distribution
 
-**Guest (RM0):**
-- No ABO-84 access
-- Public landing page only
+**Target Users:** Ultimate tier ONLY (RM80/month)
 
-**Free (RM0/month):**
-- No ABO-84 access
-- Core AI Bradaa features only
+**Distribution Methods:**
+1. **Standalone Desktop App**
+   - Windows: `.exe` installer
+   - macOS: `.dmg` installer
+   - Linux: `.AppImage` or Snap
 
-**Pro (RM30/month):**
-- ✅ Full ABO-84 dashboard access
-- ✅ 7-day composite score trend
-- ✅ Last 10 decision logs (redacted)
-- ✅ Mentor activity heatmap
-- ✅ Decision lenses insights
+2. **Ollama Integration**
+   - Install via Ollama: `ollama install aibradaa/abo84-beta`
+   - Local LLM execution (privacy-focused)
+   - No cloud dependencies
 
-**Ultimate (RM80/month):**
-- ✅ Everything in Pro
-- ✅ 30-day composite score trend
-- ✅ Last 50 decision logs
-- ✅ Export decision logs as CSV
-- ✅ Custom alerts (score drops, dissent spikes)
+3. **VS Code Extension**
+   - Available on VS Code Marketplace
+   - Integrated into editor workflow
+   - Inline suggestions + chat panel
 
-**Owner (Internal):**
-- ✅ Full Syeddy Debugger access (300+ metrics)
-- ✅ Unredacted dissent ledger
-- ✅ Full ADR archives
-- ✅ Financial dashboards
-- ✅ Infrastructure metrics
+4. **CLI Tool**
+   - `npm install -g abo84-beta`
+   - Terminal-based coding assistance
+   - Scriptable and automation-friendly
 
-### Proposed Features
+**NOT Available To:**
+- ❌ Free tier users (RM0/month)
+- ❌ Pro tier users (RM30/month)
+- ❌ General public (Ultimate tier required)
 
-**1. Composite Score Widget**
+**Comparison to Main PWA:**
+- Main AI Bradaa PWA (7 sections) = Available to all tiers
+- ABO-84 Beta (coding agent) = Separate download, Ultimate tier only
+
+### Core Features
+
+**1. Code Enhancement & Refactoring**
 ```javascript
-// Endpoint: GET /api/abo84/composite-score
-{
-  "current": 78.4,
-  "target": 99.0,
-  "gap": -20.6,
-  "trend_7d": [70.1, 72.3, 74.5, 76.2, 78.4],
-  "change_this_week": +8.3,
-  "status": "IMPROVING",
-  "next_milestone": {
-    "score": 85.0,
-    "eta_days": 7,
-    "blockers": ["database_migration", "eval_framework"]
+// Example: User selects code block
+function calculateTotal(items) {
+  let total = 0;
+  for (let i = 0; i < items.length; i++) {
+    total += items[i].price * items[i].quantity;
+  }
+  return total;
+}
+
+// ABO-84 suggests (84-mentor powered):
+// "Warren Buffett: Simplify for maintainability"
+// "Martin Fowler: Use reduce for functional style"
+// Composite Score: 8.5/10
+
+const calculateTotal = (items) =>
+  items.reduce((total, {price, quantity}) => total + price * quantity, 0);
+```
+
+**2. Bug Detection & Auto-Fix**
+```javascript
+// ABO-84 detects potential issues
+async function fetchUser(id) {
+  const response = await fetch(`/api/users/${id}`);
+  return response.json(); // ❌ No error handling
+}
+
+// 84-Mentor Analysis:
+// Geoffrey Hinton (Safety): "Missing error handling - RED"
+// Andrew Ng (Best Practices): "Add try-catch + validation"
+// Composite Score: 3/10 (BLOCKED)
+
+// Auto-fix suggestion:
+async function fetchUser(id) {
+  try {
+    const response = await fetch(`/api/users/${id}`);
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    return await response.json();
+  } catch (error) {
+    console.error('fetchUser failed:', error);
+    return null;
   }
 }
+// New Composite Score: 9.2/10 ✅
 ```
 
-**2. Decision Log Feed**
+**3. "Code for Dummy" Teaching Mode**
 ```javascript
-// Endpoint: GET /api/abo84/decisions?limit=10
-{
-  "decisions": [
-    {
-      "id": "dec_20251109_001",
-      "timestamp": "2025-11-09T04:37:00Z",
-      "decision_type": "infra_slo",
-      "title": "Implement PostgreSQL database",
-      "outcome": "APPROVED",
-      "composite_impact": +12,
-      "recruited_mentors": ["Andrew Ng", "Geoffrey Hinton", "Ilya Sutskever"],
-      "dissent_summary": "Consensus - all mentors approved",
-      "lenses_applied": ["slo", "error_budget", "rollback"]
-    },
-    // ... 9 more
-  ]
-}
+// User writes:
+const x = [1,2,3].map(n => n * 2);
+
+// ABO-84 explains (beginner mode):
+"This code creates a new array by doubling each number. Let me break it down:
+1. [1,2,3] - Starting array
+2. .map() - Transforms each element
+3. n => n * 2 - Function that doubles each number
+4. Result: [2, 4, 6]
+
+💡 Pro tip: map() is perfect when you need to transform data!"
+
+// Senior developer mode:
+"Using map() for side-effect-free transformation. Time complexity: O(n).
+Consider using for...of if you need early termination or async operations."
 ```
 
-**3. Mentor Activity Heatmap**
-```javascript
-// Endpoint: GET /api/abo84/mentor-activity
-{
-  "last_7_days": {
-    "most_active_mentors": [
-      {"name": "Warren Buffett", "decisions": 5},
-      {"name": "Geoffrey Hinton", "decisions": 4},
-      {"name": "Jeff Bezos", "decisions": 3}
-    ],
-    "department_distribution": {
-      "Safety & Governance": 8,
-      "Technical Excellence": 6,
-      "Business Strategy": 4
-    },
-    "dissent_axes_triggered": [
-      "AI Capability vs AI Safety",
-      "Security vs Growth"
-    ]
-  }
-}
+**4. Diff Generation with Safety Review**
+```diff
+// ABO-84 generates safe diffs
++ const validatedInput = sanitizeInput(userInput); // Security: XSS prevention
+- const result = eval(userInput); // ❌ CRITICAL: Code injection risk
++ const result = safeEval(validatedInput);
+
+Composite Score: 9.8/10
+Security Council: APPROVED (Bruce Schneier: "Excellent XSS mitigation")
 ```
 
 ### Integration Points
 
 **With Syeddy Orchestrator:**
-- Subscribes to decision events (via event bus)
-- Queries composite score snapshots (read-only)
-- Filters sensitive data before display
-
-**With AI Bradaa:**
-- Embedded in Pro-tier user dashboard
-- Accessible via `/dashboard/governance` route
-- Real-time updates via WebSocket
-
-**With Syeddy Debugger:**
-- NO direct integration (owner-only system)
-- Debugger provides superset of data (ABO-84 is filtered subset)
+- Uses 84-mentor council for code review decisions
+- Routes coding suggestions through decision framework
+- Applies composite scoring to all auto-fixes
+- Executes AS Syeddy when generating code
 
 **With AI Pod:**
-- No direct integration
-- Uses AI Pod for rendering charts/visualizations
+- Leverages AI Pod's LLM adapters (Gemini, Claude, GPT-4)
+- Uses RAG/CAG pipelines from AI Pod
+- Shares TOON format for token optimization
+- Centralizes all AI logic through AI Pod
+
+**With Syeddy Debugger:**
+- **Reports TO Syeddy Debugger** (one-way reporting)
+- Sends error logs, usage stats, performance metrics
+- Syeddy Debugger analyzes ABO-84's code quality
+- Syeddy Debugger is SUPERIOR (owner-only, more comprehensive)
+
+**With AI Bradaa:**
+- Separate product (NOT integrated into main PWA)
+- Different target audience (coders vs laptop shoppers)
+- Shares brand identity and 84-mentor governance
+- Cross-promotion: AI Bradaa users can upgrade to get ABO-84
 
 ### Implementation Roadmap
 
@@ -654,22 +686,33 @@ ABO-84 (Advisor Board Observer) is a **prototype governance dashboard** that exp
 ## System 3: AI Bradaa
 
 ### Classification
-**Type:** MAIN PRODUCT
-**Purpose:** Malaysia-first AI-powered laptop recommendation platform
+**Type:** BRAND/FRONTEND (Public-Facing AI Agent)
+**Purpose:** The AI Bradaa brand - like Claude.ai, ChatGPT, Gemini, Grok, DeepSeek
 **Status:** Core features built, production blockers identified
 **Location:** `/` (root), `/public/`, `/netlify/functions/`
+**For:** Public users (frontend only)
 
 ### Overview
 
-AI Bradaa is a **Malaysia-first AI-powered laptop recommendation platform** that helps users find the perfect laptop through intelligent matchmaking, side-by-side comparisons, and curated insights. Powered by Gemini 2.0 Flash, governed by 84 mentors, and enhanced with a unique One Piece-inspired personality (AI Bradaa tone).
+AI Bradaa is the **brand and public-facing AI Agent** - think of it like Claude.ai, ChatGPT, or Gemini, but specifically for Malaysia's laptop market. This is NOT just a recommendation platform - it's an **AI Agent** that users interact with. It can accept image uploads (for laptop identification), understand user needs, and provide tailored recommendations with personality.
+
+**Key Distinction:** AI Bradaa is the **frontend brand** that users see and interact with. Everything about how the AI functions, replies, and executes for users is defined here. The backend AI logic lives in AI Pod, but the user experience, personality, and brand identity are AI Bradaa.
+
+**One Piece Catchphrase System:** Lives HERE in AI Bradaa (not in AI Pod). This is part of the brand personality that users experience.
+
+**Core AI Agent Capabilities:**
+- **Image Upload & Identification:** Users can upload laptop images → AI identifies model, specs, and provides tailored recommendations
+- **Conversational Interface:** Natural language interaction with One Piece-inspired personality
+- **Personalized Responses:** Tailored output based on user needs, budget, use-case
+- **84-Mentor Governance:** Every recommendation backed by mentor consensus
+- **Malaysia-First:** MYR pricing, Shopee/Lazada integration, local market knowledge
 
 **Unique Value Proposition:**
-- 84-mentor governance system (proprietary IP, unique moat)
-- Malaysia-centric data (MYR pricing, Shopee/Lazada integration)
+- One Piece catchphrase system v4.0 (auto-fetch + Gemini AI paraphrasing) - **Lives in AI Bradaa**
 - Three-tier monetization (Free RM0, Pro RM30, Ultimate RM80)
-- One Piece catchphrase system v4.0 (auto-fetch + Gemini AI paraphrasing)
 - TOON format (30-60% token savings vs JSON)
 - Affiliate model (Shopee, Lazada partnerships validated)
+- Brand personality: Friendly, optimistic, determined (Luffy-inspired traits)
 
 ### 7 Main Sections
 
@@ -1055,21 +1098,59 @@ export async function checkQuota(userId, tier, endpoint) {
 ## System 4: Syeddy Debugger
 
 ### Classification
-**Type:** PROTOTYPE (Owner-Only)
-**Purpose:** Owner-internal debugging and observability system
-**Status:** Design defined, implementation pending
-**Location:** Mentioned in DOC-1, not yet built
-**Access:** Owner only (NOT exposed to Pro/Ultimate tiers)
+**Type:** OWNER'S AUTOMATED DEBUGGER & MAINTAINER
+**Purpose:** Superior automated system that oversees, maintains, and improves the entire project
+**Status:** Design complete, implementation pending
+**Deployment:** Local agent (standalone app OR Ollama integration)
+**Access:** Owner ONLY - reports directly to owner
+**Superiority:** SUPERIOR to ABO-84 (collects reports FROM ABO-84, never reverse)
 
 ### Overview
 
-Syeddy Debugger is an **owner-only prototype** providing deep observability into AI Bradaa's internal operations. It tracks **300+ metrics** including governance decision traces, mentor reasoning paths, financial dashboards, infrastructure performance, and security events. This system is the **superset** of ABO-84 (which shows filtered, public-safe signals to Pro users).
+Syeddy Debugger is the **owner's automated co-founder for development** - it's NOT just a debugger, it's an **active maintainer** that constantly oversees the entire project. Think of it as an AI teammate that works 24/7 to keep AI Bradaa world-class.
 
-**Key Principle:** Syeddy Debugger sees EVERYTHING. ABO-84 sees a curated, privacy-filtered subset.
+**Core Functions:**
+1. **Automated Debugging:** Finds errors, analyzes root causes, generates fixes
+2. **Continuous Improvement:** Reads AI Pod analysis, identifies enhancement opportunities
+3. **1-Click Updates:** Creates world-class code ready to deploy with one click
+4. **Repo Maintenance:** Oversees root repo, PWA, all development artifacts
+5. **Boot-Time Greetings:** Greets owner on laptop boot with health/error/upgrade summary
+6. **Safe-Diff Patcher:** Generates reviewable diffs (never destructive)
+7. **300+ Signal Dashboard:** Complete project health at a glance
+8. **Report Collection:** Gathers feedback from users AND ABO-84
 
-### Proposed Architecture
+**Key Principle:** Syeddy Debugger is **SUPERIOR to ABO-84**. It collects reports FROM ABO-84 and users, but ABO-84 NEVER sees Syeddy Debugger's internals. Owner-only access.
 
-**1. 300+ Metrics Categories:**
+### Architecture
+
+**Boot-Time Greeting Example:**
+```
+┌────────────────────────────────────────────────────────┐
+│  Good morning! Syeddy Debugger here 👋                 │
+├────────────────────────────────────────────────────────┤
+│  PROJECT HEALTH: 🟢 EXCELLENT                          │
+│  ├─ Composite Score: 94.2/100 (+2.1 pts yesterday)    │
+│  ├─ Test Coverage: 72% (target ≥70% ✅)                │
+│  ├─ Build Status: PASSING (235ms, -12ms faster)       │
+│  └─ Uptime: 99.97% (SLO: 99.5% ✅)                     │
+│                                                         │
+│  ERRORS FOUND: 2 (auto-fixed overnight)                │
+│  ├─ TypeError in chat.mjs:145 → Fixed ✅               │
+│  └─ OTEL trace missing span → Added instrumentation ✅ │
+│                                                         │
+│  RECOMMENDATIONS: 3 improvements ready                  │
+│  1. TOON converter performance (+15% faster)           │
+│  2. Database query optimization (3 slow queries)       │
+│  3. One Piece v4.0 confidence threshold tweak          │
+│                                                         │
+│  📦 1-CLICK UPDATES READY:                             │
+│  → Run `syeddy apply-updates` to deploy all fixes     │
+│                                                         │
+│  Have a productive day! 🚀                             │
+└────────────────────────────────────────────────────────┘
+```
+
+**300+ Signal Dashboard Categories:**
 
 ```
 ┌──────────────────────────────────────────────────┐
@@ -2569,11 +2650,11 @@ AI Bradaa is a **well-architected Malaysia-first AI-powered laptop recommendatio
 ### Key Achievements
 
 ✅ **5 Main Systems Enriched:**
-1. Syeddy Orchestrator - 84-mentor governance (MAIN SYSTEM)
-2. ABO-84 Beta - Governance observer (Prototype)
-3. AI Bradaa - Laptop recommendation platform (MAIN PRODUCT)
-4. Syeddy Debugger - Owner observability (Prototype)
-5. AI Pod - AI centralization layer (MAIN SYSTEM)
+1. Syeddy Orchestrator - Co-founder AI Agent team that executes entire project (I execute AS Syeddy)
+2. AI Pod - Centralized AI hub for all AI logic, pipelines, prototypes (MAIN SYSTEM)
+3. AI Bradaa - Brand/Frontend AI Agent with image upload, One Piece personality (like Claude.ai)
+4. Syeddy Debugger - Superior automated maintainer with boot-time greetings, 1-click updates (Owner-only)
+5. ABO-84 Beta - Advanced AI coding agent (like Claude Code/Cursor) for Ultimate tier (Separate download)
 
 ✅ **One Piece Catchphrase v4.0:** Database + auto-fetch + Gemini AI paraphrasing
 ✅ **TOON Format:** 34.5% token savings verified
