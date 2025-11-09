@@ -1,6 +1,6 @@
 /**
- * AI Integration - Gemini 2.0 Flash Wrapper
- * AI Bradaa - Phase 4: Wiring & AI Integration
+ * AI Integration - Gemini 2.5 Advanced Features
+ * AI Bradaa - Phase 5: Advanced Gemini Integration & Final Audit
  *
  * ARCHITECTURE: 84-Mentor Council Standards
  * - AI POD Council: Prompt engineering, context management, model selection
@@ -8,8 +8,15 @@
  * - Safety Council: Content moderation, privacy protection, fallbacks
  * - Customer Council: Response quality, latency optimization, graceful degradation
  *
- * FEATURES:
- * - Gemini 2.0 Flash for chat (command tool)
+ * FEATURES (Phase 5 - Advanced):
+ * 1. Gemini 2.5 Pro/Flash (upgraded from 2.0)
+ * 2. Google Search Grounding - Real-time data integration
+ * 3. Google Maps Integration - Location-based recommendations
+ * 4. Gemini Intelligence - Content analysis, edits, summarization
+ * 5. Image Analysis - Vision API for spec extraction
+ * 6. Extended Thinking Mode - Deep reasoning with Gemini 2.5 Pro
+ *
+ * LEGACY FEATURES (Phase 4):
  * - AI insights for versus comparisons
  * - Smart matchmaker with AI scoring
  * - Personalized recommendations
@@ -31,11 +38,20 @@ class AIIntegration {
         chat: '/.netlify/functions/command',
         insights: '/.netlify/functions/command/insights',
         parse: '/.netlify/functions/command/parse',
-        paraphrase: '/.netlify/functions/command/paraphrase'
+        paraphrase: '/.netlify/functions/command/paraphrase',
+        // Phase 5 endpoints
+        vision: '/.netlify/functions/vision-analysis',
+        geminiLive: '/.netlify/functions/gemini-live',
+        searchGrounding: '/.netlify/functions/command', // Uses search grounding parameter
+        mapsIntegration: '/.netlify/functions/command' // Uses maps tool
       },
       models: {
-        fast: 'gemini-2.0-flash-exp',
-        think: 'gemini-exp-1206'
+        // Phase 5: Gemini 2.5 models
+        fast: 'gemini-2.5-flash',
+        pro: 'gemini-2.5-pro',
+        // Legacy fallbacks
+        legacy_fast: 'gemini-2.0-flash-exp',
+        legacy_think: 'gemini-exp-1206'
       },
       rateLimits: {
         free: { requestsPerMinute: 10, requestsPerDay: 100 },
@@ -45,7 +61,28 @@ class AIIntegration {
       maxContextLength: 32000, // tokens
       maxConversationTurns: 20,
       responseTimeout: 30000, // 30 seconds
-      retryAttempts: 2
+      retryAttempts: 2,
+      // Phase 5 configs
+      thinkingModeConfig: {
+        enabled: true,
+        minComplexityScore: 7, // 0-10, trigger thinking mode for complex queries
+        maxThinkingTokens: 16384
+      },
+      visionConfig: {
+        maxImageSize: 5 * 1024 * 1024, // 5MB
+        supportedFormats: ['image/jpeg', 'image/png', 'image/webp'],
+        ocrEnabled: true
+      },
+      searchGroundingConfig: {
+        enabled: true,
+        maxSources: 5,
+        freshness: 'recent' // recent, week, month, year, all
+      },
+      mapsConfig: {
+        enabled: true,
+        defaultRadius: 10000, // meters (10km)
+        maxResults: 10
+      }
     };
 
     // State
@@ -58,11 +95,22 @@ class AIIntegration {
       tokenUsage: { total: 0, thisSession: 0 },
       costEstimate: { total: 0, thisSession: 0 },
       isProcessing: false,
-      currentModel: 'fast'
+      currentModel: 'fast',
+      // Phase 5 state
+      voiceSession: null,
+      isVoiceActive: false,
+      thinkingMode: false,
+      lastSearchGrounding: null,
+      lastVisionAnalysis: null
     };
 
     // Rate limiter
     this.rateLimiter = new RateLimiter();
+
+    // Phase 5: Feature managers
+    this.voiceInterface = null; // Will be initialized on demand
+    this.mapsIntegration = null; // Will be initialized on demand
+    this.visionAnalyzer = null; // Will be initialized on demand
   }
 
   /**
@@ -408,6 +456,542 @@ Paraphrased version:`;
       console.error('[AIIntegration] Paraphrase failed:', error);
       return text; // Return original on failure
     }
+  }
+
+  // ===================================================================
+  // PHASE 5: ADVANCED GEMINI FEATURES
+  // ===================================================================
+
+  /**
+   * FEATURE 1: Gemini Live API - Conversational Voice
+   * Real-time voice conversations with AI Bradaa
+   *
+   * @param {Object} options - Voice session options
+   * @returns {Promise<Object>} - Voice session object
+   */
+  async startVoiceSession(options = {}) {
+    try {
+      console.log('[AIIntegration] Starting Gemini Live voice session...');
+
+      // Initialize voice interface if not already done
+      if (!this.voiceInterface && window.GeminiVoiceInterface) {
+        this.voiceInterface = new window.GeminiVoiceInterface({
+          apiEndpoint: this.config.apiEndpoints.geminiLive,
+          model: this.config.models.pro,
+          personality: 'one_piece_v4',
+          manglish: true,
+          ...options
+        });
+      }
+
+      if (!this.voiceInterface) {
+        throw new Error('Voice interface not available. Make sure voice-interface.js is loaded.');
+      }
+
+      // Start session
+      const session = await this.voiceInterface.start();
+
+      this.state.voiceSession = session;
+      this.state.isVoiceActive = true;
+
+      console.log('[AIIntegration] Voice session started:', session.sessionId);
+
+      return {
+        sessionId: session.sessionId,
+        status: 'active',
+        voiceInterface: this.voiceInterface
+      };
+
+    } catch (error) {
+      console.error('[AIIntegration] Start voice session failed:', error);
+      throw error;
+    }
+  }
+
+  /**
+   * Stop voice session
+   */
+  async stopVoiceSession() {
+    try {
+      if (this.voiceInterface && this.state.isVoiceActive) {
+        await this.voiceInterface.stop();
+        this.state.isVoiceActive = false;
+        this.state.voiceSession = null;
+        console.log('[AIIntegration] Voice session stopped');
+      }
+    } catch (error) {
+      console.error('[AIIntegration] Stop voice session failed:', error);
+    }
+  }
+
+  /**
+   * FEATURE 2: Google Search Grounding - Real-time Data
+   * Enhanced chat with real-time Google Search results
+   *
+   * @param {string} query - User query
+   * @param {Object} options - Search options
+   * @returns {Promise<Object>} - Response with grounding sources
+   */
+  async chatWithSearchGrounding(query, options = {}) {
+    try {
+      console.log('[AIIntegration] Chat with search grounding:', query);
+
+      // Check if search grounding is enabled
+      if (!this.config.searchGroundingConfig.enabled) {
+        console.warn('[AIIntegration] Search grounding disabled, falling back to regular chat');
+        return this.chat(query, options);
+      }
+
+      // Enhance prompt with search grounding instruction
+      const enhancedContext = {
+        ...options.context,
+        searchGrounding: {
+          enabled: true,
+          freshness: options.freshness || this.config.searchGroundingConfig.freshness,
+          maxSources: options.maxSources || this.config.searchGroundingConfig.maxSources
+        }
+      };
+
+      // Use Gemini 2.5 Pro for better search integration
+      const response = await this.chat(query, {
+        ...options,
+        mode: 'pro',
+        context: enhancedContext,
+        toolId: options.toolId || 'search-grounded-chat'
+      });
+
+      // Store last search grounding metadata
+      this.state.lastSearchGrounding = {
+        query,
+        timestamp: Date.now(),
+        sources: response.sources || []
+      };
+
+      console.log('[AIIntegration] Search grounding complete:', {
+        sourcesFound: response.sources?.length || 0
+      });
+
+      return {
+        ...response,
+        isGrounded: true,
+        sources: response.sources || [],
+        groundingMetadata: this.state.lastSearchGrounding
+      };
+
+    } catch (error) {
+      console.error('[AIIntegration] Chat with search grounding failed:', error);
+      // Fallback to regular chat
+      return this.chat(query, options);
+    }
+  }
+
+  /**
+   * Get latest laptop news with search grounding
+   *
+   * @param {Object} filters - { brand, category, dateRange }
+   * @returns {Promise<Object>} - News and insights
+   */
+  async getLatestLaptopNews(filters = {}) {
+    const { brand, category, dateRange = 'week' } = filters;
+
+    let query = 'Latest laptop news and releases';
+    if (brand) query += ` from ${brand}`;
+    if (category) query += ` in ${category} category`;
+
+    return this.chatWithSearchGrounding(query, {
+      freshness: dateRange,
+      maxSources: 10,
+      toolId: 'laptop-news'
+    });
+  }
+
+  /**
+   * FEATURE 3: Google Maps Integration - Location Data
+   * Find nearby laptop stores and buying locations
+   *
+   * @param {string} laptopModel - Laptop model to find
+   * @param {Object} userLocation - { lat, lng } or address string
+   * @param {Object} options - Search options
+   * @returns {Promise<Object>} - Stores with directions
+   */
+  async findNearbyStores(laptopModel, userLocation, options = {}) {
+    try {
+      console.log('[AIIntegration] Finding nearby stores for:', laptopModel);
+
+      // Initialize maps integration if needed
+      if (!this.mapsIntegration && window.GoogleMapsIntegration) {
+        this.mapsIntegration = new window.GoogleMapsIntegration({
+          apiKey: options.mapsApiKey,
+          defaultRadius: this.config.mapsConfig.defaultRadius
+        });
+      }
+
+      if (!this.mapsIntegration) {
+        throw new Error('Maps integration not available. Make sure maps-integration.js is loaded.');
+      }
+
+      // Search for stores
+      const stores = await this.mapsIntegration.findLaptopStores(
+        laptopModel,
+        userLocation,
+        {
+          radius: options.radius || this.config.mapsConfig.defaultRadius,
+          maxResults: options.maxResults || this.config.mapsConfig.maxResults
+        }
+      );
+
+      // Use AI to rank and recommend stores
+      const rankedStores = await this.rankStoresWithAI(stores, laptopModel);
+
+      console.log('[AIIntegration] Found stores:', rankedStores.length);
+
+      return {
+        stores: rankedStores,
+        userLocation,
+        laptopModel,
+        searchRadius: options.radius || this.config.mapsConfig.defaultRadius
+      };
+
+    } catch (error) {
+      console.error('[AIIntegration] Find nearby stores failed:', error);
+      return {
+        stores: [],
+        error: error.message
+      };
+    }
+  }
+
+  /**
+   * Rank stores using AI intelligence
+   */
+  async rankStoresWithAI(stores, laptopModel) {
+    try {
+      const prompt = `Rank these stores for buying ${laptopModel}:
+
+${stores.map((s, i) => `${i + 1}. ${s.name} - Rating: ${s.rating}, Distance: ${s.distance}m, Price: ${s.priceLevel}`).join('\n')}
+
+Provide ranking with reasoning (consider: rating, distance, price, reputation).`;
+
+      const response = await this.chat(prompt, {
+        mode: 'fast',
+        toolId: 'store-ranking'
+      });
+
+      // Parse ranking and apply to stores
+      // For now, return stores as-is (AI ranking integration can be enhanced)
+      return stores;
+
+    } catch (error) {
+      console.error('[AIIntegration] Rank stores with AI failed:', error);
+      return stores;
+    }
+  }
+
+  /**
+   * FEATURE 4: Gemini Intelligence - Advanced Tasks
+   * Content analysis, summarization, query optimization
+   *
+   * @param {string} content - Content to analyze
+   * @param {string} task - 'analyze', 'summarize', 'edit', 'compare'
+   * @param {Object} options - Task options
+   * @returns {Promise<Object>} - Analysis results
+   */
+  async intelligenceTask(content, task, options = {}) {
+    try {
+      console.log('[AIIntegration] Intelligence task:', task);
+
+      let prompt;
+      let mode = 'pro'; // Use Gemini 2.5 Pro for intelligence tasks
+
+      switch (task) {
+        case 'analyze':
+          prompt = `Analyze this laptop review/specification:
+
+${content}
+
+Provide:
+1. Key strengths
+2. Key weaknesses
+3. Value assessment
+4. Target user profile
+5. Recommended use cases`;
+          break;
+
+        case 'summarize':
+          prompt = `Summarize this laptop review in 3-5 bullet points:
+
+${content}
+
+Focus on: performance, value, user experience, notable features.`;
+          break;
+
+        case 'edit':
+          prompt = `Improve this user query for better laptop search results:
+
+Original: "${content}"
+
+Provide:
+1. Clarified version
+2. Extracted requirements
+3. Suggested filters`;
+          break;
+
+        case 'compare':
+          prompt = `Generate a comparison table for these laptops:
+
+${content}
+
+Include: specs, price, performance, value score.`;
+          break;
+
+        case 'budget_optimize':
+          prompt = `Optimize this laptop selection within budget constraints:
+
+${content}
+
+Provide:
+1. Best value options
+2. Trade-offs analysis
+3. Budget allocation recommendations`;
+          break;
+
+        case 'use_case_match':
+          prompt = `Match laptops to this use case:
+
+Use case: ${content}
+
+Provide:
+1. Ideal specs required
+2. Recommended laptops
+3. Must-have vs nice-to-have features`;
+          break;
+
+        default:
+          throw new Error(`Unknown intelligence task: ${task}`);
+      }
+
+      const response = await this.chat(prompt, {
+        mode,
+        toolId: `intelligence-${task}`,
+        ...options
+      });
+
+      return {
+        task,
+        result: response.response,
+        emotion: response.emotion,
+        tokens: response.tokens,
+        cost: response.cost
+      };
+
+    } catch (error) {
+      console.error('[AIIntegration] Intelligence task failed:', error);
+      throw error;
+    }
+  }
+
+  /**
+   * FEATURE 5: Image Analysis - Vision API
+   * Analyze laptop images, extract specs from screenshots
+   *
+   * @param {File|Blob} imageFile - Image file to analyze
+   * @param {string} analysisType - 'identify', 'extract_specs', 'benchmark_chart', 'ocr'
+   * @param {Object} options - Analysis options
+   * @returns {Promise<Object>} - Analysis results
+   */
+  async analyzeImage(imageFile, analysisType = 'identify', options = {}) {
+    try {
+      console.log('[AIIntegration] Analyzing image:', imageFile.name, analysisType);
+
+      // Validate file
+      if (!this.config.visionConfig.supportedFormats.includes(imageFile.type)) {
+        throw new Error(`Unsupported image format: ${imageFile.type}`);
+      }
+
+      if (imageFile.size > this.config.visionConfig.maxImageSize) {
+        throw new Error(`Image too large: ${(imageFile.size / 1024 / 1024).toFixed(2)}MB (max: 5MB)`);
+      }
+
+      // Convert to base64
+      const base64Image = await this.fileToBase64(imageFile);
+
+      // Prepare analysis prompt
+      let prompt;
+      switch (analysisType) {
+        case 'identify':
+          prompt = 'What laptop is this? Identify brand, model, and any visible specifications.';
+          break;
+        case 'extract_specs':
+          prompt = 'Extract ALL specifications visible in this image. Format as structured data.';
+          break;
+        case 'benchmark_chart':
+          prompt = 'Analyze this performance benchmark chart. Extract scores and provide interpretation.';
+          break;
+        case 'ocr':
+          prompt = 'Extract all text from this image (OCR). Maintain formatting.';
+          break;
+        case 'translate':
+          prompt = 'Translate all non-English text in this image to English. Preserve technical terms.';
+          break;
+        default:
+          prompt = options.customPrompt || 'Describe this laptop image in detail.';
+      }
+
+      // Call vision analysis endpoint
+      const response = await this.makeRequest(
+        this.config.apiEndpoints.vision,
+        'POST',
+        {
+          image: base64Image,
+          mimeType: imageFile.type,
+          prompt,
+          analysisType,
+          options
+        }
+      );
+
+      // Store last analysis
+      this.state.lastVisionAnalysis = {
+        fileName: imageFile.name,
+        analysisType,
+        timestamp: Date.now(),
+        result: response
+      };
+
+      console.log('[AIIntegration] Image analysis complete');
+
+      return {
+        analysisType,
+        result: response.text || response.result,
+        confidence: response.confidence,
+        extractedData: response.extractedData,
+        tokens: response.tokens,
+        cost: response.cost,
+        metadata: this.state.lastVisionAnalysis
+      };
+
+    } catch (error) {
+      console.error('[AIIntegration] Image analysis failed:', error);
+      throw error;
+    }
+  }
+
+  /**
+   * Convert file to base64
+   */
+  fileToBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        // Remove data URL prefix (e.g., "data:image/png;base64,")
+        const base64 = reader.result.split(',')[1];
+        resolve(base64);
+      };
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
+
+  /**
+   * FEATURE 6: Extended Thinking Mode - Gemini 2.5 Pro
+   * Deep reasoning for complex queries
+   *
+   * @param {string} query - Complex query requiring deep thought
+   * @param {Object} options - Thinking options
+   * @returns {Promise<Object>} - Response with thinking process
+   */
+  async thinkDeeply(query, options = {}) {
+    try {
+      console.log('[AIIntegration] Extended thinking mode:', query);
+
+      // Check if thinking mode is enabled
+      if (!this.config.thinkingModeConfig.enabled) {
+        console.warn('[AIIntegration] Thinking mode disabled, using regular pro mode');
+        return this.chat(query, { ...options, mode: 'pro' });
+      }
+
+      // Set thinking mode state
+      this.state.thinkingMode = true;
+
+      // Use Gemini 2.5 Pro with extended thinking config
+      const response = await this.chat(query, {
+        ...options,
+        mode: 'pro',
+        context: {
+          ...options.context,
+          thinkingMode: true,
+          complexity: options.complexity || 'high',
+          maxThinkingTokens: this.config.thinkingModeConfig.maxThinkingTokens
+        },
+        toolId: options.toolId || 'deep-thinking'
+      });
+
+      this.state.thinkingMode = false;
+
+      console.log('[AIIntegration] Extended thinking complete');
+
+      return {
+        ...response,
+        isDeepThinking: true,
+        thinkingProcess: response.thinkingProcess || null,
+        reasoning: response.reasoning || null
+      };
+
+    } catch (error) {
+      console.error('[AIIntegration] Extended thinking failed:', error);
+      this.state.thinkingMode = false;
+      throw error;
+    }
+  }
+
+  /**
+   * Assess query complexity to auto-trigger thinking mode
+   *
+   * @param {string} query - User query
+   * @returns {number} - Complexity score 0-10
+   */
+  assessQueryComplexity(query) {
+    let score = 0;
+
+    // Length-based scoring
+    if (query.length > 200) score += 2;
+    else if (query.length > 100) score += 1;
+
+    // Keyword-based scoring
+    const complexKeywords = [
+      'compare', 'analyze', 'optimize', 'recommend', 'trade-off',
+      'future-proof', 'long-term', 'value assessment', 'multiple',
+      'constraint', 'budget', 'priority', 'versus', 'pros and cons'
+    ];
+
+    for (const keyword of complexKeywords) {
+      if (query.toLowerCase().includes(keyword)) {
+        score += 1;
+      }
+    }
+
+    // Question mark count (multiple questions = complex)
+    const questionCount = (query.match(/\?/g) || []).length;
+    score += Math.min(questionCount, 3);
+
+    return Math.min(score, 10);
+  }
+
+  /**
+   * Auto-select best mode based on query complexity
+   *
+   * @param {string} query - User query
+   * @returns {string} - 'fast' or 'pro'
+   */
+  autoSelectMode(query) {
+    const complexity = this.assessQueryComplexity(query);
+
+    if (complexity >= this.config.thinkingModeConfig.minComplexityScore) {
+      console.log('[AIIntegration] High complexity detected, using pro mode');
+      return 'pro';
+    }
+
+    return 'fast';
   }
 
   /**
