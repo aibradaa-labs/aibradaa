@@ -19,6 +19,9 @@ import {
   detectEmotion,
   emotionalizeResponse,
 } from '../../ai_pod/personas/catchphrases.mjs';
+import {
+  enhanceChatResponse,
+} from '../../ai_pod/personas/one_piece_catchphrase_engine.mjs';
 
 // Initialize Gemini client
 const gemini = getGeminiClient(process.env.GEMINI_API_KEY);
@@ -46,14 +49,17 @@ async function chatWithGemini({ message, context, userId }) {
   };
 
   const emotion = detectEmotion(emotionContext);
-  const emotionalizedText = emotionalizeResponse(
+
+  // NEW: Enhanced One Piece catchphrase system
+  const enhancedText = enhanceChatResponse(
+    userId,
     result.text,
-    emotionContext,
-    'greeting' // Add catchphrase at start of response
+    emotion.name.toUpperCase(),
+    context?.[0]?.nickname // Get nickname from first context message if available
   );
 
   return {
-    message: emotionalizedText,
+    message: enhancedText,
     role: 'assistant',
     emotion: emotion.name,
     tokens: result.tokens,
