@@ -16,6 +16,8 @@ export class CommandApp {
     this.messages = [];
     this.isStreaming = false;
     this.currentStreamingMessage = null;
+    this.currentMode = 'fast'; // fast, think, research
+    this.soulManagerState = 'neutral'; // neutral, amber, green, red
 
     this.init();
   }
@@ -27,6 +29,8 @@ export class CommandApp {
     await this.loadChatHistory();
     this.attachEventListeners();
     this.renderMessages();
+    this.initSoulManager();
+    this.initModeSelector();
 
     // Show welcome message if first visit
     if (this.messages.length === 0) {
@@ -143,6 +147,22 @@ Go ahead, ask me anything about laptops! 😊`,
         this.autoResizeInput(input);
       });
     }
+
+    // Mode selector
+    document.querySelectorAll('.mode-selector-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        this.switchMode(btn.dataset.mode);
+      });
+    });
+
+    // Shortcut commands (listen for / commands)
+    if (input) {
+      input.addEventListener('keyup', (e) => {
+        if (e.key === '/' && input.value === '/') {
+          this.showShortcutsMenu();
+        }
+      });
+    }
   }
 
   /**
@@ -154,6 +174,21 @@ Go ahead, ask me anything about laptops! 😊`,
     if (!input || !input.value.trim()) return;
 
     const message = input.value.trim();
+
+    // Check for shortcut commands
+    if (message.startsWith('/')) {
+      this.handleShortcutCommand(message);
+      input.value = '';
+      return;
+    }
+
+    // Check for intent routing (before sending to AI)
+    const intent = await this.detectIntent(message);
+    if (intent && intent.route && intent.route !== '/command') {
+      this.routeToTool(intent);
+      input.value = '';
+      return;
+    }
 
     // Add user message
     this.addMessage({
@@ -480,6 +515,275 @@ Go ahead, ask me anything about laptops! 😊`,
       message: 'Chat exported successfully',
       type: 'success'
     });
+  }
+
+  /**
+   * Initialize Soul Manager visualization
+   */
+  initSoulManager() {
+    const container = document.getElementById('soul-manager-container');
+    if (!container) return;
+
+    // Create ferrofluid-like canvas animation
+    container.innerHTML = `
+      <div class="soul-manager">
+        <canvas id="soul-canvas" width="200" height="200"></canvas>
+        <div class="soul-state-label">${this.getSoulStateLabel()}</div>
+      </div>
+    `;
+
+    this.renderSoulAnimation();
+  }
+
+  /**
+   * Get soul state label
+   */
+  getSoulStateLabel() {
+    const labels = {
+      'neutral': 'Idle',
+      'amber': 'Thinking...',
+      'green': 'Ready!',
+      'red': 'Processing...'
+    };
+    return labels[this.soulManagerState] || 'Idle';
+  }
+
+  /**
+   * Render soul animation (ferrofluid effect)
+   */
+  renderSoulAnimation() {
+    const canvas = document.getElementById('soul-canvas');
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    const width = canvas.width;
+    const height = canvas.height;
+
+    // Color based on state
+    const colors = {
+      'neutral': '#6B7280', // Gray
+      'amber': '#F59E0B', // Amber
+      'green': '#10B981', // Green
+      'red': '#EF4444' // Red
+    };
+
+    const color = colors[this.soulManagerState] || colors.neutral;
+
+    // Simple pulsing circle animation
+    let frame = 0;
+    const animate = () => {
+      ctx.clearRect(0, 0, width, height);
+
+      // Draw pulsing circle
+      const radius = 60 + Math.sin(frame * 0.05) * 10;
+      ctx.beginPath();
+      ctx.arc(width / 2, height / 2, radius, 0, Math.PI * 2);
+      ctx.fillStyle = color;
+      ctx.globalAlpha = 0.6;
+      ctx.fill();
+
+      // Draw glow
+      ctx.beginPath();
+      ctx.arc(width / 2, height / 2, radius + 20, 0, Math.PI * 2);
+      ctx.fillStyle = color;
+      ctx.globalAlpha = 0.2;
+      ctx.fill();
+
+      frame++;
+      requestAnimationFrame(animate);
+    };
+
+    animate();
+  }
+
+  /**
+   * Update soul state
+   */
+  updateSoulState(state) {
+    this.soulManagerState = state;
+
+    const label = document.querySelector('.soul-state-label');
+    if (label) {
+      label.textContent = this.getSoulStateLabel();
+    }
+
+    this.renderSoulAnimation();
+  }
+
+  /**
+   * Initialize mode selector
+   */
+  initModeSelector() {
+    const container = document.getElementById('mode-selector-container');
+    if (!container) return;
+
+    const userTier = window.authManager?.user?.tier || 'free';
+
+    container.innerHTML = `
+      <div class="mode-selector">
+        <button class="mode-selector-btn ${this.currentMode === 'fast' ? 'active' : ''}" data-mode="fast">
+          <span class="mode-icon">⚡</span>
+          <span class="mode-label">Fast</span>
+        </button>
+        <button class="mode-selector-btn ${this.currentMode === 'think' ? 'active' : ''}" data-mode="think" ${['free', 'guest'].includes(userTier) ? 'disabled' : ''}>
+          <span class="mode-icon">🤔</span>
+          <span class="mode-label">Think</span>
+          ${['free', 'guest'].includes(userTier) ? '<span class="mode-badge">PRO</span>' : ''}
+        </button>
+        <button class="mode-selector-btn ${this.currentMode === 'research' ? 'active' : ''}" data-mode="research" ${userTier !== 'ultimate' ? 'disabled' : ''}>
+          <span class="mode-icon">🔬</span>
+          <span class="mode-label">Research</span>
+          ${userTier !== 'ultimate' ? '<span class="mode-badge">ULTIMATE</span>' : ''}
+        </button>
+      </div>
+    `;
+  }
+
+  /**
+   * Switch AI mode
+   */
+  switchMode(mode) {
+    const userTier = window.authManager?.user?.tier || 'free';
+
+    // Check tier permissions
+    if (mode === 'think' && ['free', 'guest'].includes(userTier)) {
+      Toast.show({
+        message: 'Think mode requires Pro tier. Upgrade to unlock!',
+        type: 'warning'
+      });
+      return;
+    }
+
+    if (mode === 'research' && userTier !== 'ultimate') {
+      Toast.show({
+        message: 'Research mode requires Ultimate tier. Upgrade to unlock!',
+        type: 'warning'
+      });
+      return;
+    }
+
+    this.currentMode = mode;
+
+    // Update UI
+    document.querySelectorAll('.mode-selector-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.mode === mode);
+    });
+
+    Toast.show({
+      message: `Switched to ${mode.charAt(0).toUpperCase() + mode.slice(1)} mode`,
+      type: 'success'
+    });
+  }
+
+  /**
+   * Detect intent from user message
+   */
+  async detectIntent(message) {
+    try {
+      const response = await this.api.post('/command/parse', { query: message });
+      return response.data;
+    } catch (error) {
+      console.error('Intent detection failed:', error);
+      return null;
+    }
+  }
+
+  /**
+   * Route to appropriate tool based on intent
+   */
+  routeToTool(intent) {
+    const routes = {
+      '/matchmaker': '#matchmaker',
+      '/versus': '#versus',
+      '/explorer': '#explorer',
+      '/intel': '#intel',
+      '/appendices': '#appendices'
+    };
+
+    const hash = routes[intent.route];
+    if (hash) {
+      Toast.show({
+        message: `Routing you to ${intent.intent}...`,
+        type: 'info'
+      });
+
+      // Route to section
+      setTimeout(() => {
+        window.location.hash = hash;
+      }, 500);
+    }
+  }
+
+  /**
+   * Handle shortcut commands
+   */
+  handleShortcutCommand(command) {
+    const shortcuts = {
+      '/match': '#matchmaker',
+      '/matchmaker': '#matchmaker',
+      '/vs': '#versus',
+      '/versus': '#versus',
+      '/compare': '#versus',
+      '/explore': '#explorer',
+      '/explorer': '#explorer',
+      '/browse': '#explorer',
+      '/intel': '#intel',
+      '/news': '#intel',
+      '/appendices': '#appendices',
+      '/catalog': '#appendices',
+      '/help': () => this.showHelp(),
+      '/clear': () => this.clearChat()
+    };
+
+    const action = shortcuts[command.toLowerCase()];
+
+    if (typeof action === 'function') {
+      action();
+    } else if (action) {
+      Toast.show({
+        message: `Routing to ${command}...`,
+        type: 'info'
+      });
+      setTimeout(() => {
+        window.location.hash = action;
+      }, 500);
+    } else {
+      Toast.show({
+        message: `Unknown command: ${command}. Type /help for available commands.`,
+        type: 'warning'
+      });
+    }
+  }
+
+  /**
+   * Show shortcuts menu
+   */
+  showShortcutsMenu() {
+    const shortcuts = [
+      { cmd: '/match', desc: 'Go to Matchmaker' },
+      { cmd: '/vs', desc: 'Go to Versus' },
+      { cmd: '/explore', desc: 'Go to Explorer' },
+      { cmd: '/intel', desc: 'Go to Intel' },
+      { cmd: '/catalog', desc: 'Go to Appendices' },
+      { cmd: '/help', desc: 'Show help' },
+      { cmd: '/clear', desc: 'Clear chat' }
+    ];
+
+    const menu = shortcuts.map(s => `${s.cmd} - ${s.desc}`).join('\n');
+
+    this.addMessage({
+      role: 'assistant',
+      content: `**Available Shortcuts:**\n\n${menu}\n\nJust type the command and press Enter!`,
+      timestamp: Date.now(),
+      isSystem: true
+    });
+  }
+
+  /**
+   * Show help
+   */
+  showHelp() {
+    this.showShortcutsMenu();
   }
 }
 
