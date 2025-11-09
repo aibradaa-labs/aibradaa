@@ -1,6 +1,12 @@
 /**
- * Matchmaker Tool - AI-Powered Laptop Matching Wizard
- * AI Bradaa - 5-Step Quiz System
+ * Matchmaker - 5-Question Laptop Wizard
+ * AI Bradaa - Enhances existing HTML structure
+ *
+ * Existing HTML Elements (DO NOT REPLACE):
+ * - .matchmaker-header (title + subtitle)
+ * - .progress-bar with 5 steps
+ * - #questionContainer (empty - populate here)
+ * - #resultsContainer (empty - populate here)
  */
 
 import { apiClient } from '../shared/utils/api.mjs';
@@ -9,12 +15,14 @@ import { storage } from '../shared/utils/storage.mjs';
 export class Matchmaker {
   constructor() {
     this.currentStep = 1;
+    this.totalSteps = 5;
     this.answers = {};
+
+    // Question definitions
     this.questions = [
       {
-        step: 1,
         id: 'budget',
-        question: "What's your budget range?",
+        title: "What's your budget range?",
         type: 'buttons',
         options: [
           { value: 'under_3k', label: 'Under RM3,000', icon: '💰' },
@@ -24,35 +32,35 @@ export class Matchmaker {
         ]
       },
       {
-        step: 2,
         id: 'use_case',
-        question: 'What will you use it for?',
+        title: 'What will you use it for?',
+        subtitle: 'Select all that apply',
         type: 'multi-select',
         options: [
           { value: 'work', label: 'Work & Productivity', icon: '💼' },
           { value: 'gaming', label: 'Gaming', icon: '🎮' },
-          { value: 'creative', label: 'Creative Work (Video/Photo)', icon: '🎨' },
+          { value: 'creative', label: 'Creative Work', icon: '🎨' },
           { value: 'coding', label: 'Software Development', icon: '💻' },
-          { value: 'student', label: 'Student / General Use', icon: '📚' }
+          { value: 'student', label: 'Student / General', icon: '📚' }
         ]
       },
       {
-        step: 3,
         id: 'specs',
-        question: 'Any specific requirements?',
+        title: 'Any specific requirements?',
+        subtitle: 'Optional - select if important',
         type: 'checkboxes',
         options: [
-          { value: 'dedicated_gpu', label: 'Dedicated Graphics Card', icon: '🖥️' },
+          { value: 'dedicated_gpu', label: 'Dedicated Graphics', icon: '🖥️' },
           { value: 'long_battery', label: 'Long Battery Life (>8hrs)', icon: '🔋' },
-          { value: 'lightweight', label: 'Lightweight & Portable (<2kg)', icon: '⚖️' },
+          { value: 'lightweight', label: 'Lightweight (<2kg)', icon: '⚖️' },
           { value: 'touchscreen', label: 'Touchscreen Display', icon: '👆' },
-          { value: 'high_refresh', label: 'High Refresh Rate Display', icon: '⚡' }
+          { value: 'high_refresh', label: 'High Refresh Rate', icon: '⚡' }
         ]
       },
       {
-        step: 4,
         id: 'priorities',
-        question: 'What matters most to you?',
+        title: 'What matters most to you?',
+        subtitle: 'Drag to reorder by priority',
         type: 'ranking',
         options: [
           { value: 'performance', label: 'Performance', icon: '🚀' },
@@ -63,74 +71,90 @@ export class Matchmaker {
         ]
       },
       {
-        step: 5,
         id: 'preferences',
-        question: 'Any brand or OS preferences?',
+        title: 'Any brand or OS preferences?',
         type: 'select',
         options: [
-          { value: 'no_pref', label: 'No Preference - Just the best match!' },
+          { value: 'no_pref', label: 'No Preference - Best match!' },
           { value: 'apple', label: 'Apple (macOS)' },
           { value: 'windows', label: 'Windows (Any Brand)' },
-          { value: 'gaming_brands', label: 'Gaming Brands (ASUS ROG, MSI, Alienware)' },
-          { value: 'business', label: 'Business-Class (ThinkPad, Dell Latitude)' }
+          { value: 'gaming_brands', label: 'Gaming Brands (ROG, MSI, Alienware)' },
+          { value: 'business', label: 'Business-Class (ThinkPad, Latitude)' }
         ]
       }
     ];
   }
 
   init() {
-    this.render();
-    this.attachEventListeners();
+    // Get existing containers (don't create new ones!)
+    this.questionContainer = document.getElementById('questionContainer');
+    this.resultsContainer = document.getElementById('resultsContainer');
+    this.progressSteps = document.querySelectorAll('.progress-step');
+
+    if (!this.questionContainer || !this.resultsContainer) {
+      console.error('Required containers not found!');
+      return;
+    }
+
+    // Initialize first question
+    this.renderQuestion();
+    this.updateProgressBar();
   }
 
-  render() {
+  renderQuestion() {
     const question = this.questions[this.currentStep - 1];
-    const container = document.getElementById('questionContainer');
 
-    container.innerHTML = `
-      <div class="question-card fade-in">
-        <div class="question-header">
-          <h2 class="question-text">${question.question}</h2>
-          <p class="question-subtitle">Step ${this.currentStep} of 5</p>
-        </div>
-        <div class="question-body">
+    // Clear container and populate with question UI
+    this.questionContainer.innerHTML = `
+      <div class="question-content">
+        <h2 class="question-title">${question.title}</h2>
+        ${question.subtitle ? `<p class="question-subtitle">${question.subtitle}</p>` : ''}
+
+        <div class="question-options">
           ${this.renderOptions(question)}
         </div>
-        <div class="question-actions">
-          ${this.currentStep > 1 ? '<button class="btn btn-secondary" id="prevBtn">← Previous</button>' : ''}
-          <button class="btn btn-primary" id="nextBtn" ${!this.answers[question.id] ? 'disabled' : ''}>
-            ${this.currentStep === 5 ? 'Find Matches 🎯' : 'Next →'}
+
+        <div class="question-navigation">
+          ${this.currentStep > 1 ? `
+            <button class="btn btn-secondary" id="prevBtn">
+              ← Previous
+            </button>
+          ` : '<div></div>'}
+
+          <button class="btn btn-primary" id="nextBtn" ${this.isStepComplete(question.id) ? '' : 'disabled'}>
+            ${this.currentStep === this.totalSteps ? 'Find Matches 🎯' : 'Next →'}
           </button>
         </div>
       </div>
     `;
 
-    this.updateProgressBar();
+    this.attachQuestionListeners(question);
   }
 
   renderOptions(question) {
     switch (question.type) {
       case 'buttons':
-        return this.renderButtons(question);
+        return this.renderButtonOptions(question);
       case 'multi-select':
-        return this.renderMultiSelect(question);
+        return this.renderMultiSelectOptions(question);
       case 'checkboxes':
-        return this.renderCheckboxes(question);
+        return this.renderCheckboxOptions(question);
       case 'ranking':
-        return this.renderRanking(question);
+        return this.renderRankingOptions(question);
       case 'select':
-        return this.renderSelect(question);
+        return this.renderSelectOptions(question);
       default:
         return '';
     }
   }
 
-  renderButtons(question) {
+  renderButtonOptions(question) {
+    const selected = this.answers[question.id];
     return `
-      <div class="options-grid options-buttons">
+      <div class="options-grid">
         ${question.options.map(opt => `
-          <button class="option-btn ${this.answers[question.id] === opt.value ? 'selected' : ''}"
-                  data-value="${opt.value}">
+          <button class="option-btn ${selected === opt.value ? 'selected' : ''}"
+                  data-option="${opt.value}">
             <span class="option-icon">${opt.icon}</span>
             <span class="option-label">${opt.label}</span>
           </button>
@@ -139,118 +163,117 @@ export class Matchmaker {
     `;
   }
 
-  renderMultiSelect(question) {
-    const selectedValues = this.answers[question.id] || [];
+  renderMultiSelectOptions(question) {
+    const selected = this.answers[question.id] || [];
     return `
-      <div class="options-grid options-multi">
+      <div class="options-grid multi-select">
         ${question.options.map(opt => `
-          <button class="option-btn ${selectedValues.includes(opt.value) ? 'selected' : ''}"
-                  data-value="${opt.value}">
+          <button class="option-btn ${selected.includes(opt.value) ? 'selected' : ''}"
+                  data-option="${opt.value}">
             <span class="option-icon">${opt.icon}</span>
             <span class="option-label">${opt.label}</span>
-            ${selectedValues.includes(opt.value) ? '<span class="checkmark">✓</span>' : ''}
+            ${selected.includes(opt.value) ? '<span class="checkmark">✓</span>' : ''}
           </button>
         `).join('')}
       </div>
-      <p class="hint">Select all that apply</p>
     `;
   }
 
-  renderCheckboxes(question) {
-    const selectedValues = this.answers[question.id] || [];
+  renderCheckboxOptions(question) {
+    const selected = this.answers[question.id] || [];
     return `
       <div class="options-list">
         ${question.options.map(opt => `
-          <label class="checkbox-option ${selectedValues.includes(opt.value) ? 'selected' : ''}">
-            <input type="checkbox" value="${opt.value}" ${selectedValues.includes(opt.value) ? 'checked' : ''}>
+          <label class="checkbox-option">
+            <input type="checkbox" value="${opt.value}"
+                   ${selected.includes(opt.value) ? 'checked' : ''}>
             <span class="checkbox-icon">${opt.icon}</span>
             <span class="checkbox-label">${opt.label}</span>
             <span class="checkbox-mark"></span>
           </label>
         `).join('')}
       </div>
-      <p class="hint">Optional - Select if important to you</p>
     `;
   }
 
-  renderRanking(question) {
+  renderRankingOptions(question) {
+    const ranking = this.answers[question.id] || question.options.map(o => o.value);
+    const orderedOptions = ranking.map(val => question.options.find(o => o.value === val));
+
     return `
-      <div class="options-ranking">
-        <p class="hint">Drag to reorder by priority (most important at top)</p>
-        <ul class="ranking-list" id="rankingList">
-          ${question.options.map((opt, index) => `
-            <li class="ranking-item" data-value="${opt.value}" draggable="true">
-              <span class="ranking-number">${index + 1}</span>
-              <span class="ranking-icon">${opt.icon}</span>
-              <span class="ranking-label">${opt.label}</span>
-              <span class="drag-handle">⋮⋮</span>
-            </li>
-          `).join('')}
-        </ul>
-      </div>
+      <ul class="ranking-list" id="rankingList">
+        ${orderedOptions.map((opt, index) => `
+          <li class="ranking-item" draggable="true" data-value="${opt.value}">
+            <span class="ranking-number">${index + 1}</span>
+            <span class="ranking-icon">${opt.icon}</span>
+            <span class="ranking-label">${opt.label}</span>
+            <span class="drag-handle">⋮⋮</span>
+          </li>
+        `).join('')}
+      </ul>
     `;
   }
 
-  renderSelect(question) {
+  renderSelectOptions(question) {
+    const selected = this.answers[question.id];
     return `
-      <div class="options-select">
-        <select class="select-dropdown" id="preferenceSelect">
-          <option value="">-- Choose One --</option>
-          ${question.options.map(opt => `
-            <option value="${opt.value}" ${this.answers[question.id] === opt.value ? 'selected' : ''}>
-              ${opt.label}
-            </option>
-          `).join('')}
-        </select>
-      </div>
+      <select class="select-dropdown" id="preferenceSelect">
+        <option value="">-- Choose One --</option>
+        ${question.options.map(opt => `
+          <option value="${opt.value}" ${selected === opt.value ? 'selected' : ''}>
+            ${opt.label}
+          </option>
+        `).join('')}
+      </select>
     `;
   }
 
-  attachEventListeners() {
-    const container = document.getElementById('questionContainer');
-    const question = this.questions[this.currentStep - 1];
-
+  attachQuestionListeners(question) {
     // Button options
     if (question.type === 'buttons') {
-      container.querySelectorAll('.option-btn').forEach(btn => {
+      document.querySelectorAll('.option-btn').forEach(btn => {
         btn.addEventListener('click', () => {
-          this.answers[question.id] = btn.dataset.value;
-          this.render();
-          this.attachEventListeners();
+          this.answers[question.id] = btn.dataset.option;
+          this.renderQuestion();
+          this.updateProgressBar();
         });
       });
     }
 
-    // Multi-select
+    // Multi-select options
     if (question.type === 'multi-select') {
-      container.querySelectorAll('.option-btn').forEach(btn => {
+      document.querySelectorAll('.option-btn').forEach(btn => {
         btn.addEventListener('click', () => {
           if (!this.answers[question.id]) this.answers[question.id] = [];
-          const value = btn.dataset.value;
+          const value = btn.dataset.option;
           const index = this.answers[question.id].indexOf(value);
+
           if (index > -1) {
             this.answers[question.id].splice(index, 1);
           } else {
             this.answers[question.id].push(value);
           }
-          this.render();
-          this.attachEventListeners();
+
+          this.renderQuestion();
+          this.updateProgressBar();
         });
       });
     }
 
-    // Checkboxes
+    // Checkbox options
     if (question.type === 'checkboxes') {
-      container.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+      document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
         checkbox.addEventListener('change', () => {
           if (!this.answers[question.id]) this.answers[question.id] = [];
           const value = checkbox.value;
           const index = this.answers[question.id].indexOf(value);
+
           if (checkbox.checked && index === -1) {
             this.answers[question.id].push(value);
           } else if (!checkbox.checked && index > -1) {
             this.answers[question.id].splice(index, 1);
           }
+
           this.updateNextButton();
         });
       });
@@ -258,47 +281,45 @@ export class Matchmaker {
 
     // Ranking (drag and drop)
     if (question.type === 'ranking') {
-      this.setupDragAndDrop();
-      this.answers[question.id] = question.options.map(opt => opt.value);
-      this.updateNextButton();
+      this.setupDragAndDrop(question);
+      if (!this.answers[question.id]) {
+        this.answers[question.id] = question.options.map(o => o.value);
+      }
     }
 
     // Select dropdown
     if (question.type === 'select') {
-      const select = container.querySelector('#preferenceSelect');
-      select.addEventListener('change', () => {
+      const select = document.getElementById('preferenceSelect');
+      select?.addEventListener('change', () => {
         this.answers[question.id] = select.value;
         this.updateNextButton();
       });
     }
 
     // Navigation buttons
-    const nextBtn = container.querySelector('#nextBtn');
-    const prevBtn = container.querySelector('#prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const prevBtn = document.getElementById('prevBtn');
 
-    if (nextBtn) {
-      nextBtn.addEventListener('click', () => this.nextStep());
-    }
-
-    if (prevBtn) {
-      prevBtn.addEventListener('click', () => this.prevStep());
-    }
+    nextBtn?.addEventListener('click', () => this.nextStep());
+    prevBtn?.addEventListener('click', () => this.prevStep());
   }
 
-  setupDragAndDrop() {
+  setupDragAndDrop(question) {
     const list = document.getElementById('rankingList');
+    if (!list) return;
+
     const items = list.querySelectorAll('.ranking-item');
     let draggedItem = null;
 
     items.forEach(item => {
-      item.addEventListener('dragstart', (e) => {
+      item.addEventListener('dragstart', () => {
         draggedItem = item;
         item.classList.add('dragging');
       });
 
       item.addEventListener('dragend', () => {
         item.classList.remove('dragging');
-        this.updateRankingOrder();
+        this.updateRankingOrder(question);
       });
 
       item.addEventListener('dragover', (e) => {
@@ -328,22 +349,23 @@ export class Matchmaker {
     }, { offset: Number.NEGATIVE_INFINITY }).element;
   }
 
-  updateRankingOrder() {
+  updateRankingOrder(question) {
     const list = document.getElementById('rankingList');
-    const items = list.querySelectorAll('.ranking-item');
-    const question = this.questions[this.currentStep - 1];
+    const items = list?.querySelectorAll('.ranking-item');
+    if (!items) return;
 
     this.answers[question.id] = Array.from(items).map(item => item.dataset.value);
 
     // Update numbers
     items.forEach((item, index) => {
-      item.querySelector('.ranking-number').textContent = index + 1;
+      const numberSpan = item.querySelector('.ranking-number');
+      if (numberSpan) numberSpan.textContent = index + 1;
     });
   }
 
   updateProgressBar() {
-    const steps = document.querySelectorAll('.progress-step');
-    steps.forEach((step, index) => {
+    // Update existing progress bar (don't recreate!)
+    this.progressSteps.forEach((step, index) => {
       if (index < this.currentStep) {
         step.classList.add('active');
       } else {
@@ -356,71 +378,84 @@ export class Matchmaker {
     const nextBtn = document.getElementById('nextBtn');
     if (nextBtn) {
       const question = this.questions[this.currentStep - 1];
-      const hasAnswer = this.answers[question.id] &&
-        (Array.isArray(this.answers[question.id]) ? this.answers[question.id].length > 0 : true);
-      nextBtn.disabled = !hasAnswer;
+      nextBtn.disabled = !this.isStepComplete(question.id);
     }
   }
 
-  async nextStep() {
-    if (this.currentStep < 5) {
+  isStepComplete(questionId) {
+    const answer = this.answers[questionId];
+    if (!answer) return false;
+    if (Array.isArray(answer)) return answer.length > 0;
+    return true;
+  }
+
+  nextStep() {
+    if (this.currentStep < this.totalSteps) {
       this.currentStep++;
-      this.render();
-      this.attachEventListeners();
+      this.renderQuestion();
+      this.updateProgressBar();
     } else {
       // Final step - get recommendations
-      await this.getRecommendations();
+      this.getRecommendations();
     }
   }
 
   prevStep() {
     if (this.currentStep > 1) {
       this.currentStep--;
-      this.render();
-      this.attachEventListeners();
+      this.renderQuestion();
+      this.updateProgressBar();
     }
   }
 
   async getRecommendations() {
-    const container = document.getElementById('questionContainer');
-    container.innerHTML = `
+    // Show loading in question container
+    this.questionContainer.innerHTML = `
       <div class="loading-state">
         <div class="loading-spinner"></div>
         <p>Finding your perfect matches...</p>
-        <p class="loading-subtitle">Analyzing 100+ laptops with AI Bradaa's 84-mentor system</p>
+        <p class="loading-subtitle">Analyzing with AI Bradaa's 84-mentor system</p>
       </div>
     `;
 
     try {
       const response = await apiClient.getRecommendations(this.answers);
-      this.displayResults(response.data.recommendations);
+
+      // Hide question container, show results
+      this.questionContainer.style.display = 'none';
+      this.resultsContainer.style.display = 'block';
+
+      this.renderResults(response.data.recommendations || []);
 
       // Save to history
       await storage.addHistory({
         type: 'matchmaker',
         answers: this.answers,
-        results: response.data.recommendations
+        timestamp: Date.now()
       });
+
     } catch (error) {
-      container.innerHTML = `
+      this.questionContainer.innerHTML = `
         <div class="error-state">
           <div class="error-icon">⚠️</div>
           <h3>Oops! Something went wrong</h3>
           <p>${error.message}</p>
-          <button class="btn btn-primary" onclick="location.reload()">Try Again</button>
+          <button class="btn btn-primary" id="retryBtn">Try Again</button>
         </div>
       `;
+
+      document.getElementById('retryBtn')?.addEventListener('click', () => {
+        this.currentStep = 1;
+        this.questionContainer.style.display = 'block';
+        this.resultsContainer.style.display = 'none';
+        this.renderQuestion();
+        this.updateProgressBar();
+      });
     }
   }
 
-  displayResults(recommendations) {
-    const container = document.getElementById('questionContainer');
-    const resultsContainer = document.getElementById('resultsContainer');
-
-    container.style.display = 'none';
-    resultsContainer.style.display = 'block';
-
-    resultsContainer.innerHTML = `
+  renderResults(recommendations) {
+    this.resultsContainer.innerHTML = `
       <div class="results-header">
         <h2>🎯 Your Perfect Matches</h2>
         <p>Based on your preferences, here are the top 3 laptops we recommend:</p>
@@ -428,31 +463,38 @@ export class Matchmaker {
 
       <div class="results-grid">
         ${recommendations.slice(0, 3).map((laptop, index) => `
-          <div class="result-card rank-${index + 1}">
+          <div class="result-card">
             <div class="result-rank">#${index + 1}</div>
             <div class="result-image">
-              <img src="${laptop.image || '/assets/default-laptop.png'}" alt="${laptop.brand} ${laptop.model}">
+              <img src="${laptop.image || '/assets/default-laptop.png'}"
+                   alt="${laptop.brand} ${laptop.model}" loading="lazy">
             </div>
             <div class="result-content">
               <h3>${laptop.brand} ${laptop.model}</h3>
               <p class="result-tagline">${laptop.tagline || ''}</p>
+
               <div class="result-specs">
-                <span>💻 ${laptop.processor}</span>
-                <span>🧠 ${laptop.ram}</span>
-                <span>💾 ${laptop.storage}</span>
-                ${laptop.gpu ? `<span>🎮 ${laptop.gpu}</span>` : ''}
+                <span>💻 ${laptop.processor || laptop.cpu?.gen || 'N/A'}</span>
+                <span>🧠 ${laptop.ram || laptop.ram?.gb || 0}GB</span>
+                <span>💾 ${laptop.storage || laptop.storage?.gb || 0}GB</span>
+                ${laptop.gpu || laptop.gpu?.chip ? `<span>🎮 ${laptop.gpu?.chip || laptop.gpu}</span>` : ''}
               </div>
-              <div class="result-match-score">
-                <span class="score-label">Match Score:</span>
-                <span class="score-value">${laptop.matchScore}%</span>
+
+              <div class="result-match">
+                <span class="match-label">Match Score:</span>
+                <span class="match-score">${laptop.matchScore || 85}%</span>
               </div>
+
               <div class="result-price">
                 <span class="price-label">Best Price:</span>
-                <span class="price-value">RM${laptop.price.toLocaleString()}</span>
+                <span class="price-value">RM${this.formatPrice(laptop.price_myr || laptop.price || 0)}</span>
               </div>
+
               <div class="result-actions">
-                <a href="/out/${laptop.id}" class="btn btn-primary" target="_blank">View Offer</a>
-                <button class="btn btn-secondary" onclick="parent.postMessage({type: 'compare', id: '${laptop.id}'}, '*')">
+                <a href="/out/${laptop.id}" class="btn btn-primary" target="_blank">
+                  View Offer
+                </a>
+                <button class="btn btn-secondary compare-btn" data-id="${laptop.id}">
                   Compare
                 </button>
               </div>
@@ -461,10 +503,50 @@ export class Matchmaker {
         `).join('')}
       </div>
 
-      <div class="results-actions">
-        <button class="btn btn-secondary" onclick="location.reload()">Start Over</button>
-        <button class="btn btn-primary" onclick="parent.postMessage({type: 'explore'}, '*')">See All Laptops</button>
+      <div class="results-footer">
+        <button class="btn btn-secondary" id="startOverBtn">Start Over</button>
+        <button class="btn btn-primary" id="exploreAllBtn">See All Laptops</button>
       </div>
     `;
+
+    // Attach result button listeners
+    document.getElementById('startOverBtn')?.addEventListener('click', () => {
+      this.currentStep = 1;
+      this.answers = {};
+      this.questionContainer.style.display = 'block';
+      this.resultsContainer.style.display = 'none';
+      this.renderQuestion();
+      this.updateProgressBar();
+    });
+
+    document.getElementById('exploreAllBtn')?.addEventListener('click', () => {
+      window.parent.postMessage({ type: 'navigate', section: 'explorer' }, '*');
+    });
+
+    document.querySelectorAll('.compare-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        window.parent.postMessage({
+          type: 'navigate',
+          section: 'versus',
+          laptopId: btn.dataset.id
+        }, '*');
+      });
+    });
   }
+
+  formatPrice(price) {
+    if (!price) return '0';
+    return price.toLocaleString('en-MY');
+  }
+}
+
+// Auto-initialize when DOM ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => {
+    const matchmaker = new Matchmaker();
+    matchmaker.init();
+  });
+} else {
+  const matchmaker = new Matchmaker();
+  matchmaker.init();
 }
