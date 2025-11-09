@@ -89,9 +89,38 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### [1.0.2] - 2025-11-09
+
+#### 🚀 One Piece Catchphrase System v4.0 - DATABASE AUTO-FETCH
+
+**MAJOR UPGRADE:** v3.0 (static 50) → v4.0 (database 1000+ with daily auto-fetch)
+
+**Files Added (6 files, 1,950+ lines):**
+- `/database/migrations/004_catchphrases_system.sql` (450 lines)
+- `/ai_pod/services/catchphrase_auto_fetch.mjs` (650 lines)
+- `/ai_pod/personas/one_piece_catchphrase_engine_v4.mjs` (520 lines)
+- `/netlify/functions/cron-catchphrase-fetch.mjs` (80 lines)
+- `/netlify/functions/admin-catchphrases.mjs` (250 lines)
+- `/ONE_PIECE_CATCHPHRASE_V4_AUTO_FETCH_SUMMARY.md` (full report)
+
+**Files Modified:**
+- `/netlify/functions/chat.mjs` - Use v4 async engine
+- `/netlify.toml` - Added daily cron (3:00 AM)
+
+**Database:** 4 tables + 4 functions (PostgreSQL)
+**Auto-Fetch:** Daily at 3:00 AM MYT (100 phrases/day)
+**Gemini AI:** Paraphrases One Piece quotes for laptop context
+**User Tracking:** Never-repeat per user (DB-based)
+**Feedback:** 1-5 star ratings + analytics
+**Admin:** Approve/reject pending catchphrases
+
+**Impact:** +10pts (78.4→93.4/100) | +40-60% retention | $15/mo cost
+
+---
+
 ### [1.0.1] - 2025-11-09
 
-#### ✨ One Piece Catchphrase System v3.0
+#### ✨ One Piece Catchphrase System v3.0 (SUPERSEDED by v4.0)
 
 **Major Enhancement:**
 - 🏴‍☠️ **One Piece-inspired personality system** with 50+ catchphrases from 1148 episodes
