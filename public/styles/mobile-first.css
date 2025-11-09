@@ -1,0 +1,552 @@
+/**
+ * AI Bradaa - Mobile-First Responsive Design
+ * Version: 1.0.0
+ *
+ * Mobile-first approach: Start with mobile (375px) and progressively enhance
+ * Breakpoints:
+ * - Mobile: 375px - 767px (base)
+ * - Tablet: 768px - 1023px
+ * - Desktop: 1024px+
+ */
+
+/* ========================================================================
+   BASE MOBILE STYLES (375px+)
+   ======================================================================== */
+
+/* Typography - Mobile */
+:root {
+  --font-size-xs: 0.75rem;    /* 12px */
+  --font-size-sm: 0.875rem;   /* 14px */
+  --font-size-base: 1rem;     /* 16px */
+  --font-size-lg: 1.125rem;   /* 18px */
+  --font-size-xl: 1.25rem;    /* 20px */
+  --font-size-2xl: 1.5rem;    /* 24px */
+  --font-size-3xl: 1.875rem;  /* 30px */
+  --font-size-4xl: 2.25rem;   /* 36px */
+
+  --spacing-xs: 0.5rem;   /* 8px */
+  --spacing-sm: 0.75rem;  /* 12px */
+  --spacing-md: 1rem;     /* 16px */
+  --spacing-lg: 1.5rem;   /* 24px */
+  --spacing-xl: 2rem;     /* 32px */
+  --spacing-2xl: 3rem;    /* 48px */
+}
+
+/* Container - Mobile First */
+.container {
+  width: 100%;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--spacing-md);
+  padding-right: var(--spacing-md);
+}
+
+/* Header - Mobile */
+.site-header {
+  padding: var(--spacing-md) 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  background: rgba(1, 4, 9, 0.9);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.brand-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.brand-name {
+  font-size: var(--font-size-lg);
+  display: inline; /* Show on mobile */
+}
+
+/* Navigation - Mobile */
+.nav-desktop {
+  display: none; /* Hide desktop nav on mobile */
+}
+
+.nav-mobile-toggle {
+  display: block;
+  background: none;
+  border: none;
+  color: white;
+  font-size: var(--font-size-2xl);
+  cursor: pointer;
+}
+
+/* Hero Section - Mobile */
+.hero {
+  padding: var(--spacing-2xl) 0;
+  text-align: center;
+}
+
+.hero-title {
+  font-size: var(--font-size-3xl);
+  line-height: 1.2;
+  margin-bottom: var(--spacing-md);
+}
+
+.hero-subtitle {
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+  margin-bottom: var(--spacing-lg);
+}
+
+.hero-tagline {
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--spacing-xl);
+}
+
+/* Buttons - Mobile */
+.btn {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-size: var(--font-size-base);
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+  min-height: 44px; /* Touch target size */
+  width: 100%; /* Full width on mobile */
+  max-width: 300px;
+}
+
+.btn-small {
+  padding: var(--spacing-xs) var(--spacing-md);
+  font-size: var(--font-size-sm);
+  min-height: 36px;
+  width: auto;
+}
+
+/* Features Grid - Mobile */
+.features-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Single column on mobile */
+  gap: var(--spacing-lg);
+  padding: var(--spacing-xl) 0;
+}
+
+.feature-card {
+  padding: var(--spacing-lg);
+  border-radius: 12px;
+}
+
+/* Tool Selector - Mobile */
+.app-preview-layout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.tool-selector {
+  width: 100%;
+  order: 2; /* Place tool selector below preview on mobile */
+}
+
+.tool-nav {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columns on mobile */
+  gap: var(--spacing-sm);
+}
+
+.tool-btn {
+  padding: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  min-height: 44px; /* Touch target */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+}
+
+.tool-btn-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.tool-btn span {
+  font-size: var(--font-size-sm);
+}
+
+/* App Preview Panel - Mobile */
+.app-preview-panel {
+  width: 100%;
+  order: 1; /* Place preview above tool selector on mobile */
+  min-height: 400px;
+}
+
+.preview-panel {
+  padding: var(--spacing-md);
+}
+
+/* Pricing Section - Mobile */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Single column on mobile */
+  gap: var(--spacing-lg);
+}
+
+.pricing-card {
+  padding: var(--spacing-lg);
+  border-radius: 12px;
+}
+
+/* Beta Countdown - Mobile */
+.beta-countdown-banner {
+  padding: var(--spacing-md);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.countdown-value {
+  font-size: var(--font-size-xl);
+}
+
+/* ABO-84 Section - Mobile */
+.abo-section {
+  padding: var(--spacing-2xl) 0;
+}
+
+.abo-live-demo {
+  margin-top: var(--spacing-lg);
+}
+
+.abo-consultation-panel {
+  padding: var(--spacing-md);
+  border-radius: 12px;
+}
+
+.code-sample {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.code-sample pre {
+  font-size: var(--font-size-xs);
+  padding: var(--spacing-sm);
+}
+
+/* Score Grid - Mobile */
+.score-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columns on mobile */
+  gap: var(--spacing-sm);
+}
+
+.score-item {
+  padding: var(--spacing-sm);
+}
+
+.score-value {
+  font-size: var(--font-size-xl);
+}
+
+/* Issues Summary - Mobile */
+.issues-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  justify-content: space-around;
+}
+
+.issue-count {
+  flex: 1 1 30%;
+  min-width: 80px;
+  padding: var(--spacing-sm);
+  text-align: center;
+}
+
+/* Footer - Mobile */
+.site-footer {
+  padding: var(--spacing-2xl) 0;
+  margin-top: var(--spacing-2xl);
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 1fr; /* Single column on mobile */
+  gap: var(--spacing-xl);
+}
+
+.footer-col {
+  text-align: center;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: var(--spacing-md) 0;
+}
+
+.footer-links li {
+  margin: var(--spacing-sm) 0;
+}
+
+/* Section Headers - Mobile */
+.section-header {
+  text-align: center;
+  padding: 0 var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+}
+
+.section-title {
+  font-size: var(--font-size-2xl);
+  line-height: 1.3;
+  margin-bottom: var(--spacing-md);
+}
+
+.section-subtitle {
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+}
+
+.section-label {
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--spacing-sm);
+  display: inline-block;
+}
+
+/* Demo Panels - Mobile */
+.matchmaker-demo,
+.versus-demo,
+.explorer-demo,
+.command-demo,
+.intel-demo,
+.appendices-demo,
+.camera-demo {
+  padding: var(--spacing-md);
+}
+
+.demo-progress {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-lg);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xs);
+  min-width: 60px;
+}
+
+.step-number {
+  width: 32px;
+  height: 32px;
+  font-size: var(--font-size-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.step-label {
+  font-size: var(--font-size-xs);
+  white-space: nowrap;
+}
+
+/* ========================================================================
+   TABLET STYLES (768px+)
+   ======================================================================== */
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+    padding-left: var(--spacing-lg);
+    padding-right: var(--spacing-lg);
+  }
+
+  .brand-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .brand-name {
+    font-size: var(--font-size-xl);
+  }
+
+  .hero-title {
+    font-size: var(--font-size-4xl);
+  }
+
+  .hero-subtitle {
+    font-size: var(--font-size-lg);
+  }
+
+  .btn {
+    width: auto; /* Auto width on tablet+ */
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on tablet */
+    gap: var(--spacing-xl);
+  }
+
+  .tool-nav {
+    grid-template-columns: 1fr; /* Back to single column list */
+  }
+
+  .tool-btn {
+    justify-content: flex-start;
+    padding: var(--spacing-md);
+  }
+
+  .pricing-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on tablet */
+  }
+
+  .score-grid {
+    grid-template-columns: repeat(4, 1fr); /* 4 columns on tablet */
+  }
+
+  .footer-content {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on tablet */
+  }
+
+  .footer-col {
+    text-align: left;
+  }
+
+  .section-title {
+    font-size: var(--font-size-3xl);
+  }
+}
+
+/* ========================================================================
+   DESKTOP STYLES (1024px+)
+   ======================================================================== */
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 960px;
+  }
+
+  .nav-desktop {
+    display: flex; /* Show desktop nav */
+    gap: var(--spacing-lg);
+  }
+
+  .nav-mobile-toggle {
+    display: none; /* Hide mobile toggle */
+  }
+
+  .hero {
+    padding: var(--spacing-2xl) 0;
+  }
+
+  .hero-title {
+    font-size: 3.5rem;
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 columns on desktop */
+  }
+
+  .app-preview-layout {
+    flex-direction: row;
+    gap: var(--spacing-xl);
+  }
+
+  .tool-selector {
+    width: 250px;
+    order: 1; /* Tool selector on left for desktop */
+  }
+
+  .app-preview-panel {
+    flex: 1;
+    order: 2; /* Preview on right for desktop */
+  }
+
+  .pricing-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 columns on desktop */
+  }
+
+  .footer-content {
+    grid-template-columns: repeat(4, 1fr); /* 4 columns on desktop */
+  }
+
+  .code-sample pre {
+    font-size: var(--font-size-sm);
+  }
+}
+
+/* ========================================================================
+   LARGE DESKTOP STYLES (1280px+)
+   ======================================================================== */
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1200px;
+  }
+
+  .hero-title {
+    font-size: 4rem;
+  }
+
+  .section-title {
+    font-size: var(--font-size-4xl);
+  }
+}
+
+/* ========================================================================
+   TOUCH OPTIMIZATIONS
+   ======================================================================== */
+
+/* Increase touch targets on mobile */
+@media (hover: none) and (pointer: coarse) {
+  .btn {
+    min-height: 48px;
+    padding: var(--spacing-md) var(--spacing-xl);
+  }
+
+  .tool-btn {
+    min-height: 48px;
+  }
+
+  input,
+  textarea,
+  select {
+    min-height: 48px;
+    font-size: 16px; /* Prevent zoom on iOS */
+  }
+}
+
+/* ========================================================================
+   ACCESSIBILITY
+   ======================================================================== */
+
+/* Focus states */
+*:focus-visible {
+  outline: 2px solid #00F0FF;
+  outline-offset: 2px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

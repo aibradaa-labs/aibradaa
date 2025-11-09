@@ -50,6 +50,8 @@
 
   <!-- Styles -->
   <link rel="stylesheet" href="/styles/app.css">
+  <link rel="stylesheet" href="/styles/mobile-first.css">
+  <link rel="stylesheet" href="/styles/command-ui.css">
 
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -107,6 +109,7 @@
             <span class="hamburger"></span>
           </button>
           <div class="logo">
+            <img src="/assets/logo.svg" alt="AI Bradaa Logo" class="logo-img">
             <span class="logo-text">AI Bradaa</span>
             <span class="logo-badge">BETA</span>
           </div>
@@ -173,42 +176,1207 @@
       <!-- Section: Matchmaker -->
       <section id="section-matchmaker" class="app-section" data-section="matchmaker">
         <div class="section-container" id="matchmaker-container">
-          <!-- Module will be loaded dynamically by app-core.js -->
+          <!-- Matchmaker Tool UI -->
+          <div class="tool-wrapper">
+            <div class="tool-header">
+              <h1 class="tool-title">🎯 Matchmaker</h1>
+              <p class="tool-subtitle">Answer a few questions to find your perfect laptop match</p>
+            </div>
+
+            <!-- Progress Indicator -->
+            <div class="progress-container">
+              <div class="progress-steps">
+                <div class="progress-step active" data-step="1">
+                  <div class="step-circle">1</div>
+                  <span class="step-label">Usage</span>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step" data-step="2">
+                  <div class="step-circle">2</div>
+                  <span class="step-label">Budget</span>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step" data-step="3">
+                  <div class="step-circle">3</div>
+                  <span class="step-label">Specs</span>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step" data-step="4">
+                  <div class="step-circle">4</div>
+                  <span class="step-label">Results</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Question Card -->
+            <div class="question-card">
+              <div class="question-number">Question 1 of 10</div>
+              <h2 class="question-text">What will you primarily use your laptop for?</h2>
+
+              <div class="options-grid">
+                <button class="option-card">
+                  <div class="option-icon">💼</div>
+                  <div class="option-title">Work & Productivity</div>
+                  <div class="option-desc">Office work, emails, documents</div>
+                </button>
+                <button class="option-card">
+                  <div class="option-icon">🎮</div>
+                  <div class="option-title">Gaming</div>
+                  <div class="option-desc">High-performance gaming</div>
+                </button>
+                <button class="option-card">
+                  <div class="option-icon">🎨</div>
+                  <div class="option-title">Creative Work</div>
+                  <div class="option-desc">Photo/video editing, design</div>
+                </button>
+                <button class="option-card">
+                  <div class="option-icon">💻</div>
+                  <div class="option-title">Programming</div>
+                  <div class="option-desc">Software development, coding</div>
+                </button>
+                <button class="option-card">
+                  <div class="option-icon">📚</div>
+                  <div class="option-title">Student</div>
+                  <div class="option-desc">Study, research, assignments</div>
+                </button>
+                <button class="option-card">
+                  <div class="option-icon">🌐</div>
+                  <div class="option-title">General Use</div>
+                  <div class="option-desc">Browsing, streaming, casual</div>
+                </button>
+              </div>
+
+              <div class="question-actions">
+                <button class="btn-secondary" disabled>← Previous</button>
+                <button class="btn-primary">Next →</button>
+              </div>
+            </div>
+
+            <!-- Results Grid (Initially Hidden) -->
+            <div class="results-grid" style="display: none;">
+              <div class="results-header">
+                <h2>Your Perfect Matches</h2>
+                <p>Based on your preferences, here are your top laptop recommendations</p>
+              </div>
+
+              <div class="laptop-cards">
+                <div class="laptop-card featured">
+                  <div class="card-badge">Best Match</div>
+                  <img src="/assets/laptop-placeholder.jpg" alt="Laptop" class="laptop-image">
+                  <div class="laptop-info">
+                    <h3 class="laptop-name">Dell XPS 15</h3>
+                    <div class="match-score">
+                      <span class="score-label">Match Score:</span>
+                      <span class="score-value">98%</span>
+                    </div>
+                    <div class="laptop-specs">
+                      <span class="spec">Intel i7</span>
+                      <span class="spec">16GB RAM</span>
+                      <span class="spec">512GB SSD</span>
+                    </div>
+                    <div class="laptop-price">RM 6,999</div>
+                    <button class="btn-primary btn-full">View Details</button>
+                  </div>
+                </div>
+
+                <div class="laptop-card">
+                  <div class="card-badge">Great Value</div>
+                  <img src="/assets/laptop-placeholder.jpg" alt="Laptop" class="laptop-image">
+                  <div class="laptop-info">
+                    <h3 class="laptop-name">Lenovo ThinkPad E14</h3>
+                    <div class="match-score">
+                      <span class="score-label">Match Score:</span>
+                      <span class="score-value">92%</span>
+                    </div>
+                    <div class="laptop-specs">
+                      <span class="spec">Intel i5</span>
+                      <span class="spec">16GB RAM</span>
+                      <span class="spec">256GB SSD</span>
+                    </div>
+                    <div class="laptop-price">RM 3,499</div>
+                    <button class="btn-secondary btn-full">View Details</button>
+                  </div>
+                </div>
+
+                <div class="laptop-card">
+                  <div class="card-badge">Premium Pick</div>
+                  <img src="/assets/laptop-placeholder.jpg" alt="Laptop" class="laptop-image">
+                  <div class="laptop-info">
+                    <h3 class="laptop-name">MacBook Pro 14"</h3>
+                    <div class="match-score">
+                      <span class="score-label">Match Score:</span>
+                      <span class="score-value">95%</span>
+                    </div>
+                    <div class="laptop-specs">
+                      <span class="spec">M3 Pro</span>
+                      <span class="spec">16GB RAM</span>
+                      <span class="spec">512GB SSD</span>
+                    </div>
+                    <div class="laptop-price">RM 9,999</div>
+                    <button class="btn-secondary btn-full">View Details</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="results-actions">
+                <button class="btn-secondary">← Start Over</button>
+                <button class="btn-primary">Compare Matches</button>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       <!-- Section: Versus -->
       <section id="section-versus" class="app-section" data-section="versus">
         <div class="section-container" id="versus-container">
-          <!-- Module will be loaded dynamically by app-core.js -->
+          <!-- Versus Tool UI -->
+          <div class="tool-wrapper">
+            <div class="tool-header">
+              <h1 class="tool-title">⚔️ Versus</h1>
+              <p class="tool-subtitle">Compare laptops side-by-side to make the best decision</p>
+            </div>
+
+            <!-- Laptop Selectors -->
+            <div class="versus-selectors">
+              <div class="laptop-selector-card">
+                <div class="selector-header">
+                  <h3>Laptop 1</h3>
+                  <button class="btn-icon">🔄</button>
+                </div>
+                <div class="selector-search">
+                  <input type="text" placeholder="Search laptop..." class="search-input">
+                  <div class="search-dropdown">
+                    <div class="dropdown-item">Dell XPS 15</div>
+                    <div class="dropdown-item">Dell XPS 13</div>
+                    <div class="dropdown-item">Dell Inspiron 15</div>
+                  </div>
+                </div>
+                <div class="selected-laptop">
+                  <img src="/assets/laptop-placeholder.jpg" alt="Dell XPS 15" class="selector-image">
+                  <h4>Dell XPS 15</h4>
+                  <p class="selector-price">RM 6,999</p>
+                </div>
+              </div>
+
+              <div class="versus-divider">VS</div>
+
+              <div class="laptop-selector-card">
+                <div class="selector-header">
+                  <h3>Laptop 2</h3>
+                  <button class="btn-icon">🔄</button>
+                </div>
+                <div class="selector-search">
+                  <input type="text" placeholder="Search laptop..." class="search-input">
+                  <div class="search-dropdown">
+                    <div class="dropdown-item">MacBook Pro 14"</div>
+                    <div class="dropdown-item">MacBook Pro 16"</div>
+                    <div class="dropdown-item">MacBook Air M2</div>
+                  </div>
+                </div>
+                <div class="selected-laptop">
+                  <img src="/assets/laptop-placeholder.jpg" alt="MacBook Pro 14" class="selector-image">
+                  <h4>MacBook Pro 14"</h4>
+                  <p class="selector-price">RM 9,999</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Comparison Table -->
+            <div class="comparison-table-wrapper">
+              <table class="comparison-table">
+                <thead>
+                  <tr>
+                    <th class="spec-category">Specification</th>
+                    <th class="laptop-col">Dell XPS 15</th>
+                    <th class="laptop-col">MacBook Pro 14"</th>
+                    <th class="winner-col">Winner</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="spec-name">Processor</td>
+                    <td>Intel Core i7-13700H</td>
+                    <td class="winner-cell">Apple M3 Pro</td>
+                    <td class="winner-badge">MacBook 🏆</td>
+                  </tr>
+                  <tr>
+                    <td class="spec-name">RAM</td>
+                    <td class="winner-cell">32GB DDR5</td>
+                    <td>18GB Unified</td>
+                    <td class="winner-badge">Dell 🏆</td>
+                  </tr>
+                  <tr>
+                    <td class="spec-name">Storage</td>
+                    <td>512GB SSD</td>
+                    <td class="winner-cell">1TB SSD</td>
+                    <td class="winner-badge">MacBook 🏆</td>
+                  </tr>
+                  <tr>
+                    <td class="spec-name">Display</td>
+                    <td>15.6" 3.5K OLED</td>
+                    <td class="winner-cell">14.2" Liquid Retina XDR</td>
+                    <td class="winner-badge">Tie 🤝</td>
+                  </tr>
+                  <tr>
+                    <td class="spec-name">Battery Life</td>
+                    <td>8 hours</td>
+                    <td class="winner-cell">18 hours</td>
+                    <td class="winner-badge">MacBook 🏆</td>
+                  </tr>
+                  <tr>
+                    <td class="spec-name">Weight</td>
+                    <td class="winner-cell">1.86 kg</td>
+                    <td>1.60 kg</td>
+                    <td class="winner-badge">MacBook 🏆</td>
+                  </tr>
+                  <tr>
+                    <td class="spec-name">Price</td>
+                    <td class="winner-cell">RM 6,999</td>
+                    <td>RM 9,999</td>
+                    <td class="winner-badge">Dell 🏆</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Recommendation Summary -->
+            <div class="versus-summary">
+              <div class="summary-card">
+                <h3>📊 Our Recommendation</h3>
+                <p class="summary-text">
+                  The <strong>MacBook Pro 14"</strong> wins in most categories with superior performance,
+                  battery life, and display quality. However, the <strong>Dell XPS 15</strong> offers
+                  better value for money and more RAM. Choose MacBook for best overall experience,
+                  Dell for budget-conscious productivity.
+                </p>
+                <div class="summary-scores">
+                  <div class="score-item">
+                    <span class="score-laptop">Dell XPS 15</span>
+                    <div class="score-bar">
+                      <div class="score-fill" style="width: 75%;">75/100</div>
+                    </div>
+                  </div>
+                  <div class="score-item">
+                    <span class="score-laptop">MacBook Pro 14"</span>
+                    <div class="score-bar">
+                      <div class="score-fill winner" style="width: 88%;">88/100</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       <!-- Section: Explorer -->
       <section id="section-explorer" class="app-section" data-section="explorer">
         <div class="section-container" id="explorer-container">
-          <!-- Module will be loaded dynamically by app-core.js -->
+          <!-- Explorer Tool UI -->
+          <div class="tool-wrapper explorer-layout">
+            <!-- Filter Sidebar -->
+            <aside class="filter-sidebar">
+              <div class="sidebar-header">
+                <h3>🔍 Filters</h3>
+                <button class="btn-text">Reset All</button>
+              </div>
+
+              <div class="filter-section">
+                <h4 class="filter-title">Brand</h4>
+                <div class="filter-options">
+                  <label class="checkbox-label">
+                    <input type="checkbox" checked>
+                    <span>Dell (24)</span>
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox">
+                    <span>Apple (12)</span>
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox">
+                    <span>Lenovo (31)</span>
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox">
+                    <span>HP (28)</span>
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox">
+                    <span>ASUS (35)</span>
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox">
+                    <span>Acer (19)</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="filter-section">
+                <h4 class="filter-title">Price Range (RM)</h4>
+                <div class="price-range">
+                  <input type="range" min="1000" max="20000" value="10000" class="range-slider">
+                  <div class="price-labels">
+                    <span>RM 1,000</span>
+                    <span>RM 10,000</span>
+                    <span>RM 20,000</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="filter-section">
+                <h4 class="filter-title">Processor</h4>
+                <div class="filter-options">
+                  <label class="checkbox-label">
+                    <input type="checkbox">
+                    <span>Intel Core i3</span>
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox" checked>
+                    <span>Intel Core i5</span>
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox" checked>
+                    <span>Intel Core i7</span>
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox">
+                    <span>Intel Core i9</span>
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox">
+                    <span>AMD Ryzen 5</span>
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox">
+                    <span>AMD Ryzen 7</span>
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox">
+                    <span>Apple Silicon</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="filter-section">
+                <h4 class="filter-title">RAM</h4>
+                <div class="filter-options">
+                  <label class="checkbox-label">
+                    <input type="checkbox">
+                    <span>8GB</span>
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox" checked>
+                    <span>16GB</span>
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox">
+                    <span>32GB</span>
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox">
+                    <span>64GB+</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="filter-section">
+                <h4 class="filter-title">Screen Size</h4>
+                <div class="filter-options">
+                  <label class="checkbox-label">
+                    <input type="checkbox">
+                    <span>13" - 14"</span>
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox" checked>
+                    <span>15" - 16"</span>
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox">
+                    <span>17"+</span>
+                  </label>
+                </div>
+              </div>
+            </aside>
+
+            <!-- Main Content -->
+            <div class="explorer-main">
+              <div class="explorer-header">
+                <div class="results-info">
+                  <h2>Available Laptops</h2>
+                  <p>Showing <strong>24 results</strong> based on your filters</p>
+                </div>
+                <div class="explorer-controls">
+                  <div class="view-toggle">
+                    <button class="view-btn active" data-view="grid">
+                      <span>⊞</span> Grid
+                    </button>
+                    <button class="view-btn" data-view="list">
+                      <span>☰</span> List
+                    </button>
+                  </div>
+                  <select class="sort-select">
+                    <option>Price: Low to High</option>
+                    <option>Price: High to Low</option>
+                    <option>Newest First</option>
+                    <option>Most Popular</option>
+                    <option>Best Rated</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Laptop Grid -->
+              <div class="laptop-grid">
+                <div class="laptop-grid-card">
+                  <div class="card-image">
+                    <img src="/assets/laptop-placeholder.jpg" alt="Dell XPS 15">
+                    <div class="card-badge hot">HOT</div>
+                  </div>
+                  <div class="card-content">
+                    <h3 class="card-title">Dell XPS 15</h3>
+                    <p class="card-specs">Intel i7 • 16GB • 512GB SSD</p>
+                    <div class="card-rating">
+                      <span class="stars">⭐⭐⭐⭐⭐</span>
+                      <span class="rating-count">(847)</span>
+                    </div>
+                    <div class="card-footer">
+                      <div class="card-price">RM 6,999</div>
+                      <button class="btn-icon-primary">→</button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="laptop-grid-card">
+                  <div class="card-image">
+                    <img src="/assets/laptop-placeholder.jpg" alt="Lenovo ThinkPad X1">
+                    <div class="card-badge new">NEW</div>
+                  </div>
+                  <div class="card-content">
+                    <h3 class="card-title">Lenovo ThinkPad X1</h3>
+                    <p class="card-specs">Intel i7 • 16GB • 1TB SSD</p>
+                    <div class="card-rating">
+                      <span class="stars">⭐⭐⭐⭐☆</span>
+                      <span class="rating-count">(523)</span>
+                    </div>
+                    <div class="card-footer">
+                      <div class="card-price">RM 7,499</div>
+                      <button class="btn-icon-primary">→</button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="laptop-grid-card">
+                  <div class="card-image">
+                    <img src="/assets/laptop-placeholder.jpg" alt="HP Spectre x360">
+                  </div>
+                  <div class="card-content">
+                    <h3 class="card-title">HP Spectre x360</h3>
+                    <p class="card-specs">Intel i7 • 16GB • 512GB SSD</p>
+                    <div class="card-rating">
+                      <span class="stars">⭐⭐⭐⭐⭐</span>
+                      <span class="rating-count">(691)</span>
+                    </div>
+                    <div class="card-footer">
+                      <div class="card-price">RM 6,499</div>
+                      <button class="btn-icon-primary">→</button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="laptop-grid-card">
+                  <div class="card-image">
+                    <img src="/assets/laptop-placeholder.jpg" alt="ASUS ROG Zephyrus">
+                    <div class="card-badge gaming">GAMING</div>
+                  </div>
+                  <div class="card-content">
+                    <h3 class="card-title">ASUS ROG Zephyrus</h3>
+                    <p class="card-specs">Intel i7 • 16GB • 1TB SSD</p>
+                    <div class="card-rating">
+                      <span class="stars">⭐⭐⭐⭐⭐</span>
+                      <span class="rating-count">(934)</span>
+                    </div>
+                    <div class="card-footer">
+                      <div class="card-price">RM 8,999</div>
+                      <button class="btn-icon-primary">→</button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="laptop-grid-card">
+                  <div class="card-image">
+                    <img src="/assets/laptop-placeholder.jpg" alt="Dell Inspiron 15">
+                  </div>
+                  <div class="card-content">
+                    <h3 class="card-title">Dell Inspiron 15</h3>
+                    <p class="card-specs">Intel i5 • 16GB • 256GB SSD</p>
+                    <div class="card-rating">
+                      <span class="stars">⭐⭐⭐⭐☆</span>
+                      <span class="rating-count">(412)</span>
+                    </div>
+                    <div class="card-footer">
+                      <div class="card-price">RM 3,999</div>
+                      <button class="btn-icon-primary">→</button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="laptop-grid-card">
+                  <div class="card-image">
+                    <img src="/assets/laptop-placeholder.jpg" alt="Lenovo IdeaPad">
+                    <div class="card-badge value">VALUE</div>
+                  </div>
+                  <div class="card-content">
+                    <h3 class="card-title">Lenovo IdeaPad</h3>
+                    <p class="card-specs">Intel i5 • 8GB • 512GB SSD</p>
+                    <div class="card-rating">
+                      <span class="stars">⭐⭐⭐⭐☆</span>
+                      <span class="rating-count">(358)</span>
+                    </div>
+                    <div class="card-footer">
+                      <div class="card-price">RM 2,999</div>
+                      <button class="btn-icon-primary">→</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Pagination -->
+              <div class="pagination">
+                <button class="page-btn" disabled>← Previous</button>
+                <div class="page-numbers">
+                  <button class="page-num active">1</button>
+                  <button class="page-num">2</button>
+                  <button class="page-num">3</button>
+                  <button class="page-num">4</button>
+                </div>
+                <button class="page-btn">Next →</button>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       <!-- Section: Command (Default) -->
       <section id="section-command" class="app-section active" data-section="command">
         <div class="section-container" id="command-container">
-          <!-- Module will be loaded dynamically by app-core.js -->
+          <!-- Command Tool UI (AI Chat Interface) -->
+          <div class="command-chat-container">
+            <!-- Chat Header -->
+            <div class="chat-header">
+              <div class="chat-title">
+                <span>🤖</span> AI Bradaa Command
+              </div>
+              <div class="chat-actions">
+                <button class="chat-action-btn">📋 Export</button>
+                <button class="chat-action-btn">🗑️ Clear</button>
+              </div>
+            </div>
+
+            <!-- Messages Area -->
+            <div class="chat-messages" id="chatMessages">
+              <!-- Welcome Message -->
+              <div class="message assistant">
+                <div class="message-avatar">AI</div>
+                <div class="message-content">
+                  <div class="message-header">
+                    <span class="message-role">AI Bradaa</span>
+                    <span class="message-timestamp">Just now</span>
+                  </div>
+                  <div class="message-body">
+                    <h3>Selamat datang! 👋</h3>
+                    <p>I'm your AI laptop advisor, here to help you find the perfect laptop. I can:</p>
+                    <ul>
+                      <li>Answer questions about any laptop model</li>
+                      <li>Compare specifications and features</li>
+                      <li>Recommend laptops based on your needs</li>
+                      <li>Explain technical specs in simple terms</li>
+                      <li>Help you make an informed decision</li>
+                    </ul>
+                    <p><strong>Try asking me:</strong></p>
+                  </div>
+                  <div class="example-queries">
+                    <button class="example-query">"What's the best laptop for video editing under RM 5000?"</button>
+                    <button class="example-query">"Compare Dell XPS 15 vs MacBook Pro"</button>
+                    <button class="example-query">"Is 16GB RAM enough for gaming?"</button>
+                    <button class="example-query">"Explain what SSD means"</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Sample User Message -->
+              <div class="message user" style="display: none;">
+                <div class="message-avatar">You</div>
+                <div class="message-content">
+                  <div class="message-header">
+                    <span class="message-role">You</span>
+                    <span class="message-timestamp">2 min ago</span>
+                  </div>
+                  <div class="message-body">
+                    What's the best laptop for programming?
+                  </div>
+                </div>
+              </div>
+
+              <!-- Sample AI Response -->
+              <div class="message assistant" style="display: none;">
+                <div class="message-avatar">AI</div>
+                <div class="message-content">
+                  <div class="message-header">
+                    <span class="message-role">AI Bradaa</span>
+                    <span class="message-timestamp">1 min ago</span>
+                  </div>
+                  <div class="message-body">
+                    <p>Great question! For programming, here are my top recommendations:</p>
+                    <h4>1. Dell XPS 15 (RM 6,999)</h4>
+                    <ul>
+                      <li>Intel Core i7-13700H</li>
+                      <li>16GB RAM (expandable to 32GB)</li>
+                      <li>512GB SSD</li>
+                      <li>15.6" 3.5K OLED Display</li>
+                    </ul>
+                    <p><strong>Why it's great:</strong> Powerful processor for compiling, plenty of RAM for running multiple IDEs, beautiful display for long coding sessions.</p>
+
+                    <h4>2. MacBook Pro 14" (RM 9,999)</h4>
+                    <ul>
+                      <li>Apple M3 Pro chip</li>
+                      <li>18GB Unified Memory</li>
+                      <li>512GB SSD</li>
+                      <li>14.2" Liquid Retina XDR</li>
+                    </ul>
+                    <p><strong>Why it's great:</strong> Exceptional battery life (up to 18 hours), best-in-class performance, perfect for iOS/Mac development.</p>
+
+                    <p>Which programming languages do you work with most? I can give more specific recommendations.</p>
+                  </div>
+                  <div class="message-actions">
+                    <button class="message-action">
+                      <span>👍</span> Helpful
+                    </button>
+                    <button class="message-action">
+                      <span>📋</span> Copy
+                    </button>
+                    <button class="message-action">
+                      <span>🔄</span> Regenerate
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Input Area -->
+            <div class="chat-input-container">
+              <div class="chat-input-wrapper">
+                <textarea
+                  class="chat-input"
+                  placeholder="Ask me anything about laptops..."
+                  rows="1"
+                  id="chatInput"
+                ></textarea>
+                <button class="chat-send-btn" id="chatSendBtn">
+                  Send
+                </button>
+              </div>
+              <div class="chat-input-footer">
+                <small>Powered by 84 expert mentors • Always fact-checked</small>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       <!-- Section: Intel (Pro) -->
       <section id="section-intel" class="app-section" data-section="intel">
         <div class="section-container" id="intel-container">
-          <!-- Module will be loaded dynamically by app-core.js -->
+          <!-- Intel Tool UI (PRO Feature) -->
+          <div class="tool-wrapper">
+            <div class="tool-header">
+              <h1 class="tool-title">📊 Intel <span class="pro-badge-large">PRO</span></h1>
+              <p class="tool-subtitle">Advanced market insights and future-proof analysis</p>
+            </div>
+
+            <!-- Pro Upsell / Dashboard -->
+            <div class="intel-dashboard">
+              <!-- Market Overview -->
+              <div class="intel-section">
+                <div class="section-title-bar">
+                  <h2>Market Overview</h2>
+                  <button class="btn-small">Refresh Data</button>
+                </div>
+
+                <div class="stats-grid">
+                  <div class="stat-card">
+                    <div class="stat-icon">📈</div>
+                    <div class="stat-content">
+                      <div class="stat-label">Avg. Price Trend</div>
+                      <div class="stat-value trend-up">+8.2%</div>
+                      <div class="stat-meta">vs last quarter</div>
+                    </div>
+                  </div>
+                  <div class="stat-card">
+                    <div class="stat-icon">🏆</div>
+                    <div class="stat-content">
+                      <div class="stat-label">Top Brand</div>
+                      <div class="stat-value">Dell</div>
+                      <div class="stat-meta">32% market share</div>
+                    </div>
+                  </div>
+                  <div class="stat-card">
+                    <div class="stat-icon">⚡</div>
+                    <div class="stat-content">
+                      <div class="stat-label">Trending Spec</div>
+                      <div class="stat-value">16GB RAM</div>
+                      <div class="stat-meta">68% of new models</div>
+                    </div>
+                  </div>
+                  <div class="stat-card">
+                    <div class="stat-icon">💰</div>
+                    <div class="stat-content">
+                      <div class="stat-label">Sweet Spot</div>
+                      <div class="stat-value">RM 3,500</div>
+                      <div class="stat-meta">Best value range</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Price Trends Chart -->
+              <div class="intel-section">
+                <h2>Price Trends (Last 12 Months)</h2>
+                <div class="chart-placeholder">
+                  <div class="chart-visual">
+                    <div class="chart-bars">
+                      <div class="chart-bar" style="height: 65%;">
+                        <span class="bar-label">Jan</span>
+                      </div>
+                      <div class="chart-bar" style="height: 70%;">
+                        <span class="bar-label">Feb</span>
+                      </div>
+                      <div class="chart-bar" style="height: 68%;">
+                        <span class="bar-label">Mar</span>
+                      </div>
+                      <div class="chart-bar" style="height: 75%;">
+                        <span class="bar-label">Apr</span>
+                      </div>
+                      <div class="chart-bar" style="height: 72%;">
+                        <span class="bar-label">May</span>
+                      </div>
+                      <div class="chart-bar" style="height: 78%;">
+                        <span class="bar-label">Jun</span>
+                      </div>
+                      <div class="chart-bar" style="height: 80%;">
+                        <span class="bar-label">Jul</span>
+                      </div>
+                      <div class="chart-bar" style="height: 82%;">
+                        <span class="bar-label">Aug</span>
+                      </div>
+                      <div class="chart-bar" style="height: 79%;">
+                        <span class="bar-label">Sep</span>
+                      </div>
+                      <div class="chart-bar" style="height: 85%;">
+                        <span class="bar-label">Oct</span>
+                      </div>
+                      <div class="chart-bar" style="height: 88%;">
+                        <span class="bar-label">Nov</span>
+                      </div>
+                      <div class="chart-bar active" style="height: 92%;">
+                        <span class="bar-label">Dec</span>
+                      </div>
+                    </div>
+                    <div class="chart-axis">
+                      <span>RM 2,000</span>
+                      <span>RM 4,000</span>
+                      <span>RM 6,000</span>
+                      <span>RM 8,000</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Brand Popularity -->
+              <div class="intel-section">
+                <h2>Brand Popularity (Malaysia)</h2>
+                <div class="brand-chart">
+                  <div class="brand-row">
+                    <span class="brand-name">Dell</span>
+                    <div class="brand-bar-container">
+                      <div class="brand-bar" style="width: 32%;">32%</div>
+                    </div>
+                  </div>
+                  <div class="brand-row">
+                    <span class="brand-name">ASUS</span>
+                    <div class="brand-bar-container">
+                      <div class="brand-bar" style="width: 28%;">28%</div>
+                    </div>
+                  </div>
+                  <div class="brand-row">
+                    <span class="brand-name">Lenovo</span>
+                    <div class="brand-bar-container">
+                      <div class="brand-bar" style="width: 24%;">24%</div>
+                    </div>
+                  </div>
+                  <div class="brand-row">
+                    <span class="brand-name">HP</span>
+                    <div class="brand-bar-container">
+                      <div class="brand-bar" style="width: 18%;">18%</div>
+                    </div>
+                  </div>
+                  <div class="brand-row">
+                    <span class="brand-name">Apple</span>
+                    <div class="brand-bar-container">
+                      <div class="brand-bar" style="width: 15%;">15%</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Upgrade Path Calculator -->
+              <div class="intel-section">
+                <h2>Upgrade Path Calculator</h2>
+                <div class="upgrade-calculator">
+                  <div class="calculator-input">
+                    <label>Your Current Laptop</label>
+                    <select class="form-select">
+                      <option>Select your laptop...</option>
+                      <option>Dell Inspiron 15 (2020)</option>
+                      <option>MacBook Air M1 (2020)</option>
+                      <option>Lenovo ThinkPad E14 (2021)</option>
+                    </select>
+                  </div>
+                  <div class="calculator-input">
+                    <label>Upgrade Budget (RM)</label>
+                    <input type="number" class="form-input" placeholder="5000" value="5000">
+                  </div>
+                  <button class="btn-primary">Calculate Upgrade Path</button>
+
+                  <div class="upgrade-result">
+                    <div class="result-header">
+                      <h3>Recommended Upgrade</h3>
+                      <div class="upgrade-score">
+                        <span class="score-label">Upgrade Value:</span>
+                        <span class="score-value">8.5/10</span>
+                      </div>
+                    </div>
+                    <div class="upgrade-comparison">
+                      <div class="upgrade-col">
+                        <h4>Current</h4>
+                        <p>Dell Inspiron 15 (2020)</p>
+                        <ul class="upgrade-specs">
+                          <li>Intel i5-10210U</li>
+                          <li>8GB RAM</li>
+                          <li>256GB SSD</li>
+                          <li>Integrated Graphics</li>
+                        </ul>
+                      </div>
+                      <div class="upgrade-arrow">→</div>
+                      <div class="upgrade-col">
+                        <h4>Recommended</h4>
+                        <p>Dell XPS 15 (2024)</p>
+                        <ul class="upgrade-specs">
+                          <li>Intel i7-13700H <span class="improvement">+180% faster</span></li>
+                          <li>16GB RAM <span class="improvement">+100% more</span></li>
+                          <li>512GB SSD <span class="improvement">+100% more</span></li>
+                          <li>RTX 4050 <span class="improvement">+400% graphics</span></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Future-Proof Score -->
+              <div class="intel-section">
+                <h2>Future-Proof Score</h2>
+                <div class="futureproof-cards">
+                  <div class="futureproof-card">
+                    <div class="fp-header">
+                      <h3>Dell XPS 15</h3>
+                      <div class="fp-score excellent">9.2/10</div>
+                    </div>
+                    <div class="fp-breakdown">
+                      <div class="fp-item">
+                        <span>Processor Longevity</span>
+                        <div class="fp-bar" style="width: 95%;">95%</div>
+                      </div>
+                      <div class="fp-item">
+                        <span>Upgradeability</span>
+                        <div class="fp-bar" style="width: 85%;">85%</div>
+                      </div>
+                      <div class="fp-item">
+                        <span>Software Support</span>
+                        <div class="fp-bar" style="width: 90%;">90%</div>
+                      </div>
+                      <div class="fp-item">
+                        <span>Build Quality</span>
+                        <div class="fp-bar" style="width: 92%;">92%</div>
+                      </div>
+                    </div>
+                    <p class="fp-verdict">Expected to remain relevant for <strong>5-6 years</strong></p>
+                  </div>
+
+                  <div class="futureproof-card">
+                    <div class="fp-header">
+                      <h3>MacBook Pro 14"</h3>
+                      <div class="fp-score excellent">9.5/10</div>
+                    </div>
+                    <div class="fp-breakdown">
+                      <div class="fp-item">
+                        <span>Processor Longevity</span>
+                        <div class="fp-bar" style="width: 98%;">98%</div>
+                      </div>
+                      <div class="fp-item">
+                        <span>Upgradeability</span>
+                        <div class="fp-bar" style="width: 60%;">60%</div>
+                      </div>
+                      <div class="fp-item">
+                        <span>Software Support</span>
+                        <div class="fp-bar" style="width: 100%;">100%</div>
+                      </div>
+                      <div class="fp-item">
+                        <span>Build Quality</span>
+                        <div class="fp-bar" style="width: 98%;">98%</div>
+                      </div>
+                    </div>
+                    <p class="fp-verdict">Expected to remain relevant for <strong>6-7 years</strong></p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
         </div>
       </section>
 
       <!-- Section: Appendices -->
       <section id="section-appendices" class="app-section" data-section="appendices">
         <div class="section-container" id="appendices-container">
-          <!-- Module will be loaded dynamically by app-core.js -->
+          <!-- Appendices Tool UI -->
+          <div class="tool-wrapper">
+            <div class="tool-header">
+              <h1 class="tool-title">📚 Appendices</h1>
+              <p class="tool-subtitle">Resources, guides, and expert knowledge to help you make informed decisions</p>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="appendices-search">
+              <input type="text" placeholder="Search guides, articles, specs..." class="search-input-large">
+              <button class="btn-primary">Search</button>
+            </div>
+
+            <!-- Category Tabs -->
+            <div class="category-tabs">
+              <button class="category-tab active" data-category="all">All Resources</button>
+              <button class="category-tab" data-category="buying">Buying Guide</button>
+              <button class="category-tab" data-category="specs">Specs Explained</button>
+              <button class="category-tab" data-category="troubleshooting">Troubleshooting</button>
+              <button class="category-tab" data-category="maintenance">Maintenance</button>
+            </div>
+
+            <!-- Resources Grid -->
+            <div class="resources-grid">
+              <!-- Buying Guide Section -->
+              <div class="resource-category">
+                <h2 class="category-heading">📖 Buying Guides</h2>
+                <div class="resource-cards">
+                  <div class="resource-card featured">
+                    <div class="resource-badge">Popular</div>
+                    <div class="resource-icon">🎓</div>
+                    <h3>Complete Laptop Buying Guide 2025</h3>
+                    <p>Everything you need to know before purchasing a laptop. From specs to warranty.</p>
+                    <div class="resource-meta">
+                      <span class="meta-item">📅 Updated: Jan 2025</span>
+                      <span class="meta-item">⏱️ 15 min read</span>
+                    </div>
+                    <button class="btn-secondary btn-full">Read Guide</button>
+                  </div>
+
+                  <div class="resource-card">
+                    <div class="resource-icon">💰</div>
+                    <h3>Budget Laptop Guide</h3>
+                    <p>How to find the best laptop for your budget without compromising on essentials.</p>
+                    <div class="resource-meta">
+                      <span class="meta-item">📅 Dec 2024</span>
+                      <span class="meta-item">⏱️ 10 min read</span>
+                    </div>
+                    <button class="btn-secondary btn-full">Read Guide</button>
+                  </div>
+
+                  <div class="resource-card">
+                    <div class="resource-icon">🎮</div>
+                    <h3>Gaming Laptop Buyer's Guide</h3>
+                    <p>GPU, refresh rates, cooling systems - everything for gaming laptops explained.</p>
+                    <div class="resource-meta">
+                      <span class="meta-item">📅 Dec 2024</span>
+                      <span class="meta-item">⏱️ 12 min read</span>
+                    </div>
+                    <button class="btn-secondary btn-full">Read Guide</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Specs Explained Section -->
+              <div class="resource-category">
+                <h2 class="category-heading">🔍 Specs Explained</h2>
+                <div class="resource-cards">
+                  <div class="resource-card">
+                    <div class="resource-icon">⚡</div>
+                    <h3>Understanding Processors (CPU)</h3>
+                    <p>Intel vs AMD, cores, threads, and what they mean for real-world performance.</p>
+                    <div class="resource-meta">
+                      <span class="meta-item">📅 Jan 2025</span>
+                      <span class="meta-item">⏱️ 8 min read</span>
+                    </div>
+                    <button class="btn-secondary btn-full">Read Guide</button>
+                  </div>
+
+                  <div class="resource-card">
+                    <div class="resource-icon">💾</div>
+                    <h3>RAM Explained: How Much Do You Need?</h3>
+                    <p>8GB, 16GB, or 32GB? Learn what RAM does and how much you actually need.</p>
+                    <div class="resource-meta">
+                      <span class="meta-item">📅 Dec 2024</span>
+                      <span class="meta-item">⏱️ 6 min read</span>
+                    </div>
+                    <button class="btn-secondary btn-full">Read Guide</button>
+                  </div>
+
+                  <div class="resource-card">
+                    <div class="resource-icon">💿</div>
+                    <h3>SSD vs HDD: Storage Guide</h3>
+                    <p>Why SSDs are faster, different types (NVMe, SATA), and storage capacity guide.</p>
+                    <div class="resource-meta">
+                      <span class="meta-item">📅 Nov 2024</span>
+                      <span class="meta-item">⏱️ 7 min read</span>
+                    </div>
+                    <button class="btn-secondary btn-full">Read Guide</button>
+                  </div>
+
+                  <div class="resource-card">
+                    <div class="resource-icon">🖥️</div>
+                    <h3>Display Technology Explained</h3>
+                    <p>IPS, OLED, refresh rates, resolution, and color accuracy explained simply.</p>
+                    <div class="resource-meta">
+                      <span class="meta-item">📅 Nov 2024</span>
+                      <span class="meta-item">⏱️ 9 min read</span>
+                    </div>
+                    <button class="btn-secondary btn-full">Read Guide</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Troubleshooting Section -->
+              <div class="resource-category">
+                <h2 class="category-heading">🔧 Troubleshooting</h2>
+                <div class="resource-cards">
+                  <div class="resource-card">
+                    <div class="resource-icon">🐌</div>
+                    <h3>Why Is My Laptop So Slow?</h3>
+                    <p>Common causes of slow performance and how to fix them without upgrading.</p>
+                    <div class="resource-meta">
+                      <span class="meta-item">📅 Jan 2025</span>
+                      <span class="meta-item">⏱️ 5 min read</span>
+                    </div>
+                    <button class="btn-secondary btn-full">Read Guide</button>
+                  </div>
+
+                  <div class="resource-card">
+                    <div class="resource-icon">🔋</div>
+                    <h3>Battery Not Lasting? Fix It</h3>
+                    <p>Tips to improve battery life and understand when it's time for a replacement.</p>
+                    <div class="resource-meta">
+                      <span class="meta-item">📅 Dec 2024</span>
+                      <span class="meta-item">⏱️ 6 min read</span>
+                    </div>
+                    <button class="btn-secondary btn-full">Read Guide</button>
+                  </div>
+
+                  <div class="resource-card">
+                    <div class="resource-icon">🔥</div>
+                    <h3>Overheating Issues</h3>
+                    <p>Why laptops overheat and step-by-step cooling solutions.</p>
+                    <div class="resource-meta">
+                      <span class="meta-item">📅 Dec 2024</span>
+                      <span class="meta-item">⏱️ 7 min read</span>
+                    </div>
+                    <button class="btn-secondary btn-full">Read Guide</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Maintenance Section -->
+              <div class="resource-category">
+                <h2 class="category-heading">🛠️ Maintenance</h2>
+                <div class="resource-cards">
+                  <div class="resource-card">
+                    <div class="resource-icon">🧹</div>
+                    <h3>Laptop Cleaning Guide</h3>
+                    <p>Safe cleaning methods for keyboard, screen, and internals.</p>
+                    <div class="resource-meta">
+                      <span class="meta-item">📅 Nov 2024</span>
+                      <span class="meta-item">⏱️ 5 min read</span>
+                    </div>
+                    <button class="btn-secondary btn-full">Read Guide</button>
+                  </div>
+
+                  <div class="resource-card">
+                    <div class="resource-icon">🔄</div>
+                    <h3>When to Upgrade vs Replace</h3>
+                    <p>Decision framework: repair, upgrade components, or buy new?</p>
+                    <div class="resource-meta">
+                      <span class="meta-item">📅 Oct 2024</span>
+                      <span class="meta-item">⏱️ 8 min read</span>
+                    </div>
+                    <button class="btn-secondary btn-full">Read Guide</button>
+                  </div>
+
+                  <div class="resource-card">
+                    <div class="resource-icon">📦</div>
+                    <h3>Warranty & Insurance Guide</h3>
+                    <p>What warranties cover, extended warranty pros/cons, and claim process.</p>
+                    <div class="resource-meta">
+                      <span class="meta-item">📅 Oct 2024</span>
+                      <span class="meta-item">⏱️ 6 min read</span>
+                    </div>
+                    <button class="btn-secondary btn-full">Read Guide</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- FAQ Section -->
+              <div class="resource-category">
+                <h2 class="category-heading">❓ Frequently Asked Questions</h2>
+                <div class="faq-list">
+                  <div class="faq-item">
+                    <div class="faq-question">
+                      <h4>What's the difference between Intel Core i5 and i7?</h4>
+                      <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                      <p>Intel Core i7 processors generally have more cores, higher clock speeds, and larger cache compared to i5. This translates to better performance for intensive tasks like video editing, 3D rendering, and heavy multitasking. For everyday use, an i5 is usually sufficient.</p>
+                    </div>
+                  </div>
+
+                  <div class="faq-item">
+                    <div class="faq-question">
+                      <h4>Is 8GB RAM enough in 2025?</h4>
+                      <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                      <p>8GB is the minimum for basic tasks, but 16GB is recommended for most users. If you do video editing, gaming, or run many applications simultaneously, go for 16GB or 32GB.</p>
+                    </div>
+                  </div>
+
+                  <div class="faq-item">
+                    <div class="faq-question">
+                      <h4>Should I buy extended warranty?</h4>
+                      <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                      <p>It depends on the brand and your usage. Premium brands like Apple, Dell XPS, and ThinkPad have good build quality. Extended warranty is worth it for expensive laptops (above RM 5,000) or if you travel frequently.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

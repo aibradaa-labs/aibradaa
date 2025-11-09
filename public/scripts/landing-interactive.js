@@ -606,22 +606,48 @@ class InteractiveToolDemos {
     this.initAppendicesDemo();
     this.initCameraTechDemo();
 
+    // Initialize ABO-84 coding assistant demo
+    this.initABO84Demo();
+
     // Track tool switching
     this.initToolSwitching();
 
-    console.log('[Interactive Demos] All tool demos initialized');
+    console.log('[Interactive Demos] All tool demos initialized (including ABO-84)');
   }
 
   /**
-   * Track tool switching
+   * Track tool switching and switch panels
    */
   initToolSwitching() {
     const toolButtons = document.querySelectorAll('.tool-btn');
+    const previewPanels = document.querySelectorAll('.preview-panel');
+
     toolButtons.forEach(button => {
       button.addEventListener('click', () => {
         const toolName = button.getAttribute('data-tool');
         this.currentTool = toolName;
+
+        // Remove active class from all buttons
+        toolButtons.forEach(btn => btn.classList.remove('active'));
+        // Add active class to clicked button
+        button.classList.add('active');
+
+        // Hide all panels
+        previewPanels.forEach(panel => {
+          panel.classList.remove('active');
+          panel.style.display = 'none';
+        });
+
+        // Show selected panel
+        const selectedPanel = document.querySelector(`.preview-panel[data-panel="${toolName}"]`);
+        if (selectedPanel) {
+          selectedPanel.classList.add('active');
+          selectedPanel.style.display = 'block';
+        }
+
+        // Track analytics
         analytics.trackToolPreview(toolName);
+        console.log(`[Tool Switch] Switched to ${toolName}`);
       });
     });
   }
@@ -1007,6 +1033,45 @@ class InteractiveToolDemos {
     cameraDemo.addEventListener('click', () => {
       analytics.trackDemo('camera_tech', 'preview_clicked');
     });
+  }
+
+  /**
+   * ABO-84 BETA DEMO - Code analysis demo with animation
+   */
+  initABO84Demo() {
+    const demoBtn = document.getElementById('abo84-demo-btn');
+    const resultsContainer = document.getElementById('abo84-consultation-results');
+
+    if (!demoBtn || !resultsContainer) return;
+
+    demoBtn.addEventListener('click', () => {
+      // Disable button during analysis
+      demoBtn.disabled = true;
+      demoBtn.innerHTML = '<span class="btn-icon">⏳</span> Analyzing...';
+
+      // Hide results initially
+      resultsContainer.style.opacity = '0';
+      resultsContainer.style.display = 'none';
+
+      // Simulate analysis delay
+      setTimeout(() => {
+        // Show results with animation
+        resultsContainer.style.display = 'block';
+        setTimeout(() => {
+          resultsContainer.style.opacity = '1';
+          resultsContainer.style.transition = 'opacity 0.5s ease-in';
+        }, 50);
+
+        // Re-enable button
+        demoBtn.disabled = false;
+        demoBtn.innerHTML = '<span class="btn-icon">🔍</span> Run Analysis';
+
+        // Track demo interaction
+        analytics.trackDemo('abo84', 'code_analysis_run');
+      }, 2000); // 2 second analysis simulation
+    });
+
+    console.log('[ABO-84 Demo] Initialized');
   }
 }
 
