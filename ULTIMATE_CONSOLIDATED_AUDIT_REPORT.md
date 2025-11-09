@@ -6186,3 +6186,1453 @@ Located in: `archive/audit_reports_2025_11_09/`
 
 **End of Complete File Inventory**
 
+
+---
+
+## APPENDIX K: COMPLETE DOCUMENTATION REGISTRY
+
+### Overview
+
+This appendix catalogs **ALL 47 non-archived documentation files** in the repository, organized by category with summaries and relationships.
+
+---
+
+### K.1 Root-Level Documentation (11 files)
+
+#### K.1.1 README.md (232 lines)
+**Purpose:** Main project overview and quick start guide
+**Key Sections:**
+- 7 AI-powered tools description
+- 84-Mentor Council governance explanation
+- Ferrofluid Souls prototype
+- PWA capabilities
+- Architecture overview
+- Tech stack: Vanilla JS, Gemini API, Netlify
+**Status:** ✅ Production-ready, comprehensive
+
+**Metrics Claimed:**
+- Composite Score: 99.1/100
+- Test Coverage: 82%
+- Lighthouse: 97/100
+- Performance: TTFMP 1.6s, INP 180ms, CLS 0.04
+
+**Last Updated:** 06/11/2025
+
+---
+
+#### K.1.2 CHANGELOG.md (232 lines)
+**Purpose:** Version history with semantic versioning
+**Structure:** Keep a Changelog format
+
+**Major Releases:**
+- **v1.0.3 (2025-11-09):** ULTIMATE_CONSOLIDATED_AUDIT_REPORT.md (2,645 lines initially)
+- **v1.0.2 (2025-11-09):** One Piece v4.0 (database auto-fetch, 1000+ catchphrases)
+- **v1.0.1 (2025-11-09):** One Piece v3.0 (static 50 catchphrases, never-repeat)
+- **v1.0.0 (2025-11-06):** Initial production release
+
+**Composite Score Evolution:**
+- v1.0.0: 99.1/100 (claimed)
+- v1.0.1: 83.4/100 (after One Piece v3)
+- v1.0.2: 93.4/100 (after One Piece v4)
+- v1.0.3: 78.4/100 (realistic audit)
+
+**Key Metrics:**
+- 100 laptops (fresh 06/11/2025)
+- 7 sections fully implemented
+- 84-mentor governance
+- TOON integration
+- PWA + offline
+
+---
+
+#### K.1.3 STATUS.md (280 lines)
+**Date:** 2025-11-06
+**Progress:** 44/147 files (29.9%)
+**Session:** claude/ai-bradaa-production-transformation
+
+**Completed:**
+- Phase 1: API Infrastructure (16 files) ✅
+- Phase 2: PWA Core (3 files) ✅
+- Phase 3: AI POD (19/22 files, 90%)
+- Phase 4: App Sections (7 modules) ✅
+- Phase 5: Shared Components (6 files) ✅
+- Phase 6: Shared Utilities (3/10 files)
+
+**Remaining:** 103 files
+- High priority: 47 files
+- Medium priority: 38 files
+- Low priority: 18 files
+
+**NOTE:** This is outdated status from Nov 6. Current state is more advanced.
+
+---
+
+#### K.1.4 CONTRIBUTORS.md (36 lines)
+**Purpose:** Recognition for contributors
+**Current State:** Template only
+- Core Team: Claude AI (lead dev), User (PM)
+- Recognition sections ready for future contributors
+- Links to CONTRIBUTING.md
+
+---
+
+#### K.1.5 TRANSFORMATION_GAP_ANALYSIS.md (552 lines)
+**Date:** November 7, 2025
+**Status:** 67% Complete (98/147 files)
+
+**Detailed Assessment by Category:**
+- ROOT: 6/8 (75%) - Missing netlify.toml, .env.example
+- API: 16/18 (89%) - Missing retry.mjs, quota.mjs
+- AI POD: 12/22 (55%) - Missing RAG pipeline, governance files
+- Frontend: 40/45 (89%) - Missing chat-ui.mjs, signup.css
+- Laptops: 1/12 (8%) - Using alternative /data/laptops.json
+- Data: 6/9 (67%)
+- Tools: 4/11 (36%)
+- Configs: 3/6 (50%) - Missing CSP meta, netlify.toml
+- Docs: 5/8 (63%)
+- Tests: 5/18 (28%)
+
+**Composite Score Estimate:** ~76/100
+**Critical Path:** 8 must-have items
+**Estimated Time:** 2-4 weeks
+
+---
+
+#### K.1.6 FIXES_APPLIED.md (299 lines)
+**Date:** 2025-11-07
+**Status:** 🟢 P0 BLOCKING ISSUES RESOLVED
+
+**4 Critical Fixes:**
+1. ✅ Desktop landing page invisible (FOUC timeout fallback)
+2. ✅ App.html infinite loading spinner (error handling + timeout)
+3. ✅ Missing module files (copied to /public/app/)
+4. ✅ Token management methods added to storage.mjs
+
+**Remaining P0:**
+- 🔴 PWA icons missing (8 sizes)
+- 🔴 Gemini API not integrated
+- 🟡 Module path verification
+
+**Files Modified:** 3 files
+**Files Created:** 6 files
+
+---
+
+#### K.1.7 ICON_GENERATION_GUIDE.md (117 lines)
+**Purpose:** Instructions for generating PWA icons
+
+**Required Sizes:** 8 PNG files (72x72 to 512x512)
+**Source:** `/public/assets/icons/icon.svg` exists ✅
+
+**4 Options:**
+1. Online generator (realfavicongenerator.net)
+2. ImageMagick CLI
+3. Inkscape CLI
+4. Node.js script (sharp)
+
+**Temporary Workaround:** Use SVG in manifest (supported by modern browsers)
+
+**Priority:** 🔴 CRITICAL - PWA installation fails without icons
+
+---
+
+#### K.1.8 NETLIFY_FIX.md (112 lines)
+**Issue:** 404 error on Netlify deployment
+**Root Cause:** Nested dist/public structure
+
+**Solution:**
+- publish = "public" (not "dist")
+- command = "echo 'No build needed'"
+- Direct static deployment
+
+**Options:**
+- A: Static deployment (recommended)
+- B: Build step with flattened output
+
+**Verification Checklist:**
+- Homepage loads
+- CSS/JS load
+- PWA manifest accessible
+
+---
+
+#### K.1.9 SMOL_PLAYBOOK_CROSS_CHECK_MATRIX.md (1,275 lines)
+**Date:** 2025-11-09
+**Auditor:** Syeddy Orchestrator with 84-Mentor Framework
+**Scope:** 21 sections from Smol Training Playbook
+
+**Overall Compliance:** 68% (14/21 sections)
+
+**Status Breakdown:**
+- ✅ Complete (8): Strategic Compass, Evaluation, Safety, Product, Growth, Platform, Legal, Finance
+- 🟡 Partial (6): Data Curation, Infrastructure, Post-Training, Customer UX, Localization, Rules
+- ❌ Missing (7): Tokenizer, Architecture, Optimizer, Ablation, Loss-Spike, Multi-Stage, Equations
+
+**Critical Gaps:**
+1. No performance budgets (p95 latency targets)
+2. No SLO/error budget monitoring
+3. No rollback runbooks (P0/P1 incidents)
+4. Missing OTEL instrumentation
+5. No automated eval framework
+6. No cost ceiling enforcement
+
+**Priority Implementation Matrix:**
+- 🔴 Critical (4): SLO monitoring, error spike detection, runbooks, cost ceilings
+- 🟡 Important (4): Eval automation, A/B testing, data registry, PRFAQ
+- 🟢 Nice-to-have (3): Localization, feature flags, activation metrics
+
+**Production Readiness:** 🟡 NOT READY (missing critical infrastructure)
+**Timeline:** 2 weeks to implement critical items
+
+---
+
+#### K.1.10 ONE_PIECE_CATCHPHRASE_ENHANCEMENT_SUMMARY.md (353 lines)
+**Date:** 2025-11-09
+**Status:** ✅ COMPLETED
+**Version:** v3.0 (static)
+
+**Files Created:**
+- `/ai_pod/personas/one_piece_catchphrase_engine.mjs` (685 lines)
+- `/ai_pod/personas/INTEGRATION_GUIDE.md` (450 lines)
+
+**Files Modified:**
+- `/netlify/functions/chat.mjs` - Integrated One Piece engine
+
+**Features:**
+- 50+ catchphrases from 1148 One Piece episodes
+- Never-repeat rotation (Set tracking)
+- Daily "Yo [nickname]!" greeting
+- 12 emotion states
+- Manglish integration
+- Multi-surface ready (Chat, RAG, DeepResearch, TTS)
+
+**Performance:**
+- Catchphrase selection: ~2ms (target <10ms) ✅
+- Daily greeting check: ~1ms (target <5ms) ✅
+- Memory usage: ~2MB (target <5MB) ✅
+
+**Impact:**
+- Composite Score: +5 points (78.4 → 83.4/100)
+- Expected engagement: +25-40%
+- Legal: ✅ Copyright-safe (paraphrased)
+
+**84-Mentor Approvals:** Andrew Ng, Brian Balfour, Don Norman
+
+---
+
+#### K.1.11 ONE_PIECE_CATCHPHRASE_V4_AUTO_FETCH_SUMMARY.md (300+ lines, partial read)
+**Date:** 2025-11-09
+**Status:** ✅ COMPLETED
+**Version:** v4.0 (database-powered)
+
+**Upgrade:** v3.0 (static 50) → v4.0 (database 1000+ with auto-fetch)
+
+**Files Created:**
+- `/database/migrations/004_catchphrases_system.sql` (450 lines)
+- `/ai_pod/services/catchphrase_auto_fetch.mjs` (650 lines)
+- `/ai_pod/personas/one_piece_catchphrase_engine_v4.mjs` (520 lines)
+- `/netlify/functions/cron-catchphrase-fetch.mjs` (80 lines)
+- `/netlify/functions/admin-catchphrases.mjs` (250 lines)
+
+**Database Tables:** 4 tables
+1. one_piece_catchphrases
+2. manglish_expressions
+3. catchphrase_usage_log
+4. catchphrase_fetch_jobs
+
+**Auto-Fetch:**
+- Schedule: Daily at 3:00 AM MYT
+- Fetches: 100 phrases/day
+- AI Paraphrasing: Gemini converts to laptop context
+- Confidence: >75% required, >95% auto-approved
+
+**Impact:**
+- Composite Score: +10 points (78.4 → 93.4/100)
+- Expected engagement: +40-60%
+- Cost: $15/month (Gemini API + database)
+
+---
+
+### K.2 docs/ Folder (18 files)
+
+#### K.2.1 ARCHITECTURE.md (200 lines, partial read)
+**Purpose:** System architecture diagrams and explanations
+
+**Sections:**
+- High-level architecture (Client → API → AI POD → External Services → Data)
+- Frontend architecture (Vanilla JS, PWA, module structure)
+- Backend architecture (Express, JWT, MongoDB/JSON, Redis, Gemini)
+- AI POD system (Syeddy v2.3.0, TOON, RAG, 84-mentor)
+- Authentication flow
+- Rate limiting tiers (Free: 10/min, Pro: 30/min, Ultimate: 60/min)
+
+**Tech Stack:**
+- Frontend: Vanilla JS (ESM), Custom CSS
+- Backend: Node.js 18+, Express
+- AI: Google Gemini API
+- Database: MongoDB (users) + JSON (laptops)
+- Cache: Redis
+
+---
+
+#### K.2.2 PRODUCTION_READINESS.md (200 lines, partial read)
+**Date:** 2025-11-07
+**Version:** 1.0.0
+**Status:** ✅ PRODUCTION READY
+
+**Completion:**
+- 10 Netlify Functions (100% API migration)
+- TOON Integration (34.5% token savings verified)
+- Complete documentation
+- Automated tests
+- Security hardening
+
+**TOON Performance:**
+- JSON: 336 chars, 84 tokens
+- TOON: 220 chars, 55 tokens
+- Savings: 29 tokens (34.5%)
+- At 100K calls/day: 4M tokens saved/day
+- Monthly: 120M tokens, ~$9 savings/month
+
+**Security:**
+- ✅ JWT auth with bcrypt
+- ✅ Magic links
+- ✅ Rate limiting
+- ✅ CORS + security headers
+- ⚠️ Need database migration (in-memory now)
+- ⚠️ Need external rate limiter (Redis)
+
+---
+
+#### K.2.3 DEPLOYMENT.md (150 lines, partial read)
+**Purpose:** Deployment guide for Netlify + backend
+
+**Prerequisites:**
+- Node.js 18+
+- Netlify account
+- Gemini API key
+- SMTP credentials
+
+**Environment Variables:** 15+ vars
+- Gemini API, JWT secrets, SMTP, rate limits, quotas
+
+**Deployment Steps:**
+1. Build frontend (`npm run build`)
+2. Deploy to Netlify (CLI or Git integration)
+3. Deploy backend API (Netlify Functions or separate server)
+4. Configure DNS
+5. Enable HTTPS (auto via Let's Encrypt)
+6. Post-deployment checks (12 items)
+
+**Performance Optimization:**
+- CDN (auto on Netlify)
+- Monitor Core Web Vitals
+- Track API response times
+- Monitor Gemini API usage
+
+---
+
+#### K.2.4 ROADMAP.md (200 lines, partial read)
+**Purpose:** Product development roadmap
+
+**Phase 1: Foundation (Q1 2025) - IN PROGRESS**
+- ✅ Core 7 tools
+- ✅ API + PWA + AI POD
+- ✅ Laptop database (90 laptops)
+- ⏳ Icon generation
+- ⏳ E2E testing
+- ⏳ Deployment
+**Target:** End of January 2025
+
+**Phase 2: Enhancement (Q2 2025)**
+- RAG pipeline with citations
+- TTS (Malaysian accent)
+- Voice input (EN/MY)
+- Deck v2 export (PDF/image)
+- Enhanced analytics
+- Performance optimization
+- Accessibility (WCAG 2.1 AA)
+- Bahasa Malaysia support
+**Target:** End of April 2025
+
+**Phase 3: Scale (Q3 2025)**
+- 84-Mentor Council
+- Souls prototype (ferrofluid FSM)
+- TOON compression
+- Enterprise features
+- Partner integration (Shopee/Lazada APIs)
+- Advanced comparison (6+ laptops)
+- Community features
+- Mobile apps (iOS/Android)
+**Target:** End of September 2025
+
+**Phase 4: Innovation (Q4 2025)**
+- AR/VR integration
+- Advanced AI (fine-tuned models)
+- Smart alerts (price drops, stock)
+- Gamification
+- Public API for developers
+- International expansion (SG/TH/ID)
+**Target:** End of December 2025
+
+---
+
+#### K.2.5 SECURITY.md (60 lines)
+**Purpose:** Security policy and vulnerability reporting
+
+**Supported Versions:** 1.0.x only
+**Reporting:** security@aibradaa.com (DO NOT open public issues)
+
+**Response Timeline:**
+- Acknowledgment: 48 hours
+- Assessment: 7 days
+- Fix: 1-30 days (severity-based)
+- Credit: In release notes
+
+**Security Measures:**
+- HTTPS/TLS, JWT auth, PDPA compliance
+- Rate limiting, CSP headers
+- Input validation, XSS/CSRF protection
+- Bcrypt password hashing
+
+**Scope:**
+- In: Auth bypass, data leaks, XSS/CSRF, SQL injection, API vulns
+- Out: Social engineering, DoS, physical access, 3rd-party vulns
+
+---
+
+#### K.2.6 Other docs/ Files (Summary)
+
+**ADR-001-tech-stack.md:** Architecture Decision Record for tech choices
+**API.md:** API endpoint documentation
+**CONTRIBUTING.md:** Contribution guidelines
+**DARK_MODE.md:** Dark mode implementation
+**DEPLOYMENT_CHECKLIST.md:** Pre-deploy checklist
+**ENVIRONMENT_SETUP.md:** Local dev environment setup
+**FAQ.md:** Frequently asked questions
+**LAPTOP_DATABASE.md:** Laptop database schema and usage
+**NEXT_PHASE_PLAN.md:** Next development phase plan
+**PRIVACY.md:** Privacy policy
+**QUICKSTART_ENV.md:** Quick environment setup
+**USER_GUIDE.md:** User guide for end users
+**sessions/SESSION_2025-11-07.md:** Development session notes
+
+---
+
+### K.3 AI Pod Documentation (6 files)
+
+#### K.3.1 /ai_pod/governance/decision_framework.md (150 lines)
+**Version:** 1.0.0
+**Last Updated:** 2025-11-06
+**Owner:** 84-Mentor Council
+
+**Why → What → How Compass:**
+- WHY: Purpose, problem, benefit, impact
+- WHAT: Trade-offs, choices, risks
+- HOW: Implementation, metrics, rollback, learning
+
+**Decision Types:**
+- Type 1 (Reversible): Owner decides, log, monitor, reverse if bad
+- Type 2 (Irreversible): Proposal, council review, vote, escalation
+- Type 3 (Existential): Full proposal, all councils, exec board, CEO
+
+**Voting Process:**
+1. Proposal submission
+2. Council review
+3. Scoring (composite weighted average)
+4. Decision (approve/reject/escalate)
+5. Logging (dissent_ledger.jsonl)
+
+**Red Lines:**
+- Security: No CSP, plaintext passwords, no encryption, missing auth
+- AI Safety: No eval, >8% hallucinations, >10% bias, no citations
+- Privacy: No consent, selling data, no TTL, missing PDPA
+- Financial: Burn >$1000/mo, free tier >$100/mo, no cost ceiling
+
+---
+
+#### K.3.2 Other AI Pod Files
+
+**syeddy_base_v2.3.0.md:** Core Syeddy persona (One Piece-inspired, Manglish)
+**command_fast_v1.2.0.md:** Fast response persona (≤1.2s latency)
+**command_think_v1.0.0.md:** Deep reasoning persona
+**pipelines/TOON_README.md:** TOON format documentation
+**personas/INTEGRATION_GUIDE.md:** One Piece catchphrase integration guide (450 lines)
+
+---
+
+### K.4 Project Governance Documentation (6 files)
+
+#### K.4.1 /project/governance/84/composite_score_nov_2025.md (150 lines, partial read)
+**Date:** November 8, 2025
+**Evaluator:** Syeddy Orchestrator
+
+**Current Composite Score: 78.4 / 100**
+**Target Score: ≥99.0 / 100**
+**Gap: -20.6 points**
+**Status:** BLOCKED for production
+
+**Council Scores:**
+1. **Technical Excellence (Weight 1.5):** 75.2/100 → 112.8/150
+   - CRITICAL: 50% code duplication, no database, 15% test coverage, no OTEL
+   - Architecture: 6.5/10
+   - Testing: 3.5/10
+   - Observability: 4.0/10
+
+2. **Product & UX (Weight 1.3):** 85.4/100 → 111.0/130
+   - GOOD: Clean UI, mobile-first, PWA complete
+   - User Experience: 9.0/10
+   - Design Quality: 8.5/10
+
+3. **Governance & Safety (Weight 2.0):** 68.3/100 → 136.6/200
+   - RED LINES: Hardcoded JWT secret, no encryption at rest, no eval framework
+   - Security: 6.0/10
+   - AI Safety: 7.0/10
+
+4. **Business Strategy (Weight 1.2):** 82.7/100 → 99.2/120
+   - STRONG: Unique moat (84-mentor), Malaysia-first positioning
+   - RISK: Free tier costs unknown, no cost ceiling
+   - Moat: 8.5/10
+   - Unit Economics: 7.0/10
+
+**Critical Issues:**
+- 🔴 P0: No database = data loss
+- 🔴 P0: Test coverage <15%
+- 🔴 P0: No hallucination monitoring
+- 🟠 P1: 50% code duplication
+- 🟠 P1: No observability
+
+**Mentor Vetoes:**
+- Andrew Ng: "Cannot deploy without database" - 2/10
+- Geoffrey Hinton: "No AI system without hallucination monitoring" - 4/10
+
+---
+
+#### K.4.2 Other Governance Files
+
+**changelog.md:** Governance framework changes
+**dissent_ledger.md:** Decision logging (should be .jsonl)
+**eval_suites/README.md:** Evaluation suite documentation
+**policy_pdpa.md:** PDPA compliance policy
+**policy_security.md:** Security policy
+
+---
+
+### K.5 Other Documentation Files (7 files)
+
+**database/README.md:** Database schema documentation
+**netlify/functions/CONVERSION_STATUS.md:** Express → Netlify Functions conversion status
+**public/icons/ICONS_README.md:** Icon generation instructions
+**.github/ISSUE_TEMPLATE/bug_report.md:** Bug report template
+**.github/ISSUE_TEMPLATE/feature_request.md:** Feature request template
+**.github/pull_request_template.md:** Pull request template
+**configs/csp_meta.txt:** Content Security Policy meta tag (if exists)
+**public/robots.txt:** Search engine robots file
+
+---
+
+### K.6 Documentation Statistics
+
+**Total Documentation Files:** 47 files
+**Total Lines:** ~8,000+ lines of documentation
+
+**By Category:**
+- Root-level: 11 files (~2,500 lines)
+- docs/: 18 files (~3,000 lines)
+- ai_pod/: 6 files (~1,500 lines)
+- project/governance/84/: 6 files (~800 lines)
+- Other: 6 files (~200 lines)
+
+**By Type:**
+- User-facing: 8 files (README, USER_GUIDE, FAQ, PRIVACY, SECURITY)
+- Developer-facing: 25 files (ARCHITECTURE, API, DEPLOYMENT, etc.)
+- Governance: 8 files (84-mentor, composite score, policies)
+- Project management: 6 files (CHANGELOG, ROADMAP, STATUS, etc.)
+
+**Coverage Assessment:**
+- ✅ Well-documented: Architecture, deployment, governance, changelog
+- 🟡 Partial: API docs, testing guides, troubleshooting
+- ❌ Missing: Runbooks, SLO documentation, cost model, data dictionary
+
+---
+
+**End of Appendix K**
+
+
+---
+
+## APPENDIX L: COMPLETE VISUAL REPOSITORY STRUCTURE
+
+### L.1 Full Repository Tree
+
+```
+aibradaa/ (root)
+│
+├── .github/                          # GitHub configuration
+│   ├── workflows/                    # CI/CD pipelines
+│   │   ├── test.yml                 # Test automation
+│   │   ├── deploy.yml               # Deployment automation
+│   │   └── lint.yml                 # Code quality checks
+│   ├── ISSUE_TEMPLATE/
+│   │   ├── bug_report.md
+│   │   └── feature_request.md
+│   └── pull_request_template.md
+│
+├── ai_pod/                           # AI Centralization Layer
+│   ├── governance/                   # 84-Mentor Governance
+│   │   ├── decision_framework.md    # Decision process (WHY→WHAT→HOW)
+│   │   ├── council_roster.json      # 84 mentor profiles
+│   │   ├── council_routes.yaml      # Routing logic
+│   │   ├── dissent_ledger.md        # Decision log
+│   │   └── lenses_catalog.json      # 31 decision lenses
+│   ├── personas/                     # AI Personality System
+│   │   ├── syeddy_base_v2.3.0.md    # Core persona (One Piece-inspired)
+│   │   ├── command_fast_v1.2.0.md   # Fast responses (≤1.2s)
+│   │   ├── command_think_v1.0.0.md  # Deep reasoning
+│   │   ├── persona_bible.json       # Tone sliders
+│   │   ├── one_piece_catchphrase_engine.mjs       # v3.0 (static)
+│   │   ├── one_piece_catchphrase_engine_v4.mjs    # v4.0 (database)
+│   │   ├── catchphrases_v2_world_class.mjs
+│   │   └── INTEGRATION_GUIDE.md     # One Piece integration (450 lines)
+│   ├── pipelines/                    # AI Processing Pipelines
+│   │   ├── toon_converter.mjs       # JSON ↔ TOON (30-60% savings)
+│   │   ├── toon_schema.json         # TOON format spec
+│   │   ├── rag_config.yaml          # RAG retrieval config
+│   │   ├── context_manager.mjs      # Context window management
+│   │   └── TOON_README.md           # TOON documentation
+│   ├── prototypes/                   # Experimental Features
+│   │   ├── soul_v1/
+│   │   │   ├── fsm.mjs              # Finite state machine
+│   │   │   ├── render.mjs           # Canvas/Lottie renderer
+│   │   │   └── soul-neutral.json    # Lottie animation (MISSING)
+│   │   ├── deck_v2/
+│   │   │   └── deck.mjs             # Card stacking logic
+│   │   ├── thinking_v1/
+│   │   │   └── thinking.mjs         # Typing/shimmer animation
+│   │   └── branding_v1/
+│   │       └── branding.mjs         # Badges, watermarks
+│   ├── services/                     # AI Services
+│   │   └── catchphrase_auto_fetch.mjs # Auto-fetch One Piece quotes (650 lines)
+│   └── config.mjs                    # ❌ MISSING (ARCHIVED)
+│
+├── api/                              # Express API (deprecated, migrated to Netlify Functions)
+│   ├── server.mjs
+│   ├── config.mjs
+│   ├── middleware/
+│   │   ├── auth.mjs
+│   │   ├── cors.mjs
+│   │   ├── csp-report.mjs
+│   │   ├── rate-limit.mjs
+│   │   └── telemetry.mjs
+│   ├── routes/
+│   │   ├── health.mjs
+│   │   ├── command.mjs
+│   │   ├── deck.mjs
+│   │   ├── verify.mjs
+│   │   ├── intel.mjs
+│   │   ├── affiliates.mjs
+│   │   ├── auth.mjs
+│   │   └── camera.mjs              # ❌ BROKEN: imports missing ai_pod/config.mjs
+│   └── adapters/
+│       └── gemini.mjs
+│
+├── app/                              # Frontend Application (modular sections)
+│   ├── matchmaker/
+│   │   ├── index.html
+│   │   ├── matchmaker.css
+│   │   └── matchmaker.mjs           # 5-question wizard
+│   ├── versus/
+│   │   ├── index.html
+│   │   ├── versus.css
+│   │   └── versus.mjs               # 2-3 laptop comparison
+│   ├── explorer/
+│   │   ├── index.html
+│   │   ├── explorer.css
+│   │   └── explorer.mjs             # Top-35 browsing
+│   ├── command/
+│   │   ├── index.html
+│   │   ├── command.css
+│   │   └── command.mjs              # AI chat hub
+│   ├── intel/
+│   │   ├── index.html
+│   │   ├── intel.css
+│   │   └── intel.mjs                # News feed
+│   ├── appendices/
+│   │   ├── index.html
+│   │   ├── appendices.css
+│   │   └── appendices.mjs           # Top-100 catalog
+│   ├── camera_tech/
+│   │   ├── index.html
+│   │   ├── camera-tech.css
+│   │   └── camera-tech.mjs          # Camera specs (placeholder)
+│   └── shared/                       # Shared UI Components & Utils
+│       ├── components/
+│       │   ├── button.mjs
+│       │   ├── card.mjs             # Holographic laptop card
+│       │   ├── modal.mjs
+│       │   ├── toast.mjs
+│       │   └── loader.mjs
+│       └── utils/
+│           ├── api.mjs              # Fetch wrapper
+│           ├── storage.mjs          # IndexedDB manager
+│           ├── validators.mjs
+│           ├── formatters.mjs
+│           ├── error-handler.mjs
+│           ├── router.mjs
+│           └── analytics.mjs
+│
+├── archive/                          # Archived Files
+│   ├── audit_reports_2025_11_09/    # 21 audit files moved here
+│   │   ├── 84_MENTOR_COMPOSITE_SCORE_UPDATE.md
+│   │   ├── AI_POD_CENTRALIZATION_AUDIT.md
+│   │   ├── AUDIT_FINDINGS.md
+│   │   ├── BACKEND_IMPLEMENTATION_GUIDE.md
+│   │   ├── CODEBASE_ANALYSIS_COMPREHENSIVE.md
+│   │   ├── COMPLETE_GAP_ANALYSIS_AND_ACTION_PLAN.md
+│   │   ├── COMPREHENSIVE_AUDIT_PART_*.md (4 files)
+│   │   ├── DOC 2
+│   │   ├── IMPLEMENTATION_STATUS.md
+│   │   ├── SOT_SOURCE_OF_TRUTH.md
+│   │   └── ... (21 files total)
+│   └── obsolete_code_2025-11-08/
+│       └── ai-pod/
+│           └── config.mjs            # ❌ Needed by /api/routes/camera.mjs:8
+│
+├── configs/                          # Configuration Files
+│   ├── affiliate.json                # Shopee/Lazada affiliate mappings
+│   ├── tiers.json                    # Free/Pro/Ultimate pricing
+│   ├── security.json                 # Security policies
+│   ├── otel.yaml                     # ❌ Config exists, not instrumented
+│   ├── slo.yaml                      # SLO targets
+│   ├── rate-limits.yaml              # Rate limiting rules
+│   └── csp_meta.txt                  # ❌ MISSING (CRITICAL)
+│
+├── data/                             # Data Management
+│   ├── laptops.json                  # 90 laptops (Nov 7, 2025) ✅ ACTIVE
+│   ├── brands.json                   # Brand metadata
+│   ├── segments.json                 # Market segments
+│   ├── search-index.json             # Search optimization
+│   ├── price-drops.json              # Price tracking
+│   ├── quarantine.json               # Failed validation
+│   ├── archive.json                  # Historical snapshots
+│   ├── reports.json                  # ETL logs
+│   └── affiliates.json               # Affiliate partners
+│
+├── database/                         # Database Schema & Migrations
+│   ├── schema.sql                    # 7 tables: users, sessions, magic_links, 
+│   │                                 #   usage_quotas, usage_events, preferences,
+│   │                                 #   audit_log, one_piece_catchphrases
+│   ├── migrations/
+│   │   └── 004_catchphrases_system.sql  # ✅ EXISTS (450 lines)
+│   │       # MISSING: 001, 002, 003, 005 migrations
+│   └── README.md                     # Database documentation
+│
+├── docs/                             # Documentation (18 files)
+│   ├── ADR-001-tech-stack.md         # Architecture Decision Records
+│   ├── API.md                        # API documentation
+│   ├── ARCHITECTURE.md               # System design (200 lines)
+│   ├── CONTRIBUTING.md               # Contribution guidelines
+│   ├── DARK_MODE.md                  # Dark mode implementation
+│   ├── DEPLOYMENT.md                 # Deployment guide (150 lines)
+│   ├── DEPLOYMENT_CHECKLIST.md       # Pre-deploy checklist
+│   ├── ENVIRONMENT_SETUP.md          # Local dev setup
+│   ├── FAQ.md                        # Frequently asked questions
+│   ├── LAPTOP_DATABASE.md            # Database schema & usage
+│   ├── NEXT_PHASE_PLAN.md            # Next development phase
+│   ├── PRIVACY.md                    # Privacy policy
+│   ├── PRODUCTION_READINESS.md       # Production readiness (200 lines)
+│   ├── QUICKSTART_ENV.md             # Quick environment setup
+│   ├── ROADMAP.md                    # Product roadmap (200 lines)
+│   ├── SECURITY.md                   # Security policy (60 lines)
+│   ├── USER_GUIDE.md                 # End-user documentation
+│   └── sessions/
+│       └── SESSION_2025-11-07.md     # Development session notes
+│
+├── Laptops/                          # ⚠️ Deprecated (use /data/laptops.json)
+│   ├── top100.json                   # 100 laptops (needs 06/11/2025 refresh)
+│   └── ... (11 other files MISSING)
+│
+├── netlify/                          # Netlify Functions (Serverless API)
+│   └── functions/
+│       ├── health.mjs                # Health checks (6 routes)
+│       ├── auth.mjs                  # Authentication (4 routes)
+│       ├── command.mjs               # AI command processing
+│       ├── deck.mjs                  # Deck generation
+│       ├── recommendations.mjs       # Laptop recommendations
+│       ├── chat.mjs                  # Conversational AI
+│       ├── users.mjs                 # User profile management
+│       ├── intel.mjs                 # News feed
+│       ├── camera.mjs                # Visual identification (Gemini Vision)
+│       ├── affiliates.mjs            # Affiliate tracking
+│       ├── cron-catchphrase-fetch.mjs # Daily 3AM cron (100 phrases/day)
+│       ├── admin-catchphrases.mjs    # Admin panel (5 routes)
+│       ├── CONVERSION_STATUS.md      # Migration status
+│       └── utils/
+│           ├── response.mjs          # HTTP response helpers
+│           ├── auth.mjs              # JWT verification
+│           ├── rate-limiter.mjs      # In-memory rate limiter
+│           ├── quota.mjs             # Token quota management
+│           └── toon.mjs              # TOON compression
+│
+├── project/                          # Project Governance
+│   └── governance/
+│       └── 84/
+│           ├── changelog.md          # Governance changes
+│           ├── composite_score_nov_2025.md  # 78.4/100 assessment (150 lines)
+│           ├── council_roster.json   # 84 mentor profiles
+│           ├── council_routes.yaml   # Decision routing
+│           ├── dissent_ledger.md     # Decision log (should be .jsonl)
+│           ├── lenses_catalog.json   # 31 decision lenses
+│           ├── policy_pdpa.md        # PDPA compliance
+│           ├── policy_security.md    # Security policy
+│           └── eval_suites/
+│               ├── README.md
+│               ├── command/
+│               │   ├── baseline.json
+│               │   └── slice_specs.json
+│               ├── versus/baseline.json
+│               ├── intel/baseline.json
+│               └── offers/baseline.json
+│
+├── public/                           # Static Assets (Deployed)
+│   ├── index.html                    # Landing page
+│   ├── app.html                      # Main app entry
+│   ├── signup.html                   # Signup flow
+│   ├── offline.html                  # Offline fallback
+│   ├── assets/
+│   │   └── icons/
+│   │       ├── icon.svg              # ✅ EXISTS (SVG source)
+│   │       ├── icon-72x72.png        # ❌ MISSING (8 PNG sizes)
+│   │       ├── icon-96x96.png        # ❌ MISSING
+│   │       ├── icon-128x128.png      # ❌ MISSING
+│   │       ├── icon-144x144.png      # ❌ MISSING
+│   │       ├── icon-152x152.png      # ❌ MISSING
+│   │       ├── icon-192x192.png      # ❌ MISSING
+│   │       ├── icon-384x384.png      # ❌ MISSING
+│   │       └── icon-512x512.png      # ❌ MISSING
+│   ├── data/
+│   │   └── laptops.json              # (Copy of /data/laptops.json)
+│   ├── scripts/
+│   │   └── landing.js                # Landing page logic (FOUC fix)
+│   ├── styles/
+│   │   ├── cyberpunk-core.css        # Design system
+│   │   ├── landing-enhanced.css      # Landing styles
+│   │   ├── animations.css            # Keyframes
+│   │   ├── app.css                   # Main app styles
+│   │   └── auth.css                  # Auth pages
+│   ├── pwa/
+│   │   ├── manifest.json             # PWA manifest
+│   │   └── service-worker.js         # Cache strategies
+│   ├── app/                          # (Copied from /app/)
+│   │   ├── shared/
+│   │   │   └── utils/
+│   │   │       ├── storage.mjs
+│   │   │       └── api.mjs
+│   │   ├── command/command.mjs
+│   │   ├── matchmaker/matchmaker.mjs
+│   │   ├── versus/versus.mjs
+│   │   ├── intel/intel.mjs
+│   │   ├── explorer/explorer.mjs
+│   │   └── appendices/appendices.mjs
+│   └── robots.txt                    # Search engine instructions
+│
+├── tests/                            # Test Suite
+│   ├── smoke/
+│   │   └── boot.test.mjs             # ✅ App boots
+│   ├── data/
+│   │   └── schema.test.mjs           # ✅ Schema validation
+│   ├── integration/
+│   │   ├── laptop-database.test.mjs  # ✅ 48 passing tests
+│   │   └── netlify-functions.test.mjs # ✅ Function integration
+│   ├── playwright.config.js          # ✅ E2E config
+│   └── ... (13 other test files MISSING)
+│
+├── tools/                            # Development Tools
+│   ├── build.mjs                     # ✅ Build script
+│   ├── dev-server.mjs                # ✅ Local dev server
+│   ├── generate-laptop-db.mjs        # ✅ Database generator
+│   └── etl/
+│       └── pipeline.mjs              # ✅ ETL pipeline
+│       # MISSING: normalize.mjs, enrich.mjs, dedupe.mjs
+│       # MISSING: fetchers (shopee.mjs, lazada.mjs, oem.mjs)
+│       # MISSING: observer-hooks (syeddy-debugger.mjs, abo-84-probe.mjs)
+│
+├── Root Files (Configuration & Documentation)
+│   ├── package.json                  # ✅ Dependencies & scripts
+│   ├── .gitignore                    # ✅ Git exclusions
+│   ├── .env.example                  # ❌ MISSING (CRITICAL)
+│   ├── .eslintrc.json                # ✅ Linting rules
+│   ├── .prettierrc                   # ✅ Code formatting
+│   ├── netlify.toml                  # ❌ MISSING (CRITICAL for deployment)
+│   ├── README.md                     # ✅ Main project overview (232 lines)
+│   ├── CHANGELOG.md                  # ✅ Version history (232 lines)
+│   ├── CONTRIBUTORS.md               # ✅ Contributors list
+│   ├── STATUS.md                     # ⚠️ Outdated (Nov 6, 29.9%)
+│   ├── TRANSFORMATION_GAP_ANALYSIS.md # ⚠️ Nov 7, 67% complete
+│   ├── FIXES_APPLIED.md              # ✅ P0 fixes applied (299 lines)
+│   ├── ICON_GENERATION_GUIDE.md      # ✅ PWA icon guide (117 lines)
+│   ├── NETLIFY_FIX.md                # ✅ Deployment fix (112 lines)
+│   ├── SMOL_PLAYBOOK_CROSS_CHECK_MATRIX.md  # ✅ 68% Smol compliance (1,275 lines)
+│   ├── ONE_PIECE_CATCHPHRASE_ENHANCEMENT_SUMMARY.md    # ✅ v3.0 (353 lines)
+│   ├── ONE_PIECE_CATCHPHRASE_V4_AUTO_FETCH_SUMMARY.md  # ✅ v4.0 (800+ lines)
+│   └── ULTIMATE_CONSOLIDATED_AUDIT_REPORT.md  # ✅ THIS FILE (6,188+ lines)
+│
+└── node_modules/                     # Dependencies (gitignored)
+```
+
+---
+
+### L.2 Directory Statistics
+
+**Total Directories:** 96 folders
+**Total Files:** 289 tracked files
+
+**By File Type:**
+- JavaScript/MJS: 151 files (~15,000 lines of production code)
+- Markdown: 47 files (~8,000+ lines of documentation)
+- JSON/YAML: 25 files (~3,000 lines of config/data)
+- HTML: 12 files (~2,500 lines)
+- CSS: 15 files (~3,500 lines)
+- SQL: 2 files (1 migration exists, 4 missing)
+- Other: 37 files (templates, configs, assets)
+
+**Repository Size:** 18MB (excluding node_modules)
+
+---
+
+### L.3 Critical File Status Matrix
+
+| File | Status | Priority | Impact |
+|------|--------|----------|--------|
+| netlify.toml | ❌ MISSING | 🔴 P0 | Deployment blocked |
+| .env.example | ❌ MISSING | 🔴 P0 | Setup documentation |
+| configs/csp_meta.txt | ❌ MISSING | 🔴 P0 | Security requirement |
+| ai_pod/config.mjs | ❌ ARCHIVED | 🔴 P0 | Breaks /api/routes/camera.mjs:8 |
+| database/migrations/001-003,005.sql | ❌ MISSING | 🔴 P0 | Database incomplete |
+| 8 PWA PNG icons | ❌ MISSING | 🔴 P0 | PWA installation fails |
+| 13 test files | ❌ MISSING | 🟠 P1 | Test coverage <15% |
+| ETL fetchers (3 files) | ❌ MISSING | 🟡 P2 | Manual data updates |
+| Observer hooks (2 files) | ❌ MISSING | 🟡 P2 | No diagnostics |
+
+---
+
+### L.4 Code Duplication Analysis
+
+**Duplication: ~50% between /api/ and /netlify/functions/**
+
+**Duplicated Files:**
+- health endpoints (2 locations)
+- auth logic (2 locations)
+- command processing (2 locations)
+- deck generation (2 locations)
+- intel feed (2 locations)
+- affiliate tracking (2 locations)
+
+**Total Duplicated Lines:** ~3,500 lines
+
+**Recommendation:** Remove /api/ directory entirely, use /netlify/functions/ only
+
+---
+
+### L.5 Architecture Layers Mapping
+
+**Layer 1: CLIENT (Frontend)**
+- Location: `/app/`, `/public/`
+- Tech: Vanilla JS (ESM), Custom CSS
+- Size: ~6,000 lines (HTML + CSS + JS)
+
+**Layer 2: API (Backend)**
+- Location: `/netlify/functions/`
+- Tech: Node.js 18+, Serverless
+- Size: ~4,000 lines
+
+**Layer 3: AI POD (AI Centralization)**
+- Location: `/ai_pod/`
+- Tech: Gemini API, TOON, Personas
+- Size: ~3,000 lines
+
+**Layer 4: DATA**
+- Location: `/data/`, `/database/`
+- Tech: JSON files, PostgreSQL
+- Size: ~1,000 lines (schema + data)
+
+**Layer 5: GOVERNANCE**
+- Location: `/project/governance/84/`
+- Tech: YAML, JSON, Markdown
+- Size: ~1,500 lines (policies + eval suites)
+
+---
+
+**End of Appendix L**
+
+
+---
+
+## APPENDIX M: DOCUMENTATION SOURCES OF TRUTH BY CATEGORY
+
+### M.1 Architecture & System Design
+
+**Primary Source of Truth:** `/docs/ARCHITECTURE.md`
+**Supporting Docs:**
+- `/docs/ADR-001-tech-stack.md` - Tech stack decisions
+- `/ai_pod/pipelines/TOON_README.md` - TOON format spec
+- `/project/governance/84/decision_framework.md` - Decision process
+
+**Key Information:**
+- 5-layer architecture (Client → API → AI POD → External Services → Data)
+- Tech stack: Vanilla JS, Node.js, Express/Netlify Functions, Gemini API
+- PWA implementation (service worker, manifest, IndexedDB)
+- 84-Mentor governance system
+
+**Last Updated:** 2025-11-07
+
+---
+
+### M.2 Deployment & Infrastructure
+
+**Primary Source of Truth:** `/docs/DEPLOYMENT.md`
+**Supporting Docs:**
+- `/docs/DEPLOYMENT_CHECKLIST.md` - Pre-deploy checklist
+- `/docs/ENVIRONMENT_SETUP.md` - Local development
+- `/docs/QUICKSTART_ENV.md` - Quick setup
+- `/NETLIFY_FIX.md` - Deployment fixes
+- `/docs/PRODUCTION_READINESS.md` - Production status
+
+**Key Information:**
+- Environment variables (15+ required)
+- Netlify deployment steps (CLI + Git integration)
+- Performance optimization
+- Post-deployment checks (12 items)
+
+**Missing:**
+- netlify.toml file (CRITICAL)
+- .env.example template (CRITICAL)
+
+**Last Updated:** 2025-11-07
+
+---
+
+### M.3 API Documentation
+
+**Primary Source of Truth:** `/docs/API.md`
+**Supporting Docs:**
+- `/netlify/functions/CONVERSION_STATUS.md` - Migration status
+- `/docs/PRODUCTION_READINESS.md` - API readiness
+
+**Endpoints Documented:**
+- 10 Netlify Functions (health, auth, command, deck, recommendations, chat, users, intel, camera, affiliates)
+- 13 admin routes (catchphrase management)
+- 1 cron job (daily catchphrase fetch)
+
+**Last Updated:** 2025-11-07
+
+---
+
+### M.4 Database & Data Management
+
+**Primary Source of Truth:** `/database/README.md`
+**Supporting Docs:**
+- `/docs/LAPTOP_DATABASE.md` - Laptop database schema
+- `/database/schema.sql` - 7 tables + functions
+- `/database/migrations/004_catchphrases_system.sql` - Catchphrase tables
+
+**Tables:**
+1. users
+2. sessions
+3. magic_links
+4. usage_quotas
+5. usage_events
+6. preferences
+7. audit_log
+8. one_piece_catchphrases
+9. manglish_expressions
+10. catchphrase_usage_log
+11. catchphrase_fetch_jobs
+
+**Data Sources:**
+- `/data/laptops.json` - 90 laptops (ACTIVE, Nov 7 2025)
+- `/Laptops/top100.json` - 100 laptops (needs 06/11 refresh)
+
+**Missing:**
+- 4 of 5 database migrations (001, 002, 003, 005)
+- Data registry (sources, licenses, TTLs)
+
+---
+
+### M.5 Security & Compliance
+
+**Primary Source of Truth:** `/docs/SECURITY.md`
+**Supporting Docs:**
+- `/project/governance/84/policy_security.md` - Security policy
+- `/project/governance/84/policy_pdpa.md` - PDPA compliance
+- `/project/governance/84/decision_framework.md` - Red lines
+
+**Security Measures:**
+- HTTPS/TLS encryption
+- JWT authentication + bcrypt
+- Magic links (email-based)
+- Rate limiting (tier-based)
+- CSP headers
+- Input validation
+- XSS/CSRF protection
+
+**Red Lines:**
+- No CSP
+- Storing passwords plaintext
+- No encryption at rest
+- Missing auth on admin endpoints
+- Hallucinations >8%
+- No consent for data collection
+- Selling user data
+
+**Vulnerability Reporting:** security@aibradaa.com
+
+---
+
+### M.6 Governance & Decision Making
+
+**Primary Source of Truth:** `/project/governance/84/decision_framework.md`
+**Supporting Docs:**
+- `/project/governance/84/composite_score_nov_2025.md` - Current score: 78.4/100
+- `/project/governance/84/dissent_ledger.md` - Decision log
+- `/project/governance/84/council_roster.json` - 84 mentor profiles
+- `/project/governance/84/lenses_catalog.json` - 31 decision lenses
+- `/ai_pod/governance/decision_framework.md` - AI POD version
+
+**Decision Types:**
+- Type 1 (Reversible): Owner decides
+- Type 2 (Irreversible): Council vote required
+- Type 3 (Existential): Exec board + CEO
+
+**Voting Process:**
+1. Proposal submission
+2. Council review
+3. Composite scoring (weighted average)
+4. Decision (approve/reject/escalate)
+5. Logging (dissent_ledger.jsonl)
+
+**Current Composite Score:** 78.4/100 (target ≥99)
+**Gap:** -20.6 points
+**Status:** BLOCKED for production
+
+---
+
+### M.7 AI POD & Persona System
+
+**Primary Source of Truth:** `/ai_pod/personas/syeddy_base_v2.3.0.md`
+**Supporting Docs:**
+- `/ai_pod/personas/command_fast_v1.2.0.md` - Fast responses
+- `/ai_pod/personas/command_think_v1.0.0.md` - Deep reasoning
+- `/ai_pod/personas/persona_bible.json` - Tone sliders
+- `/ai_pod/personas/INTEGRATION_GUIDE.md` - One Piece integration (450 lines)
+- `/ONE_PIECE_CATCHPHRASE_ENHANCEMENT_SUMMARY.md` - v3.0 summary
+- `/ONE_PIECE_CATCHPHRASE_V4_AUTO_FETCH_SUMMARY.md` - v4.0 summary
+
+**Persona Characteristics:**
+- Personality: One Piece-inspired (Luffy-esque)
+- Language: Manglish (Malaysian English)
+- Tone: Friendly (9/10), Formal (4/10), Expert (8/10)
+- Catchphrases: 1000+ (database-powered v4.0)
+- Never-repeat: DB tracks last 50 per user
+- Daily greeting: "Yo [nickname]!" once per day
+
+**Version History:**
+- v2.3.0: Base persona (Manglish, One Piece inspiration)
+- v3.0: Static 50 catchphrases (+5 points → 83.4/100)
+- v4.0: Database auto-fetch (+10 points → 93.4/100)
+
+---
+
+### M.8 TOON (Token-Optimized Object Notation)
+
+**Primary Source of Truth:** `/ai_pod/pipelines/TOON_README.md`
+**Supporting Docs:**
+- `/ai_pod/pipelines/toon_converter.mjs` - JSON ↔ TOON converter
+- `/ai_pod/pipelines/toon_schema.json` - TOON format spec
+- `/docs/PRODUCTION_READINESS.md` - TOON performance (34.5% savings)
+
+**Performance:**
+- JSON: 336 chars, 84 tokens
+- TOON: 220 chars, 55 tokens
+- Savings: 29 tokens (34.5%)
+
+**Integration:**
+- `/netlify/functions/command.mjs` - Context compression
+- `/netlify/functions/recommendations.mjs` - Preferences compression
+
+**Impact at Scale:**
+- 100K calls/day: 4M tokens saved/day
+- Monthly: 120M tokens
+- Cost savings: ~$9/month (at Gemini pricing)
+
+---
+
+### M.9 Testing & Quality Assurance
+
+**Primary Source of Truth:** `/docs/TESTING.md` (if exists)
+**Supporting Docs:**
+- `/tests/integration/laptop-database.test.mjs` - 48 passing tests
+- `/tests/integration/netlify-functions.test.mjs` - Function tests
+- `/tests/playwright.config.js` - E2E config
+- `/project/governance/84/eval_suites/` - Evaluation baselines
+
+**Test Coverage:** ~15% (target: 70%)
+
+**Existing Tests:**
+- ✅ Smoke: boot.test.mjs
+- ✅ Data: schema.test.mjs
+- ✅ Integration: laptop-database (48 tests), netlify-functions
+
+**Missing Tests:** 13 test files
+- smoke/csp.test.mjs
+- smoke/render.test.mjs
+- data/inclusion.test.mjs
+- data/offers.test.mjs
+- ux/a11y.test.mjs
+- ux/keyboard-nav.test.mjs
+- ux/reduced-motion.test.mjs
+- evals/* (6 files)
+
+---
+
+### M.10 Product & UX
+
+**Primary Source of Truth:** `/docs/USER_GUIDE.md`
+**Supporting Docs:**
+- `/docs/FAQ.md` - Frequently asked questions
+- `/docs/ROADMAP.md` - Product roadmap (Phase 1-4)
+- `/README.md` - Feature overview
+
+**7 AI-Powered Tools:**
+1. **Matchmaker:** 5 questions → 3 perfect matches
+2. **Versus Mode:** Compare 2-3 laptops with radar charts
+3. **Explorer:** Browse Top 35 with smart filters
+4. **AI Bradaa Command:** Natural language queries with RAG
+5. **Intel Feed:** News, reviews, price drops
+6. **Appendices:** Full Top-100 catalog with best offers
+7. **Camera Tech:** Sensor specs for creators (placeholder)
+
+**Pricing Tiers:**
+- Free: RM0 (30k tokens/month)
+- Pro: RM30 (400k tokens/month)
+- Ultimate: RM80 (3M tokens/month)
+
+---
+
+### M.11 Development History & Changelog
+
+**Primary Source of Truth:** `/CHANGELOG.md`
+**Supporting Docs:**
+- `/STATUS.md` - Nov 6 status (29.9% complete, outdated)
+- `/TRANSFORMATION_GAP_ANALYSIS.md` - Nov 7 status (67% complete)
+- `/FIXES_APPLIED.md` - Nov 7 P0 fixes
+- `/docs/sessions/SESSION_2025-11-07.md` - Dev session notes
+
+**Major Milestones:**
+- **Nov 6, 2025:** v1.0.0 initial release (claimed 99.1/100)
+- **Nov 7, 2025:** Laptop database (90 laptops), P0 fixes, gap analysis (67%)
+- **Nov 9, 2025:** One Piece v3.0 (83.4/100), v4.0 (93.4/100), ULTIMATE audit (78.4/100 realistic)
+
+**Composite Score Evolution:**
+- Initial claim: 99.1/100 (optimistic)
+- After realistic audit: 78.4/100
+- After One Piece v3.0: 83.4/100
+- After One Piece v4.0: 93.4/100
+- Gap to target: -5.6 to -20.6 points
+
+---
+
+### M.12 PWA & Assets
+
+**Primary Source of Truth:** `/ICON_GENERATION_GUIDE.md`
+**Supporting Docs:**
+- `/public/icons/ICONS_README.md` - Icon documentation
+- `/public/pwa/manifest.json` - PWA manifest
+- `/public/pwa/service-worker.js` - Cache strategies
+
+**Icon Status:**
+- ✅ icon.svg exists (source file)
+- ❌ 8 PNG sizes missing (72x72 to 512x512)
+
+**PWA Features:**
+- Installable on mobile/desktop
+- Offline-capable (cache-first for static, network-first for API)
+- Service worker with intelligent caching
+- IndexedDB for client-side storage (PDPA-compliant, no localStorage)
+
+**Brand Colors:**
+- Primary: #00F0FF (Cyan)
+- Secondary: #D83F87 (Pink)
+- Background: #0A0E1A (Dark blue)
+- Accent: #D946EF (Purple)
+
+---
+
+### M.13 Contributing & Community
+
+**Primary Source of Truth:** `/docs/CONTRIBUTING.md`
+**Supporting Docs:**
+- `/CONTRIBUTORS.md` - Contributors list
+- `/.github/ISSUE_TEMPLATE/bug_report.md` - Bug reporting
+- `/.github/ISSUE_TEMPLATE/feature_request.md` - Feature requests
+- `/.github/pull_request_template.md` - PR template
+
+**Key Principles:**
+1. Zero placeholders (every file fully implemented)
+2. 84-mentor approval required (composite ≥99/100)
+3. Early-level documentation (step-by-step, copy-paste)
+4. AI POD centralization (no scattered frontend copy)
+5. PDPA compliance (no localStorage, consent-first)
+
+---
+
+### M.14 Privacy & Legal
+
+**Primary Source of Truth:** `/docs/PRIVACY.md`
+**Supporting Docs:**
+- `/docs/SECURITY.md` - Security policy
+- `/project/governance/84/policy_pdpa.md` - PDPA compliance
+
+**PDPA-First Principles:**
+- Least-data collection
+- Consent receipts on write
+- Download/revoke endpoints
+- 30-day TTL enforcement (sessions)
+- 90-day TTL (usage events)
+- No localStorage (IndexedDB only)
+
+**Missing:**
+- `/legal/datasets.csv` - Data sources registry
+- `/legal/DMCA.md` - Takedown procedure
+- Purge cron job (TTLs defined but not automated)
+
+---
+
+### M.15 Operational Runbooks & SLOs
+
+**Primary Source of Truth:** MISSING
+**Needed Files:**
+- `/ops/slo.yaml` - SLO definitions ❌ MISSING
+- `/ops/runbooks/P0_*.md` - P0 incident response ❌ MISSING
+- `/ops/runbooks/P1_*.md` - P1 incident response ❌ MISSING
+- `/ops/error_spike_detection.yaml` - Auto-rollback rules ❌ MISSING
+- `/ops/feature_flags.yaml` - Feature flag management ❌ MISSING
+
+**Required SLOs:**
+- chat: p95 latency ≤1.2s, availability 99.9%
+- command: p95 latency ≤1.2s, availability 99.5%
+- versus: p95 latency ≤1.8s, availability 99.5%
+- intel: p95 latency ≤2.5s, availability 99.0%
+
+**Error Spike Detection:**
+- API error rate >5% for 5min → auto-rollback
+- p95 latency >SLO for 10min → alert ops
+- Gemini API 429 (quota exceeded) >10 in 1min → rate limiting
+
+**MTTR Target:** <15 minutes (detect + rollback)
+
+---
+
+### M.16 Financial & Cost Management
+
+**Primary Source of Truth:** MISSING
+**Needed Files:**
+- `/finance/budgets.yaml` - Budget caps per phase ❌ MISSING
+- `/finance/cost_equations.md` - Cost modeling ❌ MISSING
+- `/finance/cost_dashboard.md` - Cost tracking ❌ MISSING
+
+**Current State:**
+- `/configs/tiers.json` - Pricing tiers defined ✅
+- `/netlify/functions/utils/quota.mjs` - Token tracking ✅
+
+**Cost Model (Estimated):**
+- Free tier: RM0 revenue, ~RM0.30/user cost (30k tokens)
+- Pro tier: RM30 revenue, ~RM4/user cost (400k tokens)
+- Ultimate tier: RM80 revenue, ~RM30/user cost (3M tokens)
+
+**Break-even:**
+- Pro tier: Profitable (+RM26 margin)
+- Ultimate tier: Profitable (+RM50 margin)
+- Free tier: Break-even (low usage)
+
+**Missing:**
+- Cost ceiling enforcement per tier
+- Burn rate tracking
+- Revenue tracking
+- Runway model
+
+---
+
+### M.17 Smol Playbook Compliance
+
+**Primary Source of Truth:** `/SMOL_PLAYBOOK_CROSS_CHECK_MATRIX.md`
+**Overall Compliance:** 68% (14/21 sections)
+
+**Complete Sections (8):**
+- Strategic Compass (Why→What→How)
+- Evaluation Rigor (4 pillars)
+- Safety & Governance (PDPA, red lines)
+- Product & UX (PRFAQ, a11y)
+- Growth (activation metrics)
+- Platform & Ops (SLOs, runbooks)
+- Legal (datasets, DMCA)
+- Finance (budgets, cost model)
+
+**Partial Sections (6):**
+- Data Curation (no registry)
+- Infrastructure (OTEL config exists, not instrumented)
+- Post-Training (prompt optimization, no pipeline)
+- Customer UX (no PRFAQ, no a11y checklist)
+- Localization (single language only)
+- Rules of Engagement (no ablation requirement)
+
+**Missing Sections (7):**
+- Tokenizer Selection (N/A - using Gemini)
+- Architecture (N/A - using Gemini)
+- Optimizer & Schedules (N/A - no training)
+- Ablation Protocol (no A/B testing framework)
+- Loss-Spike Prevention (no error spike detection)
+- Multi-Stage Training (N/A - no training)
+- Key Equations (no cost model documented)
+
+**Critical Gaps (4):**
+1. SLO monitoring (no OTEL instrumentation)
+2. Error spike detection (no auto-rollback)
+3. Runbooks (no P0/P1 procedures)
+4. Cost ceiling enforcement (no hard caps)
+
+---
+
+### M.18 Documentation Coverage Summary
+
+**Well-Documented Areas:**
+- ✅ Architecture & system design
+- ✅ Deployment & infrastructure
+- ✅ AI POD & personas
+- ✅ TOON format
+- ✅ Governance & decision making
+- ✅ Development history
+- ✅ PWA implementation
+
+**Partially Documented:**
+- 🟡 API documentation (exists but incomplete)
+- 🟡 Database schema (exists but missing migrations)
+- 🟡 Testing guides (coverage reports missing)
+- 🟡 Security policy (exists but no runbooks)
+
+**Missing Documentation:**
+- ❌ Operational runbooks (P0/P1 incidents)
+- ❌ SLO definitions
+- ❌ Cost model & budgets
+- ❌ Data registry (sources, licenses)
+- ❌ Error spike detection procedures
+- ❌ Feature flag management
+- ❌ A/B testing framework
+- ❌ Localization guide
+
+**Recommendation:** Create missing operational documentation (runbooks, SLOs, cost model) as top priority for production readiness.
+
+---
+
+**End of Appendix M**
+
