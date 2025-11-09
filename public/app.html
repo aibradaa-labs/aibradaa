@@ -160,8 +160,12 @@
                 <div class="user-tier" id="userTier">Free Tier</div>
               </div>
               <div class="dropdown-divider"></div>
+              <!-- Download ABO-84 (Ultimate users only) -->
+              <a href="/downloads/abo84.html" class="dropdown-item" id="downloadABO84Link" style="display: none;">
+                ⬇️ Download ABO-84
+              </a>
               <a href="#settings" class="dropdown-item">⚙️ Settings</a>
-              <a href="#upgrade" class="dropdown-item">⭐ Upgrade</a>
+              <a href="#upgrade" class="dropdown-item" id="upgradeLink">⭐ Upgrade</a>
               <div class="dropdown-divider"></div>
               <button class="dropdown-item" id="logoutBtn">🚪 Logout</button>
             </div>
@@ -1451,10 +1455,30 @@
             if (authState.user.avatar) {
               document.getElementById('userAvatar').src = authState.user.avatar;
             }
+
+            // Show/hide ABO-84 download link based on tier
+            const downloadLink = document.getElementById('downloadABO84Link');
+            const upgradeLink = document.getElementById('upgradeLink');
+
+            if (authState.user.tier === 'ultimate') {
+              // Show download link for Ultimate users
+              if (downloadLink) downloadLink.style.display = 'block';
+              // Hide upgrade link for Ultimate users
+              if (upgradeLink) upgradeLink.style.display = 'none';
+            } else {
+              // Hide download link for non-Ultimate users
+              if (downloadLink) downloadLink.style.display = 'none';
+              // Show upgrade link
+              if (upgradeLink) upgradeLink.style.display = 'block';
+            }
           } else {
             // Guest mode
             document.getElementById('userName').textContent = 'Guest';
             document.getElementById('userTier').textContent = 'Free Tier';
+
+            // Hide download link for guests
+            const downloadLink = document.getElementById('downloadABO84Link');
+            if (downloadLink) downloadLink.style.display = 'none';
           }
         });
 

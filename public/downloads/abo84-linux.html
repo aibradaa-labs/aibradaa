@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABO-84 for Linux | Download & Installation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/cyberpunk-core.css">
+    <link rel="stylesheet" href="../styles/landing-enhanced.css">
+    <link rel="stylesheet" href="../styles/mobile-first.css">
+    <style>
+        .platform-hero{padding:120px 20px 60px;text-align:center}.platform-icon-large{font-size:5rem;margin-bottom:20px}.step-by-step{max-width:900px;margin:60px auto}.step{background:rgba(16,20,30,0.7);border:1px solid rgba(168,178,204,0.1);border-radius:16px;padding:30px;margin-bottom:30px;transition:all .3s ease}.step:hover{border-color:rgba(0,240,255,0.3)}.step-number{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;background:linear-gradient(135deg,#00F0FF,#0099CC);color:#010409;border-radius:50%;font-weight:900;font-size:1.2rem;margin-bottom:15px;font-family:'Orbitron',sans-serif}.step h3{color:#fff;margin-bottom:15px;font-family:'Orbitron',sans-serif}.step p{color:#A8B2CC;line-height:1.8}.code-block{background:rgba(0,0,0,0.5);border:1px solid rgba(0,240,255,0.2);border-radius:8px;padding:15px;margin:15px 0;font-family:'Share Tech Mono',monospace;color:#00F0FF;overflow-x:auto}.download-btn-large{display:inline-flex;align-items:center;gap:10px;padding:20px 40px;background:linear-gradient(135deg,#00F0FF,#0099CC);color:#010409;text-decoration:none;border-radius:8px;font-weight:700;font-size:1.2rem;transition:all .3s ease;font-family:'Orbitron',sans-serif;margin:20px 0;cursor:pointer;border:none}.download-btn-large:hover{background:linear-gradient(135deg,#00F0FF,#00D4FF);transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,240,255,0.4)}.info-box{background:rgba(0,240,255,0.1);border-left:4px solid #00F0FF;padding:20px;margin:20px 0;border-radius:8px;color:#A8B2CC}.specs-table{width:100%;border-collapse:collapse;margin:20px 0}.specs-table td{padding:12px;border-bottom:1px solid rgba(168,178,204,0.1)}.specs-table td:first-child{color:#7B8AA8;width:30%}.specs-table td:last-child{color:#00F0FF;font-family:'Share Tech Mono',monospace}.package-selector{display:flex;gap:20px;justify-content:center;margin:30px 0;flex-wrap:wrap}.package-btn{padding:15px 30px;background:rgba(0,240,255,0.1);border:2px solid rgba(0,240,255,0.3);border-radius:8px;color:#00F0FF;font-family:'Orbitron',sans-serif;font-weight:700;cursor:pointer;transition:all .3s ease}.package-btn:hover,.package-btn.active{background:rgba(0,240,255,0.2);border-color:#00F0FF}
+    </style>
+</head>
+<body>
+    <div class="aurora-bg"></div>
+    <div class="grid-overlay"></div>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="brand">
+                    <img src="/icons/icon-192.png" alt="AI Bradaa" class="brand-icon" width="40" height="40">
+                    <span class="brand-name font-display">AI Bradaa</span>
+                </div>
+                <div class="header-actions">
+                    <a href="abo84.html" class="btn btn-secondary">← All Downloads</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="platform-hero">
+            <div class="container">
+                <div class="platform-icon-large">🐧</div>
+                <h1 style="font-size:3rem;color:#fff;font-family:'Orbitron',sans-serif;margin-bottom:20px">ABO-84 for Linux</h1>
+                <p style="color:#A8B2CC;font-size:1.2rem;margin-bottom:30px">AppImage and .deb packages for major Linux distributions</p>
+                <table class="specs-table" style="max-width:600px;margin:30px auto">
+                    <tr><td>Version</td><td>1.0.0-beta</td></tr>
+                    <tr><td>File Size</td><td>~142 MB</td></tr>
+                    <tr><td>Requirements</td><td>Ubuntu 20.04+ or equivalent</td></tr>
+                    <tr><td>Formats</td><td>AppImage, .deb, .rpm</td></tr>
+                </table>
+                <div class="package-selector">
+                    <button class="package-btn active" data-format="appimage">AppImage (Universal)</button>
+                    <button class="package-btn" data-format="deb">DEB (Debian/Ubuntu)</button>
+                    <button class="package-btn" data-format="rpm">RPM (Fedora/RHEL)</button>
+                </div>
+                <button class="download-btn-large" id="downloadBtn">
+                    <span>⬇️</span><span>Download <span id="formatName">AppImage</span></span><span>(142 MB)</span>
+                </button>
+                <div class="info-box"><strong>🐧 Universal AppImage:</strong> Recommended for maximum compatibility across distributions. No installation required.</div>
+            </div>
+        </section>
+        <section class="step-by-step">
+            <div class="container">
+                <h2 style="text-align:center;color:#fff;font-family:'Orbitron',sans-serif;font-size:2.5rem;margin-bottom:40px">Installation Guide</h2>
+                <div class="step" id="appimageSteps">
+                    <div class="step-number">1</div>
+                    <h3>Download and Make Executable (AppImage)</h3>
+                    <div class="code-block">
+                        # Download<br>
+                        wget https://downloads.aibradaa.com/abo84/ABO-84-1.0.0-beta.AppImage<br>
+                        <br>
+                        # Make executable<br>
+                        chmod +x ABO-84-1.0.0-beta.AppImage<br>
+                        <br>
+                        # Run<br>
+                        ./ABO-84-1.0.0-beta.AppImage
+                    </div>
+                </div>
+                <div class="step" id="debSteps" style="display:none">
+                    <div class="step-number">1</div>
+                    <h3>Install DEB Package</h3>
+                    <div class="code-block">
+                        # Download<br>
+                        wget https://downloads.aibradaa.com/abo84/abo84_1.0.0-beta_amd64.deb<br>
+                        <br>
+                        # Install<br>
+                        sudo dpkg -i abo84_1.0.0-beta_amd64.deb<br>
+                        sudo apt-get install -f  # Fix dependencies<br>
+                        <br>
+                        # Run<br>
+                        abo84
+                    </div>
+                </div>
+                <div class="step" id="rpmSteps" style="display:none">
+                    <div class="step-number">1</div>
+                    <h3>Install RPM Package</h3>
+                    <div class="code-block">
+                        # Download<br>
+                        wget https://downloads.aibradaa.com/abo84/abo84-1.0.0-beta.x86_64.rpm<br>
+                        <br>
+                        # Install (Fedora)<br>
+                        sudo dnf install abo84-1.0.0-beta.x86_64.rpm<br>
+                        <br>
+                        # Or RHEL/CentOS<br>
+                        sudo yum install abo84-1.0.0-beta.x86_64.rpm<br>
+                        <br>
+                        # Run<br>
+                        abo84
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Activate License</h3>
+                    <p>Launch ABO-84 and sign in with your AI Bradaa Ultimate tier account.</p>
+                    <div class="code-block">
+                        abo84 login<br>
+                        # Follow prompts to authenticate
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Verify Installation</h3>
+                    <div class="code-block">
+                        abo84 --version<br>
+                        <br>
+                        # Expected output:<br>
+                        # ABO-84 v1.0.0-beta
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Start Analyzing</h3>
+                    <div class="code-block">
+                        cd ~/projects/your-app<br>
+                        abo84 analyze ./src
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2025 AI Bradaa. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        let selectedFormat = 'appimage';
+        document.querySelectorAll('.package-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.package-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                selectedFormat = btn.dataset.format;
+                document.getElementById('formatName').textContent = btn.textContent;
+                document.getElementById('appimageSteps').style.display = selectedFormat === 'appimage' ? 'block' : 'none';
+                document.getElementById('debSteps').style.display = selectedFormat === 'deb' ? 'block' : 'none';
+                document.getElementById('rpmSteps').style.display = selectedFormat === 'rpm' ? 'block' : 'none';
+            });
+        });
+        document.getElementById('downloadBtn').addEventListener('click', async function() {
+            try {
+                const response = await fetch('/.netlify/functions/abo84-download-track', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ platform: 'linux-' + selectedFormat, version: '1.0.0-beta' })
+                });
+                const data = await response.json();
+                if (data.downloadUrl) window.location.href = data.downloadUrl;
+                else alert('Download failed. Ensure you have Ultimate tier subscription.');
+            } catch (error) {
+                alert('Download failed. Please try again later.');
+            }
+        });
+    </script>
+</body>
+</html>

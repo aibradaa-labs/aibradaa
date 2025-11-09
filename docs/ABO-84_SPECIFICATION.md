@@ -134,7 +134,249 @@ Plus: **Overall Health Score** combining all metrics
 3. **Standalone Binary**
    - macOS, Linux, Windows
    - No dependencies required
-   - Download from [aibradaa.com/downloads/abo-84](https://aibradaa.com/downloads/abo-84)
+   - Download from [aibradaa.com/downloads/abo84.html](https://aibradaa.com/downloads/abo84.html)
+
+---
+
+## Installation
+
+ABO-84 is available through multiple distribution channels. Choose the method that best fits your workflow.
+
+### Download Hub
+
+Visit the main download hub to access all platforms:
+
+**[https://aibradaa.com/downloads/abo84.html](https://aibradaa.com/downloads/abo84.html)**
+
+The hub features:
+- Auto-detection of your operating system
+- Direct download links for all platforms
+- Installation guides and troubleshooting
+
+### Platform-Specific Guides
+
+#### 1. Windows Desktop
+
+**Requirements:** Windows 10 (64-bit) or later | 4GB RAM (8GB recommended)
+
+**Installation:**
+1. Download: [abo84-windows.html](https://aibradaa.com/downloads/abo84-windows.html)
+2. Run the installer: `ABO-84-Setup-1.0.0-beta.exe`
+3. Follow the installation wizard
+4. Launch ABO-84 and authenticate with your Ultimate tier account
+
+**Troubleshooting:**
+- Windows SmartScreen warning: Click "More info" → "Run anyway"
+- Command not found: Add `C:\Program Files\ABO-84\bin` to PATH
+
+Full guide: [https://aibradaa.com/downloads/abo84-windows.html](https://aibradaa.com/downloads/abo84-windows.html)
+
+#### 2. macOS Desktop
+
+**Requirements:** macOS 11+ | Intel or Apple Silicon | 4GB RAM (8GB recommended)
+
+**Installation:**
+1. Download: [abo84-macos.html](https://aibradaa.com/downloads/abo84-macos.html)
+2. Open the DMG file: `ABO-84-1.0.0-beta.dmg`
+3. Drag ABO-84 to Applications folder
+4. Right-click → Open (first launch only, to bypass Gatekeeper)
+5. Install CLI tools: ABO-84 → Install Command Line Tools
+
+**Troubleshooting:**
+- "Damaged and can't be opened": Run `xattr -cr /Applications/ABO-84.app`
+- CLI not found: `sudo ln -s /Applications/ABO-84.app/Contents/Resources/bin/abo84 /usr/local/bin/abo84`
+
+Full guide: [https://aibradaa.com/downloads/abo84-macos.html](https://aibradaa.com/downloads/abo84-macos.html)
+
+#### 3. Linux Desktop
+
+**Requirements:** Ubuntu 20.04+ or equivalent | 4GB RAM (8GB recommended)
+
+**Installation (AppImage - Universal):**
+```bash
+wget https://downloads.aibradaa.com/abo84/ABO-84-1.0.0-beta.AppImage
+chmod +x ABO-84-1.0.0-beta.AppImage
+./ABO-84-1.0.0-beta.AppImage
+```
+
+**Installation (DEB - Debian/Ubuntu):**
+```bash
+wget https://downloads.aibradaa.com/abo84/abo84_1.0.0-beta_amd64.deb
+sudo dpkg -i abo84_1.0.0-beta_amd64.deb
+sudo apt-get install -f
+```
+
+**Installation (RPM - Fedora/RHEL):**
+```bash
+wget https://downloads.aibradaa.com/abo84/abo84-1.0.0-beta.x86_64.rpm
+sudo dnf install abo84-1.0.0-beta.x86_64.rpm
+```
+
+Full guide: [https://aibradaa.com/downloads/abo84-linux.html](https://aibradaa.com/downloads/abo84-linux.html)
+
+#### 4. VS Code Extension
+
+**Requirements:** Visual Studio Code 1.80+ | Node.js 18+ (optional for offline mode)
+
+**Installation (UI):**
+1. Open VS Code
+2. Open Extensions (Ctrl+Shift+X / Cmd+Shift+X)
+3. Search "ABO-84"
+4. Click Install on "ABO-84" by AI Bradaa
+
+**Installation (CLI):**
+```bash
+code --install-extension aibradaa.abo84-beta
+```
+
+**Authentication:**
+1. Open Command Palette (Ctrl+Shift+P / Cmd+Shift+P)
+2. Type: `ABO-84: Sign In`
+3. Enter your AI Bradaa credentials
+4. Extension will verify Ultimate tier subscription
+
+**Features:**
+- Real-time code analysis as you type
+- Inline diagnostics with hover details
+- One-click auto-fix via lightbulb icon
+- Code quality score in status bar
+
+Full guide: [https://aibradaa.com/downloads/abo84-vscode.html](https://aibradaa.com/downloads/abo84-vscode.html)
+
+#### 5. CLI Tool (npm)
+
+**Requirements:** Node.js 18+ | npm or yarn
+
+**Installation:**
+```bash
+npm install -g @aibradaa/abo84-beta
+```
+
+**Authentication:**
+```bash
+abo84 login
+```
+
+**Basic Usage:**
+```bash
+# Analyze code
+abo84 analyze ./src
+
+# Security scan
+abo84 scan --security ./src
+
+# Auto-fix issues
+abo84 fix --auto ./src
+
+# Generate report
+abo84 report --format=json > report.json
+
+# Watch mode
+abo84 watch ./src
+```
+
+**CI/CD Integration (GitHub Actions):**
+```yaml
+- name: Run ABO-84
+  run: |
+    npm install -g @aibradaa/abo84-beta
+    abo84 login --token ${{ secrets.ABO84_TOKEN }}
+    abo84 analyze ./src --fail-on critical
+```
+
+Full guide: [https://aibradaa.com/downloads/abo84-cli.html](https://aibradaa.com/downloads/abo84-cli.html)
+
+#### 6. Ollama (100% Offline)
+
+**Requirements:** Ollama 0.1.0+ | 8GB RAM (16GB recommended) | GPU recommended
+
+**Installation:**
+
+1. Install Ollama:
+```bash
+# macOS/Linux
+curl https://ollama.ai/install.sh | sh
+
+# Windows: Download from ollama.ai
+```
+
+2. Download ABO-84 model:
+```bash
+ollama pull aibradaa/abo84-beta
+```
+
+3. Configure ABO-84 to use Ollama:
+```bash
+abo84 config set engine ollama
+abo84 config set model aibradaa/abo84-beta
+```
+
+4. Start analyzing offline:
+```bash
+abo84 analyze ./src
+# All analysis happens locally with zero network requests
+```
+
+**Benefits:**
+- ✅ 100% private - code never leaves your machine
+- ✅ Fully offline - no internet required
+- ✅ Fast - zero network latency
+- ✅ Unlimited analysis - no API costs
+
+Full guide: [https://aibradaa.com/downloads/abo84-ollama.html](https://aibradaa.com/downloads/abo84-ollama.html)
+
+### System Requirements Summary
+
+| Platform | Minimum | Recommended |
+|----------|---------|-------------|
+| **Windows** | Win 10 64-bit, 4GB RAM | Win 11, 8GB RAM |
+| **macOS** | macOS 11, 4GB RAM | macOS 13+, 8GB RAM, Apple Silicon |
+| **Linux** | Ubuntu 20.04, 4GB RAM | Ubuntu 22.04+, 8GB RAM |
+| **VS Code** | VSCode 1.80, Node 18+ | Latest VSCode, Node 20+ |
+| **Ollama** | 8GB RAM, 4GB disk | 16GB RAM, GPU, 10GB disk |
+
+### License Activation
+
+All ABO-84 installations require an active **Ultimate tier subscription** (RM80/month).
+
+**Activation Methods:**
+
+1. **Online (Recommended):**
+   - Sign in with your AI Bradaa account
+   - License auto-activates for Ultimate users
+
+2. **Offline (License Key):**
+   - Get your license key from: [aibradaa.com/app.html#account](https://aibradaa.com/app.html#account)
+   - Enter key during installation or via: `abo84 activate --key YOUR_KEY`
+
+**Verification:**
+```bash
+abo84 --version
+# Shows: ABO-84 v1.0.0-beta
+# License: Ultimate (Active)
+# Expires: 2025-12-31
+```
+
+### Troubleshooting Common Issues
+
+**"Authentication failed" errors:**
+- Ensure you have an active Ultimate tier subscription
+- Check your internet connection (for online activation)
+- Try offline activation with your license key
+
+**"Command not found" errors:**
+- Windows: Add `C:\Program Files\ABO-84\bin` to PATH
+- macOS/Linux: Run `sudo ln -s /path/to/abo84 /usr/local/bin/abo84`
+
+**Performance issues:**
+- Minimum 8GB RAM recommended for large projects
+- Use Ollama with GPU for best performance
+- Enable incremental analysis: `abo84 config set incremental true`
+
+**Download issues:**
+- Verify Ultimate tier subscription at [aibradaa.com/app.html](https://aibradaa.com/app.html)
+- Check download rate limits (10 per day)
+- Contact support@aibradaa.com for assistance
 
 ---
 

@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Download ABO-84 for Windows - AI-powered code analysis tool. Step-by-step installation guide and troubleshooting.">
+    <title>ABO-84 for Windows | Download & Installation Guide</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../styles/cyberpunk-core.css">
+    <link rel="stylesheet" href="../styles/landing-enhanced.css">
+    <link rel="stylesheet" href="../styles/mobile-first.css">
+
+    <style>
+        .platform-hero {
+            padding: 120px 20px 60px;
+            text-align: center;
+        }
+
+        .platform-icon-large {
+            font-size: 5rem;
+            margin-bottom: 20px;
+        }
+
+        .step-by-step {
+            max-width: 900px;
+            margin: 60px auto;
+        }
+
+        .step {
+            background: rgba(16, 20, 30, 0.7);
+            border: 1px solid rgba(168, 178, 204, 0.1);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .step:hover {
+            border-color: rgba(0, 240, 255, 0.3);
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #00F0FF, #0099CC);
+            color: #010409;
+            border-radius: 50%;
+            font-weight: 900;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .step h3 {
+            color: #fff;
+            margin-bottom: 15px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .step p {
+            color: #A8B2CC;
+            line-height: 1.8;
+        }
+
+        .code-block {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Share Tech Mono', monospace;
+            color: #00F0FF;
+            overflow-x: auto;
+        }
+
+        .download-btn-large {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 20px 40px;
+            background: linear-gradient(135deg, #00F0FF, #0099CC);
+            color: #010409;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            font-family: 'Orbitron', sans-serif;
+            margin: 20px 0;
+        }
+
+        .download-btn-large:hover {
+            background: linear-gradient(135deg, #00F0FF, #00D4FF);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 240, 255, 0.4);
+        }
+
+        .info-box {
+            background: rgba(0, 240, 255, 0.1);
+            border-left: 4px solid #00F0FF;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .info-box.warning {
+            background: rgba(255, 193, 7, 0.1);
+            border-left-color: #FFC107;
+        }
+
+        .info-box.error {
+            background: rgba(244, 67, 54, 0.1);
+            border-left-color: #F44336;
+        }
+
+        .troubleshooting {
+            margin-top: 60px;
+        }
+
+        .faq-item {
+            background: rgba(16, 20, 30, 0.5);
+            border: 1px solid rgba(168, 178, 204, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: rgba(0, 240, 255, 0.3);
+        }
+
+        .faq-question {
+            color: #fff;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            color: #A8B2CC;
+            line-height: 1.8;
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .specs-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .specs-table td {
+            padding: 12px;
+            border-bottom: 1px solid rgba(168, 178, 204, 0.1);
+        }
+
+        .specs-table td:first-child {
+            color: #7B8AA8;
+            width: 30%;
+        }
+
+        .specs-table td:last-child {
+            color: #00F0FF;
+            font-family: 'Share Tech Mono', monospace;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="aurora-bg" aria-hidden="true"></div>
+    <div class="grid-overlay" aria-hidden="true"></div>
+
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="brand">
+                    <img src="/icons/icon-192.png" alt="AI Bradaa Logo" class="brand-icon" width="40" height="40">
+                    <span class="brand-name font-display">AI Bradaa</span>
+                </div>
+                <div class="header-actions">
+                    <a href="abo84.html" class="btn btn-secondary">← All Downloads</a>
+                    <a href="/app.html" class="btn btn-primary">Launch App</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="platform-hero">
+            <div class="container">
+                <div class="platform-icon-large">💻</div>
+                <h1 style="font-size: 3rem; color: #fff; font-family: 'Orbitron', sans-serif; margin-bottom: 20px;">
+                    ABO-84 for Windows
+                </h1>
+                <p style="color: #A8B2CC; font-size: 1.2rem; margin-bottom: 30px;">
+                    Native Windows application with full offline support and system integration
+                </p>
+
+                <table class="specs-table" style="max-width: 600px; margin: 30px auto;">
+                    <tr>
+                        <td>Version</td>
+                        <td>1.0.0-beta</td>
+                    </tr>
+                    <tr>
+                        <td>File Size</td>
+                        <td>~156 MB</td>
+                    </tr>
+                    <tr>
+                        <td>Requirements</td>
+                        <td>Windows 10 (64-bit) or later</td>
+                    </tr>
+                    <tr>
+                        <td>Architecture</td>
+                        <td>x64</td>
+                    </tr>
+                    <tr>
+                        <td>License</td>
+                        <td>Ultimate Tier (RM80/month)</td>
+                    </tr>
+                </table>
+
+                <button class="download-btn-large" id="downloadBtn">
+                    <span>⬇️</span>
+                    <span>Download ABO-84 for Windows</span>
+                    <span>(156 MB)</span>
+                </button>
+
+                <div class="info-box">
+                    <strong>🔒 Secure Download:</strong> All downloads are authenticated and encrypted. You must be logged in with an active Ultimate tier subscription.
+                </div>
+            </div>
+        </section>
+
+        <section class="step-by-step">
+            <div class="container">
+                <h2 style="text-align: center; color: #fff; font-family: 'Orbitron', sans-serif; font-size: 2.5rem; margin-bottom: 40px;">
+                    Installation Guide
+                </h2>
+
+                <!-- Step 1 -->
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Download the Installer</h3>
+                    <p>Click the download button above. The file will be saved as <code>ABO-84-Setup-1.0.0-beta.exe</code> (approximately 156 MB).</p>
+                    <div class="info-box warning">
+                        <strong>⚠️ Windows SmartScreen Warning:</strong> You may see a security warning. Click "More info" then "Run anyway". ABO-84 is verified and safe.
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Run the Installer</h3>
+                    <p>Double-click the downloaded <code>.exe</code> file to launch the installer. Follow the on-screen prompts:</p>
+                    <ul style="color: #A8B2CC; line-height: 2;">
+                        <li>Accept the license agreement</li>
+                        <li>Choose installation location (default: <code>C:\Program Files\ABO-84</code>)</li>
+                        <li>Select additional options (desktop shortcut, start menu)</li>
+                        <li>Click "Install"</li>
+                    </ul>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Activate Your License</h3>
+                    <p>After installation completes, launch ABO-84. You'll be prompted to activate your license:</p>
+                    <div class="code-block">
+                        1. Click "Sign In with AI Bradaa"<br>
+                        2. Enter your AI Bradaa account credentials<br>
+                        3. License will auto-activate for Ultimate tier users
+                    </div>
+                    <div class="info-box">
+                        <strong>💡 Offline Activation:</strong> For offline use, you can activate via license key. Find your key in your AI Bradaa account dashboard.
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Verify Installation</h3>
+                    <p>Confirm ABO-84 is working correctly:</p>
+                    <ol style="color: #A8B2CC; line-height: 2;">
+                        <li>Open Command Prompt (Win + R, type "cmd")</li>
+                        <li>Run: <code style="color: #00F0FF;">abo84 --version</code></li>
+                        <li>Expected output: <code style="color: #00F0FF;">ABO-84 v1.0.0-beta</code></li>
+                    </ol>
+                    <div class="code-block">
+                        C:\> abo84 --version<br>
+                        ABO-84 v1.0.0-beta<br>
+                        AI Bradaa Observer - 84 (c) 2025 AI Bradaa
+                    </div>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <h3>Start Analyzing Code</h3>
+                    <p>Navigate to your project directory and run your first analysis:</p>
+                    <div class="code-block">
+                        cd C:\path\to\your\project<br>
+                        abo84 analyze ./src
+                    </div>
+                    <p style="margin-top: 15px;">ABO-84 will scan your code and generate a comprehensive report with security, performance, and quality insights.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="troubleshooting">
+            <div class="container">
+                <h2 style="text-align: center; color: #fff; font-family: 'Orbitron', sans-serif; font-size: 2.5rem; margin-bottom: 40px;">
+                    Troubleshooting
+                </h2>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Windows SmartScreen blocks the installer</span>
+                        <span style="color: #00F0FF;">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>This is a common Windows security feature for new software. To bypass:</p>
+                        <ol>
+                            <li>Click "More info" on the SmartScreen warning</li>
+                            <li>Click "Run anyway"</li>
+                            <li>ABO-84 is digitally signed and verified safe</li>
+                        </ol>
+                        <p>Alternatively, right-click the installer → Properties → Check "Unblock" → Apply → OK</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>"abo84: command not found" error</span>
+                        <span style="color: #00F0FF;">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>This means the PATH environment variable wasn't updated. To fix:</p>
+                        <ol>
+                            <li>Open Settings → System → About → Advanced system settings</li>
+                            <li>Click "Environment Variables"</li>
+                            <li>Under "System variables", find "Path" and click "Edit"</li>
+                            <li>Add: <code>C:\Program Files\ABO-84\bin</code></li>
+                            <li>Click OK and restart Command Prompt</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Installation fails with "Access Denied" error</span>
+                        <span style="color: #00F0FF;">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You need administrator privileges to install ABO-84:</p>
+                        <ol>
+                            <li>Right-click the installer</li>
+                            <li>Select "Run as administrator"</li>
+                            <li>Click "Yes" on the UAC prompt</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>License activation fails</span>
+                        <span style="color: #00F0FF;">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Ensure you have an active Ultimate tier subscription:</p>
+                        <ol>
+                            <li>Log in to <a href="/app.html" style="color: #00F0FF;">aibradaa.com/app.html</a></li>
+                            <li>Check your account tier in settings</li>
+                            <li>If not Ultimate, upgrade at the pricing page</li>
+                            <li>Try activation again after upgrading</li>
+                        </ol>
+                        <p>For offline activation, use your license key from the dashboard.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Antivirus software quarantines ABO-84</span>
+                        <span style="color: #00F0FF;">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Some antivirus programs may flag new software. ABO-84 is safe and verified:</p>
+                        <ol>
+                            <li>Add an exception in your antivirus for <code>C:\Program Files\ABO-84</code></li>
+                            <li>Restore the quarantined files</li>
+                            <li>Re-run the installer if needed</li>
+                        </ol>
+                        <p>ABO-84 is scanned by multiple security vendors and is malware-free.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section style="padding: 60px 20px; text-align: center;">
+            <div class="container">
+                <h2 style="color: #fff; font-family: 'Orbitron', sans-serif; font-size: 2rem; margin-bottom: 20px;">
+                    Need Help?
+                </h2>
+                <p style="color: #A8B2CC; margin-bottom: 30px;">
+                    Contact our Ultimate tier support team for assistance with installation or activation.
+                </p>
+                <a href="mailto:support@aibradaa.com" class="btn btn-primary btn-large">
+                    Contact Support
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <span class="brand-name font-display">AI Bradaa</span>
+                    <p class="footer-tagline">ABO-84 — Your AI Code Observer</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2025 AI Bradaa. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ toggle
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', () => {
+                item.classList.toggle('active');
+                const icon = item.querySelector('.faq-question span:last-child');
+                icon.textContent = item.classList.contains('active') ? '−' : '+';
+            });
+        });
+
+        // Download button handler
+        document.getElementById('downloadBtn').addEventListener('click', async function() {
+            // Check authentication
+            const isAuthenticated = checkAuth(); // Implement auth check
+
+            if (!isAuthenticated) {
+                alert('Please log in with an Ultimate tier account to download ABO-84.');
+                window.location.href = '/app.html?redirect=downloads';
+                return;
+            }
+
+            // Track download
+            try {
+                const response = await fetch('/.netlify/functions/abo84-download-track', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        platform: 'windows',
+                        version: '1.0.0-beta'
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.downloadUrl) {
+                    window.location.href = data.downloadUrl;
+                } else if (data.error === 'TIER_REQUIRED') {
+                    alert('Ultimate tier subscription required. Please upgrade to download ABO-84.');
+                    window.location.href = '/app.html#upgrade';
+                } else {
+                    alert('Download failed. Please try again or contact support.');
+                }
+            } catch (error) {
+                console.error('Download error:', error);
+                alert('Download failed. Please try again later.');
+            }
+        });
+
+        function checkAuth() {
+            // Placeholder - implement actual auth check
+            // Should verify user is logged in and has Ultimate tier
+            return false; // Change based on actual auth state
+        }
+    </script>
+
+</body>
+</html>
