@@ -782,6 +782,20 @@ class AuthUI {
               <small class="auth-form-hint">At least 8 characters</small>
             </div>
 
+            <!-- Age Verification (COPPA Compliance) -->
+            <div class="auth-form-group auth-checkbox-group">
+              <label class="auth-checkbox-label">
+                <input
+                  type="checkbox"
+                  id="ageVerification"
+                  name="ageVerification"
+                  required
+                />
+                <span>I confirm I am 13 years or older</span>
+              </label>
+              <small class="auth-form-hint">Required for account creation (COPPA compliance)</small>
+            </div>
+
             <button type="submit" class="auth-submit-btn" id="signupSubmitBtn">
               Create Account
             </button>

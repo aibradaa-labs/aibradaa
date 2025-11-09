@@ -1,0 +1,854 @@
+/**
+ * Signup Wizard Animations
+ * AI Bradaa - Phase 6: Enhanced Signup Experience
+ *
+ * FEATURES:
+ * - Slide transitions between steps
+ * - Progress bar glow effects
+ * - Floating particle background
+ * - Confetti animation
+ * - Responsive design
+ * - Smooth animations
+ */
+
+/* ========================================================================
+   Wizard Container
+   ======================================================================== */
+
+.signup-wizard {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  z-index: 10;
+}
+
+/* ========================================================================
+   Progress Bar
+   ======================================================================== */
+
+.wizard-progress {
+  margin-bottom: 3rem;
+}
+
+.progress-bar {
+  position: relative;
+  height: 4px;
+  background: #e5e7eb;
+  border-radius: 2px;
+  overflow: visible;
+  margin-bottom: 2rem;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #D83F87, #2F2FA2);
+  border-radius: 2px;
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.progress-glow {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(216, 63, 135, 0.5), transparent);
+  transform: translateY(-50%);
+  filter: blur(10px);
+  opacity: 0.5;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Progress Steps */
+.progress-steps {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  position: relative;
+}
+
+.step-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #e5e7eb;
+  color: #9ca3af;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+
+.progress-step.active .step-circle {
+  background: linear-gradient(135deg, #D83F87, #2F2FA2);
+  color: white;
+  box-shadow: 0 4px 12px rgba(216, 63, 135, 0.4);
+  transform: scale(1.1);
+}
+
+.progress-step.completed .step-circle {
+  background: #10b981;
+  color: white;
+  animation: checkmark 0.5s ease;
+}
+
+@keyframes checkmark {
+  0% {
+    transform: scale(0.8);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.step-label {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: #6b7280;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.progress-step.active .step-label {
+  color: #D83F87;
+  font-weight: 600;
+}
+
+.progress-step.completed .step-label {
+  color: #10b981;
+}
+
+/* ========================================================================
+   Wizard Steps
+   ======================================================================== */
+
+.wizard-content {
+  min-height: 400px;
+  position: relative;
+}
+
+.wizard-step {
+  animation: slideIn 0.5s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.step-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.step-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+}
+
+.step-subtitle {
+  font-size: 1rem;
+  color: #6b7280;
+}
+
+.step-body {
+  margin-bottom: 2rem;
+}
+
+/* ========================================================================
+   Form Elements
+   ======================================================================== */
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+.required {
+  color: #ef4444;
+  margin-left: 0.25rem;
+}
+
+.badge-optional {
+  display: inline-block;
+  padding: 0.125rem 0.5rem;
+  background: #e5e7eb;
+  color: #6b7280;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border-radius: 4px;
+  margin-left: 0.5rem;
+}
+
+.wizard-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.wizard-input:focus {
+  outline: none;
+  border-color: #D83F87;
+  box-shadow: 0 0 0 3px rgba(216, 63, 135, 0.1);
+}
+
+.wizard-input:invalid:not(:placeholder-shown) {
+  border-color: #ef4444;
+}
+
+.form-hint {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: #6b7280;
+  line-height: 1.4;
+}
+
+/* Password Strength Meter */
+.password-strength {
+  margin-top: 1rem;
+}
+
+.strength-meter {
+  height: 4px;
+  background: #e5e7eb;
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.strength-bar {
+  height: 100%;
+  width: 0%;
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+.strength-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* ========================================================================
+   Checkboxes
+   ======================================================================== */
+
+.form-group-checkbox {
+  margin-bottom: 1rem;
+}
+
+.checkbox-label,
+.checkbox-label-large {
+  display: flex;
+  align-items: flex-start;
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkbox-label input[type="checkbox"],
+.checkbox-label-large input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-right: 0.75rem;
+  margin-top: 0.125rem;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.checkbox-label-large input[type="checkbox"] {
+  width: 24px;
+  height: 24px;
+}
+
+.checkbox-text {
+  font-size: 0.875rem;
+  color: #374151;
+  line-height: 1.5;
+}
+
+.checkbox-label-large .checkbox-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.checkbox-label-large .checkbox-text strong {
+  font-size: 1rem;
+  color: #1f2937;
+  margin-bottom: 0.25rem;
+}
+
+.checkbox-label-large .checkbox-text small {
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+.checkbox-text a {
+  color: #D83F87;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.checkbox-text a:hover {
+  text-decoration: underline;
+}
+
+/* ========================================================================
+   Verification Card
+   ======================================================================== */
+
+.verification-card {
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0e7ff 100%);
+  border: 2px solid #bfdbfe;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.verification-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.verification-card h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1e40af;
+  margin-bottom: 0.75rem;
+}
+
+.verification-card p {
+  font-size: 0.875rem;
+  color: #1e3a8a;
+  line-height: 1.6;
+}
+
+/* ========================================================================
+   Welcome/Success Step
+   ======================================================================== */
+
+.welcome-animation {
+  text-align: center;
+  padding: 3rem 0;
+}
+
+.loading-spinner {
+  width: 60px;
+  height: 60px;
+  border: 4px solid #e5e7eb;
+  border-top-color: #D83F87;
+  border-radius: 50%;
+  margin: 0 auto 1.5rem;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-text {
+  font-size: 1rem;
+  color: #6b7280;
+  animation: fadeInOut 2s ease-in-out infinite;
+}
+
+@keyframes fadeInOut {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.welcome-message {
+  text-align: center;
+  animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.welcome-avatar {
+  margin-bottom: 2rem;
+}
+
+.avatar-circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #D83F87, #2F2FA2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  box-shadow: 0 10px 30px rgba(216, 63, 135, 0.3);
+  animation: scaleIn 0.5s ease;
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.avatar-text {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: white;
+}
+
+.avatar-badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, #D83F87, #2F2FA2);
+  color: white;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(216, 63, 135, 0.3);
+}
+
+.ai-greeting {
+  background: #f9fafb;
+  border-left: 4px solid #D83F87;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.greeting-text {
+  font-size: 1.125rem;
+  color: #1f2937;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.welcome-features h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+  text-align: left;
+}
+
+.features-list li {
+  display: flex;
+  align-items: flex-start;
+  padding: 1rem;
+  background: #f9fafb;
+  border-radius: 8px;
+  margin-bottom: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.features-list li:hover {
+  background: #f3f4f6;
+  transform: translateX(4px);
+}
+
+.feature-icon {
+  font-size: 1.5rem;
+  margin-right: 1rem;
+  flex-shrink: 0;
+}
+
+.feature-content {
+  flex: 1;
+}
+
+.feature-content strong {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 0.25rem;
+}
+
+.feature-content small {
+  font-size: 0.75rem;
+  color: #6b7280;
+  line-height: 1.4;
+}
+
+/* ========================================================================
+   Navigation Buttons
+   ======================================================================== */
+
+.wizard-navigation {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.wizard-btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wizard-btn-back {
+  background: #f3f4f6;
+  color: #6b7280;
+  transition: all 0.3s ease;
+}
+
+.wizard-btn-back:hover:not(:disabled) {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.wizard-btn-next,
+.wizard-btn-primary {
+  background: linear-gradient(135deg, #D83F87, #2F2FA2);
+  color: white;
+  flex: 1;
+  box-shadow: 0 4px 12px rgba(216, 63, 135, 0.3);
+}
+
+.wizard-btn-next:hover:not(:disabled),
+.wizard-btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(216, 63, 135, 0.4);
+}
+
+.wizard-btn-large {
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+}
+
+.wizard-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ========================================================================
+   Error Message
+   ======================================================================== */
+
+.wizard-error {
+  background: #fef2f2;
+  border: 2px solid #fecaca;
+  border-radius: 8px;
+  padding: 1rem;
+  color: #991b1b;
+  font-size: 0.875rem;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.shake {
+  animation: shake 0.5s ease;
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-5px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(5px);
+  }
+}
+
+/* ========================================================================
+   Particles Canvas
+   ======================================================================== */
+
+.particles-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.6;
+}
+
+/* ========================================================================
+   Confetti Canvas
+   ======================================================================== */
+
+.confetti-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ========================================================================
+   Responsive Design
+   ======================================================================== */
+
+@media (max-width: 768px) {
+  .signup-wizard {
+    padding: 1.5rem;
+  }
+
+  .step-title {
+    font-size: 1.5rem;
+  }
+
+  .step-subtitle {
+    font-size: 0.875rem;
+  }
+
+  .progress-steps {
+    gap: 0.5rem;
+  }
+
+  .step-circle {
+    width: 32px;
+    height: 32px;
+    font-size: 0.75rem;
+  }
+
+  .step-label {
+    font-size: 0.625rem;
+  }
+
+  .wizard-navigation {
+    flex-direction: column-reverse;
+  }
+
+  .wizard-btn {
+    width: 100%;
+  }
+
+  .avatar-circle {
+    width: 80px;
+    height: 80px;
+  }
+
+  .avatar-text {
+    font-size: 2rem;
+  }
+
+  .greeting-text {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .signup-wizard {
+    padding: 1rem;
+  }
+
+  .wizard-content {
+    min-height: 350px;
+  }
+
+  .verification-card {
+    padding: 1rem;
+  }
+
+  .verification-icon {
+    font-size: 2rem;
+  }
+
+  .wizard-btn-large {
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+/* ========================================================================
+   Dark Mode Support
+   ======================================================================== */
+
+@media (prefers-color-scheme: dark) {
+  .signup-wizard {
+    background: rgba(31, 41, 55, 0.95);
+  }
+
+  .step-title {
+    color: #f9fafb;
+  }
+
+  .step-subtitle {
+    color: #9ca3af;
+  }
+
+  .wizard-input {
+    background: #374151;
+    border-color: #4b5563;
+    color: #f9fafb;
+  }
+
+  .wizard-input:focus {
+    border-color: #D83F87;
+    background: #374151;
+  }
+
+  .form-group label,
+  .checkbox-text {
+    color: #e5e7eb;
+  }
+
+  .form-hint {
+    color: #9ca3af;
+  }
+
+  .verification-card {
+    background: linear-gradient(135deg, #1e3a8a 0%, #312e81 100%);
+    border-color: #3b82f6;
+  }
+
+  .verification-card h3 {
+    color: #bfdbfe;
+  }
+
+  .verification-card p {
+    color: #93c5fd;
+  }
+
+  .ai-greeting {
+    background: #374151;
+  }
+
+  .greeting-text {
+    color: #f9fafb;
+  }
+
+  .features-list li {
+    background: #374151;
+  }
+
+  .features-list li:hover {
+    background: #4b5563;
+  }
+
+  .feature-content strong {
+    color: #f9fafb;
+  }
+
+  .feature-content small {
+    color: #9ca3af;
+  }
+}
+
+/* ========================================================================
+   Accessibility
+   ======================================================================== */
+
+/* Focus visible for keyboard navigation */
+.wizard-btn:focus-visible,
+.wizard-input:focus-visible,
+input[type="checkbox"]:focus-visible {
+  outline: 3px solid #D83F87;
+  outline-offset: 2px;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .particles-canvas,
+  .confetti-canvas {
+    display: none !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .wizard-input {
+    border-width: 3px;
+  }
+
+  .wizard-btn {
+    border: 2px solid currentColor;
+  }
+
+  .progress-fill {
+    border: 2px solid #D83F87;
+  }
+}

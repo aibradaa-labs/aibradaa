@@ -5,7 +5,9 @@
  * - GET /random - Get random catchphrase
  * - GET /contextual - Get contextual catchphrase (tool, emotion, timeOfDay)
  *
- * Phase 4: Public endpoint for frontend catchphrase manager
+ * Phase 6: Legal-safe paraphrasing with Gemini AI
+ * - 80%+ transformation from internal references
+ * - No direct One Piece quotes or character names
  */
 
 import {
@@ -14,6 +16,7 @@ import {
   handleOptions
 } from './utils/response.mjs';
 import { applyRateLimit } from './utils/rateLimiter.mjs';
+import { paraphraseWithGemini, getToneFromEpisodeDatabase } from './paraphrase-engine.mjs';
 
 /**
  * In-memory catchphrase storage (fallback when database not available)
@@ -57,14 +60,39 @@ const catchphrases = {
 };
 
 /**
- * Get daily greeting catchphrase
+ * Get daily greeting catchphrase with paraphrasing
  */
-function getDailyCatchphrase() {
+async function getDailyCatchphrase() {
   // Rotate based on day of year
   const dayOfYear = Math.floor((Date.now() - new Date(new Date().getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
   const index = dayOfYear % catchphrases.daily.length;
 
-  return catchphrases.daily[index];
+  const baseCatchphrase = catchphrases.daily[index];
+
+  // Get tone concept from episode database
+  const toneConcept = getToneFromEpisodeDatabase({
+    emotion: baseCatchphrase.emotion,
+    context: 'daily_greeting'
+  });
+
+  // Paraphrase with Gemini (80%+ transformation)
+  try {
+    const paraphrasedText = await paraphraseWithGemini(toneConcept, {
+      emotion: baseCatchphrase.emotion,
+      context: 'daily_greeting',
+      addManglish: true,
+      energyLevel: 8
+    });
+
+    return {
+      ...baseCatchphrase,
+      text: paraphrasedText,
+      paraphrased: true
+    };
+  } catch (error) {
+    console.error('[Catchphrases] Paraphrase failed, using fallback:', error);
+    return baseCatchphrase;
+  }
 }
 
 /**
@@ -76,50 +104,63 @@ function getRandomCatchphrase() {
 }
 
 /**
- * Get contextual catchphrase
+ * Get contextual catchphrase with paraphrasing
  */
-function getContextualCatchphrase(tool = 'general', emotion = 'supportive') {
+async function getContextualCatchphrase(tool = 'general', emotion = 'supportive') {
   const key = `${tool}_${emotion}`;
 
   // Try exact match
-  if (catchphrases.contextual[key]) {
+  let baseCatchphrase = catchphrases.contextual[key];
+
+  if (!baseCatchphrase) {
+    // Try tool with default emotion
+    const defaultKey = `${tool}_supportive`;
+    baseCatchphrase = catchphrases.contextual[defaultKey];
+  }
+
+  if (!baseCatchphrase) {
+    // Fallback to general
+    const fallbackKey = `general_${emotion}`;
+    baseCatchphrase = catchphrases.contextual[fallbackKey];
+  }
+
+  if (!baseCatchphrase) {
+    // Ultimate fallback
+    baseCatchphrase = "Let me help you find the perfect laptop!";
+  }
+
+  // Get tone concept from episode database
+  const toneConcept = getToneFromEpisodeDatabase({
+    emotion,
+    context: tool
+  });
+
+  // Paraphrase with Gemini (80%+ transformation)
+  try {
+    const paraphrasedText = await paraphraseWithGemini(toneConcept, {
+      emotion,
+      context: tool,
+      addManglish: true,
+      energyLevel: emotion === 'excited' ? 9 : 7
+    });
+
     return {
       id: key,
-      text: catchphrases.contextual[key],
+      text: paraphrasedText,
       emotion,
-      context: tool
+      context: tool,
+      paraphrased: true
     };
-  }
-
-  // Try tool with default emotion
-  const defaultKey = `${tool}_supportive`;
-  if (catchphrases.contextual[defaultKey]) {
+  } catch (error) {
+    console.error('[Catchphrases] Paraphrase failed, using fallback:', error);
     return {
-      id: defaultKey,
-      text: catchphrases.contextual[defaultKey],
-      emotion: 'supportive',
-      context: tool
-    };
-  }
-
-  // Fallback to general
-  const fallbackKey = `general_${emotion}`;
-  if (catchphrases.contextual[fallbackKey]) {
-    return {
-      id: fallbackKey,
-      text: catchphrases.contextual[fallbackKey],
+      id: key,
+      text: typeof baseCatchphrase === 'string' ? baseCatchphrase : baseCatchphrase.text,
       emotion,
-      context: 'general'
+      context: tool,
+      paraphrased: false
     };
   }
-
-  // Ultimate fallback
-  return {
-    id: 'fallback',
-    text: "Let me help you find the perfect laptop!",
-    emotion: 'supportive',
-    context: 'general'
-  };
 }
 
 /**
@@ -154,12 +195,13 @@ export async function handler(event, context) {
     // GET /daily - Daily greeting catchphrase
     // ========================================================================
     if ((path === '/daily' || path === '') && event.httpMethod === 'GET') {
-      const catchphrase = getDailyCatchphrase();
+      const catchphrase = await getDailyCatchphrase();
 
       return successResponse({
         catchphrase,
         timestamp: new Date().toISOString(),
-        expiresIn: '24h'
+        expiresIn: '24h',
+        paraphrased: catchphrase.paraphrased || false
       });
     }
 
@@ -181,19 +223,20 @@ export async function handler(event, context) {
     if (path === '/contextual' && event.httpMethod === 'GET') {
       const { tool, emotion, timeOfDay, userTier } = queryParams;
 
-      const catchphrase = getContextualCatchphrase(tool, emotion);
+      const catchphrase = await getContextualCatchphrase(tool, emotion);
 
       // Optionally adjust based on time of day
       if (timeOfDay === 'morning') {
-        catchphrase.text = catchphrase.text.replace(/Hello|Hi|Hey/, 'Good morning');
+        catchphrase.text = catchphrase.text.replace(/Hello|Hi|Hey|Yo/i, 'Good morning');
       } else if (timeOfDay === 'evening') {
-        catchphrase.text = catchphrase.text.replace(/Hello|Hi|Hey/, 'Good evening');
+        catchphrase.text = catchphrase.text.replace(/Hello|Hi|Hey|Yo/i, 'Good evening');
       }
 
       return successResponse({
         catchphrase,
         context: { tool, emotion, timeOfDay, userTier },
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
+        paraphrased: catchphrase.paraphrased || false
       });
     }
 

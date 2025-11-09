@@ -1,0 +1,779 @@
+/**
+ * Command UI Enhancements - World-Class Chat Interface
+ * AI Bradaa - Phase 6: Chat UI Enhancement
+ *
+ * FEATURES:
+ * - Message streaming (typewriter effect)
+ * - Code syntax highlighting
+ * - Markdown rendering
+ * - Copy buttons for code blocks
+ * - Regenerate/Edit message buttons
+ * - Message reactions
+ * - Conversation branching
+ * - Export conversation
+ * - Voice controls for TTS
+ * - Dark/light theme support
+ * - Mobile responsive
+ */
+
+/* ========================================================================
+   Chat Container
+   ======================================================================== */
+
+.command-chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #ffffff;
+}
+
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+  background: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.chat-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1f2937;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.chat-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.chat-action-btn {
+  padding: 0.5rem 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #6b7280;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.chat-action-btn:hover {
+  border-color: #D83F87;
+  color: #D83F87;
+  background: #fdf2f8;
+}
+
+/* ========================================================================
+   Messages Area
+   ======================================================================== */
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem;
+  background: #f9fafb;
+}
+
+.message {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  animation: messageSlideIn 0.3s ease;
+}
+
+@keyframes messageSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.message-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.875rem;
+}
+
+.message.user .message-avatar {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  color: white;
+}
+
+.message.assistant .message-avatar {
+  background: linear-gradient(135deg, #D83F87, #2F2FA2);
+  color: white;
+}
+
+.message-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.message-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.message-role {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.message-timestamp {
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+.message-body {
+  background: #ffffff;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  line-height: 1.6;
+  color: #1f2937;
+}
+
+.message.assistant .message-body {
+  border-left: 3px solid #D83F87;
+}
+
+.message.user .message-body {
+  border-left: 3px solid #3b82f6;
+}
+
+/* Typewriter effect for streaming */
+.message-body.streaming::after {
+  content: '▋';
+  animation: blink 1s steps(2, start) infinite;
+}
+
+@keyframes blink {
+  to {
+    visibility: hidden;
+  }
+}
+
+/* ========================================================================
+   Markdown Rendering
+   ======================================================================== */
+
+.message-body h1,
+.message-body h2,
+.message-body h3,
+.message-body h4,
+.message-body h5,
+.message-body h6 {
+  font-weight: 700;
+  color: #1f2937;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.message-body h1 { font-size: 1.5rem; }
+.message-body h2 { font-size: 1.25rem; }
+.message-body h3 { font-size: 1.125rem; }
+
+.message-body p {
+  margin-bottom: 1rem;
+}
+
+.message-body ul,
+.message-body ol {
+  margin: 0.75rem 0;
+  padding-left: 1.5rem;
+}
+
+.message-body li {
+  margin-bottom: 0.5rem;
+}
+
+.message-body a {
+  color: #D83F87;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.message-body a:hover {
+  text-decoration: underline;
+}
+
+.message-body strong {
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.message-body em {
+  font-style: italic;
+}
+
+.message-body blockquote {
+  border-left: 4px solid #e5e7eb;
+  padding-left: 1rem;
+  margin: 1rem 0;
+  color: #6b7280;
+  font-style: italic;
+}
+
+/* ========================================================================
+   Code Blocks with Syntax Highlighting
+   ======================================================================== */
+
+.message-body pre {
+  background: #1f2937;
+  border-radius: 8px;
+  padding: 1rem;
+  overflow-x: auto;
+  margin: 1rem 0;
+  position: relative;
+}
+
+.message-body code {
+  font-family: 'Monaco', 'Courier New', monospace;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.message-body pre code {
+  color: #e5e7eb;
+  background: none;
+  padding: 0;
+}
+
+.message-body :not(pre) > code {
+  background: #f3f4f6;
+  color: #D83F87;
+  padding: 0.125rem 0.375rem;
+  border-radius: 4px;
+  font-size: 0.875em;
+}
+
+/* Copy button for code blocks */
+.code-block-wrapper {
+  position: relative;
+}
+
+.code-copy-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.code-copy-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.code-copy-btn.copied {
+  background: #10b981;
+  border-color: #10b981;
+}
+
+/* ========================================================================
+   Message Actions
+   ======================================================================== */
+
+.message-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #f3f4f6;
+}
+
+.message-action {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.375rem 0.75rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #6b7280;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.message-action:hover {
+  border-color: #D83F87;
+  color: #D83F87;
+  background: #fdf2f8;
+}
+
+.message-action-icon {
+  width: 14px;
+  height: 14px;
+}
+
+/* Reactions */
+.message-reactions {
+  display: flex;
+  gap: 0.25rem;
+  margin-top: 0.5rem;
+}
+
+.message-reaction {
+  padding: 0.25rem 0.5rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #f9fafb;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.message-reaction:hover {
+  border-color: #D83F87;
+  background: #fdf2f8;
+}
+
+.message-reaction.active {
+  border-color: #D83F87;
+  background: #fdf2f8;
+}
+
+/* ========================================================================
+   Input Area
+   ======================================================================== */
+
+.chat-input-container {
+  border-top: 1px solid #e5e7eb;
+  background: #ffffff;
+  padding: 1rem 1.5rem;
+}
+
+.chat-input-wrapper {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-end;
+}
+
+.chat-input-tools {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.chat-input-tool {
+  padding: 0.5rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.chat-input-tool:hover {
+  border-color: #D83F87;
+  color: #D83F87;
+  background: #fdf2f8;
+}
+
+.chat-input {
+  flex: 1;
+  min-height: 44px;
+  max-height: 200px;
+  padding: 0.75rem 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-family: inherit;
+  resize: none;
+  transition: all 0.2s ease;
+}
+
+.chat-input:focus {
+  outline: none;
+  border-color: #D83F87;
+  box-shadow: 0 0 0 3px rgba(216, 63, 135, 0.1);
+}
+
+.chat-send-btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #D83F87, #2F2FA2);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.chat-send-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(216, 63, 135, 0.3);
+}
+
+.chat-send-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ========================================================================
+   Sidebar (Conversation History)
+   ======================================================================== */
+
+.chat-sidebar {
+  width: 300px;
+  border-left: 1px solid #e5e7eb;
+  background: #f9fafb;
+  overflow-y: auto;
+}
+
+.sidebar-header {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+  background: #ffffff;
+}
+
+.sidebar-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.sidebar-conversations {
+  padding: 1rem;
+}
+
+.sidebar-conversation {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sidebar-conversation:hover {
+  background: #e5e7eb;
+}
+
+.sidebar-conversation.active {
+  background: #D83F87;
+  color: white;
+}
+
+.conversation-title {
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.conversation-preview {
+  font-size: 0.75rem;
+  color: #6b7280;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ========================================================================
+   TTS Controls
+   ======================================================================== */
+
+.tts-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: #f9fafb;
+  border-radius: 8px;
+  margin-top: 0.5rem;
+}
+
+.tts-play-btn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  background: #D83F87;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.tts-play-btn:hover {
+  background: #c2366f;
+  transform: scale(1.1);
+}
+
+.tts-progress {
+  flex: 1;
+  height: 4px;
+  background: #e5e7eb;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.tts-progress-bar {
+  height: 100%;
+  background: #D83F87;
+  width: 0%;
+  transition: width 0.1s linear;
+}
+
+.tts-controls-extra {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.tts-control-btn {
+  padding: 0.25rem 0.5rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  background: #ffffff;
+  font-size: 0.75rem;
+  color: #6b7280;
+  cursor: pointer;
+}
+
+/* ========================================================================
+   Research Progress (Deep Research UI)
+   ======================================================================== */
+
+.research-progress {
+  background: #f0f9ff;
+  border: 2px solid #bfdbfe;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 1rem 0;
+}
+
+.research-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1e40af;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.research-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.research-step {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.research-step-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.research-step.active .research-step-icon {
+  background: #3b82f6;
+  color: white;
+}
+
+.research-step.completed .research-step-icon {
+  background: #10b981;
+  color: white;
+}
+
+.research-step-text {
+  font-size: 0.875rem;
+  color: #374151;
+}
+
+.research-step.active .research-step-text {
+  font-weight: 600;
+  color: #1e40af;
+}
+
+/* ========================================================================
+   Responsive Design
+   ======================================================================== */
+
+@media (max-width: 1024px) {
+  .chat-sidebar {
+    position: fixed;
+    right: -300px;
+    top: 0;
+    height: 100%;
+    z-index: 1000;
+    transition: right 0.3s ease;
+  }
+
+  .chat-sidebar.open {
+    right: 0;
+    box-shadow: -4px 0 12px rgba(0, 0, 0, 0.1);
+  }
+}
+
+@media (max-width: 768px) {
+  .chat-header {
+    padding: 0.75rem 1rem;
+  }
+
+  .chat-title {
+    font-size: 1.125rem;
+  }
+
+  .chat-action-btn {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.75rem;
+  }
+
+  .chat-messages {
+    padding: 1rem;
+  }
+
+  .message {
+    gap: 0.75rem;
+  }
+
+  .message-avatar {
+    width: 32px;
+    height: 32px;
+    font-size: 0.75rem;
+  }
+
+  .message-body {
+    padding: 0.875rem 1rem;
+  }
+
+  .chat-input-container {
+    padding: 0.75rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .chat-input-wrapper {
+    flex-direction: column;
+  }
+
+  .chat-send-btn {
+    width: 100%;
+  }
+
+  .message-actions {
+    flex-wrap: wrap;
+  }
+}
+
+/* ========================================================================
+   Dark Mode
+   ======================================================================== */
+
+@media (prefers-color-scheme: dark) {
+  .command-chat-container {
+    background: #111827;
+  }
+
+  .chat-header {
+    background: #1f2937;
+    border-bottom-color: #374151;
+  }
+
+  .chat-title {
+    color: #f9fafb;
+  }
+
+  .chat-messages {
+    background: #111827;
+  }
+
+  .message-body {
+    background: #1f2937;
+    color: #e5e7eb;
+  }
+
+  .message-role {
+    color: #e5e7eb;
+  }
+
+  .chat-input-container {
+    background: #1f2937;
+    border-top-color: #374151;
+  }
+
+  .chat-input {
+    background: #111827;
+    border-color: #374151;
+    color: #f9fafb;
+  }
+
+  .chat-input:focus {
+    border-color: #D83F87;
+  }
+}
+
+/* ========================================================================
+   Accessibility
+   ======================================================================== */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Focus visible for keyboard navigation */
+*:focus-visible {
+  outline: 2px solid #D83F87;
+  outline-offset: 2px;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
