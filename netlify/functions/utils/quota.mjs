@@ -18,12 +18,14 @@ import db from '../../../database/connection.mjs';
 /**
  * Hard cost ceilings (MYR sen)
  * Warren Buffett (Mentor 1) RED LINE: Cannot exceed these limits
+ * Phase 9.13: Three-tier pricing integration
  */
 const COST_CEILINGS = {
-  free: 200,      // RM2.00/month
-  pro: 1000,      // RM10.00/month
-  ultimate: 5000, // RM50.00/month
-  guest: 50,      // RM0.50/session
+  guest: 50,       // RM0.50/session
+  free: 200,       // RM2.00/month (RM0/month tier)
+  pro: 1000,       // RM10.00/month (RM30/month tier)
+  ultimate: 5000,  // RM50.00/month (RM80/month tier)
+  enterprise: 10000, // RM100.00/month (Phase 2)
 };
 
 /**

@@ -30,7 +30,7 @@ export class CommandApp {
 
     // Show welcome message if first visit
     if (this.messages.length === 0) {
-      this.showWelcomeMessage();
+      await this.showWelcomeMessage();
     }
 
     // Track page view
@@ -71,13 +71,26 @@ export class CommandApp {
   }
 
   /**
-   * Show welcome message
+   * Show welcome message with catchphrase
    */
-  showWelcomeMessage() {
+  async showWelcomeMessage() {
+    // Fetch catchphrase from API
+    let catchphrase = 'Yo nakama! Welcome to AI Bradaa Command!';
+
+    try {
+      const data = await this.api.get('/catchphrase');
+      if (data.success && data.data.available) {
+        catchphrase = data.data.catchphrase.text;
+      }
+    } catch (error) {
+      console.warn('Failed to fetch catchphrase:', error);
+      // Use fallback catchphrase
+    }
+
     const welcomeMessage = {
       id: 'welcome',
       role: 'assistant',
-      content: `Wah hello there! Welcome to AI Bradaa Command! 👋
+      content: `${catchphrase} 👋
 
 I'm your AI laptop expert, ready to help you find the perfect laptop. You can ask me anything lah!
 

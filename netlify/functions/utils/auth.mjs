@@ -110,7 +110,9 @@ export function requireTier(user, minTier) {
   const tierLevels = {
     'guest': 0,
     'free': 1,
-    'pro': 2
+    'pro': 2,
+    'ultimate': 3,
+    'enterprise': 4
   };
 
   const userLevel = tierLevels[user.tier] || 0;
