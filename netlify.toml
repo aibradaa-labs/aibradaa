@@ -104,3 +104,8 @@
 [functions]
   directory = "netlify/functions"
   node_bundler = "esbuild"
+
+# Scheduled Functions (One Piece Catchphrase Auto-Fetch)
+[[functions]]
+  path = "/cron-catchphrase-fetch"
+  schedule = "0 3 * * *"  # Run at 3:00 AM MYT daily
