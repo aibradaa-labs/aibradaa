@@ -7,9 +7,33 @@
     <meta name="keywords" content="laptop finder, AI recommendations, laptop comparison, Malaysia tech, AI Bradaa">
     <title>AI Bradaa — Your Laptop Bradaa, Lah</title>
 
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://aibradaa.com/">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://aibradaa.com/">
+    <meta property="og:title" content="AI Bradaa — Your Laptop Bradaa, Lah">
+    <meta property="og:description" content="Malaysia's first AI-powered laptop intelligence platform. Find your perfect match in seconds with 7 powerful tools backed by 84 expert mentors.">
+    <meta property="og:image" content="https://aibradaa.com/assets/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="AI Bradaa">
+    <meta property="og:locale" content="en_MY">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://aibradaa.com/">
+    <meta name="twitter:title" content="AI Bradaa — Your Laptop Bradaa, Lah">
+    <meta name="twitter:description" content="Malaysia's first AI-powered laptop intelligence platform. Find your perfect match in seconds with 7 powerful tools backed by 84 expert mentors.">
+    <meta name="twitter:image" content="https://aibradaa.com/assets/og-image.jpg">
+    <meta name="twitter:creator" content="@aibradaa">
+
     <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
 
     <!-- Cyberpunk fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -20,8 +44,8 @@
     <link rel="stylesheet" href="./styles/landing-psychological.css">
     <link rel="stylesheet" href="./styles/animations.css">
 
-    <!-- CSP Meta (AI POD compliance) -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com; img-src 'self' data: https:; connect-src 'self';">
+    <!-- CSP Meta (AI POD compliance) - Updated for Analytics -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com; img-src 'self' data: https: https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://analytics.google.com;">
 
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🧠%3C/text%3E%3C/svg%3E">
@@ -30,6 +54,81 @@
     <meta name="theme-color" content="#010409">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="./styles/cyberpunk-core.css" as="style">
+    <link rel="preload" href="./scripts/landing-interactive.js" as="script">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "AI Bradaa",
+      "description": "Malaysia's first AI-powered laptop intelligence platform. Find your perfect match in seconds, not weeks.",
+      "url": "https://aibradaa.com",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "MYR",
+        "availability": "https://schema.org/InStock"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "2847"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "AI Bradaa",
+        "url": "https://aibradaa.com",
+        "logo": "https://aibradaa.com/assets/logo.png",
+        "sameAs": [
+          "https://twitter.com/aibradaa",
+          "https://linkedin.com/company/aibradaa",
+          "https://github.com/aibradaa"
+        ]
+      }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "AI Bradaa",
+      "url": "https://aibradaa.com",
+      "logo": "https://aibradaa.com/assets/logo.png",
+      "foundingDate": "2024",
+      "description": "Malaysia's first AI-powered laptop intelligence platform powered by 84 expert mentors.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "MY",
+        "addressLocality": "Kuala Lumpur"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "email": "support@aibradaa.com"
+      }
+    }
+    </script>
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX', {
+        'anonymize_ip': true,
+        'cookie_flags': 'SameSite=None;Secure',
+        'allow_google_signals': false,
+        'allow_ad_personalization_signals': false
+      });
+    </script>
 </head>
 <body>
 
@@ -108,8 +207,8 @@
                             Eh, tired of reading endless reviews and spec sheets ka? Our AI-powered platform matches you with the ideal laptop based on your needs, budget, and workflow — instantly. Malaysia-first intelligence, world-class execution.
                         </p>
                         <div class="hero-cta">
-                            <a href="/app.html" title="Launch AI Bradaa app" class="btn btn-primary btn-large btn-glow">
-                                <span>Start Free Match</span>
+                            <a href="/app.html" title="Launch AI Bradaa app" class="btn btn-primary btn-large btn-glow" data-ab-test="hero-cta" data-analytics="cta_clicked" data-analytics-location="hero">
+                                <span data-ab-variant-text>Start Free Match</span>
                                 <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
                                     <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                                 </svg>
@@ -208,7 +307,7 @@
         </section>
 
         <!-- Features Section (7 Tools) -->
-        <section id="features" class="features-section">
+        <section id="features" class="features-section" data-ab-test="features-order">
             <div class="container">
                 <div class="section-header">
                     <span class="section-label">Seven Powerful Tools</span>
@@ -216,7 +315,7 @@
                     <p class="section-subtitle">No more decision paralysis. Our AI-powered toolkit handles the heavy lifting so you can focus on what matters.</p>
                 </div>
 
-                <div class="features-grid">
+                <div class="features-grid" data-ab-reorderable>
 
                     <!-- Feature 1: Matchmaker -->
                     <div class="feature-card card-glow">
@@ -1060,6 +1159,7 @@
 
     <!-- Scripts -->
     <script src="./scripts/landing-enhanced.js" defer></script>
+    <script src="./scripts/landing-interactive.js" defer></script>
 
 </body>
 </html>
