@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#D83F87">
   <title>Offline - AI Bradaa</title>
   <style>
     * {
@@ -12,104 +13,339 @@
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff;
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #fff;
       padding: 20px;
     }
 
-    .container {
+    .offline-container {
+      max-width: 600px;
       text-align: center;
-      max-width: 500px;
+      animation: fadeIn 0.6s ease-out;
     }
 
-    .icon {
-      width: 120px;
-      height: 120px;
-      margin: 0 auto 30px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 60px;
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    h1 {
-      font-size: 32px;
-      margin-bottom: 16px;
+    .offline-icon {
+      font-size: 120px;
+      margin-bottom: 20px;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    .offline-title {
+      font-size: 48px;
       font-weight: 700;
+      margin-bottom: 20px;
+      background: linear-gradient(90deg, #fff, #f0f0f0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
-    p {
-      font-size: 18px;
+    .offline-message {
+      font-size: 20px;
       line-height: 1.6;
       margin-bottom: 30px;
       opacity: 0.9;
     }
 
-    .button {
-      display: inline-block;
-      background: #fff;
-      color: #667eea;
-      padding: 14px 32px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: transform 0.2s;
-    }
-
-    .button:hover {
-      transform: translateY(-2px);
-    }
-
-    .features {
-      margin-top: 50px;
-      text-align: left;
-    }
-
-    .feature {
+    .one-piece-quote {
       background: rgba(255, 255, 255, 0.1);
-      padding: 16px;
+      border-left: 4px solid #FFD700;
+      padding: 20px;
+      margin: 30px 0;
       border-radius: 8px;
-      margin-bottom: 12px;
       backdrop-filter: blur(10px);
     }
 
-    .feature strong {
-      display: block;
-      margin-bottom: 4px;
+    .one-piece-quote p {
+      font-style: italic;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .one-piece-quote .author {
+      font-size: 14px;
+      opacity: 0.8;
+      font-style: normal;
+    }
+
+    .offline-actions {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .btn {
+      padding: 14px 32px;
+      font-size: 16px;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: #fff;
+      color: #667eea;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .offline-features {
+      margin-top: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 30px;
+      backdrop-filter: blur(10px);
+    }
+
+    .offline-features h3 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #FFD700;
+    }
+
+    .feature-list {
+      list-style: none;
+      text-align: left;
+      margin: 0 auto;
+      max-width: 400px;
+    }
+
+    .feature-list li {
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 16px;
+    }
+
+    .feature-list li:last-child {
+      border-bottom: none;
+    }
+
+    .feature-list li::before {
+      content: "✓ ";
+      color: #4ade80;
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    .status-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(239, 68, 68, 0.2);
+      padding: 8px 16px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      border: 1px solid rgba(239, 68, 68, 0.5);
+    }
+
+    .status-dot {
+      width: 10px;
+      height: 10px;
+      background: #ef4444;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.5;
+      }
+    }
+
+    .footer {
+      margin-top: 40px;
+      font-size: 14px;
+      opacity: 0.7;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .offline-title {
+        font-size: 36px;
+      }
+
+      .offline-message {
+        font-size: 18px;
+      }
+
+      .offline-icon {
+        font-size: 80px;
+      }
+
+      .one-piece-quote p {
+        font-size: 16px;
+      }
+
+      .btn {
+        width: 100%;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="icon">📡</div>
-    <h1>You're Offline</h1>
-    <p>
-      No worries! AI Bradaa works offline too. Your browsing history and preferences
-      are saved locally, ready for when you reconnect.
-    </p>
-    <button class="button" onclick="window.location.reload()">Try Again</button>
+  <div class="offline-container">
+    <!-- Status Indicator -->
+    <div class="status-indicator">
+      <span class="status-dot"></span>
+      <span>You're offline</span>
+    </div>
 
-    <div class="features">
-      <div class="feature">
-        <strong>✓ Cached Data</strong>
-        Previously viewed laptops are available offline
-      </div>
-      <div class="feature">
-        <strong>✓ Auto-Sync</strong>
-        Your data will sync automatically when back online
-      </div>
-      <div class="feature">
-        <strong>✓ Privacy First</strong>
-        All offline data is stored securely on your device
-      </div>
+    <!-- Offline Icon -->
+    <div class="offline-icon">🌊</div>
+
+    <!-- Title -->
+    <h1 class="offline-title">Lost at Sea?</h1>
+
+    <!-- Message -->
+    <p class="offline-message">
+      Looks like your internet connection sailed away! But don't worry, bradaa—just like the Straw Hat Pirates navigate the Grand Line, we've got your back even when offline.
+    </p>
+
+    <!-- One Piece v4.0 Quote -->
+    <div class="one-piece-quote">
+      <p>"The seas may be rough, but a true pirate never gives up on their treasure hunt!"</p>
+      <div class="author">— One Piece v4.0 AI Persona</div>
+    </div>
+
+    <!-- Actions -->
+    <div class="offline-actions">
+      <button class="btn btn-primary" onclick="retryConnection()">
+        Try Reconnecting
+      </button>
+      <a href="/app.html" class="btn btn-secondary">
+        Return to App
+      </a>
+    </div>
+
+    <!-- Cached Features Available -->
+    <div class="offline-features">
+      <h3>What's Still Available Offline</h3>
+      <ul class="feature-list">
+        <li>Browse previously viewed laptops</li>
+        <li>Access cached comparison data</li>
+        <li>Read saved appendices & guides</li>
+        <li>View your wishlist (local)</li>
+        <li>Explore offline tools & features</li>
+      </ul>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p>AI Bradaa • Malaysia's First AI-Powered Laptop Intelligence Platform</p>
+      <p>Made with ❤️ in Malaysia</p>
     </div>
   </div>
+
+  <script>
+    // Retry connection
+    function retryConnection() {
+      const btn = document.querySelector('.btn-primary');
+      btn.textContent = 'Checking...';
+      btn.disabled = true;
+
+      // Try to fetch a resource to check connectivity
+      fetch('/manifest.json', { method: 'HEAD', cache: 'no-store' })
+        .then(response => {
+          if (response.ok) {
+            // Connection restored
+            btn.textContent = 'Connected! Redirecting...';
+            setTimeout(() => {
+              window.location.href = '/app.html';
+            }, 500);
+          } else {
+            // Still offline
+            btn.textContent = 'Still Offline';
+            setTimeout(() => {
+              btn.textContent = 'Try Reconnecting';
+              btn.disabled = false;
+            }, 2000);
+          }
+        })
+        .catch(() => {
+          // Still offline
+          btn.textContent = 'Still Offline';
+          setTimeout(() => {
+            btn.textContent = 'Try Reconnecting';
+            btn.disabled = false;
+          }, 2000);
+        });
+    }
+
+    // Auto-retry every 10 seconds
+    setInterval(() => {
+      fetch('/manifest.json', { method: 'HEAD', cache: 'no-store' })
+        .then(response => {
+          if (response.ok) {
+            // Connection restored, redirect
+            window.location.href = '/app.html';
+          }
+        })
+        .catch(() => {
+          // Still offline
+        });
+    }, 10000);
+
+    // Listen for online event
+    window.addEventListener('online', () => {
+      // Connection restored
+      const statusIndicator = document.querySelector('.status-indicator');
+      statusIndicator.style.background = 'rgba(34, 197, 94, 0.2)';
+      statusIndicator.style.borderColor = 'rgba(34, 197, 94, 0.5)';
+      statusIndicator.querySelector('.status-dot').style.background = '#22c55e';
+      statusIndicator.querySelector('span:last-child').textContent = 'Back online!';
+
+      setTimeout(() => {
+        window.location.href = '/app.html';
+      }, 1000);
+    });
+  </script>
 </body>
 </html>

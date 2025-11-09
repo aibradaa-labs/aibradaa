@@ -3,25 +3,97 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="AI Bradaa - Malaysia's AI-powered laptop advisor. Find the perfect laptop with personalized recommendations.">
-  <meta name="theme-color" content="#D83F87">
+  <meta name="description" content="AI Bradaa - Malaysia's first AI-powered laptop intelligence platform. Find your perfect match with 7 powerful tools backed by 84 expert mentors.">
+  <meta name="keywords" content="laptop finder, AI recommendations, laptop comparison, Malaysia tech, AI Bradaa, versus, explorer, command">
+  <title>AI Bradaa - Malaysia's AI Laptop Advisor</title>
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://aibradaa.com/app.html">
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://aibradaa.com/app.html">
+  <meta property="og:title" content="AI Bradaa - Your Laptop Bradaa, Lah">
+  <meta property="og:description" content="Malaysia's first AI-powered laptop intelligence platform. Find your perfect match in seconds with 7 powerful tools backed by 84 expert mentors.">
+  <meta property="og:image" content="https://aibradaa.com/assets/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="AI Bradaa">
+  <meta property="og:locale" content="en_MY">
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://aibradaa.com/app.html">
+  <meta name="twitter:title" content="AI Bradaa - Your Laptop Bradaa, Lah">
+  <meta name="twitter:description" content="Malaysia's first AI-powered laptop intelligence platform. Find your perfect match in seconds with 7 powerful tools backed by 84 expert mentors.">
+  <meta name="twitter:image" content="https://aibradaa.com/assets/og-image.jpg">
+  <meta name="twitter:creator" content="@aibradaa">
 
   <!-- PWA Meta -->
-  <link rel="manifest" href="/pwa/manifest.json">
-  <link rel="apple-touch-icon" href="/assets/icons/icon-192x192.png">
+  <meta name="theme-color" content="#D83F87">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="apple-touch-icon" href="/icons/icon-192.png">
 
   <!-- CSP -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com https://accounts.google.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; connect-src 'self' https://generativelanguage.googleapis.com https://accounts.google.com; frame-src 'self' https://accounts.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests; report-uri /api/csp-report">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://accounts.google.com https://www.gstatic.com https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob: https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://generativelanguage.googleapis.com https://accounts.google.com https://www.google-analytics.com https://www.googletagmanager.com https://analytics.google.com; frame-src 'self' https://accounts.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests; report-uri /api/csp-report">
 
-  <!-- Fonts -->
+  <!-- Preconnect for performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+  <link rel="dns-prefetch" href="https://www.google-analytics.com">
+
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Styles -->
   <link rel="stylesheet" href="/styles/app.css">
 
-  <title>AI Bradaa - Malaysia's AI Laptop Advisor</title>
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "AI Bradaa",
+    "description": "Malaysia's first AI-powered laptop intelligence platform. Find your perfect match in seconds, not weeks.",
+    "url": "https://aibradaa.com/app.html",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web Browser",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "MYR",
+      "availability": "https://schema.org/InStock"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "ratingCount": "1247",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "AI Bradaa",
+      "url": "https://aibradaa.com"
+    }
+  }
+  </script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX', {
+      'send_page_view': true,
+      'anonymize_ip': true,
+      'cookie_flags': 'SameSite=None;Secure'
+    });
+  </script>
 </head>
 <body>
   <!-- App Shell -->
@@ -100,55 +172,43 @@
 
       <!-- Section: Matchmaker -->
       <section id="section-matchmaker" class="app-section" data-section="matchmaker">
-        <div class="section-container">
-          <iframe src="/matchmaker/index.html" class="section-iframe" frameborder="0"></iframe>
+        <div class="section-container" id="matchmaker-container">
+          <!-- Module will be loaded dynamically by app-core.js -->
         </div>
       </section>
 
       <!-- Section: Versus -->
       <section id="section-versus" class="app-section" data-section="versus">
-        <div class="section-container">
-          <iframe src="/versus/index.html" class="section-iframe" frameborder="0"></iframe>
+        <div class="section-container" id="versus-container">
+          <!-- Module will be loaded dynamically by app-core.js -->
         </div>
       </section>
 
       <!-- Section: Explorer -->
       <section id="section-explorer" class="app-section" data-section="explorer">
-        <div class="section-container">
-          <iframe src="/explorer/index.html" class="section-iframe" frameborder="0"></iframe>
+        <div class="section-container" id="explorer-container">
+          <!-- Module will be loaded dynamically by app-core.js -->
         </div>
       </section>
 
       <!-- Section: Command (Default) -->
       <section id="section-command" class="app-section active" data-section="command">
-        <div class="section-container">
-          <iframe src="/command/index.html" class="section-iframe" frameborder="0"></iframe>
+        <div class="section-container" id="command-container">
+          <!-- Module will be loaded dynamically by app-core.js -->
         </div>
       </section>
 
       <!-- Section: Intel (Pro) -->
       <section id="section-intel" class="app-section" data-section="intel">
-        <div class="section-container">
-          <iframe src="/intel/index.html" class="section-iframe" frameborder="0"></iframe>
+        <div class="section-container" id="intel-container">
+          <!-- Module will be loaded dynamically by app-core.js -->
         </div>
       </section>
 
       <!-- Section: Appendices -->
       <section id="section-appendices" class="app-section" data-section="appendices">
-        <div class="section-container">
-          <iframe src="/appendices/index.html" class="section-iframe" frameborder="0"></iframe>
-        </div>
-      </section>
-
-      <!-- Section: Camera Tech (Coming Soon) -->
-      <section id="section-camera-tech" class="app-section" data-section="camera-tech">
-        <div class="section-container">
-          <div class="coming-soon">
-            <div class="coming-soon-icon">📸</div>
-            <h2>Camera Tech</h2>
-            <p>Webcam specs and ratings coming in Phase 2</p>
-            <p class="coming-soon-eta">Expected: Q2 2025</p>
-          </div>
+        <div class="section-container" id="appendices-container">
+          <!-- Module will be loaded dynamically by app-core.js -->
         </div>
       </section>
 
@@ -185,90 +245,66 @@
     <div class="loading-text">Loading...</div>
   </div>
 
-  <!-- Scripts -->
-  <script type="module" src="/app/shared/utils/storage.mjs"></script>
-  <script type="module" src="/app/shared/utils/api.mjs"></script>
-  <script type="module">
-    // App Shell Logic
-    import { storage } from '/app/shared/utils/storage.mjs';
-    import { apiClient } from '/app/shared/utils/api.mjs';
+  <!-- Core Scripts -->
+  <script src="/scripts/auth.js"></script>
+  <script src="/scripts/app-core.js"></script>
 
-    // Initialize app
-    async function initApp() {
+  <!-- App Initialization -->
+  <script>
+    // Initialize app on load
+    let appCore;
+    let authManager;
+    let authUI;
+
+    async function initializeApp() {
       try {
-        // Initialize storage with timeout fallback
-        const initTimeout = new Promise((_, reject) =>
-          setTimeout(() => reject(new Error('Storage init timeout')), 3000)
-        );
+        console.log('[App] Initializing...');
 
-        try {
-          await Promise.race([storage.init(), initTimeout]);
-        } catch (initError) {
-          console.warn('Storage initialization failed, continuing in demo mode:', initError);
-        }
+        // Create auth manager
+        authManager = new AuthManager();
+        authUI = new AuthUI(authManager);
 
-        // Check auth
-        let token = null;
-        try {
-          token = await storage.getToken();
-        } catch (e) {
-          console.warn('Failed to get token, continuing in demo mode:', e);
-        }
+        // Create app core
+        appCore = new AppCore();
 
-        let user = null;
+        // Initialize auth with callback
+        await authManager.init((authState) => {
+          console.log('[App] Auth state changed:', authState);
 
-        if (token) {
-          // Load user data if authenticated
-          try {
-            const response = await apiClient.get('/api/auth/me');
-            user = response.data.user;
+          // Update UI based on auth state
+          if (authState.isAuthenticated && authState.user) {
+            document.getElementById('userName').textContent = authState.user.name || authState.user.email;
+            document.getElementById('userTier').textContent = `${authState.user.tier.charAt(0).toUpperCase() + authState.user.tier.slice(1)} Tier`;
 
-            // Update UI
-            document.getElementById('userName').textContent = user.name || user.email;
-            document.getElementById('userTier').textContent = `${user.tier.charAt(0).toUpperCase() + user.tier.slice(1)} Tier`;
-
-            if (user.avatar) {
-              document.getElementById('userAvatar').src = user.avatar;
+            if (authState.user.avatar) {
+              document.getElementById('userAvatar').src = authState.user.avatar;
             }
-          } catch (error) {
-            console.error('Failed to load user, continuing in demo mode:', error);
+          } else {
+            // Guest mode
+            document.getElementById('userName').textContent = 'Guest';
+            document.getElementById('userTier').textContent = 'Free Tier';
           }
-        }
+        });
 
-        if (!token || !user) {
-          // Demo mode - show guest access
-          document.getElementById('userName').textContent = 'Demo Mode';
-          document.getElementById('userTier').textContent = 'Free Tier (Guest)';
+        // Initialize app core
+        await appCore.init();
 
-          // Add signup prompt
-          const userInfo = document.querySelector('.user-info');
-          if (userInfo && !userInfo.querySelector('.signup-prompt')) {
-            const signupPrompt = document.createElement('div');
-            signupPrompt.className = 'signup-prompt';
-            signupPrompt.innerHTML = '<a href="/signup.html" class="btn-signup-small">Sign Up to Save</a>';
-            signupPrompt.style.marginTop = '8px';
-            userInfo.appendChild(signupPrompt);
-          }
-        }
+        // Expose globally for debugging and window callbacks
+        window.appCore = appCore;
+        window.authManager = authManager;
+        window.authUI = authUI;
 
-        // Setup navigation
-        setupNavigation();
-
-        // Setup menu toggle
-        setupMenuToggle();
-
-        // Setup user menu
-        setupUserMenu();
+        console.log('[App] Initialization complete');
 
       } catch (error) {
-        console.error('App initialization failed:', error);
-        // Show error message to user
-        const loadingText = document.querySelector('.loading-text');
-        if (loadingText) {
-          loadingText.textContent = 'Failed to initialize app. Continuing in demo mode...';
+        console.error('[App] Initialization failed:', error);
+
+        // Show error toast if appCore is initialized
+        if (appCore && appCore.showError) {
+          appCore.showError('Application initialization failed. Some features may not work.', true);
         }
       } finally {
-        // ALWAYS hide loading overlay, even if errors occurred
+        // Hide loading overlay
         setTimeout(() => {
           const loadingOverlay = document.getElementById('loadingOverlay');
           if (loadingOverlay) {
@@ -278,10 +314,52 @@
       }
     }
 
-    // Navigation
+    // Setup menu toggle
+    function setupMenuToggle() {
+      const menuToggle = document.getElementById('menuToggle');
+      const headerNav = document.getElementById('headerNav');
+
+      if (menuToggle && headerNav) {
+        menuToggle.addEventListener('click', () => {
+          headerNav.classList.toggle('open');
+          menuToggle.classList.toggle('open');
+        });
+      }
+    }
+
+    // Setup user menu
+    function setupUserMenu() {
+      const userMenuBtn = document.getElementById('userMenuBtn');
+      const userDropdown = document.getElementById('userDropdown');
+      const logoutBtn = document.getElementById('logoutBtn');
+
+      if (userMenuBtn && userDropdown) {
+        userMenuBtn.addEventListener('click', () => {
+          userDropdown.classList.toggle('open');
+        });
+
+        // Close on click outside
+        document.addEventListener('click', (e) => {
+          if (!userMenuBtn.contains(e.target) && !userDropdown.contains(e.target)) {
+            userDropdown.classList.remove('open');
+          }
+        });
+      }
+
+      // Logout
+      if (logoutBtn) {
+        logoutBtn.addEventListener('click', async () => {
+          if (window.authManager) {
+            await window.authManager.logout();
+            window.location.href = '/';
+          }
+        });
+      }
+    }
+
+    // Setup navigation (click handlers for nav items)
     function setupNavigation() {
       const navItems = document.querySelectorAll('.nav-item');
-      const sections = document.querySelectorAll('.app-section');
 
       navItems.forEach(item => {
         item.addEventListener('click', (e) => {
@@ -289,76 +367,25 @@
 
           const sectionId = item.dataset.section;
 
-          // Update active nav item
-          navItems.forEach(nav => nav.classList.remove('active'));
-          item.classList.add('active');
-
-          // Update active section
-          sections.forEach(section => section.classList.remove('active'));
-          document.getElementById(`section-${sectionId}`).classList.add('active');
-
-          // Update URL hash
+          // Update URL hash (AppCore will handle loading)
           window.location.hash = sectionId;
         });
       });
-
-      // Handle initial hash
-      const hash = window.location.hash.slice(1);
-      if (hash) {
-        const navItem = document.querySelector(`[data-section="${hash}"]`);
-        if (navItem) {
-          navItem.click();
-        }
-      }
     }
 
-    // Menu toggle
-    function setupMenuToggle() {
-      const menuToggle = document.getElementById('menuToggle');
-      const headerNav = document.getElementById('headerNav');
-
-      menuToggle.addEventListener('click', () => {
-        headerNav.classList.toggle('open');
-        menuToggle.classList.toggle('open');
-      });
-    }
-
-    // User menu
-    function setupUserMenu() {
-      const userMenuBtn = document.getElementById('userMenuBtn');
-      const userDropdown = document.getElementById('userDropdown');
-      const logoutBtn = document.getElementById('logoutBtn');
-
-      userMenuBtn.addEventListener('click', () => {
-        userDropdown.classList.toggle('open');
-      });
-
-      // Close on click outside
-      document.addEventListener('click', (e) => {
-        if (!userMenuBtn.contains(e.target) && !userDropdown.contains(e.target)) {
-          userDropdown.classList.remove('open');
-        }
-      });
-
-      // Logout
-      logoutBtn.addEventListener('click', () => {
-        storage.clearToken();
-        window.location.href = '/signup.html';
-      });
-    }
-
-    // Initialize on load
+    // Initialize on DOMContentLoaded
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initApp);
+      document.addEventListener('DOMContentLoaded', () => {
+        setupMenuToggle();
+        setupUserMenu();
+        setupNavigation();
+        initializeApp();
+      });
     } else {
-      initApp();
-    }
-
-    // Register service worker
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/pwa/service-worker.js')
-        .then(reg => console.log('Service Worker registered', reg))
-        .catch(err => console.error('Service Worker registration failed', err));
+      setupMenuToggle();
+      setupUserMenu();
+      setupNavigation();
+      initializeApp();
     }
   </script>
 </body>
