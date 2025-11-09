@@ -1,0 +1,294 @@
+# Error Spike Detection Configuration
+# 84-Mentor Approved: Gene Kim (Mentor 24) + Bruce Schneier (Mentor 15)
+# Version: 1.0.0
+# Last Updated: 2025-11-09
+
+version: "1.0.0"
+service: "ai-bradaa"
+description: "Automated error spike detection with auto-rollback capabilities"
+
+# Detection Windows
+detection:
+  # Time window for error rate calculation
+  window_seconds: 300  # 5 minutes
+
+  # Sliding window overlap (for smoother detection)
+  overlap_seconds: 60  # 1 minute overlap
+
+  # Minimum requests in window (prevent false positives on low traffic)
+  min_requests_threshold: 10
+
+# Thresholds
+thresholds:
+  # Error rate thresholds
+  warning:
+    error_rate: 0.03  # 3% triggers warning
+    duration_seconds: 120  # Must persist for 2 minutes
+
+  critical:
+    error_rate: 0.05  # 5% triggers critical alert
+    duration_seconds: 60   # Must persist for 1 minute
+
+  # Spike detection (sudden increase)
+  spike:
+    enabled: true
+    multiplier: 3.0  # 3x baseline error rate
+    duration_seconds: 60
+
+  # Error budget exhaustion
+  budget:
+    enabled: true
+    monthly_budget: 0.01  # 1% error budget for the month
+    warning_threshold: 0.80  # Alert at 80% exhaustion
+
+# Error Categories
+# Different error types have different severity weights
+error_categories:
+  critical:
+    weight: 5.0
+    types:
+      - "DatabaseConnectionError"
+      - "GeminiAPIError"
+      - "AuthenticationError"
+      - "DataCorruptionError"
+    auto_rollback: true
+
+  high:
+    weight: 3.0
+    types:
+      - "QuotaExceededError"
+      - "RateLimitError"
+      - "TimeoutError"
+      - "ValidationError"
+    auto_rollback: false
+
+  medium:
+    weight: 1.5
+    types:
+      - "CacheMissError"
+      - "NotFoundError"
+      - "BadRequestError"
+    auto_rollback: false
+
+  low:
+    weight: 1.0
+    types:
+      - "NetworkError"
+      - "RetryableError"
+    auto_rollback: false
+
+# Alerting
+alerts:
+  # Slack webhook
+  slack:
+    enabled: "${SLACK_ALERTS_ENABLED:-false}"
+    webhook_url: "${SLACK_WEBHOOK_URL}"
+    channel: "#incidents"
+    mention_on_critical: "@channel"
+
+  # Email alerts
+  email:
+    enabled: "${EMAIL_ALERTS_ENABLED:-false}"
+    recipients:
+      - "${ALERT_EMAIL_PRIMARY}"
+      - "${ALERT_EMAIL_SECONDARY}"
+    smtp:
+      host: "${SMTP_HOST}"
+      port: "${SMTP_PORT:-587}"
+      user: "${SMTP_USER}"
+      password: "${SMTP_PASSWORD}"
+
+  # PagerDuty (for P0 incidents)
+  pagerduty:
+    enabled: "${PAGERDUTY_ENABLED:-false}"
+    integration_key: "${PAGERDUTY_INTEGRATION_KEY}"
+    escalate_on_critical: true
+
+# Auto-Rollback
+rollback:
+  enabled: "${AUTO_ROLLBACK_ENABLED:-false}"
+
+  # Conditions that trigger rollback
+  triggers:
+    - condition: "critical_error_rate"
+      threshold: 0.05
+      duration_seconds: 60
+      auto_execute: true
+
+    - condition: "error_spike"
+      multiplier: 5.0
+      duration_seconds: 30
+      auto_execute: true
+
+    - condition: "database_errors"
+      count: 10
+      duration_seconds: 60
+      auto_execute: true
+
+  # Rollback strategy
+  strategy: "netlify_rollback"  # Use Netlify's built-in rollback
+
+  # Rollback validation
+  validation:
+    enabled: true
+    check_interval_seconds: 30
+    max_attempts: 3
+
+  # Post-rollback actions
+  post_rollback:
+    - action: "send_alert"
+      severity: "critical"
+      message: "Auto-rollback executed due to error spike"
+
+    - action: "create_incident"
+      priority: "P0"
+      assignee: "oncall"
+
+    - action: "lock_deployment"
+      duration_hours: 1
+
+# SLA Compliance
+sla:
+  # Detection SLA
+  detection_sla_seconds: 300  # Detect within 5 minutes
+
+  # Response SLA
+  response_sla_seconds: 900  # Alert within 15 minutes
+
+  # Resolution SLA (auto-rollback)
+  resolution_sla_seconds: 900  # Rollback within 15 minutes
+
+# Metrics & Logging
+metrics:
+  # Export error spike metrics
+  export_to_otel: true
+
+  # Custom metrics
+  custom:
+    - name: "ai.bradaa.error_spike.detected"
+      type: "counter"
+      labels: ["severity", "error_category"]
+
+    - name: "ai.bradaa.error_spike.duration"
+      type: "histogram"
+      labels: ["severity"]
+
+    - name: "ai.bradaa.rollback.triggered"
+      type: "counter"
+      labels: ["trigger_condition", "auto_execute"]
+
+# Suppression Rules
+# Prevent alert fatigue
+suppression:
+  # Deduplicate alerts within time window
+  deduplicate_window_seconds: 300  # 5 minutes
+
+  # Suppress known error patterns (maintenance, etc.)
+  patterns:
+    - error_type: "MaintenanceError"
+      suppress: true
+      reason: "Scheduled maintenance"
+
+    - error_type: "TestError"
+      suppress: true
+      reason: "Test/development errors"
+
+# Baseline Calculation
+baseline:
+  # Calculate baseline error rate from historical data
+  enabled: true
+
+  # Lookback period for baseline calculation
+  lookback_days: 7
+
+  # Percentile for baseline (use median to avoid outliers)
+  percentile: 0.5  # 50th percentile (median)
+
+  # Minimum samples for valid baseline
+  min_samples: 100
+
+  # Recalculate baseline periodically
+  recalculate_interval_hours: 24
+
+# Integration with Netlify Deploy Logs
+netlify:
+  # Parse Netlify function logs for errors
+  enabled: true
+
+  # Netlify API token
+  api_token: "${NETLIFY_API_TOKEN}"
+
+  # Site ID
+  site_id: "${NETLIFY_SITE_ID}"
+
+  # Poll interval for new logs
+  poll_interval_seconds: 60
+
+# Development Mode
+development:
+  # Disable auto-rollback in development
+  disable_rollback: true
+
+  # Use console logging instead of external alerts
+  console_only: true
+
+  # Reduce detection sensitivity
+  relaxed_thresholds: true
+
+# Incident Response
+incident_response:
+  # Automatically create incident report
+  auto_create_incident: true
+
+  # Incident tracking
+  tracking_system: "github_issues"  # or "jira", "linear"
+
+  # GitHub integration
+  github:
+    enabled: "${GITHUB_INCIDENTS_ENABLED:-false}"
+    owner: "${GITHUB_OWNER}"
+    repo: "${GITHUB_REPO}"
+    label: "incident"
+    assignee: "${GITHUB_ONCALL_USER}"
+
+  # Incident template
+  template: |
+    # Incident: Error Spike Detected
+
+    **Severity:** {{severity}}
+    **Detected At:** {{timestamp}}
+    **Error Rate:** {{error_rate}}% (Threshold: {{threshold}}%)
+    **Duration:** {{duration}} seconds
+    **Affected Endpoints:** {{endpoints}}
+
+    ## Error Breakdown
+    {{error_breakdown}}
+
+    ## Auto-Rollback
+    {{#if rollback_triggered}}
+    ✅ Auto-rollback executed successfully
+    {{else}}
+    ⚠️ Auto-rollback not triggered
+    {{/if}}
+
+    ## Next Steps
+    1. Investigate root cause
+    2. Review error logs
+    3. Validate rollback
+    4. Create postmortem
+
+    ## Related Metrics
+    - P95 Latency: {{p95_latency}}ms
+    - Request Volume: {{request_count}}
+    - Affected Users: {{affected_users}}
+
+# Health Check
+health:
+  # Self-check interval
+  check_interval_seconds: 60
+
+  # Alert if error detector is down
+  alert_on_failure: true
+
+  # Heartbeat endpoint
+  heartbeat_url: "${ERROR_DETECTOR_HEARTBEAT_URL}"

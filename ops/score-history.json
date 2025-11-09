@@ -1,0 +1,19 @@
+{
+  "scores": [
+    {
+      "score": 78.4,
+      "timestamp": "2025-11-09T00:00:00Z",
+      "commit": "040e243",
+      "branch": "main",
+      "event": "baseline",
+      "note": "Initial baseline from ULTIMATE_CONSOLIDATED_AUDIT_REPORT.md"
+    }
+  ],
+  "metadata": {
+    "created": "2025-11-09T00:00:00Z",
+    "repository": "aibradaa",
+    "description": "Tracks composite score history for AI Bradaa quality gates",
+    "threshold": 99,
+    "target": 100
+  }
+}
