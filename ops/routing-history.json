@@ -1,0 +1,103 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2025-11-09",
+  "description": "84-Mentor semantic routing history for ML learning and accuracy tracking",
+  "metadata": {
+    "totalRoutings": 0,
+    "correctRoutings": 0,
+    "accuracy": 0,
+    "averageConfidence": 0,
+    "startDate": "2025-11-09"
+  },
+  "routingHistory": [],
+  "examples": [
+    {
+      "id": "example-1",
+      "timestamp": "2025-11-09T00:00:00.000Z",
+      "query": "Should we add dark mode?",
+      "intent": "ux_improvement",
+      "routedCouncils": ["Design Council", "Product Council", "Engineering Council"],
+      "primaryMentor": "Don Nielsen",
+      "confidence": 0.95,
+      "actualApprover": "Don Nielsen",
+      "wasCorrect": true,
+      "feedback": "Perfect routing - UX feature clearly mapped to Design Council"
+    },
+    {
+      "id": "example-2",
+      "timestamp": "2025-11-09T00:01:00.000Z",
+      "query": "Should we increase Pro tier price from RM30 to RM40?",
+      "intent": "pricing_change",
+      "routedCouncils": ["Finance Council", "Product Council", "Strategy Council"],
+      "primaryMentor": "Warren Buffett",
+      "confidence": 0.95,
+      "actualApprover": "Warren Buffett",
+      "wasCorrect": true,
+      "feedback": "Excellent routing - pricing change correctly routed to Finance Council"
+    },
+    {
+      "id": "example-3",
+      "timestamp": "2025-11-09T00:02:00.000Z",
+      "query": "Users are reporting slow laptop search",
+      "intent": "bug_report",
+      "routedCouncils": ["Engineering Council", "Platform Council"],
+      "primaryMentor": "DHH",
+      "confidence": 0.92,
+      "actualApprover": "Jeff Dean",
+      "wasCorrect": true,
+      "feedback": "Good routing - performance issue correctly routed to Engineering Council"
+    },
+    {
+      "id": "example-4",
+      "timestamp": "2025-11-09T00:03:00.000Z",
+      "query": "How should we handle GDPR compliance?",
+      "intent": "security_concern",
+      "routedCouncils": ["Security Council", "Engineering Council"],
+      "primaryMentor": "Bruce Schneier",
+      "confidence": 0.93,
+      "actualApprover": "Bruce Schneier",
+      "wasCorrect": true,
+      "feedback": "Perfect routing - GDPR/compliance correctly routed to Security Council"
+    }
+  ],
+  "confidenceThresholds": {
+    "high": 0.90,
+    "medium": 0.70,
+    "low": 0.50,
+    "conflicting": 0.40
+  },
+  "learningMetrics": {
+    "byIntent": {
+      "feature_request": { "count": 0, "accuracy": 0 },
+      "bug_report": { "count": 0, "accuracy": 0 },
+      "optimization": { "count": 0, "accuracy": 0 },
+      "architecture_decision": { "count": 0, "accuracy": 0 },
+      "pricing_change": { "count": 0, "accuracy": 0 },
+      "security_concern": { "count": 0, "accuracy": 0 },
+      "ux_improvement": { "count": 0, "accuracy": 0 },
+      "infrastructure_change": { "count": 0, "accuracy": 0 }
+    },
+    "byCouncil": {
+      "Strategy Council": { "count": 0, "accuracy": 0 },
+      "Product Council": { "count": 0, "accuracy": 0 },
+      "Design Council": { "count": 0, "accuracy": 0 },
+      "Engineering Council": { "count": 0, "accuracy": 0 },
+      "Security Council": { "count": 0, "accuracy": 0 },
+      "AI/ML Council": { "count": 0, "accuracy": 0 },
+      "Platform Council": { "count": 0, "accuracy": 0 },
+      "Growth Council": { "count": 0, "accuracy": 0 },
+      "Finance Council": { "count": 0, "accuracy": 0 }
+    },
+    "confidenceCalibration": {
+      "high_confidence_accuracy": 0,
+      "medium_confidence_accuracy": 0,
+      "low_confidence_accuracy": 0
+    }
+  },
+  "notes": [
+    "This file tracks routing decisions for continuous learning",
+    "Format: { query, intent, routedCouncils, actualApprover, wasCorrect }",
+    "Use this data to improve confidence thresholds over time",
+    "Calculate accuracy metrics to measure semantic router performance"
+  ]
+}

@@ -1,0 +1,248 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2025-11-09",
+  "description": "84-Mentor expertise mapping for semantic routing",
+  "mentorExpertise": {
+    "Strategy Council": {
+      "Reid Hoffman": {
+        "expertise": ["strategy", "scaling", "blitzscaling", "network effects", "platform strategy", "linkedin"],
+        "specialties": ["Building scalable networks", "Platform business models", "Strategic growth"],
+        "confidence": 0.95
+      },
+      "Ben Horowitz": {
+        "expertise": ["leadership", "organization", "hard things", "management", "culture", "hiring"],
+        "specialties": ["Organizational design", "Leadership in crisis", "Building teams"],
+        "confidence": 0.95
+      },
+      "Warren Buffett": {
+        "expertise": ["finance", "pricing", "ROI", "cost", "value investing", "moat", "capital allocation"],
+        "specialties": ["Financial strategy", "Pricing optimization", "Business fundamentals"],
+        "confidence": 0.98
+      },
+      "Peter Thiel": {
+        "expertise": ["zero to one", "monopoly", "contrarian", "competition", "breakthrough", "startup"],
+        "specialties": ["Contrarian thinking", "Building monopolies", "Breakthrough innovation"],
+        "confidence": 0.92
+      },
+      "Marc Andreessen": {
+        "expertise": ["software", "market", "pmf", "product market fit", "technology", "venture capital"],
+        "specialties": ["Software eating world", "Market timing", "Technology trends"],
+        "confidence": 0.93
+      }
+    },
+    "Product Council": {
+      "Marty Cagan": {
+        "expertise": ["product", "discovery", "roadmap", "feature prioritization", "product strategy", "teams"],
+        "specialties": ["Product discovery", "Empowered teams", "Product excellence"],
+        "confidence": 0.96
+      },
+      "Julie Zhuo": {
+        "expertise": ["product design", "team building", "user research", "product excellence", "design management"],
+        "specialties": ["Design leadership", "Building design teams", "User-centered design"],
+        "confidence": 0.94
+      },
+      "Josh Constine": {
+        "expertise": ["product analysis", "market trends", "product critique", "tech journalism"],
+        "specialties": ["Product analysis", "Market trends", "Feature critique"],
+        "confidence": 0.88
+      },
+      "Casey Newton": {
+        "expertise": ["content", "media", "journalism", "storytelling", "tech industry"],
+        "specialties": ["Content strategy", "Media platforms", "Tech narratives"],
+        "confidence": 0.87
+      }
+    },
+    "Design Council": {
+      "Don Nielsen": {
+        "expertise": ["UX", "user experience", "interface", "usability", "interaction design", "design systems"],
+        "specialties": ["User experience design", "Interaction patterns", "Design systems"],
+        "confidence": 0.95
+      },
+      "Jony Ive": {
+        "expertise": ["industrial design", "aesthetics", "product beauty", "hardware", "apple design"],
+        "specialties": ["Industrial design", "Product aesthetics", "Design excellence"],
+        "confidence": 0.97
+      },
+      "Dieter Rams": {
+        "expertise": ["design principles", "minimalism", "good design", "simplicity", "timeless design"],
+        "specialties": ["Design principles", "Minimalist design", "Timeless aesthetics"],
+        "confidence": 0.96
+      }
+    },
+    "Engineering Council": {
+      "Linus Torvalds": {
+        "expertise": ["linux", "kernel", "systems programming", "open source", "git", "performance"],
+        "specialties": ["Operating systems", "Kernel development", "Systems programming"],
+        "confidence": 0.98
+      },
+      "DHH": {
+        "expertise": ["ruby", "rails", "web development", "developer experience", "productivity", "conventions"],
+        "specialties": ["Web frameworks", "Developer productivity", "Convention over configuration"],
+        "confidence": 0.94
+      },
+      "Brendan Eich": {
+        "expertise": ["javascript", "browser", "language design", "web standards", "mozilla"],
+        "specialties": ["JavaScript", "Browser technology", "Language design"],
+        "confidence": 0.93
+      },
+      "Chris Lattner": {
+        "expertise": ["compilers", "llvm", "swift", "language implementation", "performance optimization"],
+        "specialties": ["Compiler design", "Programming languages", "Performance optimization"],
+        "confidence": 0.95
+      },
+      "Jeff Dean": {
+        "expertise": ["distributed systems", "scale", "infrastructure", "performance", "machine learning systems"],
+        "specialties": ["Large-scale systems", "Distributed computing", "Infrastructure engineering"],
+        "confidence": 0.97
+      }
+    },
+    "Security Council": {
+      "Bruce Schneier": {
+        "expertise": ["security", "encryption", "privacy", "cryptography", "threat modeling", "applied cryptography"],
+        "specialties": ["Applied cryptography", "Security engineering", "Threat analysis"],
+        "confidence": 0.98
+      },
+      "Arvind Narayanan": {
+        "expertise": ["privacy", "fairness", "anonymity", "data protection", "bitcoin", "blockchain"],
+        "specialties": ["Privacy technologies", "Anonymity systems", "Fairness in AI"],
+        "confidence": 0.93
+      },
+      "Timnit Gebru": {
+        "expertise": ["AI ethics", "bias", "fairness", "responsible AI", "algorithmic accountability"],
+        "specialties": ["AI ethics", "Bias detection", "Responsible AI"],
+        "confidence": 0.95
+      },
+      "Whitfield Diffie": {
+        "expertise": ["cryptography", "public key", "secure communication", "key exchange"],
+        "specialties": ["Public key cryptography", "Secure communications", "Cryptographic protocols"],
+        "confidence": 0.96
+      }
+    },
+    "AI/ML Council": {
+      "Andrew Ng": {
+        "expertise": ["AI", "machine learning", "models", "training", "deep learning", "coursera", "education"],
+        "specialties": ["Machine learning systems", "AI education", "Production ML"],
+        "confidence": 0.97
+      },
+      "Geoffrey Hinton": {
+        "expertise": ["neural networks", "backpropagation", "deep learning theory", "capsule networks"],
+        "specialties": ["Deep learning theory", "Neural network architectures", "Learning algorithms"],
+        "confidence": 0.98
+      },
+      "Yann LeCun": {
+        "expertise": ["computer vision", "convolutional networks", "self-supervised learning", "CNN"],
+        "specialties": ["Computer vision", "Convolutional networks", "Self-supervised learning"],
+        "confidence": 0.97
+      },
+      "Fei-Fei Li": {
+        "expertise": ["computer vision", "image recognition", "human-centered AI", "imagenet"],
+        "specialties": ["Computer vision", "Human-centered AI", "Large-scale datasets"],
+        "confidence": 0.96
+      }
+    },
+    "Platform Council": {
+      "Guillermo Rauch": {
+        "expertise": ["vercel", "nextjs", "deployment", "DX", "developer experience", "frontend"],
+        "specialties": ["Frontend platforms", "Developer experience", "Deployment systems"],
+        "confidence": 0.93
+      },
+      "Gene Kim": {
+        "expertise": ["devops", "platform engineering", "DORA metrics", "continuous delivery", "phoenix project"],
+        "specialties": ["DevOps practices", "Platform engineering", "Continuous delivery"],
+        "confidence": 0.95
+      },
+      "Kelsey Hightower": {
+        "expertise": ["kubernetes", "containers", "cloud native", "infrastructure", "docker"],
+        "specialties": ["Kubernetes", "Cloud-native architecture", "Container orchestration"],
+        "confidence": 0.96
+      }
+    },
+    "Growth Council": {
+      "Brian Balfour": {
+        "expertise": ["growth", "acquisition", "retention", "activation", "loops", "metrics"],
+        "specialties": ["Growth loops", "User acquisition", "Retention strategies"],
+        "confidence": 0.94
+      },
+      "Hiten Shah": {
+        "expertise": ["SaaS", "metrics", "analytics", "user feedback", "product analytics", "kissmetrics"],
+        "specialties": ["SaaS metrics", "Product analytics", "User feedback"],
+        "confidence": 0.92
+      },
+      "April Dunford": {
+        "expertise": ["positioning", "messaging", "go-to-market", "differentiation", "marketing"],
+        "specialties": ["Product positioning", "Go-to-market strategy", "Differentiation"],
+        "confidence": 0.91
+      }
+    },
+    "Finance Council": {
+      "Warren Buffett": {
+        "expertise": ["finance", "pricing", "ROI", "cost", "value investing", "moat", "capital allocation"],
+        "specialties": ["Value investing", "Capital allocation", "Financial fundamentals"],
+        "confidence": 0.98
+      },
+      "Ray Dalio": {
+        "expertise": ["principles", "risk management", "economic cycles", "diversification", "hedge funds"],
+        "specialties": ["Risk management", "Economic principles", "Portfolio management"],
+        "confidence": 0.96
+      },
+      "Nassim Taleb": {
+        "expertise": ["antifragility", "black swans", "risk", "uncertainty", "optionality", "tail risk"],
+        "specialties": ["Risk management", "Tail risk", "Antifragility"],
+        "confidence": 0.94
+      }
+    }
+  },
+  "councilMentors": {
+    "Strategy Council": ["Reid Hoffman", "Ben Horowitz", "Warren Buffett", "Peter Thiel", "Marc Andreessen"],
+    "Product Council": ["Marty Cagan", "Julie Zhuo", "Josh Constine", "Casey Newton"],
+    "Design Council": ["Don Nielsen", "Jony Ive", "Dieter Rams"],
+    "Engineering Council": ["Linus Torvalds", "DHH", "Brendan Eich", "Chris Lattner", "Jeff Dean"],
+    "Security Council": ["Bruce Schneier", "Arvind Narayanan", "Timnit Gebru", "Whitfield Diffie"],
+    "AI/ML Council": ["Andrew Ng", "Geoffrey Hinton", "Yann LeCun", "Fei-Fei Li"],
+    "Platform Council": ["Guillermo Rauch", "Gene Kim", "Kelsey Hightower"],
+    "Growth Council": ["Brian Balfour", "Hiten Shah", "April Dunford"],
+    "Finance Council": ["Warren Buffett", "Ray Dalio", "Nassim Taleb"]
+  },
+  "intentMapping": {
+    "feature_request": {
+      "primaryCouncils": ["Product Council", "Design Council"],
+      "secondaryCouncils": ["Engineering Council", "Strategy Council"],
+      "threshold": 0.75
+    },
+    "bug_report": {
+      "primaryCouncils": ["Engineering Council"],
+      "secondaryCouncils": ["Platform Council"],
+      "threshold": 0.85
+    },
+    "optimization": {
+      "primaryCouncils": ["Engineering Council", "Platform Council"],
+      "secondaryCouncils": ["AI/ML Council"],
+      "threshold": 0.80
+    },
+    "architecture_decision": {
+      "primaryCouncils": ["Engineering Council", "Platform Council"],
+      "secondaryCouncils": ["Security Council", "Strategy Council"],
+      "threshold": 0.80
+    },
+    "pricing_change": {
+      "primaryCouncils": ["Finance Council"],
+      "secondaryCouncils": ["Product Council", "Strategy Council"],
+      "threshold": 0.90
+    },
+    "security_concern": {
+      "primaryCouncils": ["Security Council"],
+      "secondaryCouncils": ["Engineering Council", "Platform Council"],
+      "threshold": 0.90
+    },
+    "ux_improvement": {
+      "primaryCouncils": ["Design Council"],
+      "secondaryCouncils": ["Product Council"],
+      "threshold": 0.85
+    },
+    "infrastructure_change": {
+      "primaryCouncils": ["Platform Council"],
+      "secondaryCouncils": ["Engineering Council", "Security Council"],
+      "threshold": 0.85
+    }
+  }
+}

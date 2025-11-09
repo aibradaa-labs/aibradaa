@@ -1,8 +1,9 @@
 /**
- * 84-Mentor Consultation API
+ * 84-Mentor Consultation API V2
  * POST /api/mentor/consult
  *
- * Routes queries to appropriate mentor councils and returns consensus.
+ * Routes queries to appropriate mentor councils using ML semantic routing.
+ * Phase 9.20: Upgraded to semantic understanding with confidence scores.
  * 84-Mentor Approved: Syeddy Orchestrator - Governance Excellence
  *
  * @module mentor-consultation
@@ -10,6 +11,7 @@
 
 import { readFile } from 'fs/promises';
 import { join } from 'path';
+import { getSemanticRouter } from './utils/semantic-router.mjs';
 
 // Load mentor council configuration
 const COUNCIL_ROUTES_PATH = join(process.cwd(), 'project/governance/84/council_routes.yaml');
@@ -193,7 +195,7 @@ export async function handler(event, context) {
   try {
     // Parse request
     const body = JSON.parse(event.body);
-    const { query, context: userContext = {}, category = 'strategy' } = body;
+    const { query, context: userContext = {}, category = null, useSemanticRouting = true } = body;
 
     if (!query) {
       return {
@@ -203,9 +205,51 @@ export async function handler(event, context) {
       };
     }
 
+    // Phase 9.20: Use semantic routing if enabled and API key available
+    let semanticRouting = null;
+    let selectedCategory = category;
+    let recruitedMentors = [];
+    let config = null;
+
+    if (useSemanticRouting && process.env.GEMINI_API_KEY) {
+      try {
+        // Initialize semantic router
+        const semanticRouter = getSemanticRouter(process.env.GEMINI_API_KEY);
+
+        // Get semantic routing recommendation
+        semanticRouting = await semanticRouter.route(query);
+
+        // Use primary routed council if no category specified
+        if (!selectedCategory && semanticRouting.routing.length > 0) {
+          const primaryCouncil = semanticRouting.routing[0].council;
+
+          // Map council name to category
+          const councilToCategoryMap = {
+            'Strategy Council': 'strategy',
+            'Product Council': 'product',
+            'Design Council': 'design',
+            'Engineering Council': 'infrastructure',
+            'Security Council': 'safety',
+            'AI/ML Council': 'infrastructure',
+            'Platform Council': 'infrastructure',
+            'Growth Council': 'strategy',
+            'Finance Council': 'finance',
+          };
+
+          selectedCategory = councilToCategoryMap[primaryCouncil] || 'strategy';
+        }
+      } catch (error) {
+        console.error('[Mentor Consultation] Semantic routing failed:', error);
+        // Fallback to keyword-based routing
+        selectedCategory = category || 'strategy';
+      }
+    } else {
+      selectedCategory = category || 'strategy';
+    }
+
     // Validate category
     const validCategories = Object.keys(CATEGORY_CONFIG);
-    if (!validCategories.includes(category)) {
+    if (!validCategories.includes(selectedCategory)) {
       return {
         statusCode: 400,
         headers,
@@ -217,10 +261,10 @@ export async function handler(event, context) {
     }
 
     // Get category configuration
-    const config = CATEGORY_CONFIG[category];
+    config = CATEGORY_CONFIG[selectedCategory];
 
     // Recruit mentors for this category
-    const recruitedMentors = config.mentors.slice(0, config.recruitmentCount);
+    recruitedMentors = config.mentors.slice(0, config.recruitmentCount);
 
     // Simulate mentor consultations
     const mentorVotes = recruitedMentors.map(mentorId =>
@@ -236,11 +280,14 @@ export async function handler(event, context) {
         id: `consult_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
         timestamp: new Date().toISOString(),
         query,
-        category,
+        category: selectedCategory,
         context: userContext,
+        semanticRoutingEnabled: useSemanticRouting && !!semanticRouting,
       },
+      // Phase 9.20: Include semantic routing analysis
+      semanticRouting: semanticRouting || null,
       council: {
-        category,
+        category: selectedCategory,
         primaryDepartments: config.primaryDepartments,
         secondaryDepartments: config.secondaryDepartments,
         recruitedCount: recruitedMentors.length,
@@ -259,9 +306,12 @@ export async function handler(event, context) {
     consultationLog.push({
       id: response.consultation.id,
       timestamp: response.consultation.timestamp,
-      category,
+      category: selectedCategory,
       passed: consensus.passed,
       compositeScore: consensus.compositeScore,
+      semanticRoutingUsed: !!semanticRouting,
+      primaryCouncil: semanticRouting?.routing[0]?.council || null,
+      confidence: semanticRouting?.routing[0]?.confidence || null,
     });
 
     // Return success
