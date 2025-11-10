@@ -6,11 +6,11 @@
       "currency": "MYR",
       "billingCycle": null,
       "features": {
-        "tokensPerDay": 50000,
-        "tokensPerMonth": 1500000,
+        "tokensPerDay": 1000,
+        "tokensPerMonth": 30000,
         "requestsPerMinute": 10,
-        "requestsPerHour": 100,
-        "requestsPerDay": 500,
+        "requestsPerHour": 50,
+        "requestsPerDay": 50,
         "sections": {
           "matchmaker": true,
           "versus": true,
@@ -37,6 +37,10 @@
           "watermark": true,
           "poweredBy": true,
           "customizable": false
+        },
+        "abo84": {
+          "access": false,
+          "reason": "ABO-84 Beta is exclusive to Ultimate tier (RM80/month)"
         }
       },
       "limits": {
@@ -50,13 +54,13 @@
     },
     "pro": {
       "name": "Pro",
-      "price": 19.90,
+      "price": 30,
       "currency": "MYR",
       "billingCycle": "monthly",
       "stripePriceId": "price_YOUR_STRIPE_PRO_PRICE_ID",
       "features": {
-        "tokensPerDay": 500000,
-        "tokensPerMonth": 15000000,
+        "tokensPerDay": 13333,
+        "tokensPerMonth": 400000,
         "requestsPerMinute": 30,
         "requestsPerHour": 500,
         "requestsPerDay": 5000,
@@ -94,6 +98,10 @@
           "watermark": false,
           "poweredBy": true,
           "customizable": false
+        },
+        "abo84": {
+          "access": false,
+          "reason": "ABO-84 Beta is exclusive to Ultimate tier (RM80/month)"
         }
       },
       "limits": {
@@ -108,13 +116,13 @@
     },
     "ultimate": {
       "name": "Ultimate",
-      "price": 49.90,
+      "price": 80,
       "currency": "MYR",
       "billingCycle": "monthly",
       "stripePriceId": "price_YOUR_STRIPE_ULTIMATE_PRICE_ID",
       "features": {
-        "tokensPerDay": 2000000,
-        "tokensPerMonth": 60000000,
+        "tokensPerDay": 100000,
+        "tokensPerMonth": 3000000,
         "requestsPerMinute": 60,
         "requestsPerHour": 2000,
         "requestsPerDay": 20000,
@@ -158,6 +166,29 @@
           "poweredBy": false,
           "customizable": true,
           "whiteLabel": false
+        },
+        "abo84": {
+          "access": true,
+          "downloads": {
+            "desktop": {
+              "windows": true,
+              "macos": true,
+              "linux": true
+            },
+            "vscodeExtension": true,
+            "cli": true,
+            "ollama": true
+          },
+          "features": {
+            "codeAnalysis": true,
+            "bugDetection": true,
+            "securityScanning": true,
+            "performanceOptimization": true,
+            "aiCodegen": true,
+            "localLLM": true,
+            "cloudLLM": true,
+            "customModels": false
+          }
         }
       },
       "limits": {

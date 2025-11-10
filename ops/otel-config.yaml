@@ -1,0 +1,244 @@
+# OpenTelemetry Configuration
+# 84-Mentor Approved: Gene Kim (Mentor 24) - Observability Excellence
+# Version: 1.0.0
+# Last Updated: 2025-11-09
+
+version: "1.0.0"
+service:
+  name: "ai-bradaa"
+  version: "1.0.0"
+  environment: "${NETLIFY_ENV:-development}"
+  namespace: "ai-bradaa"
+
+# SLO Targets
+# p95 latency < 1.2s, error rate < 1%
+slo:
+  latency:
+    p50_target_ms: 300
+    p95_target_ms: 1200
+    p99_target_ms: 2000
+    critical_threshold_ms: 3000
+
+  errors:
+    target_rate: 0.01  # 1% max
+    critical_rate: 0.05  # 5% triggers alert
+
+  availability:
+    target: 0.995  # 99.5%
+    critical: 0.99  # 99%
+
+# Instrumentation
+instrumentation:
+  auto_instrument: true
+
+  # Functions to instrument
+  functions:
+    - pattern: "netlify/functions/**/*.mjs"
+      enabled: true
+
+  # HTTP client instrumentation
+  http:
+    enabled: true
+    capture_headers: false  # Privacy: don't log headers
+    capture_body: false     # Privacy: don't log request/response bodies
+
+  # Database instrumentation
+  database:
+    enabled: true
+    capture_queries: true
+    sanitize_queries: true  # Remove sensitive data from queries
+
+# Trace Sampling
+sampling:
+  # Sample 100% in dev, 10% in production (cost optimization)
+  rate: "${OTEL_SAMPLE_RATE:-1.0}"
+
+  # Always sample errors
+  always_sample_errors: true
+
+  # Always sample slow requests (> p99)
+  always_sample_slow: true
+  slow_threshold_ms: 2000
+
+# Metrics
+metrics:
+  enabled: true
+
+  # Export interval
+  export_interval_ms: 60000  # 1 minute
+
+  # Custom metrics
+  custom:
+    - name: "ai.bradaa.quota.usage"
+      type: "counter"
+      description: "Quota usage by tier"
+      labels: ["tier", "endpoint"]
+
+    - name: "ai.bradaa.gemini.tokens"
+      type: "counter"
+      description: "Gemini API token usage"
+      labels: ["model", "endpoint"]
+
+    - name: "ai.bradaa.gemini.cost"
+      type: "counter"
+      description: "Gemini API cost (MYR sen)"
+      labels: ["model", "tier"]
+
+    - name: "ai.bradaa.cache.hit_rate"
+      type: "gauge"
+      description: "Cache hit rate percentage"
+      labels: ["cache_layer"]
+
+    - name: "ai.bradaa.request.duration"
+      type: "histogram"
+      description: "Request duration in milliseconds"
+      labels: ["endpoint", "status"]
+      buckets: [50, 100, 200, 500, 1000, 2000, 5000]
+
+    - name: "ai.bradaa.error.count"
+      type: "counter"
+      description: "Error count by type"
+      labels: ["error_type", "endpoint", "severity"]
+
+# Spans
+spans:
+  # Maximum attributes per span
+  max_attributes: 128
+
+  # Maximum events per span
+  max_events: 128
+
+  # Maximum links per span
+  max_links: 128
+
+  # Span attributes to capture
+  attributes:
+    - "http.method"
+    - "http.status_code"
+    - "http.route"
+    - "user.tier"
+    - "endpoint"
+    - "function.name"
+    - "function.duration_ms"
+    - "error.type"
+    - "error.message"
+    - "cache.hit"
+    - "db.query_type"
+    - "gemini.model"
+    - "gemini.tokens"
+    - "gemini.cost_sen"
+
+# Exporters
+exporters:
+  # Console exporter for development
+  console:
+    enabled: "${OTEL_CONSOLE_ENABLED:-true}"
+    pretty_print: true
+
+  # OTLP exporter for production
+  otlp:
+    enabled: "${OTEL_OTLP_ENABLED:-false}"
+    endpoint: "${OTEL_EXPORTER_OTLP_ENDPOINT:-http://localhost:4318}"
+    protocol: "http/protobuf"
+    headers:
+      authorization: "${OTEL_EXPORTER_OTLP_HEADERS:-}"
+    compression: "gzip"
+    timeout_ms: 10000
+
+  # Prometheus exporter (optional)
+  prometheus:
+    enabled: "${OTEL_PROMETHEUS_ENABLED:-false}"
+    port: 9464
+    endpoint: "/metrics"
+
+# Resource attributes
+resource:
+  attributes:
+    service.name: "ai-bradaa"
+    service.version: "1.0.0"
+    deployment.environment: "${NETLIFY_ENV:-development}"
+    cloud.provider: "netlify"
+    cloud.region: "${AWS_REGION:-ap-southeast-1}"
+    telemetry.sdk.name: "@opentelemetry/sdk-node"
+    telemetry.sdk.language: "nodejs"
+    telemetry.sdk.version: "1.x"
+
+# Error Spike Detection Integration
+error_spike:
+  enabled: true
+  window_seconds: 300  # 5-minute windows
+  threshold: 0.05      # 5% error rate
+  alert_webhook: "${ERROR_SPIKE_WEBHOOK_URL:-}"
+
+# Cost Optimization
+cost_optimization:
+  # Reduce sampling in production
+  production_sample_rate: 0.1  # 10%
+
+  # Compress exports
+  compression: true
+
+  # Batch exports
+  batch_size: 512
+  batch_timeout_ms: 5000
+
+  # Drop low-value spans
+  drop_health_checks: true
+  drop_static_assets: true
+
+# Alerting Rules (for production observability platform)
+alerts:
+  - name: "High P95 Latency"
+    condition: "p95_latency_ms > ${slo.latency.p95_target_ms}"
+    severity: "warning"
+    duration: "5m"
+
+  - name: "Critical Latency"
+    condition: "p95_latency_ms > ${slo.latency.critical_threshold_ms}"
+    severity: "critical"
+    duration: "2m"
+
+  - name: "High Error Rate"
+    condition: "error_rate > ${slo.errors.target_rate}"
+    severity: "warning"
+    duration: "5m"
+
+  - name: "Critical Error Rate"
+    condition: "error_rate > ${slo.errors.critical_rate}"
+    severity: "critical"
+    duration: "2m"
+
+  - name: "Low Availability"
+    condition: "availability < ${slo.availability.critical}"
+    severity: "critical"
+    duration: "1m"
+
+# Debug mode
+debug:
+  enabled: "${OTEL_DEBUG:-false}"
+  log_level: "${OTEL_LOG_LEVEL:-info}"
+
+# Privacy & Compliance
+privacy:
+  # Don't capture PII in traces
+  sanitize_user_data: true
+
+  # Don't log request/response bodies
+  capture_bodies: false
+
+  # Hash user IDs in spans
+  hash_user_ids: true
+
+  # TTL for traces (PDPA compliance)
+  trace_retention_days: 90
+
+# Performance
+performance:
+  # Maximum spans in memory before export
+  max_queue_size: 2048
+
+  # Export timeout
+  export_timeout_ms: 30000
+
+  # Use async export (non-blocking)
+  async_export: true

@@ -1,5 +1,6 @@
-# ABO-84 Beta - AI Coding Assistant
+# ABO-84 Beta - AI Bradaa Observer - 84
 
+**Full Name:** AI Bradaa Observer - 84 (ABO-84)
 **Version:** 1.0.0-beta
 **Status:** Private Beta (Ultimate Tier Only)
 **Type:** Downloadable Coding Agent
@@ -8,9 +9,13 @@
 
 ## Overview
 
-ABO-84 Beta is an advanced AI-powered coding assistant that analyzes your code for bugs, performance issues, security vulnerabilities, and architectural problems. Unlike traditional linters, ABO-84 uses advanced AI to understand context and provide intelligent, actionable recommendations.
+**ABO-84 (AI Bradaa Observer - 84)** is an advanced AI-powered coding assistant that analyzes your code for bugs, performance issues, security vulnerabilities, and architectural problems. Unlike traditional linters, ABO-84 uses advanced AI to understand context and provide intelligent, actionable recommendations.
+
+The "Observer" designation reflects ABO-84's core function: observing your codebase to detect issues, patterns, and quality metrics. The "84" references the AI Bradaa 84-Mentor Council governance model that powers the analysis engine.
 
 **This is a CODING AGENT, not a laptop recommendation tool.**
+
+For full naming rationale and specification, see [ABO-84 Full Specification](/docs/ABO-84_SPECIFICATION.md).
 
 ---
 

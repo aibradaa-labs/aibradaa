@@ -30,10 +30,27 @@ const gemini = getGeminiClient(process.env.GEMINI_API_KEY);
 function getModelConfig(mode = 'fast') {
   const models = {
     fast: process.env.GEMINI_MODEL || 'gemini-2.0-flash-exp',
-    think: process.env.GEMINI_MODEL_PRO || 'gemini-exp-1206'
+    think: process.env.GEMINI_MODEL_PRO || 'gemini-exp-1206',
+    research: process.env.GEMINI_MODEL_PRO || 'gemini-exp-1206'
   };
 
   return models[mode] || models.fast;
+}
+
+/**
+ * Check if user has access to AI mode
+ */
+function checkAIModeAccess(user, mode) {
+  const tierModes = {
+    guest: ['fast'],
+    free: ['fast'],
+    pro: ['fast', 'think'],
+    ultimate: ['fast', 'think', 'research'],
+    enterprise: ['fast', 'think', 'research']
+  };
+
+  const allowedModes = tierModes[user?.tier || 'guest'] || ['fast'];
+  return allowedModes.includes(mode);
 }
 
 /**
@@ -62,6 +79,16 @@ async function processCommand(body, user) {
 
   // Validate required fields
   validateRequired(body, ['query']);
+
+  // Check AI mode access
+  if (!checkAIModeAccess(user, mode)) {
+    const requiredTier = mode === 'research' ? 'ultimate' : mode === 'think' ? 'pro' : 'free';
+    throw new Error(
+      `AI mode '${mode}' requires ${requiredTier.toUpperCase()} tier. ` +
+      `Your current tier: ${user?.tier || 'guest'}. ` +
+      `Upgrade at /pricing?upgrade=${requiredTier}`
+    );
+  }
 
   // Select model based on mode
   const modelName = getModelConfig(mode);
@@ -248,6 +275,13 @@ export async function handler(event, context) {
     // Handle specific error types
     if (error.message.includes('Missing required fields')) {
       return errorResponse(error.message, 400);
+    }
+
+    if (error.message.includes('AI mode')) {
+      return errorResponse(error.message, 403, {
+        feature: 'AI mode',
+        upgradeUrl: error.message.match(/\/pricing\?upgrade=\w+/)?.[0] || '/pricing'
+      });
     }
 
     if (error.message.includes('API key not valid')) {

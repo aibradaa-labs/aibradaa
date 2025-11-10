@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Download ABO-84 (AI Bradaa Observer - 84) - Advanced AI-powered code analysis tool. Available for Windows, macOS, Linux, VS Code, CLI, and Ollama.">
+    <meta name="keywords" content="ABO-84, code analysis, AI coding assistant, download, VS Code, Ollama, CLI">
+    <title>Download ABO-84 | AI Bradaa Observer - 84</title>
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://aibradaa.com/downloads/abo84.html">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../styles/cyberpunk-core.css">
+    <link rel="stylesheet" href="../styles/landing-enhanced.css">
+    <link rel="stylesheet" href="../styles/mobile-first.css">
+    <link rel="stylesheet" href="../styles/animations.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="/icons/icon-192.png" type="image/png">
+
+    <style>
+        /* Download page specific styles */
+        .download-hero {
+            padding: 120px 20px 80px;
+            text-align: center;
+            position: relative;
+        }
+
+        .download-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #00F0FF, #D83F87);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .download-subtitle {
+            font-size: 1.2rem;
+            color: #A8B2CC;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .version-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px;
+            background: rgba(0, 240, 255, 0.1);
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            border-radius: 50px;
+            margin-bottom: 40px;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        .platform-detection {
+            background: rgba(216, 63, 135, 0.1);
+            border: 1px solid rgba(216, 63, 135, 0.3);
+            border-radius: 16px;
+            padding: 20px;
+            margin: 40px auto;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .platform-detection h3 {
+            color: #D83F87;
+            margin-bottom: 15px;
+        }
+
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .download-card {
+            background: rgba(16, 20, 30, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(168, 178, 204, 0.1);
+            border-radius: 16px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-card:hover {
+            border-color: rgba(0, 240, 255, 0.5);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0, 240, 255, 0.2);
+        }
+
+        .download-card.featured {
+            border-color: rgba(216, 63, 135, 0.5);
+        }
+
+        .download-card.featured:hover {
+            border-color: rgba(216, 63, 135, 0.8);
+            box-shadow: 0 10px 40px rgba(216, 63, 135, 0.3);
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #D83F87, #F52F57);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .platform-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .platform-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 10px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .platform-desc {
+            color: #A8B2CC;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .download-details {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            color: #A8B2CC;
+            font-size: 0.9rem;
+        }
+
+        .detail-label {
+            color: #7B8AA8;
+        }
+
+        .detail-value {
+            font-family: 'Share Tech Mono', monospace;
+            color: #00F0FF;
+        }
+
+        .btn-download {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #00F0FF, #0099CC);
+            color: #010409;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .btn-download:hover {
+            background: linear-gradient(135deg, #00F0FF, #00D4FF);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 240, 255, 0.4);
+        }
+
+        .btn-download.secondary {
+            background: rgba(0, 240, 255, 0.1);
+            color: #00F0FF;
+            border: 1px solid rgba(0, 240, 255, 0.3);
+        }
+
+        .btn-download.secondary:hover {
+            background: rgba(0, 240, 255, 0.2);
+            border-color: rgba(0, 240, 255, 0.5);
+        }
+
+        .requirements-section {
+            background: rgba(16, 20, 30, 0.5);
+            border: 1px solid rgba(168, 178, 204, 0.1);
+            border-radius: 16px;
+            padding: 40px;
+            margin: 60px 0;
+        }
+
+        .requirements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .requirement-item {
+            padding: 20px;
+            background: rgba(0, 240, 255, 0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(0, 240, 255, 0.1);
+        }
+
+        .requirement-item h4 {
+            color: #00F0FF;
+            margin-bottom: 10px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .requirement-item ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .requirement-item li {
+            color: #A8B2CC;
+            padding: 5px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .requirement-item li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #00F0FF;
+        }
+
+        .security-badges {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 40px 0;
+        }
+
+        .security-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(0, 240, 255, 0.1);
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #00F0FF;
+        }
+
+        @media (max-width: 768px) {
+            .download-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .requirements-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Aurora Background -->
+    <div class="aurora-bg" aria-hidden="true"></div>
+    <div class="grid-overlay" aria-hidden="true"></div>
+
+    <!-- Navigation -->
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="brand">
+                    <img src="/icons/icon-192.png" alt="AI Bradaa Logo" class="brand-icon" width="40" height="40">
+                    <span class="brand-name font-display">AI Bradaa</span>
+                </div>
+                <div class="header-actions">
+                    <a href="/" class="btn btn-secondary">← Back to Home</a>
+                    <a href="/app.html" class="btn btn-primary">Launch App</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="download-hero">
+            <div class="container">
+                <div class="version-badge">
+                    <span>📦</span>
+                    <span>Version 1.0.0-beta</span>
+                    <span>•</span>
+                    <span>Ultimate Tier Only</span>
+                </div>
+
+                <h1 class="download-title">Download ABO-84</h1>
+                <p class="download-subtitle">
+                    AI Bradaa Observer - 84: Advanced AI-powered code analysis tool exclusive to Ultimate tier members.
+                    Available for desktop, VS Code, CLI, and offline mode with Ollama.
+                </p>
+
+                <!-- Platform Auto-Detection -->
+                <div class="platform-detection" id="platformDetection">
+                    <h3>Detected Platform: <span id="detectedPlatform">Detecting...</span></h3>
+                    <p>We recommend downloading for your current platform</p>
+                </div>
+
+                <!-- Security Badges -->
+                <div class="security-badges">
+                    <div class="security-badge">
+                        <span>🔒</span>
+                        <span>Verified & Secure</span>
+                    </div>
+                    <div class="security-badge">
+                        <span>✓</span>
+                        <span>Malware Scanned</span>
+                    </div>
+                    <div class="security-badge">
+                        <span>🛡️</span>
+                        <span>Encrypted Download</span>
+                    </div>
+                    <div class="security-badge">
+                        <span>⭐</span>
+                        <span>Ultimate Tier</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Download Options -->
+        <section>
+            <div class="container">
+                <div class="download-grid">
+
+                    <!-- Desktop - Windows -->
+                    <div class="download-card" id="windowsCard">
+                        <div class="platform-icon">💻</div>
+                        <h2 class="platform-name">Windows Desktop</h2>
+                        <p class="platform-desc">Native Windows application with full offline support and system integration.</p>
+                        <div class="download-details">
+                            <div class="detail-row">
+                                <span class="detail-label">Version:</span>
+                                <span class="detail-value">1.0.0-beta</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Size:</span>
+                                <span class="detail-value">~156 MB</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Requirements:</span>
+                                <span class="detail-value">Windows 10+</span>
+                            </div>
+                        </div>
+                        <a href="abo84-windows.html" class="btn-download">Download for Windows</a>
+                    </div>
+
+                    <!-- Desktop - macOS -->
+                    <div class="download-card featured" id="macosCard">
+                        <div class="card-badge">Recommended</div>
+                        <div class="platform-icon">🍎</div>
+                        <h2 class="platform-name">macOS Desktop</h2>
+                        <p class="platform-desc">Universal binary for Intel and Apple Silicon Macs with native performance.</p>
+                        <div class="download-details">
+                            <div class="detail-row">
+                                <span class="detail-label">Version:</span>
+                                <span class="detail-value">1.0.0-beta</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Size:</span>
+                                <span class="detail-value">~148 MB</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Requirements:</span>
+                                <span class="detail-value">macOS 11+</span>
+                            </div>
+                        </div>
+                        <a href="abo84-macos.html" class="btn-download">Download for macOS</a>
+                    </div>
+
+                    <!-- Desktop - Linux -->
+                    <div class="download-card" id="linuxCard">
+                        <div class="platform-icon">🐧</div>
+                        <h2 class="platform-name">Linux Desktop</h2>
+                        <p class="platform-desc">AppImage and .deb packages for major Linux distributions.</p>
+                        <div class="download-details">
+                            <div class="detail-row">
+                                <span class="detail-label">Version:</span>
+                                <span class="detail-value">1.0.0-beta</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Size:</span>
+                                <span class="detail-value">~142 MB</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Requirements:</span>
+                                <span class="detail-value">Ubuntu 20.04+</span>
+                            </div>
+                        </div>
+                        <a href="abo84-linux.html" class="btn-download">Download for Linux</a>
+                    </div>
+
+                    <!-- VS Code Extension -->
+                    <div class="download-card featured">
+                        <div class="card-badge">Most Popular</div>
+                        <div class="platform-icon">⚡</div>
+                        <h2 class="platform-name">VS Code Extension</h2>
+                        <p class="platform-desc">Real-time code analysis integrated directly into Visual Studio Code.</p>
+                        <div class="download-details">
+                            <div class="detail-row">
+                                <span class="detail-label">Version:</span>
+                                <span class="detail-value">1.0.0-beta</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Size:</span>
+                                <span class="detail-value">~25 MB</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Requirements:</span>
+                                <span class="detail-value">VS Code 1.80+</span>
+                            </div>
+                        </div>
+                        <a href="abo84-vscode.html" class="btn-download">Install Extension</a>
+                    </div>
+
+                    <!-- CLI Tool -->
+                    <div class="download-card">
+                        <div class="platform-icon">⌨️</div>
+                        <h2 class="platform-name">CLI Tool (npm)</h2>
+                        <p class="platform-desc">Command-line interface for CI/CD integration and terminal workflows.</p>
+                        <div class="download-details">
+                            <div class="detail-row">
+                                <span class="detail-label">Version:</span>
+                                <span class="detail-value">1.0.0-beta</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Size:</span>
+                                <span class="detail-value">~18 MB</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Requirements:</span>
+                                <span class="detail-value">Node.js 18+</span>
+                            </div>
+                        </div>
+                        <a href="abo84-cli.html" class="btn-download">Install CLI</a>
+                    </div>
+
+                    <!-- Ollama Integration -->
+                    <div class="download-card">
+                        <div class="platform-icon">🤖</div>
+                        <h2 class="platform-name">Ollama Model</h2>
+                        <p class="platform-desc">100% offline local LLM for privacy-focused code analysis.</p>
+                        <div class="download-details">
+                            <div class="detail-row">
+                                <span class="detail-label">Version:</span>
+                                <span class="detail-value">1.0.0-beta</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Size:</span>
+                                <span class="detail-value">~3.5 GB</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Requirements:</span>
+                                <span class="detail-value">Ollama 0.1.0+</span>
+                            </div>
+                        </div>
+                        <a href="abo84-ollama.html" class="btn-download">Setup Ollama</a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- System Requirements -->
+        <section class="requirements-section">
+            <div class="container">
+                <h2 style="color: #fff; font-family: 'Orbitron', sans-serif; font-size: 2rem; margin-bottom: 20px; text-align: center;">
+                    System Requirements
+                </h2>
+                <p style="text-align: center; color: #A8B2CC; margin-bottom: 40px;">
+                    Minimum specifications for running ABO-84 across different platforms
+                </p>
+
+                <div class="requirements-grid">
+                    <div class="requirement-item">
+                        <h4>Windows</h4>
+                        <ul>
+                            <li>Windows 10 or later (64-bit)</li>
+                            <li>4GB RAM minimum (8GB recommended)</li>
+                            <li>500MB free disk space</li>
+                            <li>Internet connection (for activation)</li>
+                        </ul>
+                    </div>
+
+                    <div class="requirement-item">
+                        <h4>macOS</h4>
+                        <ul>
+                            <li>macOS 11 Big Sur or later</li>
+                            <li>Intel or Apple Silicon (M1/M2/M3)</li>
+                            <li>4GB RAM minimum (8GB recommended)</li>
+                            <li>500MB free disk space</li>
+                        </ul>
+                    </div>
+
+                    <div class="requirement-item">
+                        <h4>Linux</h4>
+                        <ul>
+                            <li>Ubuntu 20.04+ or equivalent</li>
+                            <li>4GB RAM minimum (8GB recommended)</li>
+                            <li>500MB free disk space</li>
+                            <li>GLIBC 2.31 or later</li>
+                        </ul>
+                    </div>
+
+                    <div class="requirement-item">
+                        <h4>VS Code / CLI</h4>
+                        <ul>
+                            <li>Visual Studio Code 1.80+</li>
+                            <li>Node.js 18+ (for CLI)</li>
+                            <li>Active internet connection</li>
+                            <li>Ultimate tier subscription</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section style="padding: 80px 20px; text-align: center;">
+            <div class="container">
+                <h2 style="color: #fff; font-family: 'Orbitron', sans-serif; font-size: 2.5rem; margin-bottom: 20px;">
+                    Not an Ultimate Member Yet?
+                </h2>
+                <p style="color: #A8B2CC; font-size: 1.2rem; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    Upgrade to Ultimate tier for RM80/month to access ABO-84 and unlock advanced code analysis features.
+                </p>
+                <a href="/app.html#upgrade" class="btn btn-primary btn-large btn-glow">
+                    <span>Upgrade to Ultimate</span>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <div class="footer-brand">
+                        <img src="/icons/icon-192.png" alt="AI Bradaa Logo" class="brand-icon" width="40" height="40">
+                        <span class="brand-name font-display">AI Bradaa</span>
+                    </div>
+                    <p class="footer-tagline">ABO-84 — Your AI Code Observer</p>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">Downloads</h4>
+                    <ul class="footer-links">
+                        <li><a href="abo84-windows.html">Windows</a></li>
+                        <li><a href="abo84-macos.html">macOS</a></li>
+                        <li><a href="abo84-linux.html">Linux</a></li>
+                        <li><a href="abo84-vscode.html">VS Code</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="/docs.html">Documentation</a></li>
+                        <li><a href="#requirements">System Requirements</a></li>
+                        <li><a href="/changelog.html">Changelog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="/privacy.html">Privacy Policy</a></li>
+                        <li><a href="/terms.html">Terms of Service</a></li>
+                        <li><a href="/security.html">Security</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2025 AI Bradaa. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Platform Detection Script -->
+    <script>
+        // Auto-detect platform
+        function detectPlatform() {
+            const userAgent = navigator.userAgent.toLowerCase();
+            const platform = navigator.platform.toLowerCase();
+
+            let detectedOS = 'Unknown';
+            let recommendedCard = null;
+
+            if (platform.includes('mac') || userAgent.includes('mac')) {
+                detectedOS = 'macOS';
+                recommendedCard = document.getElementById('macosCard');
+            } else if (platform.includes('win') || userAgent.includes('windows')) {
+                detectedOS = 'Windows';
+                recommendedCard = document.getElementById('windowsCard');
+            } else if (platform.includes('linux') || userAgent.includes('linux')) {
+                detectedOS = 'Linux';
+                recommendedCard = document.getElementById('linuxCard');
+            }
+
+            // Update detection display
+            const detectionEl = document.getElementById('detectedPlatform');
+            if (detectionEl) {
+                detectionEl.textContent = detectedOS;
+            }
+
+            // Highlight recommended card
+            if (recommendedCard && !recommendedCard.classList.contains('featured')) {
+                recommendedCard.style.borderColor = 'rgba(0, 240, 255, 0.5)';
+                recommendedCard.style.backgroundColor = 'rgba(0, 240, 255, 0.05)';
+            }
+        }
+
+        // Run on page load
+        document.addEventListener('DOMContentLoaded', detectPlatform);
+    </script>
+
+</body>
+</html>

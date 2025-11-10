@@ -1,0 +1,228 @@
+name: Eval Suite Quality Gate
+# 84-Mentor Approved: Andrew Ng (Mentor 7) - AI Quality Excellence
+# Purpose: Block merges if AI quality regressions detected
+
+on:
+  pull_request:
+    branches: [main, master]
+    paths:
+      - 'ai_pod/personas/**'
+      - 'netlify/functions/**'
+      - 'project/governance/84/eval_suites/**'
+      - 'tests/**'
+
+  # Allow manual trigger
+  workflow_dispatch:
+    inputs:
+      surfaces:
+        description: 'Surfaces to evaluate (comma-separated: command,versus,intel,offers or "all")'
+        required: false
+        default: 'all'
+
+jobs:
+  eval-suite:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Determine affected surfaces
+        id: surfaces
+        run: |
+          # Check which surfaces are affected by this PR
+          CHANGED_FILES=$(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.sha }})
+
+          SURFACES=""
+
+          if echo "$CHANGED_FILES" | grep -q "ai_pod/personas/command" || \
+             echo "$CHANGED_FILES" | grep -q "netlify/functions/chat"; then
+            SURFACES="$SURFACES,command"
+          fi
+
+          if echo "$CHANGED_FILES" | grep -q "ai_pod/personas/versus" || \
+             echo "$CHANGED_FILES" | grep -q "netlify/functions/versus"; then
+            SURFACES="$SURFACES,versus"
+          fi
+
+          if echo "$CHANGED_FILES" | grep -q "ai_pod/personas/intel" || \
+             echo "$CHANGED_FILES" | grep -q "netlify/functions/intel"; then
+            SURFACES="$SURFACES,intel"
+          fi
+
+          if echo "$CHANGED_FILES" | grep -q "ai_pod/personas/offers" || \
+             echo "$CHANGED_FILES" | grep -q "netlify/functions/offers"; then
+            SURFACES="$SURFACES,offers"
+          fi
+
+          # If manual trigger, use input
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            SURFACES="${{ github.event.inputs.surfaces }}"
+          fi
+
+          # Default to all if empty
+          if [ -z "$SURFACES" ] || [ "$SURFACES" = "," ]; then
+            SURFACES="all"
+          fi
+
+          # Remove leading comma
+          SURFACES=$(echo "$SURFACES" | sed 's/^,//')
+
+          echo "surfaces=$SURFACES" >> $GITHUB_OUTPUT
+          echo "📋 Surfaces to evaluate: $SURFACES"
+
+      - name: Run eval suite
+        id: eval
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: |
+          # Run eval runner
+          SURFACES="${{ steps.surfaces.outputs.surfaces }}"
+
+          echo "🧪 Running eval suite for surfaces: $SURFACES"
+
+          node tests/eval-runner.mjs --surfaces="$SURFACES" --output=eval-results.json
+
+          # Store results
+          cat eval-results.json
+
+      - name: Check regression threshold
+        id: check
+        run: |
+          # Parse results and check thresholds
+          RESULTS=$(cat eval-results.json)
+
+          # Extract overall pass/fail
+          PASSED=$(echo "$RESULTS" | jq -r '.passed')
+
+          # Extract failures
+          FAILURES=$(echo "$RESULTS" | jq -r '.failures | length')
+
+          if [ "$PASSED" = "false" ] || [ "$FAILURES" -gt "0" ]; then
+            echo "status=fail" >> $GITHUB_OUTPUT
+            echo "❌ Eval suite FAILED"
+            exit 1
+          else
+            echo "status=pass" >> $GITHUB_OUTPUT
+            echo "✅ Eval suite PASSED"
+          fi
+
+      - name: Comment on PR
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const results = JSON.parse(fs.readFileSync('eval-results.json', 'utf8'));
+
+            const status = results.passed ? '✅ PASS' : '❌ FAIL';
+            const emoji = results.passed ? '🎉' : '⚠️';
+
+            // Build summary table
+            const surfaceRows = results.surfaces.map(s => {
+              const accuracy = (s.metrics.accuracy * 100).toFixed(1);
+              const faithfulness = (s.metrics.faithfulness * 100).toFixed(1);
+              const citation = (s.metrics.citation_rate * 100).toFixed(1);
+              const p95 = s.metrics.latency_p95_ms;
+
+              const statusIcon = s.passed ? '✅' : '❌';
+
+              return `| ${statusIcon} ${s.surface} | ${accuracy}% | ${faithfulness}% | ${citation}% | ${p95}ms | ${s.sample_size} |`;
+            }).join('\n');
+
+            // Build failures list
+            const failuresList = results.failures.length > 0
+              ? results.failures.slice(0, 10).map(f =>
+                  `- **${f.surface}**: ${f.reason} (${f.metric}: ${f.value})`
+                ).join('\n')
+              : 'None';
+
+            const body = `## ${emoji} Eval Suite Quality Gate ${status}
+
+            ### Overall Results
+
+            **Surfaces Tested:** ${results.surfaces.length}
+            **Total Questions:** ${results.summary.total_questions}
+            **Pass Rate:** ${(results.summary.pass_rate * 100).toFixed(1)}%
+            **Status:** ${status}
+
+            ### Surface Breakdown
+
+            | Surface | Accuracy | Faithfulness | Citation | P95 Latency | Samples |
+            |---------|----------|--------------|----------|-------------|---------|
+            ${surfaceRows}
+
+            ### Failures
+
+            ${failuresList}
+
+            ### Thresholds
+
+            - ✅ **Accuracy:** ≥95% of baseline
+            - ✅ **Faithfulness:** ≥92%
+            - ✅ **Citation Rate:** ≥90%
+            - ✅ **Toxicity:** ≤0.5%
+            - ✅ **Slice Parity:** Δ ≤5%
+            - ✅ **P95 Latency:** Per-surface SLO
+
+            ${results.passed
+              ? '✅ **All thresholds met!** This PR maintains AI quality standards.'
+              : '❌ **Quality regression detected.** Review failures and improve before merging.'}
+
+            <details>
+            <summary>📊 View Detailed Metrics</summary>
+
+            \`\`\`json
+            ${JSON.stringify(results.surfaces, null, 2)}
+            \`\`\`
+
+            </details>
+
+            ---
+
+            **84-Mentor Authority:** Andrew Ng (Mentor 7) - AI Quality Excellence
+            `;
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: body
+            });
+
+      - name: Upload eval results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: eval-results
+          path: eval-results.json
+          retention-days: 90
+
+      - name: Block merge if failed
+        if: steps.check.outputs.status == 'fail'
+        run: |
+          echo "::error title=Eval Suite Failed::AI quality regression detected. Pass rate below threshold. Review eval-results.json for details."
+          exit 1
+
+      - name: Update baseline (on main)
+        if: github.ref == 'refs/heads/main' && steps.check.outputs.status == 'pass'
+        run: |
+          # If on main branch and evals passed, optionally update baseline
+          # (Only do this if improvements are sustained >30 days per DOC 2)
+
+          echo "📈 Evals passed on main branch"
+          echo "⚠️  Baseline update requires manual review (sustained improvements >30 days)"
+          echo "See project/governance/84/eval_suites/README.md for baseline update process"

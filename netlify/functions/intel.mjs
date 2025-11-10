@@ -220,7 +220,7 @@ export async function handler(event, context) {
     const path = event.path.replace(/^\/\.netlify\/functions\/intel/, '');
     const queryParams = getQueryParams(event);
 
-    // GET /feed
+    // GET /feed - Free tier can access, but AI insights require Pro/Ultimate
     if (path === '/feed' && event.httpMethod === 'GET') {
       const result = getIntelFeed(queryParams);
 
@@ -266,7 +266,7 @@ export async function handler(event, context) {
       });
     }
 
-    // POST /refresh (Pro tier required)
+    // POST /refresh (Pro+ tier required)
     if (path === '/refresh' && event.httpMethod === 'POST') {
       // Require Pro tier
       if (!user) {
@@ -276,7 +276,11 @@ export async function handler(event, context) {
       try {
         requireTier(user, 'pro');
       } catch (tierError) {
-        return errorResponse('Pro tier required for ETL refresh', 403);
+        return errorResponse('Pro tier or higher required for ETL refresh', 403, {
+          currentTier: user?.tier || 'guest',
+          requiredTier: 'pro',
+          upgradeUrl: '/pricing?upgrade=pro'
+        });
       }
 
       const body = parseBody(event);

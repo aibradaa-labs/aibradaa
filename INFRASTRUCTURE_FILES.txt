@@ -1,0 +1,34 @@
+# Infrastructure Suite - Quick File Reference
+
+## GitHub Actions Workflows
+/home/user/aibradaa/.github/workflows/composite-score.yml
+/home/user/aibradaa/.github/workflows/eval-suite.yml
+
+## Netlify Functions
+/home/user/aibradaa/netlify/functions/mentor-consultation.mjs
+/home/user/aibradaa/netlify/functions/utils/error-tracker.mjs
+/home/user/aibradaa/netlify/functions/utils/otel.mjs
+/home/user/aibradaa/netlify/functions/utils/quota.mjs (UPDATED)
+
+## Frontend
+/home/user/aibradaa/public/mentor-dashboard.html
+
+## Operations Config
+/home/user/aibradaa/ops/otel-config.yaml
+/home/user/aibradaa/ops/error-spike-detection.yaml
+/home/user/aibradaa/ops/score-history.json
+
+## Incident Runbooks
+/home/user/aibradaa/ops/runbooks/P0_database_down.md
+/home/user/aibradaa/ops/runbooks/P1_gemini_api_timeout.md
+/home/user/aibradaa/ops/runbooks/P1_high_latency.md
+/home/user/aibradaa/ops/runbooks/P2_deployment_failed.md
+
+## Test Infrastructure
+/home/user/aibradaa/tests/eval-runner.mjs
+
+## Documentation
+/home/user/aibradaa/INFRASTRUCTURE_SUITE_SUMMARY.md
+
+Total: 14 new files + 1 updated file
+Lines of Code: 3,657
