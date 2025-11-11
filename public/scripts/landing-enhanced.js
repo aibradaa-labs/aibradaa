@@ -112,18 +112,18 @@ updateLiveMetrics();
 class ABO84Simulator {
   constructor() {
     this.experts = [
-      { name: 'Warren Buffett', domain: 'Strategy', avatar: '💼', confidence: 0.92 },
-      { name: 'Martin Fowler', domain: 'Code Quality', avatar: '⚙️', confidence: 0.95 },
-      { name: 'Don Nielsen', domain: 'UX Design', avatar: '🎨', confidence: 0.89 },
-      { name: 'Andrew Ng', domain: 'AI/ML', avatar: '🤖', confidence: 0.94 },
-      { name: 'Geoffrey Hinton', domain: 'AI Safety', avatar: '🛡️', confidence: 0.91 },
-      { name: 'Jeff Bezos', domain: 'Product', avatar: '📦', confidence: 0.88 },
-      { name: 'Jensen Huang', domain: 'Hardware', avatar: '💎', confidence: 0.93 },
-      { name: 'Susan Wojcicki', domain: 'Growth', avatar: '📈', confidence: 0.87 },
-      { name: 'Tim Cook', domain: 'Operations', avatar: '⚡', confidence: 0.90 },
-      { name: 'Mary Barra', domain: 'Finance', avatar: '💰', confidence: 0.86 },
-      { name: 'Satya Nadella', domain: 'Platform', avatar: '☁️', confidence: 0.92 },
-      { name: 'Reid Hoffman', domain: 'Network Effects', avatar: '🌐', confidence: 0.88 }
+      { name: 'AI Bradaa Strategy', domain: 'Strategy', avatar: '💼', confidence: 0.92 },
+      { name: 'AI Bradaa Code Quality', domain: 'Code Quality', avatar: '⚙️', confidence: 0.95 },
+      { name: 'AI Bradaa UX Design', domain: 'UX Design', avatar: '🎨', confidence: 0.89 },
+      { name: 'AI Bradaa AI/ML', domain: 'AI/ML', avatar: '🤖', confidence: 0.94 },
+      { name: 'AI Bradaa Safety', domain: 'AI Safety', avatar: '🛡️', confidence: 0.91 },
+      { name: 'AI Bradaa Product', domain: 'Product', avatar: '📦', confidence: 0.88 },
+      { name: 'AI Bradaa Hardware', domain: 'Hardware', avatar: '💎', confidence: 0.93 },
+      { name: 'AI Bradaa Growth', domain: 'Growth', avatar: '📈', confidence: 0.87 },
+      { name: 'AI Bradaa Operations', domain: 'Operations', avatar: '⚡', confidence: 0.90 },
+      { name: 'AI Bradaa Finance', domain: 'Finance', avatar: '💰', confidence: 0.86 },
+      { name: 'AI Bradaa Platform', domain: 'Platform', avatar: '☁️', confidence: 0.92 },
+      { name: 'AI Bradaa Network', domain: 'Network Effects', avatar: '🌐', confidence: 0.88 }
     ];
 
     this.currentQuery = '';

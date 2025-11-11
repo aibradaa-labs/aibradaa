@@ -3,9 +3,11 @@ name: Composite Score Quality Gate
 
 on:
   pull_request:
-    branches: [main, master]
+    branches: [main]
   push:
-    branches: [main, master]
+    branches:
+      - main
+      - 'claude/**'
 
 jobs:
   check-composite-score:
