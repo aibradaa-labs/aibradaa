@@ -18,7 +18,7 @@ export async function handler(event) {
     const cacheHealth = await checkCache();
     const uptime = process.uptime();
     const memUsage = process.memoryUsage();
-    const responseTime = Date.now() - startTime();
+    const responseTime = Date.now() - startTime;
 
     const health = {
       status: 'healthy',
