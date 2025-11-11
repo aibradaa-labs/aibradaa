@@ -5,6 +5,10 @@ name: Eval Suite Quality Gate
 on:
   pull_request:
     branches: [main]
+  push:
+    branches:
+      - main
+      - 'claude/**'
     paths:
       - 'ai_pod/personas/**'
       - 'netlify/functions/**'
