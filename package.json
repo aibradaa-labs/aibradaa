@@ -3,11 +3,10 @@
   "version": "1.0.0",
   "description": "Malaysia-first AI-powered laptop intelligence platform - Production PWA with 84-mentor governance",
   "type": "module",
-  "main": "api/server.mjs",
   "scripts": {
-    "dev": "node api/server.mjs",
-    "build": "node tools/build.mjs",
-    "start": "NODE_ENV=production node api/server.mjs",
+    "dev": "netlify dev",
+    "build": "node tools/build-netlify.mjs",
+    "start": "netlify dev",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "test:all": "npm run test:smoke && npm run test:data && npm run test:ux",
     "test:smoke": "node tests/smoke/boot.test.mjs",
@@ -61,6 +60,7 @@
     "axe-core": "^4.10.2",
     "eslint": "^9.18.0",
     "jest": "^29.7.0",
+    "netlify-cli": "^17.0.0",
     "prettier": "^3.4.2",
     "sharp": "^0.34.5"
   }
