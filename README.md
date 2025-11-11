@@ -37,19 +37,19 @@ open http://localhost:3000
 6. **Appendices** - Full Top-100 catalog with best offers
 7. **Camera Tech** - Sensor specs for creators
 
-### 84-Mentor Council Governance
+### AI Bradaa Intelligence Council
 
-Every decision evaluated by 84 specialized experts across:
-- Strategy (Warren Buffett, Charlie Munger, Michael Porter)
-- AI POD (Andrew Ng, Jeremy Howard, Andrej Karpathy)
-- Platform (Kent Beck, Margaret Hamilton, Gene Kim)
-- Design (Don Norman, Jakob Nielsen, Jared Spool)
-- Safety & Governance (Bruce Schneier, Timnit Gebru)
-- Growth (Brian Balfour, Andrew Chen)
-- Finance (Aswath Damodaran)
-- Legal/Compliance
-- Operations (Tim Cook)
-- Customer (Jeff Bezos)
+Every decision evaluated by our AI Bradaa Intelligence system across:
+- Strategy Analysis
+- AI & Machine Learning
+- Platform Engineering
+- UX Design Excellence
+- Safety & Governance
+- Growth Optimization
+- Financial Analysis
+- Legal & Compliance
+- Operations Excellence
+- Customer Experience
 
 ### Ferrofluid Souls Prototype
 
@@ -215,13 +215,13 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines.
 
 Built with ❤️ by the AI Bradaa team, guided by the 84-mentor council.
 
-**Key Mentors:**
-- Warren Buffett (Strategy)
-- Andrew Ng (AI POD)
-- Kent Beck (Platform)
-- Don Norman (Design)
-- Bruce Schneier (Security)
-- Jeff Bezos (Customer)
+**Core Intelligence Modules:**
+- Strategic Analysis
+- AI & ML Intelligence
+- Platform Architecture
+- Design Excellence
+- Security Assurance
+- Customer Success
 
 ---
 
