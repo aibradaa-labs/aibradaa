@@ -163,19 +163,27 @@
     "discontinued": {
       "description": "Product has been discontinued by manufacturer",
       "autoArchive": true,
-      "triggerConditions": ["manufacturer-announcement", "out-of-stock-60-days"],
+      "triggerConditions": [
+        "manufacturer-announcement",
+        "out-of-stock-60-days"
+      ],
       "count": 5
     },
     "out-of-stock-30-days": {
       "description": "Product out of stock for more than 30 days",
       "autoArchive": true,
-      "triggerConditions": ["no-availability-30-days"],
+      "triggerConditions": [
+        "no-availability-30-days"
+      ],
       "count": 1
     },
     "replaced-by-newer-model": {
       "description": "Newer model has replaced this product",
       "autoArchive": true,
-      "triggerConditions": ["new-model-detected", "old-model-unavailable"],
+      "triggerConditions": [
+        "new-model-detected",
+        "old-model-unavailable"
+      ],
       "count": 2
     },
     "data-quality-failure": {
@@ -245,5 +253,19 @@
       "maxDaysArchived": 90,
       "requiresApproval": true
     }
-  }
+  },
+  "metadata": {
+    "totalRotations": 1,
+    "lastRotation": "2025-11-11T16:21:24.046Z"
+  },
+  "rotations": [
+    {
+      "timestamp": "2025-11-11T16:21:24.046Z",
+      "totalLaptops": 100,
+      "promoted": 0,
+      "demoted": 0,
+      "promotedIds": [],
+      "demotedIds": []
+    }
+  ]
 }

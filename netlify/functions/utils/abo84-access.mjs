@@ -11,7 +11,7 @@
  * ❌ Public/Unauthenticated - NO ACCESS
  */
 
-import tiersConfig from '../../configs/tiers.json' assert { type: 'json' };
+import tiersConfig from '../../configs/tiers.json' with { type: 'json' };
 
 /**
  * Check if user has ABO-84 access based on their tier

@@ -119,7 +119,7 @@ server.listen(PORT, () => {
 });
 
 // Get local IP
-function getLocalIP() {
+async function getLocalIP() {
   const { networkInterfaces } = await import('os');
   const nets = networkInterfaces();
   for (const name of Object.keys(nets)) {
