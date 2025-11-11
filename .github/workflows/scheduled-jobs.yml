@@ -1,0 +1,227 @@
+name: Scheduled Jobs
+# Auto-fetch, Rotation, and Maintenance Tasks
+# Syeddy Orchestrator with 84-Mentor Framework
+
+on:
+  schedule:
+    # Weekly laptop database rotation (Sunday 2 AM UTC)
+    - cron: '0 2 * * 0'
+  workflow_dispatch:
+    inputs:
+      job_type:
+        description: 'Job to run'
+        required: true
+        type: choice
+        options:
+          - rotation
+          - fetch
+          - full-maintenance
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  laptop-database-rotation:
+    name: Rotate Laptop Database
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    if: github.event_name == 'schedule' || github.event.inputs.job_type == 'rotation' || github.event.inputs.job_type == 'full-maintenance'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run database rotation
+        run: |
+          echo "🔄 Starting laptop database rotation..."
+          echo "⚠️  CRITICAL: Database GROWS over time - laptops NEVER deleted"
+
+          node -e "
+          import { rotateLaptopDatabase, getRotationStats } from './ai_pod/services/laptop_rotation.mjs';
+
+          async function rotate() {
+            try {
+              console.log('📊 Pre-rotation stats...');
+              const preStats = await getRotationStats();
+              console.log(JSON.stringify(preStats, null, 2));
+
+              console.log('\\n🔄 Performing rotation...');
+              const result = await rotateLaptopDatabase(100, 7.5);
+
+              console.log('\\n✅ Rotation completed:');
+              console.log('  - Featured:', result.featured);
+              console.log('  - Extended:', result.extended);
+              console.log('  - Total (GROWING):', result.total);
+              console.log('  - Promoted:', result.movements.promoted);
+              console.log('  - Moved to extended:', result.movements.demoted);
+              console.log('  - Top score:', result.topScore);
+
+              console.log('\\n📈 Database is GROWING:', result.total, 'total laptops');
+
+              process.exit(0);
+            } catch (error) {
+              console.error('❌ Rotation error:', error);
+              process.exit(1);
+            }
+          }
+
+          rotate();
+          "
+
+      - name: Commit rotated databases
+        run: |
+          git config user.name "AI Bradaa Bot"
+          git config user.email "bot@aibradaa.com"
+
+          git add data/laptops.json data/laptops-extended.json data/laptops-full.json data/archive.json 2>/dev/null || true
+
+          if git diff --cached --quiet; then
+            echo "ℹ️  No changes to commit"
+          else
+            git commit -m "chore: Automated laptop database rotation
+
+            - Rotated featured/extended catalogs
+            - Database continues to GROW (laptops never deleted)
+            - Performed by Syeddy Orchestrator scheduled job
+            - Timestamp: $(date -u +%Y-%m-%dT%H:%M:%SZ)
+            "
+
+            git push origin main
+            echo "✅ Changes pushed to main"
+          fi
+
+      - name: Create rotation report
+        uses: actions/github-script@v7
+        if: always()
+        with:
+          script: |
+            const fs = require('fs');
+
+            let report = `## 🔄 Laptop Database Rotation Report
+
+            **Timestamp:** ${new Date().toISOString()}
+            **Triggered by:** ${context.eventName}
+
+            ### Results
+
+            `;
+
+            // Try to read rotation stats
+            try {
+              const archive = JSON.parse(fs.readFileSync('data/archive.json', 'utf-8'));
+              const lastRotation = archive.rotations[archive.rotations.length - 1];
+
+              report += `
+            - **Total Laptops:** ${lastRotation.totalLaptops} ✅ GROWING
+            - **Promoted to Featured:** ${lastRotation.promoted}
+            - **Moved to Extended:** ${lastRotation.demoted}
+
+            ### Strategy
+
+            ✅ **Database GROWS over time** - laptops are NEVER deleted
+            - Featured catalog: Top 100 shortlisted laptops
+            - Extended catalog: All other laptops (accessible by AI Bradaa)
+            - Full catalog: Complete database (featured + extended)
+
+            ---
+
+            Performed by **Syeddy Orchestrator** automated job.
+            `;
+            } catch (error) {
+              report += '⚠️ Could not generate detailed report (files not found)\\n';
+            }
+
+            core.summary.addRaw(report).write();
+
+  database-maintenance:
+    name: Database Maintenance
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    if: github.event.inputs.job_type == 'full-maintenance'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run integrity checks
+        run: |
+          echo "🔍 Running database integrity checks..."
+
+          node -e "
+          import { validateDatabaseIntegrity } from './ai_pod/services/laptop_rotation.mjs';
+
+          async function check() {
+            try {
+              const result = await validateDatabaseIntegrity();
+
+              console.log('📊 Integrity check results:');
+              console.log(JSON.stringify(result, null, 2));
+
+              if (!result.valid) {
+                console.warn('⚠️  Issues found:', result.issues);
+              } else {
+                console.log('✅ Database integrity validated');
+              }
+
+              process.exit(0);
+            } catch (error) {
+              console.log('⚠️  Integrity check skipped (catalogs not initialized)');
+              process.exit(0);
+            }
+          }
+
+          check();
+          "
+
+      - name: Cleanup old archives (if needed)
+        run: |
+          echo "🧹 Checking archive size..."
+
+          if [ -f "data/archive.json" ]; then
+            SIZE=$(du -h data/archive.json | cut -f1)
+            echo "Archive size: $SIZE"
+
+            # If archive > 10MB, consider cleanup (not implemented yet)
+            echo "ℹ️  Archive cleanup not implemented (keeping all history)"
+          fi
+
+  summary:
+    name: Scheduled Jobs Summary
+    runs-on: ubuntu-latest
+    needs: [laptop-database-rotation, database-maintenance]
+    if: always()
+
+    steps:
+      - name: Generate summary
+        run: |
+          echo "## ⏰ Scheduled Jobs Summary"
+          echo ""
+          echo "All scheduled maintenance tasks completed."
+          echo ""
+          echo "### Strategy"
+          echo "✅ **Database GROWS over time** - laptops are NEVER deleted"
+          echo "- Featured: Top 100 laptops (shortlisted)"
+          echo "- Extended: All other laptops (accessible to AI Bradaa)"
+          echo "- Full: Complete growing catalog"

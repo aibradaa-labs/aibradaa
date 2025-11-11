@@ -50,9 +50,15 @@ export const AUTO_FETCH_CONFIG = {
   laptops: {
     enabled: true,
     schedule: '0 2 * * 0', // Weekly on Sunday at 2 AM MYT
-    maxEntries: 100,
-    rotationStrategy: 'score-based', // Keep top 100 by composite score
-    minScore: 7.5, // Minimum composite score to keep
+    featuredCount: 100, // Top 100 featured laptops (shortlisted)
+    rotationStrategy: 'featured-catalog', // NEVER delete - grow database over time
+    minScore: 7.5, // Minimum composite score for featured list
+    neverDelete: true, // CRITICAL: Database grows over time, never remove laptops
+    catalogStrategy: {
+      featured: 'data/laptops.json', // Top 100 featured (shortlisted for main recommendations)
+      extended: 'data/laptops-extended.json', // All other laptops (still accessible by AI Bradaa)
+      fullCatalog: 'data/laptops-full.json', // Complete catalog (featured + extended)
+    },
     sources: [
       {
         name: 'Lazada Malaysia',
@@ -73,7 +79,7 @@ export const AUTO_FETCH_CONFIG = {
       reviewSentiment: true,
     },
     filters: {
-      minLaunchDate: '2024-01-01', // Not older than 1 year
+      minLaunchDate: '2024-01-01', // Not older than 1 year for featured list
       compatibilityYears: 4, // Must be compatible for 4+ years
       excludeBrands: [], // No exclusions
       minRating: 4.0,
@@ -231,23 +237,38 @@ export const TOON_CONFIG = {
 
 export const ROTATION_CONFIG = {
   laptops: {
-    maxEntries: 100,
-    strategy: 'composite-score', // 'composite-score' | 'age-based' | 'popularity'
+    featuredCount: 100, // Top 100 featured in main catalog
+    strategy: 'featured-catalog', // Featured + Extended (NEVER delete)
+    neverDelete: true, // CRITICAL: Database grows over time
 
-    // Score-based rotation
-    scoreRotation: {
-      keepTopN: 100,
+    // Featured list criteria (top 100 shortlisted)
+    featuredCriteria: {
       minScoreThreshold: 7.5,
       ageBonus: 0.1, // Bonus for newer laptops
       popularityBonus: 0.05, // Bonus for highly viewed/compared
     },
 
-    // Archive strategy
+    // Extended catalog (moved from featured, but still accessible)
+    extendedCatalog: {
+      enabled: true,
+      destination: 'data/laptops-extended.json',
+      keepForever: true, // NEVER delete from extended catalog
+      aiAccessible: true, // AI Bradaa can still query based on relevance
+    },
+
+    // Full catalog (featured + extended combined)
+    fullCatalog: {
+      enabled: true,
+      destination: 'data/laptops-full.json',
+      rebuildOnRotation: true, // Rebuild full catalog after each rotation
+    },
+
+    // Legacy archive (for historical tracking only)
     archive: {
       enabled: true,
       destination: 'data/archive.json',
-      keepForever: false,
-      retentionDays: 365,
+      trackMovements: true, // Track when laptops move from featured to extended
+      retentionDays: null, // Keep forever
     },
   },
 };
