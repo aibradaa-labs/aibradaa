@@ -1,0 +1,310 @@
+{
+  "id": "CODE_CHANGE_1762887914019_s8lk3flcj",
+  "type": "CODE_CHANGE",
+  "title": "Fix GitHub Actions test failures - laptop database guards + count updates",
+  "description": "Fix 5 test failures: update 90→100 laptop expectations, add guards for tags/useCases arrays to prevent TypeError",
+  "context": {},
+  "requestedBy": "systematic-repo-analysis",
+  "urgency": "high",
+  "timestamp": "2025-11-11T19:05:14.021Z",
+  "decision": "APPROVED",
+  "compositeApproval": "100.0",
+  "councils": {
+    "TECHNICAL": {
+      "council": "Technical Excellence Council",
+      "total": 21,
+      "quorumRequired": 13,
+      "participated": 15,
+      "votes": [
+        {
+          "mentorId": "kent-beck",
+          "mentorName": "Kent Beck",
+          "vote": "approve",
+          "confidence": 0.98,
+          "reasoning": "Practical improvement, low risk",
+          "weight": 1.1,
+          "relevanceScore": 0.9500000000000001
+        },
+        {
+          "mentorId": "dennis-ritchie",
+          "mentorName": "Dennis Ritchie",
+          "vote": "approve",
+          "confidence": 0.98,
+          "reasoning": "Practical improvement, low risk",
+          "weight": 1,
+          "relevanceScore": 0.9500000000000001
+        },
+        {
+          "mentorId": "linus-torvalds",
+          "mentorName": "Linus Torvalds",
+          "vote": "approve",
+          "confidence": 0.86,
+          "reasoning": "Practical improvement, low risk",
+          "weight": 1.2,
+          "relevanceScore": 0.65
+        },
+        {
+          "mentorId": "martin-fowler",
+          "mentorName": "Martin Fowler",
+          "vote": "approve",
+          "confidence": 0.86,
+          "reasoning": "Practical improvement, low risk",
+          "weight": 1.2,
+          "relevanceScore": 0.65
+        },
+        {
+          "mentorId": "bjarne-stroustrup",
+          "mentorName": "Bjarne Stroustrup",
+          "vote": "approve",
+          "confidence": 0.86,
+          "reasoning": "Practical improvement, low risk",
+          "weight": 1.1,
+          "relevanceScore": 0.65
+        },
+        {
+          "mentorId": "tim-berners-lee",
+          "mentorName": "Tim Berners-Lee",
+          "vote": "abstain",
+          "confidence": 0.86,
+          "reasoning": "Neutral, defer to specialists",
+          "weight": 1.1,
+          "relevanceScore": 0.65
+        },
+        {
+          "mentorId": "john-carmack",
+          "mentorName": "John Carmack",
+          "vote": "approve",
+          "confidence": 0.86,
+          "reasoning": "Practical improvement, low risk",
+          "weight": 1,
+          "relevanceScore": 0.65
+        },
+        {
+          "mentorId": "james-gosling",
+          "mentorName": "James Gosling",
+          "vote": "approve",
+          "confidence": 0.86,
+          "reasoning": "Practical improvement, low risk",
+          "weight": 1,
+          "relevanceScore": 0.65
+        },
+        {
+          "mentorId": "vint-cerf",
+          "mentorName": "Vint Cerf",
+          "vote": "approve",
+          "confidence": 0.86,
+          "reasoning": "Practical improvement, low risk",
+          "weight": 1,
+          "relevanceScore": 0.65
+        },
+        {
+          "mentorId": "andrew-ng",
+          "mentorName": "Andrew Ng",
+          "vote": "approve",
+          "confidence": 0.8,
+          "reasoning": "Practical improvement, low risk",
+          "weight": 1.2,
+          "relevanceScore": 0.5
+        },
+        {
+          "mentorId": "yukihiro-matsumoto",
+          "mentorName": "Yukihiro Matsumoto",
+          "vote": "approve",
+          "confidence": 0.8,
+          "reasoning": "Practical improvement, low risk",
+          "weight": 1,
+          "relevanceScore": 0.5
+        },
+        {
+          "mentorId": "grace-hopper",
+          "mentorName": "Grace Hopper",
+          "vote": "approve",
+          "confidence": 0.8,
+          "reasoning": "Practical improvement, low risk",
+          "weight": 1,
+          "relevanceScore": 0.5
+        },
+        {
+          "mentorId": "alan-turing",
+          "mentorName": "Alan Turing",
+          "vote": "approve",
+          "confidence": 0.8,
+          "reasoning": "Practical improvement, low risk",
+          "weight": 1,
+          "relevanceScore": 0.5
+        },
+        {
+          "mentorId": "donald-knuth",
+          "mentorName": "Donald Knuth",
+          "vote": "abstain",
+          "confidence": 0.8,
+          "reasoning": "Neutral, defer to specialists",
+          "weight": 1,
+          "relevanceScore": 0.5
+        },
+        {
+          "mentorId": "barbara-liskov",
+          "mentorName": "Barbara Liskov",
+          "vote": "approve",
+          "confidence": 0.8,
+          "reasoning": "Practical improvement, low risk",
+          "weight": 1,
+          "relevanceScore": 0.5
+        }
+      ],
+      "approvals": 13,
+      "rejections": 0,
+      "abstentions": 2,
+      "approvalRate": 1,
+      "weightedApprovalRate": 1,
+      "metQuorum": true,
+      "mentors": [
+        {
+          "mentorId": "kent-beck",
+          "mentorName": "Kent Beck",
+          "vote": "approve",
+          "confidence": 0.98,
+          "reasoning": "Practical improvement, low risk",
+          "weight": 1.1,
+          "relevanceScore": 0.9500000000000001
+        },
+        {
+          "mentorId": "dennis-ritchie",
+          "mentorName": "Dennis Ritchie",
+          "vote": "approve",
+          "confidence": 0.98,
+          "reasoning": "Practical improvement, low risk",
+          "weight": 1,
+          "relevanceScore": 0.9500000000000001
+        },
+        {
+          "mentorId": "linus-torvalds",
+          "mentorName": "Linus Torvalds",
+          "vote": "approve",
+          "confidence": 0.86,
+          "reasoning": "Practical improvement, low risk",
+          "weight": 1.2,
+          "relevanceScore": 0.65
+        },
+        {
+          "mentorId": "martin-fowler",
+          "mentorName": "Martin Fowler",
+          "vote": "approve",
+          "confidence": 0.86,
+          "reasoning": "Practical improvement, low risk",
+          "weight": 1.2,
+          "relevanceScore": 0.65
+        },
+        {
+          "mentorId": "bjarne-stroustrup",
+          "mentorName": "Bjarne Stroustrup",
+          "vote": "approve",
+          "confidence": 0.86,
+          "reasoning": "Practical improvement, low risk",
+          "weight": 1.1,
+          "relevanceScore": 0.65
+        },
+        {
+          "mentorId": "tim-berners-lee",
+          "mentorName": "Tim Berners-Lee",
+          "vote": "abstain",
+          "confidence": 0.86,
+          "reasoning": "Neutral, defer to specialists",
+          "weight": 1.1,
+          "relevanceScore": 0.65
+        },
+        {
+          "mentorId": "john-carmack",
+          "mentorName": "John Carmack",
+          "vote": "approve",
+          "confidence": 0.86,
+          "reasoning": "Practical improvement, low risk",
+          "weight": 1,
+          "relevanceScore": 0.65
+        },
+        {
+          "mentorId": "james-gosling",
+          "mentorName": "James Gosling",
+          "vote": "approve",
+          "confidence": 0.86,
+          "reasoning": "Practical improvement, low risk",
+          "weight": 1,
+          "relevanceScore": 0.65
+        },
+        {
+          "mentorId": "vint-cerf",
+          "mentorName": "Vint Cerf",
+          "vote": "approve",
+          "confidence": 0.86,
+          "reasoning": "Practical improvement, low risk",
+          "weight": 1,
+          "relevanceScore": 0.65
+        },
+        {
+          "mentorId": "andrew-ng",
+          "mentorName": "Andrew Ng",
+          "vote": "approve",
+          "confidence": 0.8,
+          "reasoning": "Practical improvement, low risk",
+          "weight": 1.2,
+          "relevanceScore": 0.5
+        },
+        {
+          "mentorId": "yukihiro-matsumoto",
+          "mentorName": "Yukihiro Matsumoto",
+          "vote": "approve",
+          "confidence": 0.8,
+          "reasoning": "Practical improvement, low risk",
+          "weight": 1,
+          "relevanceScore": 0.5
+        },
+        {
+          "mentorId": "grace-hopper",
+          "mentorName": "Grace Hopper",
+          "vote": "approve",
+          "confidence": 0.8,
+          "reasoning": "Practical improvement, low risk",
+          "weight": 1,
+          "relevanceScore": 0.5
+        },
+        {
+          "mentorId": "alan-turing",
+          "mentorName": "Alan Turing",
+          "vote": "approve",
+          "confidence": 0.8,
+          "reasoning": "Practical improvement, low risk",
+          "weight": 1,
+          "relevanceScore": 0.5
+        },
+        {
+          "mentorId": "donald-knuth",
+          "mentorName": "Donald Knuth",
+          "vote": "abstain",
+          "confidence": 0.8,
+          "reasoning": "Neutral, defer to specialists",
+          "weight": 1,
+          "relevanceScore": 0.5
+        },
+        {
+          "mentorId": "barbara-liskov",
+          "mentorName": "Barbara Liskov",
+          "vote": "approve",
+          "confidence": 0.8,
+          "reasoning": "Practical improvement, low risk",
+          "weight": 1,
+          "relevanceScore": 0.5
+        }
+      ]
+    }
+  },
+  "decisionConfig": {
+    "name": "Code Change",
+    "requiredCouncils": [
+      "TECHNICAL"
+    ],
+    "quorumPercentage": 60,
+    "approvalThreshold": 0.7,
+    "description": "Changes to source code, refactoring, bug fixes"
+  },
+  "completedAt": "2025-11-11T19:05:14.021Z"
+}

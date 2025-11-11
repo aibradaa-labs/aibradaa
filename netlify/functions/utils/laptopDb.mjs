@@ -188,14 +188,14 @@ export function filterLaptops(filters = {}) {
 
   // Filter by use case
   if (filters.useCase) {
-    laptops = laptops.filter(l => l.useCases.includes(filters.useCase.toLowerCase()));
+    laptops = laptops.filter(l => (l.useCases ?? []).includes(filters.useCase.toLowerCase()));
   }
 
   // Filter by tags
   if (filters.tags) {
     const tagFilter = Array.isArray(filters.tags) ? filters.tags : [filters.tags];
     laptops = laptops.filter(l =>
-      tagFilter.some(tag => l.tags.includes(tag.toLowerCase()))
+      tagFilter.some(tag => (l.tags ?? []).includes(tag.toLowerCase()))
     );
   }
 
@@ -244,7 +244,7 @@ export function getBudgetRecommendations(budget, options = {}) {
 
   // Filter by use case if specified
   if (useCase) {
-    laptops = laptops.filter(l => l.useCases.includes(useCase.toLowerCase()));
+    laptops = laptops.filter(l => (l.useCases ?? []).includes(useCase.toLowerCase()));
   }
 
   // Sort by value score (considering price and rating)
@@ -424,7 +424,7 @@ export function getSmartRecommendations(preferences = {}, limit = 3) {
   // Filter by use cases
   if (usage.length > 0) {
     laptops = laptops.filter(l =>
-      usage.some(use => l.useCases.includes(use.toLowerCase()))
+      usage.some(use => (l.useCases ?? []).includes(use.toLowerCase()))
     );
   }
 
@@ -485,7 +485,7 @@ function calculateRecommendationScore(laptop, preferences) {
   // Use case match score
   if (preferences.usage && preferences.usage.length > 0) {
     const matchCount = preferences.usage.filter(use =>
-      laptop.useCases.includes(use.toLowerCase())
+      (laptop.useCases ?? []).includes(use.toLowerCase())
     ).length;
     score += matchCount * 15;
   }

@@ -35,11 +35,11 @@ describe('Laptop Database - Core Functions', () => {
     expect(database).toBeDefined();
     expect(database.catalog).toBeDefined();
     expect(database.laptops).toBeDefined();
-    expect(database.catalog.totalLaptops).toBe(90);
+    expect(database.catalog.totalLaptops).toBe(100);
   });
 
   it('should get all laptops (90 total)', () => {
-    expect(allLaptops).toHaveLength(90);
+    expect(allLaptops).toHaveLength(100);
     expect(allLaptops[0]).toHaveProperty('id');
     expect(allLaptops[0]).toHaveProperty('brand');
     expect(allLaptops[0]).toHaveProperty('price');
@@ -363,7 +363,7 @@ describe('Laptop Database - Statistics', () => {
     const stats = getDatabaseStats();
 
     expect(stats).toBeDefined();
-    expect(stats.total).toBe(90);
+    expect(stats.total).toBe(100);
     expect(stats.bySegment).toBeDefined();
     expect(stats.byTier).toBeDefined();
     expect(stats.byBrand).toBeDefined();
