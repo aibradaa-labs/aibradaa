@@ -19,7 +19,11 @@
     "serve": "node tools/dev-static/server.mjs",
     "db:migrate": "node database/migrate.mjs up",
     "db:rollback": "node database/migrate.mjs down",
-    "db:reset": "node database/migrate.mjs reset"
+    "db:reset": "node database/migrate.mjs reset",
+    "syeddy": "node tools/syeddy-cli.mjs",
+    "syeddy:history": "node tools/syeddy-cli.mjs history",
+    "syeddy:mentors": "node tools/syeddy-cli.mjs mentors",
+    "syeddy:types": "node tools/syeddy-cli.mjs types"
   },
   "keywords": [
     "laptop",
