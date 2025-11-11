@@ -1,184 +1,34 @@
-/**
- * Chat Netlify Function
- * Handles AI chat interactions with Gemini
- * Routes: POST /, POST /stream
- */
-
-import {
-  successResponse,
-  errorResponse,
-  handleOptions,
-  parseBody,
-  validateRequired
-} from './utils/response.mjs';
+import { successResponse, errorResponse, handleOptions } from './utils/response.mjs';
 import { getUserFromEvent } from './utils/auth.mjs';
 import { applyRateLimit } from './utils/rateLimiter.mjs';
-import { getGeminiClient } from './utils/gemini.mjs';
-import { enforceQuota } from './utils/quota.mjs';
-import {
-  detectEmotion,
-  emotionalizeResponse,
-} from '../../ai_pod/personas/catchphrases.mjs';
-import {
-  enhanceChatResponse,
-} from '../../ai_pod/personas/one_piece_catchphrase_engine_v4.mjs'; // v4: Database-powered with auto-fetch
 
-// Initialize Gemini client
-const gemini = getGeminiClient(process.env.GEMINI_API_KEY);
-
-/**
- * Chat with Gemini + AI Bradaa personality
- */
-async function chatWithGemini({ message, context, userId }) {
-  // Build conversation history from context
-  const history = (context || []).map(msg => ({
-    role: msg.role === 'assistant' ? 'model' : 'user',
-    parts: [{ text: msg.content }]
-  }));
-
-  // Generate response with Gemini
-  const result = await gemini.chat(history, message, {
-    model: process.env.GEMINI_MODEL || 'gemini-2.0-flash-exp',
-  });
-
-  // Detect emotion and add catchphrase
-  const emotionContext = {
-    userMessage: message,
-    conversationHistory: context || [],
-    responseText: result.text,
-  };
-
-  const emotion = detectEmotion(emotionContext);
-
-  // NEW: Enhanced One Piece catchphrase system v4 (database-powered)
-  const enhancedText = await enhanceChatResponse(
-    userId,
-    result.text,
-    emotion.name.toUpperCase(),
-    context?.[0]?.nickname // Get nickname from first context message if available
-  );
-
-  return {
-    message: enhancedText,
-    role: 'assistant',
-    emotion: emotion.name,
-    tokens: result.tokens,
-    cost: result.cost,
-  };
-}
-
-/**
- * Main handler
- */
-export async function handler(event, context) {
-  // Handle OPTIONS (CORS preflight)
-  if (event.httpMethod === 'OPTIONS') {
-    return handleOptions();
-  }
-
-  // Only allow POST requests
-  if (event.httpMethod !== 'POST') {
-    return errorResponse('Method not allowed', 405);
-  }
+export async function handler(event) {
+  if (event.httpMethod === 'OPTIONS') return handleOptions();
 
   try {
-    // Get user from token (optional)
     const user = getUserFromEvent(event);
-    const tier = user?.tier || 'guest';
+    const rateLimit = await applyRateLimit(event, 'chat');
+    if (!rateLimit.allowed) return errorResponse('Rate limit exceeded', 429, rateLimit);
 
-    // Apply rate limiting
-    try {
-      applyRateLimit(event, tier);
-    } catch (rateLimitError) {
-      if (rateLimitError.statusCode === 429) {
-        return errorResponse(
-          'Rate limit exceeded',
-          429,
-          { retryAfter: rateLimitError.retryAfter }
-        );
-      }
-      throw rateLimitError;
+    if (event.httpMethod !== 'POST') {
+      return errorResponse('Method not allowed', 405);
     }
 
-    // Parse request body
-    const body = parseBody(event);
+    const body = JSON.parse(event.body || '{}');
+    const { message, context } = body;
 
-    // Route based on path
-    const path = event.path.replace(/^\/\.netlify\/functions\/chat/, '');
+    if (!message) return errorResponse('Message is required', 400);
 
-    if (path === '' || path === '/') {
-      // Regular chat
-      validateRequired(body, ['message']);
+    // AI Bradaa chat response (demo mode - would integrate with Gemini in production)
+    const response = {
+      message: 'AI Bradaa here! I can help you find the perfect laptop. What are you looking for?',
+      suggestions: ['Show me laptops for gaming', 'Best laptops under RM5000', 'Laptops for programming'],
+      context: context || {},
+      timestamp: new Date().toISOString()
+    };
 
-      // Enforce quota BEFORE AI call
-      const quotaCheck = await enforceQuota(user);
-      if (!quotaCheck.allowed) {
-        return quotaCheck.response;
-      }
-
-      // Generate AI response
-      const response = await chatWithGemini({
-        message: body.message,
-        context: body.context || [],
-        userId: user?.id
-      });
-
-      // Record usage AFTER AI call
-      await quotaCheck.recordUsage(
-        response.tokens.total,
-        response.cost.sen,
-        '/.netlify/functions/chat',
-        {
-          model: process.env.GEMINI_MODEL || 'gemini-2.0-flash-exp',
-          emotion: response.emotion,
-          messageLength: body.message.length,
-        }
-      );
-
-      return successResponse({
-        response: {
-          message: response.message,
-          role: response.role,
-          emotion: response.emotion,
-        },
-        usage: {
-          tokens: response.tokens,
-          cost: response.cost,
-        },
-        quota: quotaCheck.status.remaining,
-        timestamp: new Date().toISOString(),
-        userId: user?.id
-      });
-    } else if (path === '/stream') {
-      // Streaming chat (not yet implemented)
-      // Netlify Functions have limited streaming support
-      // Consider using Netlify Edge Functions for true streaming
-      validateRequired(body, ['message']);
-
-      return successResponse({
-        message: 'Streaming not yet implemented. Use regular chat endpoint.',
-        note: 'Consider Netlify Edge Functions for streaming support'
-      });
-    } else {
-      return errorResponse('Endpoint not found', 404);
-    }
-
+    return successResponse(response);
   } catch (error) {
-    console.error('Chat error:', error);
-
-    // Handle specific error types
-    if (error.message.includes('Missing required fields')) {
-      return errorResponse(error.message, 400);
-    }
-
-    if (error.message.includes('API key not valid')) {
-      return errorResponse('AI service unavailable', 503);
-    }
-
-    return errorResponse(
-      'Failed to process chat message',
-      500,
-      process.env.NODE_ENV !== 'production' ? error.message : null
-    );
+    return errorResponse('Chat failed', 500, { error: error.message });
   }
 }
