@@ -894,6 +894,6 @@ export class SyeddyDebuggerPhase1 {
 
 // CLI Usage
 if (import.meta.url === `file://${process.argv[1]}`) {
-  const debugger = new SyeddyDebuggerPhase1();
-  await debugger.analyze();
+  const debuggerInstance = new SyeddyDebuggerPhase1();
+  await debuggerInstance.analyze();
 }

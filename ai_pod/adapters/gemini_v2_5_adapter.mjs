@@ -407,5 +407,5 @@ export function getGeminiClient(apiKey) {
   return getGeminiV25Client(apiKey);
 }
 
-export { GEMINI_MODELS, ACTIVE_VERSION, PRICING, EXCHANGE_RATE_USD_TO_MYR };
+export { PRICING, EXCHANGE_RATE_USD_TO_MYR };
 export default GeminiV25Adapter;
