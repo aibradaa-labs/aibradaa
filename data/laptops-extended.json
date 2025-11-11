@@ -1,0 +1,15 @@
+{
+  "catalog": {
+    "version": "2.0.0",
+    "type": "extended",
+    "description": "Extended laptop catalog - all laptops accessible by AI Bradaa based on relevance",
+    "lastUpdated": "2025-11-11T16:21:24.041Z",
+    "totalLaptops": 0,
+    "currency": "MYR",
+    "market": "Malaysia",
+    "notes": "These laptops are NOT deleted - they remain accessible to AI Bradaa for relevance-based recommendations",
+    "aiAccessible": true,
+    "keepForever": true
+  },
+  "laptops": []
+}
