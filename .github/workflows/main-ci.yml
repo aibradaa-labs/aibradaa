@@ -25,6 +25,17 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Debug - List files
+        run: |
+          echo "📂 Current directory: $(pwd)"
+          echo "📋 Files in root:"
+          ls -la | head -20
+          echo ""
+          echo "🔍 package.json check:"
+          [ -f "package.json" ] && echo "✅ package.json exists" || echo "❌ package.json missing"
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -32,7 +43,9 @@ jobs:
           node-version: '20.x'
 
       - name: Install dependencies
-        run: npm install
+        run: |
+          echo "📦 Installing dependencies..."
+          npm install
 
       - name: Run ESLint
         run: npm run lint
@@ -63,6 +76,17 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Debug - List files
+        run: |
+          echo "📂 Current directory: $(pwd)"
+          echo "📋 Files in root:"
+          ls -la | head -20
+          echo ""
+          echo "🔍 package.json check:"
+          [ -f "package.json" ] && echo "✅ package.json exists" || echo "❌ package.json missing"
 
       - name: Setup Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
@@ -70,7 +94,9 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Install dependencies
-        run: npm install
+        run: |
+          echo "📦 Installing dependencies for Node ${{ matrix.node-version }}..."
+          npm install
 
       - name: Run tests
         run: npm test
