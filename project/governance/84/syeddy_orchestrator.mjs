@@ -344,8 +344,10 @@ export const DECISION_TYPES = {
     name: 'Architecture Change',
     requiredCouncils: ['TECHNICAL', 'EXECUTIVE'],
     quorumPercentage: 70,
-    approvalThreshold: 0.75,
-    description: 'Major architectural decisions, design patterns',
+    approvalThreshold: 0.98, // UPGRADED: Requires 98% approval
+    requiresDiff: true, // NEW: Must include code diff
+    requiresImprovementPlan: true, // NEW: Must include improvement plan
+    description: 'Major architectural decisions - requires ≥98% approval, diff analysis, and improvement plan',
   },
 
   // Security & Safety Decisions
@@ -361,8 +363,11 @@ export const DECISION_TYPES = {
     name: 'AI Safety Decision',
     requiredCouncils: ['GOVERNANCE', 'TECHNICAL', 'EXECUTIVE'],
     quorumPercentage: 90,
-    approvalThreshold: 0.95, // 95% approval for AI safety
-    description: 'AI model changes, safety thresholds, bias mitigation',
+    approvalThreshold: 0.98, // UPGRADED: Requires 98% approval for AI safety
+    requiresDiff: true, // NEW: Must include code diff
+    requiresImprovementPlan: true, // NEW: Must include improvement plan
+    requiresRiskAssessment: true, // NEW: Must include risk assessment
+    description: 'AI model changes - requires ≥98% approval, diff, improvement plan, and risk assessment',
   },
 
   // Product & Feature Decisions
@@ -404,16 +409,20 @@ export const DECISION_TYPES = {
     name: 'Production Deployment',
     requiredCouncils: ['TECHNICAL', 'GOVERNANCE', 'EXECUTIVE'],
     quorumPercentage: 85,
-    approvalThreshold: 0.9,
-    description: 'Deploy to production environment',
+    approvalThreshold: 0.98, // UPGRADED: Requires 98% approval
+    requiresDiff: true, // NEW: Must include code diff
+    requiresImprovementPlan: true, // NEW: Must include improvement plan
+    description: 'Deploy to production environment - requires ≥98% approval, diff analysis, and improvement plan',
   },
 
   BREAKING_CHANGE: {
     name: 'Breaking Change',
     requiredCouncils: ['TECHNICAL', 'PRODUCT', 'EXECUTIVE'],
     quorumPercentage: 75,
-    approvalThreshold: 0.85,
-    description: 'API breaking changes, backward incompatible changes',
+    approvalThreshold: 0.98, // UPGRADED: Requires 98% approval
+    requiresDiff: true, // NEW: Must include code diff
+    requiresImprovementPlan: true, // NEW: Must include improvement plan
+    description: 'API breaking changes - requires ≥98% approval, diff analysis, and improvement plan',
   },
 
   // Governance & Policy Decisions
@@ -459,6 +468,9 @@ export class SyeddyOrchestrator {
       context = {},
       requestedBy = 'system',
       urgency = 'normal', // low, normal, high, critical
+      diff = null, // NEW: Code diff for review
+      improvementPlan = null, // NEW: Improvement plan
+      riskAssessment = null, // NEW: Risk assessment
     } = decision;
 
     // Validate decision type
@@ -467,6 +479,21 @@ export class SyeddyOrchestrator {
     }
 
     const decisionConfig = this.decisionTypes[type];
+
+    // Validate required attachments for high-threshold decisions
+    if (decisionConfig.requiresDiff && !diff) {
+      throw new Error(`Decision type '${type}' requires a code diff. Please provide 'diff' parameter.`);
+    }
+    if (decisionConfig.requiresImprovementPlan && !improvementPlan) {
+      throw new Error(
+        `Decision type '${type}' requires an improvement plan. Please provide 'improvementPlan' parameter.`
+      );
+    }
+    if (decisionConfig.requiresRiskAssessment && !riskAssessment) {
+      throw new Error(
+        `Decision type '${type}' requires a risk assessment. Please provide 'riskAssessment' parameter.`
+      );
+    }
     const decisionId = `${type}_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
 
     console.log(`\n🎯 [Syeddy Orchestrator] NEW DECISION SUBMITTED`);
