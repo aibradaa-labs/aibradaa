@@ -1042,6 +1042,253 @@ After every significant change, add entry to CHANGELOG.md:
 
 ---
 
+## 📋 7-PHASE IMPLEMENTATION PLAN (Based on November 2025 Repo Audit)
+
+**Last Updated:** 2025-11-12
+**Status:** Active Roadmap
+**Audit Score:** 6.5/10 (Reality Check - See Comprehensive Codebase Analysis)
+
+This section documents the systematic plan to fix the 10 critical gaps identified in the brutally honest repo audit.
+
+---
+
+### **PHASE 1: Fix Data Pipeline (P0 - CRITICAL)**
+**Status:** 🔴 BLOCKED - ETL Returns 0 Items
+**Estimated Effort:** 3-5 days
+**Assigned To:** Backend Team
+
+**Problem:**
+- `/tools/etl/pipeline.mjs` - All fetchers return empty arrays `[]`
+- `fetchShopee()` (line 86-88) - PLACEHOLDER
+- `fetchLazada()` (line 90-94) - PLACEHOLDER
+- `fetchOEM()` (line 97-100) - PLACEHOLDER
+- `/ai_pod/services/laptop_auto_fetch.mjs` - Lines 197-232 are stubs
+
+**Impact:** Extended catalog empty, no fresh data, manual curation only
+
+**Fix Checklist:**
+- [ ] Implement real Shopee scraper (Playwright/Puppeteer)
+- [ ] Implement real Lazada API integration
+- [ ] Implement real OEM site scrapers (Dell, HP, Lenovo, ASUS)
+- [ ] Add retry logic with exponential backoff
+- [ ] Add validation against schema before ingestion
+- [ ] Test with real runs (fetch >0 laptops)
+- [ ] Schedule weekly ETL via cron (Netlify Scheduled Functions)
+- [ ] Update `/data/laptops-extended.json` (currently 0 items)
+
+**Success Criteria:**
+- ETL returns ≥50 laptops per run
+- Data passes AJV schema validation
+- Weekly automated runs successful for 3 consecutive weeks
+
+---
+
+### **PHASE 2: Connect Frontend to Real Data (P0 - CRITICAL)**
+**Status:** 🔴 BROKEN - Using Mock/Hardcoded Data
+**Estimated Effort:** 2-3 days
+**Assigned To:** Frontend Team
+
+**Problem:**
+- `explorer-search.mjs` generates 100 mock laptops in-memory (line 27-68)
+- `matchmaker-recommend.mjs` uses 8 hardcoded laptops (line 26-115)
+- `intel.mjs` returns hardcoded trends (line 24-26)
+- Functions ignore `/data/laptops.json` (100 real laptops available!)
+
+**Impact:** Users see fake data, not real Malaysian laptop market
+
+**Fix Checklist:**
+- [ ] Update `explorer-search.mjs` to read from `/data/laptops.json`
+- [ ] Update `matchmaker-recommend.mjs` to use real database
+- [ ] Update `intel.mjs` to fetch real trending topics (web scraping or API)
+- [ ] Remove all hardcoded laptop arrays
+- [ ] Add database connection to Netlify Functions
+- [ ] Verify with end-to-end test (search returns real laptop names)
+
+**Success Criteria:**
+- Explorer shows real laptops from database
+- Matchmaker recommends from full 100-laptop catalog
+- Intel feed shows real market trends (not "RTX 4060", "16GB RAM")
+
+---
+
+### **PHASE 3: Optimize RAG Search (P1 - HIGH)**
+**Status:** ⚠️ INEFFICIENT - Computes Embeddings On-The-Fly
+**Estimated Effort:** 2 days
+**Assigned To:** AI Team
+
+**Problem:**
+- `rag-search.mjs` computes embeddings for EVERY search request
+- No pre-computed vector database
+- Will be slow with 100+ laptops (each search = 100+ Gemini API calls)
+
+**Impact:** High latency, high cost, poor UX
+
+**Fix Checklist:**
+- [ ] Pre-compute embeddings for all laptops (batch job)
+- [ ] Store embeddings in PostgreSQL (pgvector extension) or JSON cache
+- [ ] Update `rag-search.mjs` to use cached embeddings
+- [ ] Add incremental update (re-embed only changed laptops)
+- [ ] Measure latency before/after (target: <500ms)
+
+**Success Criteria:**
+- RAG search completes in <500ms (p95)
+- Embedding API calls reduced by 99%
+- Cost per search <RM0.01
+
+---
+
+### **PHASE 4: Real Mentor LLM Calls (P1 - HIGH)**
+**Status:** ⚠️ SIMULATED - Hardcoded Responses
+**Estimated Effort:** 3-4 days
+**Assigned To:** AI Governance Team
+
+**Problem:**
+- `mentor-consultation.mjs` has real semantic routing
+- BUT: Mentor responses are SIMULATED (lines 109-134)
+- Uses hardcoded responses, not real LLM calls per mentor persona
+- Current `syeddy_orchestrator.mjs` voting is randomized (lines 649-687)
+
+**Impact:** "84-mentor governance" is theater, not real AI decision-making
+
+**Fix Checklist:**
+- [ ] Extract all 84 mentor profiles from DOC 1 (thinking styles, lenses, playbooks)
+- [ ] Rebuild `_getMentorVote()` in `syeddy_orchestrator.mjs` to use:
+  - [ ] Mentor's thinking style
+  - [ ] Mentor's top lenses (wont-do, moat, prfaq, etc.)
+  - [ ] Mentor's risk appetite (Low/Balanced/Medium-high)
+  - [ ] Mentor's crisis posture
+- [ ] For `mentor-consultation.mjs`, call Gemini with mentor persona prompts
+- [ ] Add mentor response caching (same question = cached response)
+- [ ] Test with 10 diverse decisions, verify mentor personalities differ
+
+**Success Criteria:**
+- Warren Buffett's responses focus on "wont-do" and "moat" lenses
+- Elon Musk's responses focus on speed and risk-taking
+- Max Schrems' responses focus on privacy and PDPA compliance
+- Voting patterns match mentor risk appetites
+
+---
+
+### **PHASE 5: Implement Dissent Ledger (P1 - HIGH)**
+**Status:** 📝 DOCUMENTED BUT NOT IMPLEMENTED
+**Estimated Effort:** 1 day
+**Assigned To:** Governance Team
+
+**Problem:**
+- Dissent ledger described in DOC 1 (line 1245-1257)
+- File doesn't exist: `ai_pod/governance/dissent_ledger.jsonl`
+- No tracking of productive tension between mentors
+
+**Impact:** No governance audit trail, no learning from mentor disagreements
+
+**Fix Checklist:**
+- [ ] Create `/project/governance/84/dissent-ledger.jsonl`
+- [ ] Add append-only write to `_archiveDecision()` in Syeddy Orchestrator
+- [ ] Format: `{timestamp, decision_id, mentor_a, mentor_a_position, mentor_b, mentor_b_position, tension, resolution, composite_score}`
+- [ ] Add JSONL reader for governance analytics
+- [ ] Add CI check: New ADRs must log dissent if mentors disagree
+
+**Success Criteria:**
+- Ledger captures Warren Buffett vs Elon Musk tensions (Cost vs Speed)
+- Ledger captures Max Schrems vs Brian Balfour tensions (Privacy vs Growth)
+- SHA256 digest included in export provenance
+
+---
+
+### **PHASE 6: Improve Test Coverage (P2 - MEDIUM)**
+**Status:** ⚠️ MINIMAL - Only 15% Coverage
+**Estimated Effort:** 4-5 days
+**Assigned To:** QA Team
+
+**Problem:**
+- `/tests/integration/netlify-functions.test.mjs` only checks if functions import
+- No real API call tests
+- No end-to-end tests
+- No RAG accuracy tests
+- No database integration tests
+
+**Impact:** High risk of regressions, bugs slip into production
+
+**Fix Checklist:**
+- [ ] Write integration tests for all 10 Netlify functions
+- [ ] Test real Gemini API calls (use test API key)
+- [ ] Test database queries (use test database)
+- [ ] Write RAG accuracy tests (golden set eval)
+- [ ] Write end-to-end tests with Playwright
+- [ ] Target: ≥70% code coverage
+
+**Success Criteria:**
+- Test coverage ≥70%
+- All critical paths tested (auth, AI calls, database writes)
+- CI fails if coverage drops below 70%
+
+---
+
+### **PHASE 7: Fix Composite Score Calculation (P2 - MEDIUM)**
+**Status:** ⚠️ CLAIMED 99/100, ACTUAL UNKNOWN
+**Estimated Effort:** 2 days
+**Assigned To:** Governance Team
+
+**Problem:**
+- README claims "Composite Score: 99.1/100"
+- CHANGELOG claims "Composite Score: 99.5/100"
+- No automated calculation script found
+- Brutally honest audit suggests real score is ~65/100
+
+**Impact:** False confidence, potential production issues
+
+**Fix Checklist:**
+- [ ] Create `/project/governance/84/calculate-composite-score.mjs`
+- [ ] Implement scoring algorithm from DOC 1
+- [ ] Factors: Code quality, test coverage, PDPA compliance, performance, security
+- [ ] Run automated calculation
+- [ ] Update README/CHANGELOG with REAL score
+- [ ] Add CI check: Block merge if score <85/100
+
+**Success Criteria:**
+- Automated script calculates score from measurable metrics
+- Score matches manual audit
+- Score improves after Phases 1-6 implemented
+
+---
+
+### **Priority Order:**
+
+**THIS WEEK (P0):**
+1. Phase 1: Fix ETL Pipeline (returns 0 items)
+2. Phase 2: Connect Frontend to Real Data (using mocks)
+
+**NEXT WEEK (P1):**
+3. Phase 3: Optimize RAG Search (slow/expensive)
+4. Phase 4: Real Mentor LLM Calls (simulated)
+5. Phase 5: Implement Dissent Ledger (missing)
+
+**THIS MONTH (P2):**
+6. Phase 6: Improve Test Coverage (15% → 70%)
+7. Phase 7: Fix Composite Score (claimed vs actual)
+
+---
+
+### **Brutal Truth Tracker:**
+
+| Component | Claimed Status | Actual Status | Gap |
+|-----------|----------------|---------------|-----|
+| ETL Pipeline | "Functional" | Returns 0 items | 🔴 FAKE |
+| Explorer Search | "Functional" | Uses mock data | 🔴 FAKE |
+| Matchmaker | "Functional" | 8 hardcoded laptops | 🔴 FAKE |
+| Intel Feed | "Functional" | Hardcoded trends | 🔴 FAKE |
+| 84-Mentor Governance | "Fully implemented" | Simulated voting | ⚠️ PARTIAL |
+| RAG Search | "Functional" | Inefficient | ⚠️ WORKS BUT SLOW |
+| Versus AI | "Functional" | Real Gemini integration | ✅ REAL |
+| Deep Research | "Functional" | Real multi-step AI | ✅ REAL |
+| Database Schema | "Production-ready" | Comprehensive | ✅ REAL |
+| Frontend Structure | "Complete" | All HTML/JS exists | ✅ REAL |
+| Composite Score | "99.5/100" | Unknown (estimated ~65) | ⚠️ UNVERIFIED |
+
+**Overall Reality Score: 6.5/10** - Good infrastructure, incomplete execution.
+
+---
+
 ## 🎯 Success Criteria
 
 ### Your contribution is ready when:
