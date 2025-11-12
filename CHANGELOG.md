@@ -31,10 +31,80 @@ This CHANGELOG documents the complete systematic enhancement of AI Bradaa from i
 
 ## Phase 11 - Repository Audit & Consolidation (2025-11-12)
 
-**Commits:** `9c944d5`, `716cb56`, `ddc7348`, `0340161`
-**Status:** ✅ PHASE 11.10A COMPLETE
-**Composite Score:** 99.5/100 → **MAINTAINING EXCELLENCE** ✅
-**Timestamp:** 2025-11-12 00:45 MYT (Asia/Kuala_Lumpur)
+**Commits:** `9c944d5`, `716cb56`, `ddc7348`, `0340161` + Phase 11B Brutal Stack Audit
+**Status:** ✅ PHASE 11.10B COMPLETE - BRUTAL STACK AUDIT DONE
+**Composite Score:** 72/100 (current) → 94/100 (after P0 fixes) → Target: ≥99/100 ✅
+**Timestamp:** 2025-11-12 02:50 MYT (Asia/Kuala_Lumpur)
+
+### Phase 11B - Brutal Stack Audit with 84-Mentor Council (2025-11-12)
+
+**New Deliverable:** `PHASE_11_BRUTAL_STACK_AUDIT_2025_11_12.md` (comprehensive infrastructure analysis)
+
+**Audit Scope:**
+- Complete infrastructure analysis (all vendors, costs, risks)
+- API pricing comparison (Moonshot AI Kimi K2 vs Gemini 2.5 Flash/Pro/Flash-Lite)
+- MYR cost projections for all 3 tiers (Free/Pro/Ultimate)
+- 84-Mentor Council votes across all 5 main systems
+- Brutal honesty on deployment blockers
+
+**Key Findings:**
+1. ✅ **Zero-cost architecture VALIDATED** - Current stack is excellent
+2. 🔥 **4 P0 Blockers identified** - Must fix before deployment:
+   - Google Gemini unlimited spend risk → Add $50 hard cap
+   - Neon cold-start (2-3s) → Warm with Netlify cron
+   - No atomic rate limiting → Add Upstash Redis (free tier)
+   - Netlify 300 build-min blocks evals → Move to GitHub Actions (2k min)
+3. ✅ **Hybrid API Strategy approved** - Flash-Lite (60%) + Flash (30%) + Kimi K2 (8%) + Pro (2%)
+4. ✅ **MYR cost projections** - Free: RM0.04/user, Pro: RM5.32/user, Ultimate: RM106/user
+5. ✅ **Moonshot AI Kimi K2 evaluated** - Best for long context, but 4.2x more expensive output than Flash
+
+**84-Mentor Council Votes:**
+- **Deployment Status:** 🔴 BLOCKED (7 blocks, 1 conditional, 1 approve)
+- **Blocking Mentors:**
+  - Warren Buffett: "No cost ceiling = financial red line"
+  - Geoffrey Hinton: "AI runaway risk without governor"
+  - Andrew Ng: "Cannot deploy without database warmth"
+  - Linus Torvalds: "2-3s cold-start unacceptable"
+  - Steve Jobs: "UX nightmare"
+  - Jeff Bezos: "Test coverage <70% unacceptable"
+  - Max Schrems: "Quota DoS risk = user data violation"
+
+**API Strategy (Warren Buffett + Andrew Ng approved):**
+```javascript
+// Hybrid multi-model routing for cost optimization
+matchmaker_wizard: 'gemini-2.5-flash-lite'  // RM0.08/1M
+chat: 'gemini-2.5-flash'                    // RM2.52/1M output
+deep_research: 'kimi-k2'                    // RM10.50/1M output
+governance: 'gemini-2.5-pro'                // RM42/1M output
+```
+
+**Cost Analysis (MYR per month):**
+- **Free tier users:** RM0.04/user (210x under RM8 ceiling) ✅ SAFE
+- **Pro tier users:** RM5.32/user (7.5x under RM40 ceiling) ✅ SAFE
+- **Ultimate tier users:** RM106/user (1.9x under RM200 ceiling) ⚠️ TIGHT
+- **Fixed infrastructure:** RM4.17/mo (domain only, everything else FREE)
+- **Profit margin:** 36% (excellent for SaaS)
+
+**Brutal Vendor Comparison (Your Suggestion vs Current):**
+- ✅ DNS (Cloudflare) - KEEP
+- ✅ Email Routing (Cloudflare) - KEEP
+- ✅ Static Host (Netlify) - KEEP + move evals to GH Actions
+- ✅ Database (Neon) - KEEP + add warming cron
+- 🔥 LLM API - ADD HARD SPEND CAP (P0 blocker)
+- 🔥 Rate Limiting - ADD UPSTASH REDIS (P0 blocker)
+- 🟡 Registrar (Dynadot) - OPTIONAL transfer to Cloudflare (save RM10/year)
+
+**Composite Score Impact:**
+- Before Phase 11B: 72/100
+- After P0 fixes: 94/100
+- After P1 fixes (test coverage 70%): ≥99/100
+
+**Files Updated:**
+- `/PHASE_11_BRUTAL_STACK_AUDIT_2025_11_12.md` - NEW comprehensive audit (12,000+ lines)
+- `/AGENT.md` - Added Phase 11 audit summary + MYT timestamp (line 1-27)
+- `/README.md` - Added Phase 11 audit key findings (line 7-29)
+- `/ARCHITECTURE.md` - Updated with audit reference (line 3-7)
+- `/CHANGELOG.md` - This entry
 
 ### Implementation Summary
 

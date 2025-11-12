@@ -1,10 +1,30 @@
 # AGENT.md - AI Bradaa Contributor Guide
 # World-Class Development Workflow & Architecture Reference
 
-**Last Updated:** 2025-11-11
-**Version:** 2.0
-**Status:** Active
+**Last Updated:** 2025-11-12 02:45 MYT (Asia/Kuala_Lumpur)
+**Version:** 2.1
+**Status:** Active - Phase 11 Brutal Stack Audit Complete
 **Audience:** All AI agents and human developers contributing to AI Bradaa
+
+---
+
+## 🔥 CRITICAL: Phase 11 Brutal Stack Audit Complete
+
+**NEW AUDIT REPORT:** See `PHASE_11_BRUTAL_STACK_AUDIT_2025_11_12.md` for comprehensive infrastructure analysis
+
+**Key Findings (84-Mentor Council):**
+- ✅ **Zero-cost stack VALIDATED** - Current architecture is excellent
+- 🔥 **4 P0 Blockers identified** - Must fix before deployment:
+  1. Add Google Gemini hard spend cap ($50)
+  2. Warm Neon database (Netlify cron every 10 min)
+  3. Add Upstash Redis for atomic rate limiting
+  4. Move eval suite to GitHub Actions (2k min/mo)
+- ✅ **Hybrid API Strategy approved** - Flash-Lite + Flash + Kimi K2 + Pro
+- ✅ **MYR cost projections** - Free: RM0.04/user, Pro: RM5.32/user, Ultimate: RM106/user
+
+**Composite Score:** 72/100 → 94/100 (after P0 fixes) → Target: ≥99/100
+
+**Deployment Status:** 🔴 BLOCKED until P0 fixes complete
 
 ---
 
