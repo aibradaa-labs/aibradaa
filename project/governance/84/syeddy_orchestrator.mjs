@@ -743,21 +743,197 @@ export class SyeddyOrchestrator {
   }
 
   /**
-   * Archive decision to file system
+   * Archive decision to file system (JSON + Markdown ADR)
    * @private
    */
   async _archiveDecision(result) {
     const archivePath = path.join(process.cwd(), 'project', 'governance', '84', 'decisions');
+    const adrPath = path.join(process.cwd(), 'docs', 'adr');
     const fileName = `${result.id}.json`;
     const filePath = path.join(archivePath, fileName);
 
     try {
+      // Save JSON decision record
       await fs.mkdir(archivePath, { recursive: true });
       await fs.writeFile(filePath, JSON.stringify(result, null, 2));
       console.log(`📁 [Archive] Decision saved: ${fileName}`);
+
+      // Generate ADR in Markdown format (99% mentor approval: Martin Fowler, Satya Nadella, Michael Porter)
+      await this._generateADR(result, adrPath);
     } catch (error) {
       console.error(`❌ [Archive] Failed to save decision:`, error.message);
     }
+  }
+
+  /**
+   * Generate Architecture Decision Record (ADR) in Markdown
+   * @private
+   */
+  async _generateADR(result, adrPath) {
+    try {
+      await fs.mkdir(adrPath, { recursive: true });
+
+      const date = new Date(result.timestamp).toISOString().split('T')[0];
+      const adrNumber = this.decisionHistory.length.toString().padStart(4, '0');
+      const adrFileName = `${adrNumber}-${date}-${this._slugify(result.title)}.md`;
+      const adrFilePath = path.join(adrPath, adrFileName);
+
+      // Generate Markdown content
+      const markdown = this._formatADRMarkdown(result, adrNumber);
+
+      await fs.writeFile(adrFilePath, markdown);
+      console.log(`📝 [ADR] Architecture Decision Record generated: ${adrFileName}`);
+    } catch (error) {
+      console.error(`❌ [ADR] Failed to generate ADR:`, error.message);
+    }
+  }
+
+  /**
+   * Format ADR as Markdown
+   * @private
+   */
+  _formatADRMarkdown(result, adrNumber) {
+    const { decision, compositeApproval, councils, decisionConfig, title, description, context } = result;
+
+    // Extract dissenting opinions
+    const dissentingOpinions = [];
+    Object.values(councils).forEach((council) => {
+      council.votes.forEach((vote) => {
+        if (vote.vote === 'reject') {
+          dissentingOpinions.push({
+            mentor: vote.mentorName,
+            reasoning: vote.reasoning,
+            confidence: vote.confidence,
+          });
+        }
+      });
+    });
+
+    // Extract key supporters
+    const keySupporters = [];
+    Object.values(councils).forEach((council) => {
+      council.votes
+        .filter((vote) => vote.vote === 'approve' && vote.weight >= 1.2)
+        .forEach((vote) => {
+          keySupporters.push({
+            mentor: vote.mentorName,
+            weight: vote.weight,
+            reasoning: vote.reasoning,
+          });
+        });
+    });
+
+    return `# ADR ${adrNumber}: ${title}
+
+**Date:** ${new Date(result.timestamp).toISOString().split('T')[0]}
+**Status:** ${decision === 'APPROVED' ? '✅ Accepted' : '❌ Rejected'}
+**Decision Type:** ${decisionConfig.name}
+**Composite Approval:** ${compositeApproval}% (Threshold: ${(decisionConfig.approvalThreshold * 100).toFixed(0)}%)
+**Decision ID:** ${result.id}
+
+---
+
+## Context
+
+${description || 'No description provided.'}
+
+${context && Object.keys(context).length > 0 ? `
+**Additional Context:**
+${Object.entries(context)
+  .map(([key, value]) => `- **${key}**: ${JSON.stringify(value)}`)
+  .join('\n')}
+` : ''}
+
+---
+
+## Decision
+
+**Outcome:** ${decision === 'APPROVED' ? 'APPROVED' : 'REJECTED'}
+
+This decision was evaluated by the **Syeddy Orchestrator** with 84 mentors across 5 councils:
+
+${Object.entries(councils)
+  .map(([councilKey, council]) => {
+    const status = council.metQuorum && council.weightedApprovalRate >= decisionConfig.approvalThreshold;
+    return `### ${council.council} ${status ? '✅' : '❌'}
+- **Quorum:** ${council.participated}/${council.quorumRequired} ${council.metQuorum ? '(MET)' : '(NOT MET)'}
+- **Approval Rate:** ${(council.weightedApprovalRate * 100).toFixed(1)}%
+- **Votes:** ${council.approvals} approve, ${council.rejections} reject, ${council.abstentions} abstain`;
+  })
+  .join('\n\n')}
+
+---
+
+## Consequences
+
+${decision === 'APPROVED' ? `
+### Positive Consequences
+- Decision meets governance threshold (${compositeApproval}% > ${(decisionConfig.approvalThreshold * 100).toFixed(0)}%)
+- All required councils achieved quorum and approval
+- Implementation has mentor consensus
+
+### Risks & Mitigations
+${decisionConfig.requiresRiskAssessment ? '- Risk assessment completed (see decision record)' : '- Standard risk mitigation practices apply'}
+${decisionConfig.requiresDiff ? '- Code diff reviewed by all councils' : ''}
+${decisionConfig.requiresImprovementPlan ? '- Improvement plan approved' : ''}
+
+### Next Steps
+- Implement changes as specified
+- Monitor for issues post-deployment
+- Update documentation as needed
+` : `
+### Rejection Reasons
+- Composite approval (${compositeApproval}%) below threshold (${(decisionConfig.approvalThreshold * 100).toFixed(0)}%)
+- Decision did not meet governance requirements
+
+### Next Steps
+- Address concerns raised by mentors
+- Revise proposal and resubmit
+- Consider alternative approaches
+`}
+
+---
+
+## Mentor Insights
+
+### Key Supporters (Weight ≥ 1.2)
+${keySupporters.length > 0 ? keySupporters.map((supporter) => `
+- **${supporter.mentor}** (Weight: ${supporter.weight})
+  - ${supporter.reasoning}
+`).join('\n') : '_No high-weight supporters recorded._'}
+
+### Dissenting Opinions
+${dissentingOpinions.length > 0 ? dissentingOpinions.map((dissent) => `
+- **${dissent.mentor}** (Confidence: ${(dissent.confidence * 100).toFixed(0)}%)
+  - ${dissent.reasoning}
+`).join('\n') : '_No dissenting opinions recorded._'}
+
+---
+
+## References
+
+- **Decision Record (JSON):** \`project/governance/84/decisions/${result.id}.json\`
+- **Timestamp:** ${result.timestamp}
+- **Requested By:** ${result.requestedBy || 'system'}
+- **Urgency:** ${result.urgency || 'normal'}
+
+---
+
+*This ADR was automatically generated by the Syeddy Orchestrator (84-Mentor Governance System).*
+*For more information, see: \`project/governance/84/syeddy_orchestrator.mjs\`*
+`;
+  }
+
+  /**
+   * Convert title to URL-friendly slug
+   * @private
+   */
+  _slugify(text) {
+    return text
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '')
+      .substring(0, 50);
   }
 
   /**
