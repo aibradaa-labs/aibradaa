@@ -105,11 +105,9 @@
   directory = "netlify/functions"
   node_bundler = "esbuild"
 
-# Scheduled Functions
-[[functions]]
-  path = "/cron-catchphrase-fetch"
+# Scheduled Functions (using correct TOML syntax)
+[functions."cron-catchphrase-fetch"]
   schedule = "0 3 * * *"  # Run at 3:00 AM MYT daily
 
-[[functions]]
-  path = "/cron-laptop-fetch"
+[functions."cron-laptop-fetch"]
   schedule = "0 2 * * 0"  # Run at 2:00 AM UTC every Sunday (10:00 AM MYT)
