@@ -1438,3 +1438,198 @@ Shared components in `app/shared/`:
 **END OF ARCHITECTURE.md**
 
 *This document is the definitive source of truth for AI Bradaa architecture. Last updated: 2025-11-11 14:30 MYT.*
+
+---
+
+## 🤖 MULTI-AGENT SYSTEM ARCHITECTURE (APPROVED 2025-11-14)
+
+**Owner Decision:** Implement world-class multi-agent system with full report aggregation to Syeddy Orchestrator.
+
+### Architecture Flow
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    OWNER (Syeddy)                            │
+│              "I want X feature / Fix Y bug"                  │
+└────────────────────┬────────────────────────────────────────┘
+                     │
+                     ▼
+┌─────────────────────────────────────────────────────────────┐
+│         SYEDDY ORCHESTRATOR (Planning Agent)                 │
+│  ┌───────────────────────────────────────────────────┐      │
+│  │ CORE BRAIN                                         │      │
+│  │ • LLM: Gemini 2.0 Flash Thinking (via OpenRouter) │      │
+│  │ • Memory: Redis (Upstash free tier)               │      │
+│  │ • Tools: 84-Mentor Council routing                │      │
+│  └───────────────────────────────────────────────────┘      │
+│                                                              │
+│  OUTPUT: Execution Plan                                     │
+│  • Tasks breakdown                                          │
+│  • Mentor panel assignments                                 │
+│  • Composite score threshold (≥99)                          │
+│  • Risk assessment                                          │
+└────────────────────┬────────────────────────────────────────┘
+                     │
+                     ▼
+┌─────────────────────────────────────────────────────────────┐
+│              AI POD (Execution Hub)                          │
+│  Routes tasks to specialized agents:                         │
+│                                                              │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐      │
+│  │ AI Bradaa    │  │ ABO-84 Beta  │  │ Data Agent   │      │
+│  │ Agent        │  │ Agent        │  │ (ETL)        │      │
+│  │              │  │              │  │              │      │
+│  │ • User chat  │  │ • Code       │  │ • Fetch      │      │
+│  │ • Recommend  │  │   analysis   │  │   laptop     │      │
+│  │ • Versus     │  │ • Bug detect │  │   data       │      │
+│  │ • Export     │  │ • Security   │  │ • Price      │      │
+│  │              │  │   scan       │  │   updates    │      │
+│  └──────┬───────┘  └──────┬───────┘  └──────┬───────┘      │
+│         │                  │                  │              │
+│         └──────────────────┴──────────────────┘              │
+│                            │                                 │
+│  Each agent reports back: Status + Results + Logs           │
+└────────────────────┬────────────────────────────────────────┘
+                     │
+                     ▼
+┌─────────────────────────────────────────────────────────────┐
+│          SYEDDY DEBUGGER (QA Agent - Post-Execution)         │
+│  Receives full reports from all agents and tests:           │
+│                                                              │
+│  ┌───────────────────────────────────────────────────┐      │
+│  │ 300+ Signal Monitoring                             │      │
+│  │ • Unit tests (pass/fail)                          │      │
+│  │ • Integration tests                               │      │
+│  │ • Security scans (vulnerabilities)                │      │
+│  │ • Performance metrics (latency, memory)           │      │
+│  │ • Cost tracking (API spend)                       │      │
+│  │ • Error rates                                     │      │
+│  └───────────────────────────────────────────────────┘      │
+│                                                              │
+│  OUTPUT: GO / NO-GO Decision                                │
+│  • Composite Score (0-100)                                  │
+│  • If ≥99: GO (approve for deployment)                      │
+│  • If <99: NO-GO (return fix list to Orchestrator)          │
+└────────────────────┬────────────────────────────────────────┘
+                     │
+        ┌────────────┴────────────┐
+        │                         │
+        ▼ (Score ≥99)            ▼ (Score <99)
+┌───────────────────┐    ┌──────────────────────┐
+│   DEPLOY          │    │  RETURN TO           │
+│   • Frontend      │    │  ORCHESTRATOR        │
+│   • Desktop       │    │  • Fix list          │
+│   • API           │    │  • Re-plan           │
+└───────────────────┘    └──────────────────────┘
+```
+
+### Key Components
+
+#### 1. Syeddy Orchestrator Brain (LLM + Memory + Tools)
+
+**File Location:** `ai_pod/services/orchestrator_brain.mjs` (TO BE CREATED)
+
+**Responsibilities:**
+- Parse owner's task request
+- Route to appropriate 84-Mentor panel
+- Generate execution plan
+- Track conversation history per user
+- Aggregate reports from all agents
+
+**LLM Stack:**
+- Primary: Gemini 2.0 Flash Thinking (via OpenRouter)
+- Fallback: Llama 3.1 70B (FREE tier)
+- Cost: ~RM1.26/month for 1,000 tasks
+
+**Memory Stack:**
+- Storage: Upstash Redis (FREE tier - 10k commands/day)
+- Per-user conversation threads
+- 50-message rolling window
+- TTL: 30 days
+
+#### 2. AI Pod Execution Hub
+
+**File Location:** `ai_pod/execution_hub.mjs` (TO BE CREATED)
+
+**Specialized Agents:**
+
+**AI Bradaa Agent** (`ai_pod/agents/aibradaa_agent.mjs`)
+- User-facing chat
+- Laptop recommendations
+- Versus comparisons
+- Export reports
+
+**ABO-84 Beta Agent** (`ai_pod/agents/abo84_agent.mjs`)
+- Code analysis
+- Bug detection
+- Security vulnerability scanning
+- Performance profiling
+
+**Data Agent** (`ai_pod/agents/data_agent.mjs`)
+- ETL pipeline execution
+- Fetch laptop data from Shopee/Lazada
+- Price updates
+- Database synchronization
+
+#### 3. Syeddy Debugger QA Agent
+
+**File Location:** `syeddy-debugger/qa_agent.mjs` (TO BE ENHANCED)
+
+**Full Report Aggregation:**
+Every agent returns standardized report:
+```javascript
+{
+  agent_name: "AI Bradaa Agent",
+  task_id: "task_123",
+  status: "completed", // or "failed"
+  execution_time_ms: 1250,
+  results: { /* agent-specific output */ },
+  logs: [
+    { level: "info", message: "Started task", timestamp: 1699999999 },
+    { level: "warn", message: "API latency spike", timestamp: 1700000000 }
+  ],
+  metrics: {
+    api_calls: 3,
+    tokens_used: 1500,
+    cost_myr: 0.012
+  },
+  errors: [] // or array of error objects
+}
+```
+
+**Syeddy Debugger processes all reports:**
+1. Aggregate metrics across all agents
+2. Run tests (unit, integration, security)
+3. Calculate composite score
+4. Generate GO/NO-GO decision
+
+### Implementation Files Structure
+
+```
+ai_pod/
+├── services/
+│   ├── orchestrator_brain.mjs      # NEW - LLM reasoning
+│   ├── orchestrator_memory.mjs     # NEW - Redis conversation storage
+│   └── orchestrator_tools.mjs      # NEW - 84-Mentor routing (REAL logic)
+│
+├── agents/
+│   ├── aibradaa_agent.mjs          # NEW - User-facing AI
+│   ├── abo84_agent.mjs             # NEW - Code analysis
+│   └── data_agent.mjs              # NEW - ETL pipeline
+│
+├── adapters/
+│   └── openrouter_adapter.mjs      # NEW - Smart model routing
+│
+└── execution_hub.mjs               # NEW - Agent coordinator
+
+syeddy-debugger/
+├── qa_agent.mjs                    # ENHANCED - Full report aggregation
+├── composite_scorer.mjs            # NEW - Real scoring (no Math.random)
+└── signal_monitors/                # EXISTING - 300+ signal trackers
+```
+
+---
+
+**Owner Approval:** APPROVED 2025-11-14
+**Implementation Priority:** Phase 0 (THIS WEEK)
+**Key Enhancement:** Full report aggregation ensures Orchestrator has complete visibility into all agent activities

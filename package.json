@@ -7,12 +7,13 @@
     "dev": "netlify dev",
     "build": "node tools/build-netlify.mjs",
     "start": "netlify dev",
+    "demo": "node -r dotenv/config demo-orchestrator-v3.mjs",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "test:all": "npm run test:smoke && npm run test:data && npm run test:ux",
-    "test:smoke": "node tests/smoke/boot.test.mjs",
-    "test:data": "node tests/data/schema.test.mjs",
-    "test:ux": "node tests/ux/a11y.test.mjs",
-    "test:evals": "node tests/evals/runner.mjs",
+    "test:smoke": "playwright test tests/smoke/boot.test.mjs",
+    "test:data": "node -r dotenv/config tests/data/schema.test.mjs",
+    "test:ux": "playwright test tests/ux/a11y.test.mjs",
+    "test:evals": "node -r dotenv/config tests/evals/runner.mjs",
     "lint": "eslint .",
     "format": "prettier --write .",
     "etl": "node tools/etl/laptops-ingest.mjs",
@@ -41,6 +42,7 @@
   },
   "dependencies": {
     "@google/generative-ai": "^0.21.0",
+    "@upstash/redis": "^1.34.3",
     "ajv": "^8.17.1",
     "bcryptjs": "^2.4.3",
     "compression": "^1.7.5",
@@ -57,6 +59,7 @@
     "pg": "^8.13.1",
     "qrcode": "^1.5.4",
     "speakeasy": "^2.0.0",
+    "toml": "^3.0.0",
     "winston": "^3.17.0"
   },
   "devDependencies": {

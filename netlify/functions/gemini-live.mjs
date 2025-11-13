@@ -26,8 +26,8 @@
  */
 
 import { getGeminiClient } from './utils/gemini.mjs';
-import { createResponse, createErrorResponse } from './utils/response.mjs';
-import { getRateLimiter } from './utils/rateLimiter.mjs';
+import { successResponse, errorResponse } from './utils/response.mjs';
+import { applyRateLimit, getClientIdentifier } from './utils/rateLimiter.mjs';
 
 /**
  * Session storage (in-memory, not suitable for production)

@@ -21,29 +21,27 @@ import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from '@google/ge
 import { retry } from '../../netlify/functions/utils/retry.mjs';
 
 // ============================================================================
+// OPENROUTER CONFIGURATION
+// ============================================================================
+const OPENROUTER_API_BASE = "https://openrouter.ai/api/v1";
+
+// ============================================================================
 // MODEL VERSION CONFIGURATION (Future-Proof)
 // ============================================================================
 
 export const GEMINI_MODELS = {
-  // Gemini 2.5 (Current Production)
+  // Model identifiers for OpenRouter
   '2.5': {
-    FLASH: 'gemini-2.5-flash-exp',
-    PRO: 'gemini-2.5-pro-exp',
-    THINKING: 'gemini-2.5-flash-thinking-exp',
-  },
-
-  // Gemini 3.0 (Future - Ready for activation)
-  '3.0': {
-    FLASH: 'gemini-3.0-flash-exp',
-    PRO: 'gemini-3.0-pro-exp',
-    THINKING: 'gemini-3.0-thinking-exp',
+    FLASH: process.env.GEMINI_MODEL_FLASH || 'google/gemini-flash-1.5',
+    PRO: process.env.GEMINI_MODEL_PRO || 'google/gemini-pro',
+    THINKING: process.env.GEMINI_MODEL_PRO || 'google/gemini-pro', // OpenRouter may not have a specific 'thinking' model, fallback to Pro
   },
 
   // Aliases for easy switching
   ALIASES: {
     FAST: '2.5-flash',
     THINK: '2.5-pro',
-    ADVANCED: '2.5-thinking',
+    ADVANCED: '2.5-pro',
   },
 };
 
@@ -57,7 +55,7 @@ export const ACTIVE_VERSION = '2.5';
  */
 export function resolveModelName(alias) {
   // If already a full model name, return as-is
-  if (alias.startsWith('gemini-')) {
+  if (alias.includes('/')) {
     return alias;
   }
 
@@ -76,43 +74,23 @@ export function resolveModelName(alias) {
     case 'THINKING':
       return models.THINKING;
     default:
-      console.warn(`[Gemini] Unknown alias: ${alias}, defaulting to FLASH`);
+      console.warn(`[OpenRouter] Unknown alias: ${alias}, defaulting to FLASH`);
       return models.FLASH;
   }
 }
 
 // ============================================================================
-// PRICING (Updated for Gemini 2.5)
+// PRICING (Handled by OpenRouter, but kept for estimation)
 // ============================================================================
 
 const PRICING = {
-  // Gemini 2.5 pricing (per 1M tokens in USD)
-  'gemini-2.5-flash-exp': {
-    input: 0.075,   // $0.075 per 1M tokens (2x cheaper than 2.0)
-    output: 0.30,   // $0.30 per 1M tokens (2x cheaper than 2.0)
-    caching: 0.01,  // $0.01 per 1M cached tokens
+  'google/gemini-flash-1.5': {
+    input: 0.35,   // Prices in USD per 1M tokens on OpenRouter
+    output: 0.70,
   },
-  'gemini-2.5-pro-exp': {
-    input: 0.15,    // $0.15 per 1M tokens
-    output: 0.60,   // $0.60 per 1M tokens
-    caching: 0.02,  // $0.02 per 1M cached tokens
-  },
-  'gemini-2.5-flash-thinking-exp': {
-    input: 0.075,
-    output: 0.30,
-    caching: 0.01,
-  },
-
-  // Gemini 3.0 pricing (estimated, update when released)
-  'gemini-3.0-flash-exp': {
-    input: 0.05,    // Estimated 33% cheaper
-    output: 0.20,
-    caching: 0.005,
-  },
-  'gemini-3.0-pro-exp': {
-    input: 0.10,
-    output: 0.40,
-    caching: 0.01,
+  'google/gemini-pro': {
+    input: 0.50,
+    output: 1.50,
   },
 };
 
@@ -120,27 +98,8 @@ const PRICING = {
 const EXCHANGE_RATE_USD_TO_MYR = 4.45;
 
 // ============================================================================
-// SAFETY SETTINGS
+// SAFETY SETTINGS (Handled by OpenRouter)
 // ============================================================================
-
-const SAFETY_SETTINGS = [
-  {
-    category: HarmCategory.HARM_CATEGORY_HARASSMENT,
-    threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
-  },
-  {
-    category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
-    threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
-  },
-  {
-    category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
-    threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
-  },
-  {
-    category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
-    threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
-  },
-];
 
 // ============================================================================
 // GENERATION CONFIG
@@ -148,49 +107,28 @@ const SAFETY_SETTINGS = [
 
 const GENERATION_CONFIG = {
   temperature: 0.7,
-  topK: 40,
   topP: 0.95,
-  maxOutputTokens: 8192,
+  max_tokens: 8192,
 };
 
 // ============================================================================
-// GEMINI V2.5 ADAPTER CLASS
+// OPENROUTER ADAPTER CLASS
 // ============================================================================
 
-export class GeminiV25Adapter {
+export class OpenRouterAdapter {
   constructor(apiKey, options = {}) {
     if (!apiKey) {
-      throw new Error('[Gemini] API key is required');
+      throw new Error('[OpenRouter] API key is required');
     }
-
-    this.genAI = new GoogleGenerativeAI(apiKey);
+    this.apiKey = apiKey;
     this.defaultModel = options.defaultModel || resolveModelName('FAST');
     this.retryOptions = options.retryOptions || {
       maxAttempts: 3,
       baseDelay: 2000,
       onRetry: (attempt, error, delay) => {
-        console.warn(`[Gemini] Retry attempt ${attempt} after ${delay}ms:`, error.message);
+        console.warn(`[OpenRouter] Retry attempt ${attempt} after ${delay}ms:`, error.message);
       },
     };
-
-    // Cache settings
-    this.enableCaching = options.enableCaching !== false; // Default: true
-  }
-
-  /**
-   * Get model instance
-   * @param {string} modelAlias - Model alias or full name
-   * @param {Object} config - Generation config override
-   * @returns {Object} Gemini model instance
-   */
-  getModel(modelAlias = this.defaultModel, config = {}) {
-    const modelName = resolveModelName(modelAlias);
-
-    return this.genAI.getGenerativeModel({
-      model: modelName,
-      safetySettings: SAFETY_SETTINGS,
-      generationConfig: { ...GENERATION_CONFIG, ...config },
-    });
   }
 
   /**
@@ -200,7 +138,6 @@ export class GeminiV25Adapter {
    */
   estimateTokens(text) {
     if (!text) return 0;
-    // Improved estimation: 1 token ≈ 3.5 characters for English
     return Math.ceil(text.length / 3.5);
   }
 
@@ -209,20 +146,16 @@ export class GeminiV25Adapter {
    * @param {number} inputTokens - Input token count
    * @param {number} outputTokens - Output token count
    * @param {string} modelName - Model name
-   * @param {number} cachedTokens - Cached token count (optional)
    * @returns {number} Cost in MYR sen (1 RM = 100 sen)
    */
-  calculateCost(inputTokens, outputTokens, modelName, cachedTokens = 0) {
+  calculateCost(inputTokens, outputTokens, modelName) {
     const resolvedName = resolveModelName(modelName);
-    const pricing = PRICING[resolvedName] || PRICING['gemini-2.5-flash-exp'];
+    const pricing = PRICING[resolvedName] || PRICING['google/gemini-flash-1.5'];
 
-    // Cost in USD
     const inputCostUSD = (inputTokens / 1_000_000) * pricing.input;
     const outputCostUSD = (outputTokens / 1_000_000) * pricing.output;
-    const cacheCostUSD = cachedTokens > 0 ? (cachedTokens / 1_000_000) * (pricing.caching || 0) : 0;
-    const totalCostUSD = inputCostUSD + outputCostUSD + cacheCostUSD;
+    const totalCostUSD = inputCostUSD + outputCostUSD;
 
-    // Convert to MYR sen
     const totalCostMYR = totalCostUSD * EXCHANGE_RATE_USD_TO_MYR;
     const totalCostSen = Math.ceil(totalCostMYR * 100);
 
@@ -237,116 +170,62 @@ export class GeminiV25Adapter {
    */
   async generate(prompt, options = {}) {
     const modelAlias = options.model || this.defaultModel;
-    const model = this.getModel(modelAlias, options.config);
+    const modelName = resolveModelName(modelAlias);
 
-    // Retry wrapper
+    const payload = {
+      model: modelName,
+      messages: [{ role: 'user', content: prompt }],
+      ...GENERATION_CONFIG,
+      ...(options.config || {}),
+    };
+
+    if (options.history) {
+        payload.messages = [...options.history, { role: 'user', content: prompt }];
+    }
+
     const result = await retry(
       async () => {
-        let response;
+        const response = await fetch(`${OPENROUTER_API_BASE}/chat/completions`, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${this.apiKey}`,
+            'Content-Type': 'application/json',
+            'HTTP-Referer': 'https://aibradaa.com',
+            'X-Title': 'AI Bradaa',
+          },
+          body: JSON.stringify(payload),
+        });
 
-        if (options.history) {
-          // Multi-turn chat
-          const chat = model.startChat({ history: options.history });
-          response = await chat.sendMessage(prompt);
-        } else {
-          // Single-turn generation
-          response = await model.generateContent(prompt);
+        if (!response.ok) {
+          const errorText = await response.text();
+          throw new Error(`OpenRouter API error: ${response.status} ${errorText}`);
         }
-
-        return response;
+        return response.json();
       },
       this.retryOptions
     );
 
-    // Extract response
-    const response = result.response;
-    const text = response.text();
+    const text = result.choices[0].message.content;
+    const usage = result.usage;
 
-    // Count tokens (estimated)
-    const inputTokens = this.estimateTokens(prompt);
-    const outputTokens = this.estimateTokens(text);
-    const totalTokens = inputTokens + outputTokens;
-
-    // Calculate cost
-    const costSen = this.calculateCost(inputTokens, outputTokens, modelAlias);
+    const costSen = this.calculateCost(usage.prompt_tokens, usage.completion_tokens, modelName);
 
     return {
       text,
       tokens: {
-        input: inputTokens,
-        output: outputTokens,
-        total: totalTokens,
+        input: usage.prompt_tokens,
+        output: usage.completion_tokens,
+        total: usage.total_tokens,
       },
       cost: {
         sen: costSen,
         myr: costSen / 100,
         usd: (costSen / 100) / EXCHANGE_RATE_USD_TO_MYR,
       },
-      model: resolveModelName(modelAlias),
+      model: modelName,
       metadata: {
-        finishReason: response.candidates?.[0]?.finishReason,
-        safetyRatings: response.candidates?.[0]?.safetyRatings,
+        finishReason: result.choices[0].finish_reason,
       },
-    };
-  }
-
-  /**
-   * Generate streaming response
-   * @param {string} prompt - User prompt
-   * @param {Function} onChunk - Callback for each chunk
-   * @param {Object} options - Generation options
-   * @returns {Promise<Object>} Final response object
-   */
-  async generateStream(prompt, onChunk, options = {}) {
-    const modelAlias = options.model || this.defaultModel;
-    const model = this.getModel(modelAlias, options.config);
-
-    let fullText = '';
-    let chunkCount = 0;
-
-    const result = await retry(
-      async () => {
-        const response = await model.generateContentStream(prompt);
-
-        for await (const chunk of response.stream) {
-          const chunkText = chunk.text();
-          fullText += chunkText;
-          chunkCount++;
-
-          if (onChunk) {
-            onChunk({
-              text: chunkText,
-              fullText,
-              chunkIndex: chunkCount,
-            });
-          }
-        }
-
-        return response;
-      },
-      this.retryOptions
-    );
-
-    // Final response
-    const inputTokens = this.estimateTokens(prompt);
-    const outputTokens = this.estimateTokens(fullText);
-    const totalTokens = inputTokens + outputTokens;
-    const costSen = this.calculateCost(inputTokens, outputTokens, modelAlias);
-
-    return {
-      text: fullText,
-      tokens: {
-        input: inputTokens,
-        output: outputTokens,
-        total: totalTokens,
-      },
-      cost: {
-        sen: costSen,
-        myr: costSen / 100,
-        usd: (costSen / 100) / EXCHANGE_RATE_USD_TO_MYR,
-      },
-      model: resolveModelName(modelAlias),
-      chunks: chunkCount,
     };
   }
 
@@ -360,38 +239,19 @@ export class GeminiV25Adapter {
   async chat(history, message, options = {}) {
     return this.generate(message, { ...options, history });
   }
-
-  /**
-   * Count tokens (accurate via API)
-   * @param {string} text - Text to count
-   * @param {string} modelAlias - Model alias
-   * @returns {Promise<number>} Token count
-   */
-  async countTokens(text, modelAlias = this.defaultModel) {
-    const model = this.getModel(modelAlias);
-
-    const result = await retry(
-      async () => {
-        return await model.countTokens(text);
-      },
-      this.retryOptions
-    );
-
-    return result.totalTokens;
-  }
 }
 
 // ============================================================================
 // SINGLETON INSTANCE
 // ============================================================================
 
-let geminiV25Instance = null;
+let openRouterInstance = null;
 
-export function getGeminiV25Client(apiKey) {
-  if (!geminiV25Instance && apiKey) {
-    geminiV25Instance = new GeminiV25Adapter(apiKey);
+export function getOpenRouterClient(apiKey) {
+  if (!openRouterInstance && apiKey) {
+    openRouterInstance = new OpenRouterAdapter(apiKey);
   }
-  return geminiV25Instance;
+  return openRouterInstance;
 }
 
 // ============================================================================
@@ -399,13 +259,13 @@ export function getGeminiV25Client(apiKey) {
 // ============================================================================
 
 /**
- * Legacy getGeminiClient function for backward compatibility
- * @deprecated Use getGeminiV25Client instead
+ * Legacy getGeminiClient function now returns an OpenRouter client
+ * @deprecated Use getOpenRouterClient instead
  */
 export function getGeminiClient(apiKey) {
-  console.warn('[Gemini] getGeminiClient is deprecated. Use getGeminiV25Client instead.');
-  return getGeminiV25Client(apiKey);
+  console.warn('[Adapter] getGeminiClient is deprecated. Using OpenRouter client instead.');
+  return getOpenRouterClient(apiKey);
 }
 
 export { PRICING, EXCHANGE_RATE_USD_TO_MYR };
-export default GeminiV25Adapter;
+export default OpenRouterAdapter;

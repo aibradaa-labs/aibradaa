@@ -1,0 +1,574 @@
+=== README.md ===
+
+=== decision_framework.md ===
+
+=== command_think_v1.0.0.md ===
+
+=== syeddy_base_v2.3.0.md ===
+
+=== 84_MENTOR_COMPOSITE_SCORE_UPDATE.md ===
+
+> archive\audit_reports_2025_11_09\84_MENTOR_COMPOSITE_SCORE_UPDATE.md:27:**Blockers:**
+> archive\audit_reports_2025_11_09\84_MENTOR_COMPOSITE_SCORE_UPDATE.md:28:1. ❌ MYR pricing not implemented (-5pts) - Buffett blocker
+> archive\audit_reports_2025_11_09\84_MENTOR_COMPOSITE_SCORE_UPDATE.md:29:2. ❌ No fetching/retry system (-8pts) - Ng, Bezos blocker
+> archive\audit_reports_2025_11_09\84_MENTOR_COMPOSITE_SCORE_UPDATE.md:30:3. ❌ Quota enforcement not wired (-5pts) - Buffett, Hinton blocker
+  archive\audit_reports_2025_11_09\84_MENTOR_COMPOSITE_SCORE_UPDATE.md:31:
+> archive\audit_reports_2025_11_09\84_MENTOR_COMPOSITE_SCORE_UPDATE.md:52:**Blockers:**
+  archive\audit_reports_2025_11_09\84_MENTOR_COMPOSITE_SCORE_UPDATE.md:53:- No MYR pricing (missing local market fit)
+> archive\audit_reports_2025_11_09\84_MENTOR_COMPOSITE_SCORE_UPDATE.md:78:**Blockers:**
+  archive\audit_reports_2025_11_09\84_MENTOR_COMPOSITE_SCORE_UPDATE.md:79:- No retry logic (network failures = user errors)
+> archive\audit_reports_2025_11_09\84_MENTOR_COMPOSITE_SCORE_UPDATE.md:123:> "Technical excellence demonstrated. Code is clean, modular, well-documented. Retry logic handles network failures gracefully. Caching architecture is textbook. Token counting enables quota enforcement. This resolves the P0 blocker. Ready for production."
+  archive\audit_reports_2025_11_09\84_MENTOR_COMPOSITE_SCORE_UPDATE.md:124:
+> archive\audit_reports_2025_11_09\84_MENTOR_COMPOSITE_SCORE_UPDATE.md:135:**Blockers:**
+  archive\audit_reports_2025_11_09\84_MENTOR_COMPOSITE_SCORE_UPDATE.md:136:- Quota enforcement not integrated into API routes
+> archive\audit_reports_2025_11_09\84_MENTOR_COMPOSITE_SCORE_UPDATE.md:182:> "All security red lines met. Quota enforcement architecture is sound. Cost tracking in MYR sen prevents rounding errors. Database constraints prevent over-spending. Audit logging captures all financial events. PDPA compliance exemplary. This resolves the financial governance blocker. Cleared for launch."
+  archive\audit_reports_2025_11_09\84_MENTOR_COMPOSITE_SCORE_UPDATE.md:183:
+> archive\audit_reports_2025_11_09\84_MENTOR_COMPOSITE_SCORE_UPDATE.md:249:**1. Wire Quota Enforcement (Priority: P0)**
+  archive\audit_reports_2025_11_09\84_MENTOR_COMPOSITE_SCORE_UPDATE.md:250:- Integrate `usageRepository.hasQuotaAvailable()` into:
+
+=== AI_POD_CENTRALIZATION_AUDIT.md ===
+> archive\audit_reports_2025_11_09\AI_POD_CENTRALIZATION_AUDIT.md:346:### P0 - CRITICAL (Fix Immediately)
+  archive\audit_reports_2025_11_09\AI_POD_CENTRALIZATION_AUDIT.md:347:1. **Restore /ai_pod/config.mjs** - Blocking broken import
+> archive\audit_reports_2025_11_09\AI_POD_CENTRALIZATION_AUDIT.md:647:**Recommended Action:** Execute migration plan immediately, starting with P0 critical fixes.
+  archive\audit_reports_2025_11_09\AI_POD_CENTRALIZATION_AUDIT.md:648:
+
+=== AI_POD_VIOLATIONS_SUMMARY.md ===
+> archive\audit_reports_2025_11_09\AI_POD_VIOLATIONS_SUMMARY.md:25:### 🚨 P0 - CRITICAL
+  archive\audit_reports_2025_11_09\AI_POD_VIOLATIONS_SUMMARY.md:26:1. **Missing /ai_pod/config.mjs** - File doesn't exist, causing broken import
+> archive\audit_reports_2025_11_09\AI_POD_VIOLATIONS_SUMMARY.md:129:## Quick Start - Fix P0 Issues Now
+  archive\audit_reports_2025_11_09\AI_POD_VIOLATIONS_SUMMARY.md:130:
+
+=== AUDIT_FINDINGS.md ===
+> archive\audit_reports_2025_11_09\AUDIT_FINDINGS.md:332:### 🔴 P0 - BLOCKING (Must fix to proceed)
+  archive\audit_reports_2025_11_09\AUDIT_FINDINGS.md:333:
+> archive\audit_reports_2025_11_09\AUDIT_FINDINGS.md:460:- P0 fixes: 2-3 days
+  archive\audit_reports_2025_11_09\AUDIT_FINDINGS.md:461:- P1 features: 7-10 days
+> archive\audit_reports_2025_11_09\AUDIT_FINDINGS.md:474:3. **Begin P0 Fixes** (desktop, loading, modules, icons, API)
+  archive\audit_reports_2025_11_09\AUDIT_FINDINGS.md:475:4. **Test Each Fix**
+
+=== CODEBASE_ANALYSIS_COMPREHENSIVE.md ===
+
+=== COMPLETE_GAP_ANALYSIS_AND_ACTION_PLAN.md ===
+> archive\audit_reports_2025_11_09\COMPLETE_GAP_ANALYSIS_AND_ACTION_PLAN.md:271:**1. Database Schema Updates (PRIORITY: P0)**
+  archive\audit_reports_2025_11_09\COMPLETE_GAP_ANALYSIS_AND_ACTION_PLAN.md:272:
+> archive\audit_reports_2025_11_09\COMPLETE_GAP_ANALYSIS_AND_ACTION_PLAN.md:324:**2. Database README Update (PRIORITY: P0)**
+  archive\audit_reports_2025_11_09\COMPLETE_GAP_ANALYSIS_AND_ACTION_PLAN.md:325:
+> archive\audit_reports_2025_11_09\COMPLETE_GAP_ANALYSIS_AND_ACTION_PLAN.md:662:2. claude/pricing-audit-backend-setup-011CUv22U3UzPGFNezcYaJoT (CURRENT)
+  archive\audit_reports_2025_11_09\COMPLETE_GAP_ANALYSIS_AND_ACTION_PLAN.md:663:```
+> archive\audit_reports_2025_11_09\COMPLETE_GAP_ANALYSIS_AND_ACTION_PLAN.md:687:git branch -D claude/pricing-audit-backend-setup-011CUv22U3UzPGFNezcYaJoT
+  archive\audit_reports_2025_11_09\COMPLETE_GAP_ANALYSIS_AND_ACTION_PLAN.md:688:
+> archive\audit_reports_2025_11_09\COMPLETE_GAP_ANALYSIS_AND_ACTION_PLAN.md:691:# git push origin --delete claude/pricing-audit-backend-setup-011CUv22U3UzPGFNezcYaJoT
+  archive\audit_reports_2025_11_09\COMPLETE_GAP_ANALYSIS_AND_ACTION_PLAN.md:692:
+
+=== COMPLETE_PROJECT_BLUEPRINT.md ===
+> archive\audit_reports_2025_11_09\COMPLETE_PROJECT_BLUEPRINT.md:258:## 🚨 CRITICAL BLOCKERS (P0)
+  archive\audit_reports_2025_11_09\COMPLETE_PROJECT_BLUEPRINT.md:259:
+
+=== COMPREHENSIVE_AUDIT_PART_3_FINAL_SECTIONS.md ===
+> archive\audit_reports_2025_11_09\COMPREHENSIVE_AUDIT_PART_3_FINAL_SECTIONS.md:264:   - Rationale: "5 P0 security vulnerabilities is unacceptable. Launching exposes users to XSS, CSRF, and data breaches."
+  archive\audit_reports_2025_11_09\COMPREHENSIVE_AUDIT_PART_3_FINAL_SECTIONS.md:265:   - Concerns: Legal liability, user trust damage, reputational risk
+> archive\audit_reports_2025_11_09\COMPREHENSIVE_AUDIT_PART_3_FINAL_SECTIONS.md:276:All 84 mentors agree: DO NOT LAUNCH until P0 issues resolved.
+  archive\audit_reports_2025_11_09\COMPREHENSIVE_AUDIT_PART_3_FINAL_SECTIONS.md:277:
+> archive\audit_reports_2025_11_09\COMPREHENSIVE_AUDIT_PART_3_FINAL_SECTIONS.md:279:**Timeline:** 3 weeks to fix all P0 blockers
+  archive\audit_reports_2025_11_09\COMPREHENSIVE_AUDIT_PART_3_FINAL_SECTIONS.md:280:**Re-evaluation:** 2025-12-01
+> archive\audit_reports_2025_11_09\COMPREHENSIVE_AUDIT_PART_3_FINAL_SECTIONS.md:877:| **3. Security Posture** | 12% | 45/100 | 5.40 | 37 vulnerabilities, 5 P0 blockers |
+> archive\audit_reports_2025_11_09\COMPREHENSIVE_AUDIT_PART_3_FINAL_SECTIONS.md:878:| **4. PDPA Compliance** | 12% | 42/100 | 5.04 | 55 gaps, 25 P0 critical |
+  archive\audit_reports_2025_11_09\COMPREHENSIVE_AUDIT_PART_3_FINAL_SECTIONS.md:879:| **5. AI Innovation** | 8% | 99/100 | 7.92 | 84-mentor framework, TOON format |
+> archive\audit_reports_2025_11_09\COMPREHENSIVE_AUDIT_PART_3_FINAL_SECTIONS.md:896:   - Fix 5 P0 vulnerabilities: +12
+  archive\audit_reports_2025_11_09\COMPREHENSIVE_AUDIT_PART_3_FINAL_SECTIONS.md:897:   - Fix 10 P1 issues: +6
+> archive\audit_reports_2025_11_09\COMPREHENSIVE_AUDIT_PART_3_FINAL_SECTIONS.md:901:   - Close 25 P0 gaps: +15
+  archive\audit_reports_2025_11_09\COMPREHENSIVE_AUDIT_PART_3_FINAL_SECTIONS.md:902:   - Close 18 P1 gaps: +3
+> archive\audit_reports_2025_11_09\COMPREHENSIVE_AUDIT_PART_3_FINAL_SECTIONS.md:956:> 1. Fix ALL 5 P0 security vulnerabilities
+> archive\audit_reports_2025_11_09\COMPREHENSIVE_AUDIT_PART_3_FINAL_SECTIONS.md:957:> 2. Close ALL 25 P0 PDPA gaps
+  archive\audit_reports_2025_11_09\COMPREHENSIVE_AUDIT_PART_3_FINAL_SECTIONS.md:958:> 3. Achieve 70% test coverage
+> archive\audit_reports_2025_11_09\COMPREHENSIVE_AUDIT_PART_3_FINAL_SECTIONS.md:975:- Focus: P0 security + PDPA blockers
+  archive\audit_reports_2025_11_09\COMPREHENSIVE_AUDIT_PART_3_FINAL_SECTIONS.md:976:- Deliverable: Composite 85/100
+
+=== COMPREHENSIVE_AUDIT_REPORT_PHASE_1_EXPANDED.md ===
+> archive\audit_reports_2025_11_09\COMPREHENSIVE_AUDIT_REPORT_PHASE_1_EXPANDED.md:7:**Branch:** `claude/pricing-audit-backend-setup-011CUv22U3UzPGFNezcYaJoT`
+  archive\audit_reports_2025_11_09\COMPREHENSIVE_AUDIT_REPORT_PHASE_1_EXPANDED.md:8:**Domain:** www.aibradaa.com
+> archive\audit_reports_2025_11_09\COMPREHENSIVE_AUDIT_REPORT_PHASE_1_EXPANDED.md:18:**Risk Posture:** RED (Multiple P0 blockers) | **Scope Delta:** CRITICAL
+  archive\audit_reports_2025_11_09\COMPREHENSIVE_AUDIT_REPORT_PHASE_1_EXPANDED.md:19:**Departments:** Strategy, Finance, AI POD, Platform, Security, Design, Growth
+> archive\audit_reports_2025_11_09\COMPREHENSIVE_AUDIT_REPORT_PHASE_1_EXPANDED.md:21:**Decision:** PHASE 1 APPROVED - Critical blockers must be resolved before production
+  archive\audit_reports_2025_11_09\COMPREHENSIVE_AUDIT_REPORT_PHASE_1_EXPANDED.md:22:**Composite Target:** ≥99/100 (Will NOT deliver below)
+> archive\audit_reports_2025_11_09\COMPREHENSIVE_AUDIT_REPORT_PHASE_1_EXPANDED.md:511:55. Critical error count (P0)
+  archive\audit_reports_2025_11_09\COMPREHENSIVE_AUDIT_REPORT_PHASE_1_EXPANDED.md:512:56. Error recovery time
+> archive\audit_reports_2025_11_09\COMPREHENSIVE_AUDIT_REPORT_PHASE_1_EXPANDED.md:977:   - Fix all 5 P0 vulnerabilities: +10
+  archive\audit_reports_2025_11_09\COMPREHENSIVE_AUDIT_REPORT_PHASE_1_EXPANDED.md:978:   - Fix 10 P1 issues: +5
+> archive\audit_reports_2025_11_09\COMPREHENSIVE_AUDIT_REPORT_PHASE_1_EXPANDED.md:981:   - Implement all 25 P0 gaps: +10
+  archive\audit_reports_2025_11_09\COMPREHENSIVE_AUDIT_REPORT_PHASE_1_EXPANDED.md:982:
+> archive\audit_reports_2025_11_09\COMPREHENSIVE_AUDIT_REPORT_PHASE_1_EXPANDED.md:1036:> 1. Fix ALL P0 security vulnerabilities (5 blockers)
+> archive\audit_reports_2025_11_09\COMPREHENSIVE_AUDIT_REPORT_PHASE_1_EXPANDED.md:1037:> 2. Close ALL P0 PDPA gaps (25 critical)
+  archive\audit_reports_2025_11_09\COMPREHENSIVE_AUDIT_REPORT_PHASE_1_EXPANDED.md:1038:> 3. Achieve Composite ≥99/100 before production
+
+=== COMPREHENSIVE_AUDIT_REPORT_PHASE_1.md ===
+> archive\audit_reports_2025_11_09\COMPREHENSIVE_AUDIT_REPORT_PHASE_1.md:7:**Branch:** `claude/pricing-audit-backend-setup-011CUv22U3UzPGFNezcYaJoT`
+  archive\audit_reports_2025_11_09\COMPREHENSIVE_AUDIT_REPORT_PHASE_1.md:8:**Domain:** www.aibradaa.com
+> archive\audit_reports_2025_11_09\COMPREHENSIVE_AUDIT_REPORT_PHASE_1.md:18:**Risk Posture:** RED (Multiple P0 blockers) | **Scope Delta:** CRITICAL
+  archive\audit_reports_2025_11_09\COMPREHENSIVE_AUDIT_REPORT_PHASE_1.md:19:**Departments:** Strategy, Finance, AI POD, Platform, Security, Design, Growth
+> archive\audit_reports_2025_11_09\COMPREHENSIVE_AUDIT_REPORT_PHASE_1.md:21:**Decision:** PHASE 1 APPROVED - Critical blockers must be resolved before production
+  archive\audit_reports_2025_11_09\COMPREHENSIVE_AUDIT_REPORT_PHASE_1.md:22:**Composite Target:** ≥99/100 (Will NOT deliver below)
+> archive\audit_reports_2025_11_09\COMPREHENSIVE_AUDIT_REPORT_PHASE_1.md:33:| Audit Area | Score | Status | Gaps | Blockers |
+  archive\audit_reports_2025_11_09\COMPREHENSIVE_AUDIT_REPORT_PHASE_1.md:34:|------------|-------|--------|------|----------|
+> archive\audit_reports_2025_11_09\COMPREHENSIVE_AUDIT_REPORT_PHASE_1.md:35:| **Security** | 45/100 | 🔴 RED | 37 issues | 5 P0 |
+> archive\audit_reports_2025_11_09\COMPREHENSIVE_AUDIT_REPORT_PHASE_1.md:36:| **PDPA Compliance** | 42/100 | 🔴 RED | 55 gaps | 25 P0 |
+> archive\audit_reports_2025_11_09\COMPREHENSIVE_AUDIT_REPORT_PHASE_1.md:37:| **AI POD Architecture** | 30/100 | 🔴 RED | 47 violations | 3 P0 |
+> archive\audit_reports_2025_11_09\COMPREHENSIVE_AUDIT_REPORT_PHASE_1.md:38:| **Feature Completeness** | 60/100 | 🟠 AMBER | 8 tools missing | 0 P0 |
+> archive\audit_reports_2025_11_09\COMPREHENSIVE_AUDIT_REPORT_PHASE_1.md:39:| **Code Quality** | 75/100 | 🟡 YELLOW | Duplication | 0 P0 |
+> archive\audit_reports_2025_11_09\COMPREHENSIVE_AUDIT_REPORT_PHASE_1.md:40:| **Testing** | 15/100 | 🔴 RED | 21 tests failing | 0 P0 |
+
+=== DOC_1_2_ANALYSIS_AND_EXECUTION.md ===
+> archive\audit_reports_2025_11_09\DOC_1_2_ANALYSIS_AND_EXECUTION.md:257:### P0 - IMMEDIATE (Required for ≥99 Composite)
+  archive\audit_reports_2025_11_09\DOC_1_2_ANALYSIS_AND_EXECUTION.md:258:
+> archive\audit_reports_2025_11_09\DOC_1_2_ANALYSIS_AND_EXECUTION.md:474:1. Complete all P0 tasks → **+35 points**
+  archive\audit_reports_2025_11_09\DOC_1_2_ANALYSIS_AND_EXECUTION.md:475:2. Complete P1 tasks → **+10 points**
+> archive\audit_reports_2025_11_09\DOC_1_2_ANALYSIS_AND_EXECUTION.md:480:**Projected:** **68.1** → **≥99** after P0+P1 completion
+  archive\audit_reports_2025_11_09\DOC_1_2_ANALYSIS_AND_EXECUTION.md:481:
+> archive\audit_reports_2025_11_09\DOC_1_2_ANALYSIS_AND_EXECUTION.md:516:**Composite readiness:** **32/100** → **≥99** after P0+P1
+  archive\audit_reports_2025_11_09\DOC_1_2_ANALYSIS_AND_EXECUTION.md:517:
+
+=== IMPLEMENTATION_STATUS.md ===
+> archive\audit_reports_2025_11_09\IMPLEMENTATION_STATUS.md:4:**Branch**: `claude/pricing-audit-backend-setup-011CUv22U3UzPGFNezcYaJoT`
+  archive\audit_reports_2025_11_09\IMPLEMENTATION_STATUS.md:5:**Status**: ✅ Backend + Frontend Integration COMPLETE
+> archive\audit_reports_2025_11_09\IMPLEMENTATION_STATUS.md:300:# - Branch: claude/pricing-audit-backend-setup-011CUv22U3UzPGFNezcYaJoT
+  archive\audit_reports_2025_11_09\IMPLEMENTATION_STATUS.md:301:# - Build command: npm run build
+> archive\audit_reports_2025_11_09\IMPLEMENTATION_STATUS.md:389:**Branch**: `claude/pricing-audit-backend-setup-011CUv22U3UzPGFNezcYaJoT`
+  archive\audit_reports_2025_11_09\IMPLEMENTATION_STATUS.md:390:**Ready for**: Production deployment (after database setup)
+> archive\audit_reports_2025_11_09\IMPLEMENTATION_STATUS.md:391:**Blocker**: None - all P0 items complete ✅
+
+=== PRIORITY_ACTION_PLAN.md ===
+
+=== SOT_SOURCE_OF_TRUTH.md ===
+> archive\audit_reports_2025_11_09\SOT_SOURCE_OF_TRUTH.md:435:P0 (Critical):    Immediate (< 1 hour)
+  archive\audit_reports_2025_11_09\SOT_SOURCE_OF_TRUTH.md:436:P1 (High):        < 4 hours
+
+=== FIXES_APPLIED.md ===
+> archive\docs_integrated_2025_11_09\FIXES_APPLIED.md:3:## Status: 🟢 P0 BLOCKING ISSUES RESOLVED
+  archive\docs_integrated_2025_11_09\FIXES_APPLIED.md:4:
+> archive\docs_integrated_2025_11_09\FIXES_APPLIED.md:9:Fixed **4 critical P0 blocking issues** that were preventing the application from functioning:
+  archive\docs_integrated_2025_11_09\FIXES_APPLIED.md:10:
+> archive\docs_integrated_2025_11_09\FIXES_APPLIED.md:205:## REMAINING P0 ISSUES
+  archive\docs_integrated_2025_11_09\FIXES_APPLIED.md:206:
+
+=== ICON_GENERATION_GUIDE.md ===
+
+=== SMOL_PLAYBOOK_CROSS_CHECK_MATRIX.md ===
+> archive\docs_integrated_2025_11_09\SMOL_PLAYBOOK_CROSS_CHECK_MATRIX.md:24:3. No rollback runbooks (P0/P1 incident response)
+  archive\docs_integrated_2025_11_09\SMOL_PLAYBOOK_CROSS_CHECK_MATRIX.md:25:4. Missing OTEL instrumentation (config exists, not implemented)
+> archive\docs_integrated_2025_11_09\SMOL_PLAYBOOK_CROSS_CHECK_MATRIX.md:1041:- Runbooks (P0/P1, MTTR targets, incident templates)
+  archive\docs_integrated_2025_11_09\SMOL_PLAYBOOK_CROSS_CHECK_MATRIX.md:1042:
+> archive\docs_integrated_2025_11_09\SMOL_PLAYBOOK_CROSS_CHECK_MATRIX.md:1052:- ❌ No `/ops/runbooks/*.md` (P0/P1 incident response)
+  archive\docs_integrated_2025_11_09\SMOL_PLAYBOOK_CROSS_CHECK_MATRIX.md:1053:
+> archive\docs_integrated_2025_11_09\SMOL_PLAYBOOK_CROSS_CHECK_MATRIX.md:1055:Create `/ops/runbooks/P0_API_DOWN.md`:
+  archive\docs_integrated_2025_11_09\SMOL_PLAYBOOK_CROSS_CHECK_MATRIX.md:1056:```markdown
+> archive\docs_integrated_2025_11_09\SMOL_PLAYBOOK_CROSS_CHECK_MATRIX.md:1057:# P0 Runbook: API Completely Down
+  archive\docs_integrated_2025_11_09\SMOL_PLAYBOOK_CROSS_CHECK_MATRIX.md:1058:
+> archive\docs_integrated_2025_11_09\SMOL_PLAYBOOK_CROSS_CHECK_MATRIX.md:1205:   - Files: `/ops/runbooks/P0_*.md`, `/ops/runbooks/P1_*.md`
+> archive\docs_integrated_2025_11_09\SMOL_PLAYBOOK_CROSS_CHECK_MATRIX.md:1206:   - P0: API down, database down
+  archive\docs_integrated_2025_11_09\SMOL_PLAYBOOK_CROSS_CHECK_MATRIX.md:1207:   - P1: High latency, quota exceeded
+> archive\docs_integrated_2025_11_09\SMOL_PLAYBOOK_CROSS_CHECK_MATRIX.md:1263:3. ✅ P0/P1 runbooks
+  archive\docs_integrated_2025_11_09\SMOL_PLAYBOOK_CROSS_CHECK_MATRIX.md:1264:4. ✅ Cost ceiling enforcement
+
+=== STATUS.md ===
+> archive\docs_integrated_2025_11_09\STATUS.md:224:### Blockers
+  archive\docs_integrated_2025_11_09\STATUS.md:225:- ⚠️ HTML/CSS files for user-facing pages
+
+=== TRANSFORMATION_GAP_ANALYSIS.md ===
+
+=== API.md ===
+> archive\documentation_2025-11-09\docs\API.md:168:      "id": "laptop-001",
+  archive\documentation_2025-11-09\docs\API.md:169:      "brand": "ASUS",
+> archive\documentation_2025-11-09\docs\API.md:201:  "laptopId": "laptop-001"
+  archive\documentation_2025-11-09\docs\API.md:202:}
+> archive\documentation_2025-11-09\docs\API.md:225:  "laptopIds": ["laptop-001", "laptop-002", "laptop-003"]
+  archive\documentation_2025-11-09\docs\API.md:226:}
+> archive\documentation_2025-11-09\docs\API.md:239:      "overall": "laptop-001",
+> archive\documentation_2025-11-09\docs\API.md:240:      "performance": "laptop-002",
+> archive\documentation_2025-11-09\docs\API.md:241:      "value": "laptop-001"
+  archive\documentation_2025-11-09\docs\API.md:242:    }
+> archive\documentation_2025-11-09\docs\API.md:314:    "id": "laptop-045",
+  archive\documentation_2025-11-09\docs\API.md:315:    "brand": "Dell",
+
+=== CONTRIBUTING.md ===
+
+=== DEPLOYMENT_CHECKLIST.md ===
+> archive\documentation_2025-11-09\docs\DEPLOYMENT_CHECKLIST.md:97:**Priority P0 (Must configure before deployment):**
+  archive\documentation_2025-11-09\docs\DEPLOYMENT_CHECKLIST.md:98:
+
+=== ENVIRONMENT_SETUP.md ===
+
+=== NEXT_PHASE_PLAN.md ===
+
+=== PRODUCTION_READINESS.md ===
+> archive\documentation_2025-11-09\docs\PRODUCTION_READINESS.md:520:**P0 (Critical):** < 15 min response
+  archive\documentation_2025-11-09\docs\PRODUCTION_READINESS.md:521:**P1 (High):** < 1 hour response
+
+=== CHANGELOG.md ===
+
+=== DATABASE_README.md ===
+> archive\documentation_2025-11-09\DATABASE_README.md:3:**84-Mentor Governance: Resolves P0 blocker from composite score evaluation**
+  archive\documentation_2025-11-09\DATABASE_README.md:4:
+> archive\documentation_2025-11-09\DATABASE_README.md:5:This database implementation resolves the critical blocker identified by Mentors Hinton, Ng, and Sutskever: **No persistent storage**.
+  archive\documentation_2025-11-09\DATABASE_README.md:6:
+> archive\documentation_2025-11-09\DATABASE_README.md:281:**After:** ~82/100 (+12 points - P0 blocker resolved)
+  archive\documentation_2025-11-09\DATABASE_README.md:282:
+> archive\documentation_2025-11-09\DATABASE_README.md:283:**Blockers Resolved:**
+  archive\documentation_2025-11-09\DATABASE_README.md:284:- ✅ Hinton (Mentor 15): No persistent storage
+
+=== FIXES_APPLIED.md ===
+> archive\documentation_2025-11-09\FIXES_APPLIED.md:3:## Status: 🟢 P0 BLOCKING ISSUES RESOLVED
+  archive\documentation_2025-11-09\FIXES_APPLIED.md:4:
+> archive\documentation_2025-11-09\FIXES_APPLIED.md:9:Fixed **4 critical P0 blocking issues** that were preventing the application from functioning:
+  archive\documentation_2025-11-09\FIXES_APPLIED.md:10:
+> archive\documentation_2025-11-09\FIXES_APPLIED.md:205:## REMAINING P0 ISSUES
+  archive\documentation_2025-11-09\FIXES_APPLIED.md:206:
+
+=== ICON_GENERATION_GUIDE.md ===
+
+=== PHASE4_DEPLOYMENT.md ===
+
+=== SMOL_PLAYBOOK_CROSS_CHECK_MATRIX.md ===
+> archive\documentation_2025-11-09\SMOL_PLAYBOOK_CROSS_CHECK_MATRIX.md:24:3. No rollback runbooks (P0/P1 incident response)
+  archive\documentation_2025-11-09\SMOL_PLAYBOOK_CROSS_CHECK_MATRIX.md:25:4. Missing OTEL instrumentation (config exists, not implemented)
+> archive\documentation_2025-11-09\SMOL_PLAYBOOK_CROSS_CHECK_MATRIX.md:1041:- Runbooks (P0/P1, MTTR targets, incident templates)
+  archive\documentation_2025-11-09\SMOL_PLAYBOOK_CROSS_CHECK_MATRIX.md:1042:
+> archive\documentation_2025-11-09\SMOL_PLAYBOOK_CROSS_CHECK_MATRIX.md:1052:- ❌ No `/ops/runbooks/*.md` (P0/P1 incident response)
+  archive\documentation_2025-11-09\SMOL_PLAYBOOK_CROSS_CHECK_MATRIX.md:1053:
+> archive\documentation_2025-11-09\SMOL_PLAYBOOK_CROSS_CHECK_MATRIX.md:1055:Create `/ops/runbooks/P0_API_DOWN.md`:
+  archive\documentation_2025-11-09\SMOL_PLAYBOOK_CROSS_CHECK_MATRIX.md:1056:```markdown
+> archive\documentation_2025-11-09\SMOL_PLAYBOOK_CROSS_CHECK_MATRIX.md:1057:# P0 Runbook: API Completely Down
+  archive\documentation_2025-11-09\SMOL_PLAYBOOK_CROSS_CHECK_MATRIX.md:1058:
+> archive\documentation_2025-11-09\SMOL_PLAYBOOK_CROSS_CHECK_MATRIX.md:1205:   - Files: `/ops/runbooks/P0_*.md`, `/ops/runbooks/P1_*.md`
+> archive\documentation_2025-11-09\SMOL_PLAYBOOK_CROSS_CHECK_MATRIX.md:1206:   - P0: API down, database down
+  archive\documentation_2025-11-09\SMOL_PLAYBOOK_CROSS_CHECK_MATRIX.md:1207:   - P1: High latency, quota exceeded
+> archive\documentation_2025-11-09\SMOL_PLAYBOOK_CROSS_CHECK_MATRIX.md:1263:3. ✅ P0/P1 runbooks
+  archive\documentation_2025-11-09\SMOL_PLAYBOOK_CROSS_CHECK_MATRIX.md:1264:4. ✅ Cost ceiling enforcement
+
+=== STATUS.md ===
+> archive\documentation_2025-11-09\STATUS.md:224:### Blockers
+  archive\documentation_2025-11-09\STATUS.md:225:- ⚠️ HTML/CSS files for user-facing pages
+
+=== TRANSFORMATION_GAP_ANALYSIS.md ===
+
+=== ADDENDUM_V_PHASE_7.md ===
+> archive\phase_reports_2025_11_12\ADDENDUM_V_PHASE_7.md:638:### Blockers: NONE ✅
+  archive\phase_reports_2025_11_12\ADDENDUM_V_PHASE_7.md:639:
+> archive\phase_reports_2025_11_12\ADDENDUM_V_PHASE_7.md:703:- All critical production blockers resolved
+  archive\phase_reports_2025_11_12\ADDENDUM_V_PHASE_7.md:704:- Public branding safety achieved (unprecedented)
+> archive\phase_reports_2025_11_12\ADDENDUM_V_PHASE_7.md:709:- Deferred items are polish, not blockers
+  archive\phase_reports_2025_11_12\ADDENDUM_V_PHASE_7.md:710:
+
+=== INFRASTRUCTURE_SUITE_SUMMARY.md ===
+> archive\phase_reports_2025_11_12\INFRASTRUCTURE_SUITE_SUMMARY.md:82:9. **`/ops/runbooks/P0_database_down.md`** (348 lines)
+> archive\phase_reports_2025_11_12\INFRASTRUCTURE_SUITE_SUMMARY.md:83:   - Priority: P0 (Critical)
+  archive\phase_reports_2025_11_12\INFRASTRUCTURE_SUITE_SUMMARY.md:84:   - SLA: Detection <5min, Mitigation <15min, Resolution <1h
+> archive\phase_reports_2025_11_12\INFRASTRUCTURE_SUITE_SUMMARY.md:173:  - P0: Database Down
+  archive\phase_reports_2025_11_12\INFRASTRUCTURE_SUITE_SUMMARY.md:174:  - P1: Gemini API Timeout
+> archive\phase_reports_2025_11_12\INFRASTRUCTURE_SUITE_SUMMARY.md:209:- **4 Comprehensive Runbooks:** P0-P2 incidents covered
+  archive\phase_reports_2025_11_12\INFRASTRUCTURE_SUITE_SUMMARY.md:210:- **Error Spike Detection:** 5-min windows, auto-rollback
+> archive\phase_reports_2025_11_12\INFRASTRUCTURE_SUITE_SUMMARY.md:275:**Runbooks:** 4 (P0, P1×2, P2)
+  archive\phase_reports_2025_11_12\INFRASTRUCTURE_SUITE_SUMMARY.md:276:**Frontend:** 1 dashboard (mentor-dashboard.html)
+
+=== PHASE_11_IMPLEMENTATION_SUMMARY.md ===
+> archive\phase_reports_2025_11_12\PHASE_11_IMPLEMENTATION_SUMMARY.md:263:### Blockers Resolved
+  archive\phase_reports_2025_11_12\PHASE_11_IMPLEMENTATION_SUMMARY.md:264:
+> archive\phase_reports_2025_11_12\PHASE_11_IMPLEMENTATION_SUMMARY.md:265:**✅ Fixed (4 blockers):**
+  archive\phase_reports_2025_11_12\PHASE_11_IMPLEMENTATION_SUMMARY.md:266:1. Missing `ai_pod/config.mjs` (blocking imports)
+> archive\phase_reports_2025_11_12\PHASE_11_IMPLEMENTATION_SUMMARY.md:271:**🔴 Remaining (3 blockers):**
+  archive\phase_reports_2025_11_12\PHASE_11_IMPLEMENTATION_SUMMARY.md:272:1. Database persistence (PostgreSQL not deployed)
+> archive\phase_reports_2025_11_12\PHASE_11_IMPLEMENTATION_SUMMARY.md:428:**Blockers Fixed:** 4/7 (57%)
+  archive\phase_reports_2025_11_12\PHASE_11_IMPLEMENTATION_SUMMARY.md:429:**Features Delivered:** 11/11 (100%)
+
+=== PHASE-9.20-IMPLEMENTATION-SUMMARY.md ===
+
+=== PRODUCTION_READINESS_AUDIT_PHASE_11.md ===
+> archive\phase_reports_2025_11_12\PRODUCTION_READINESS_AUDIT_PHASE_11.md:19:The AI Bradaa repository has achieved **world-class architecture** across all critical systems. All P0 production blockers have been resolved in this session. The codebase demonstrates:
+  archive\phase_reports_2025_11_12\PRODUCTION_READINESS_AUDIT_PHASE_11.md:20:
+> archive\phase_reports_2025_11_12\PRODUCTION_READINESS_AUDIT_PHASE_11.md:37:### P0 Critical Fixes Completed
+  archive\phase_reports_2025_11_12\PRODUCTION_READINESS_AUDIT_PHASE_11.md:38:
+> archive\phase_reports_2025_11_12\PRODUCTION_READINESS_AUDIT_PHASE_11.md:747:### ✅ P0 Blockers (ALL RESOLVED)
+  archive\phase_reports_2025_11_12\PRODUCTION_READINESS_AUDIT_PHASE_11.md:748:| Issue | Status | Effort | Commit |
+> archive\phase_reports_2025_11_12\PRODUCTION_READINESS_AUDIT_PHASE_11.md:755:**Total P0 Effort:** 5 hours ✅ COMPLETE
+  archive\phase_reports_2025_11_12\PRODUCTION_READINESS_AUDIT_PHASE_11.md:756:
+> archive\phase_reports_2025_11_12\PRODUCTION_READINESS_AUDIT_PHASE_11.md:818:1. ✅ All P0 blockers resolved
+  archive\phase_reports_2025_11_12\PRODUCTION_READINESS_AUDIT_PHASE_11.md:819:2. ✅ NEVER DELETE strategy operational
+> archive\phase_reports_2025_11_12\PRODUCTION_READINESS_AUDIT_PHASE_11.md:966:**The AI Bradaa repository has achieved production-ready status** with world-class architecture across all critical systems. All P0 blockers have been resolved in this audit session:
+  archive\phase_reports_2025_11_12\PRODUCTION_READINESS_AUDIT_PHASE_11.md:967:
+> archive\phase_reports_2025_11_12\PRODUCTION_READINESS_AUDIT_PHASE_11.md:1025:P0 Production Blockers RESOLVED:
+  archive\phase_reports_2025_11_12\PRODUCTION_READINESS_AUDIT_PHASE_11.md:1026:✅ Created data/laptops-extended.json (extended catalog)
+
+=== PULL_REQUEST_INSTRUCTIONS.md ===
+
+=== SEMANTIC-ROUTING-QUICKSTART.md ===
+
+=== START_HERE.md ===
+
+=== decision_framework.md ===
+
+=== command_think_v1.0.0.md ===
+
+=== syeddy_base_v2.3.0.md ===
+
+=== ABO-84_SPECIFICATION.md ===
+
+=== GITHUB_GUIDE_FOR_BEGINNERS.md ===
+> docs\GITHUB_GUIDE_FOR_BEGINNERS.md:76:├── 🌿 claude/pricing-audit-backend-setup-011CUv22U3UzPGFNezcYaJoT
+  docs\GITHUB_GUIDE_FOR_BEGINNERS.md:77:│   └── Status: Another branch
+
+=== N8N_EVALUATION_REPORT.md ===
+
+=== SECURITY_IMPLEMENTATION_ROADMAP.md ===
+
+=== README.md ===
+
+=== tone-guide.md ===
+
+=== CONVERSION_STATUS.md ===
+> netlify\functions\CONVERSION_STATUS.md:260:1. **Set up local testing environment** (Priority P0)
+  netlify\functions\CONVERSION_STATUS.md:261:   - Install Netlify CLI: `npm install -g netlify-cli`
+> netlify\functions\CONVERSION_STATUS.md:265:2. **Configure environment variables** (Priority P0)
+  netlify\functions\CONVERSION_STATUS.md:266:   - GEMINI_API_KEY - Google Gemini API key
+
+=== P0_database_down.md ===
+> ops\runbooks\P0_database_down.md:1:# P0 Runbook: Database Down
+  ops\runbooks\P0_database_down.md:2:
+> ops\runbooks\P0_database_down.md:3:**Priority:** P0 (Critical)
+  ops\runbooks\P0_database_down.md:4:**SLA:** Detection <5min, Mitigation <15min, Resolution <1h
+> ops\runbooks\P0_database_down.md:42:| All users      | Total outage   | P0       |
+  ops\runbooks\P0_database_down.md:43:| Authenticated  | Partial        | P1       |
+
+=== P1_gemini_api_timeout.md ===
+> ops\runbooks\P1_gemini_api_timeout.md:45:| >50%         | Unusable        | P0       |
+  ops\runbooks\P1_gemini_api_timeout.md:46:| 10-50%       | Degraded        | P1       |
+
+=== P1_high_latency.md ===
+> ops\runbooks\P1_high_latency.md:47:| >5s         | Unusable        | P0       |
+  ops\runbooks\P1_high_latency.md:48:| 2-5s        | Frustrating     | P1       |
+> ops\runbooks\P1_high_latency.md:449:- [P0: Database Down](./P0_database_down.md)
+  ops\runbooks\P1_high_latency.md:450:- [P1: Gemini API Timeout](./P1_gemini_api_timeout.md)
+
+=== P2_deployment_failed.md ===
+> ops\runbooks\P2_deployment_failed.md:45:| Hotfix deploy fails | Incident ongoing  | P0       |
+  ops\runbooks\P2_deployment_failed.md:46:| Feature deploy fails| Feature delayed   | P2       |
+> ops\runbooks\P2_deployment_failed.md:58:- **Risk:** If P0 incident occurs, cannot deploy fix
+  ops\runbooks\P2_deployment_failed.md:59:
+> ops\runbooks\P2_deployment_failed.md:84:   # If contains "hotfix" or "P0", escalate to P0
+  ops\runbooks\P2_deployment_failed.md:85:   # Otherwise, proceed as P2
+> ops\runbooks\P2_deployment_failed.md:465:- [P0: Database Down](./P0_database_down.md)
+  ops\runbooks\P2_deployment_failed.md:466:- [P1: High Latency](./P1_high_latency.md)
+
+=== README.md ===
+> project\governance\84\eval_suites\README.md:117:  "notes": "Initial baseline after P0 fixes. No significant bias detected."
+  project\governance\84\eval_suites\README.md:118:}
+
+=== changelog.md ===
+> project\governance\84\changelog.md:85:### Added - P0 Production Readiness
+  project\governance\84\changelog.md:86:
+> project\governance\84\changelog.md:145:- Post-P0 fixes: 98/100
+  project\governance\84\changelog.md:146:
+> project\governance\84\changelog.md:154:| 1.0.0   | 2025-11-06 | Foundation| 98.0      | P0 production readiness |
+  project\governance\84\changelog.md:155:
+
+=== composite_score_nov_2025.md ===
+> project\governance\84\composite_score_nov_2025.md:39:- 🔴 **P0:** No persistent storage - data loss inevitable
+> project\governance\84\composite_score_nov_2025.md:40:- 🔴 **P0:** Test coverage <15% - untested code paths
+  project\governance\84\composite_score_nov_2025.md:41:- 🟠 **P1:** 50% code duplication - maintenance nightmare
+> project\governance\84\composite_score_nov_2025.md:230:### Week 1 (Nov 8-15): Resolve Blockers
+  project\governance\84\composite_score_nov_2025.md:231:**Target: 80/100**
+
+=== dissent_ledger.md ===
+> project\governance\84\dissent_ledger.md:31:**Priority:** P0 | P1 | P2
+  project\governance\84\dissent_ledger.md:32:**Requester:** [Owner/System/Agent]
+
+=== policy_pdpa.md ===
+
+=== policy_security.md ===
+> project\governance\84\policy_security.md:367:**P0 - Critical:**
+  project\governance\84\policy_security.md:368:- Active data breach or PII exposure
+> project\governance\84\policy_security.md:389:2. **Assessment (<30min for P0, <4h for P1):**
+  project\governance\84\policy_security.md:390:   - Scope: What systems affected?
+> project\governance\84\policy_security.md:394:3. **Containment (<15min for P0):**
+  project\governance\84\policy_security.md:395:   - Rollback if recent deploy
+> project\governance\84\policy_security.md:512:**Emergency:** Page owner immediately (P0 incidents)
+  project\governance\84\policy_security.md:513:
+
+=== README.md ===
+
+=== AGENT.md ===
+> AGENT.md:17:- 🔥 **4 P0 Blockers identified** - Must fix before deployment:
+  AGENT.md:18:  1. Add Google Gemini hard spend cap ($50)
+> AGENT.md:25:**Composite Score:** 72/100 → 94/100 (after P0 fixes) → Target: ≥99/100
+  AGENT.md:26:
+> AGENT.md:27:**Deployment Status:** 🔴 BLOCKED until P0 fixes complete
+  AGENT.md:28:
+> AGENT.md:966:// ❌ CRITICAL: Hardcoded API key (security risk!)
+  AGENT.md:967:const GEMINI_API_KEY = 'AIzaSyXXXXXXXXXXXXXXXXXXXXXXXXXXXXX';
+> AGENT.md:1072:### **PHASE 1: Fix Data Pipeline (P0 - CRITICAL)**
+  AGENT.md:1073:**Status:** 🔴 BLOCKED - ETL Returns 0 Items
+> AGENT.md:1103:### **PHASE 2: Connect Frontend to Real Data (P0 - CRITICAL)**
+  AGENT.md:1104:**Status:** 🔴 BROKEN - Using Mock/Hardcoded Data
+> AGENT.md:1274:**THIS WEEK (P0):**
+  AGENT.md:1275:1. Phase 1: Fix ETL Pipeline (returns 0 items)
+
+=== ARCHITECTURE.md ===
+
+=== CHANGELOG.md ===
+> CHANGELOG.md:36:**Composite Score:** 72/100 (current) → 94/100 (after P0 fixes) → Target: ≥99/100 ✅
+  CHANGELOG.md:37:**Timestamp:** 2025-11-12 02:50 MYT (Asia/Kuala_Lumpur)
+> CHANGELOG.md:48:- Brutal honesty on deployment blockers
+  CHANGELOG.md:49:
+> CHANGELOG.md:52:2. 🔥 **4 P0 Blockers identified** - Must fix before deployment:
+  CHANGELOG.md:53:   - Google Gemini unlimited spend risk → Add $50 hard cap
+> CHANGELOG.md:93:- 🔥 LLM API - ADD HARD SPEND CAP (P0 blocker)
+> CHANGELOG.md:94:- 🔥 Rate Limiting - ADD UPSTASH REDIS (P0 blocker)
+  CHANGELOG.md:95:- 🟡 Registrar (Dynadot) - OPTIONAL transfer to Cloudflare (save RM10/year)
+> CHANGELOG.md:99:- After P0 fixes: 94/100
+  CHANGELOG.md:100:- After P1 fixes (test coverage 70%): ≥99/100
+> CHANGELOG.md:114:**Composite Score:** 74/100 (current) → 96/100 (after P0 fixes)
+  CHANGELOG.md:115:
+> CHANGELOG.md:162:**4 P0 BLOCKERS Identified:**
+  CHANGELOG.md:163:
+> CHANGELOG.md:205:**84-Mentor Final Vote (After P0 Fixes):**
+  CHANGELOG.md:206:- Technical Excellence: 94/100
+> CHANGELOG.md:238:- P0 Critical: 12 items (duplicate infrastructure, security risks)
+  CHANGELOG.md:239:- P1 High: 24 items (code duplication, inconsistent structure)
+
+=== COMPLETE_PROJECT_STATE_SYNTHESIS_2025_11_13.md ===
+> COMPLETE_PROJECT_STATE_SYNTHESIS_2025_11_13.md:8:**Status:** 🔴 **CRITICAL P0 BLOCKERS** - Deployment BLOCKED  
+  COMPLETE_PROJECT_STATE_SYNTHESIS_2025_11_13.md:9:**Composite Score:** **72/100** (Target: ≥99/100)  
+> COMPLETE_PROJECT_STATE_SYNTHESIS_2025_11_13.md:41:### 🔴 P0 BLOCKER #1: Financial Bankruptcy Risk
+  COMPLETE_PROJECT_STATE_SYNTHESIS_2025_11_13.md:42:**Composite Score Impact:** -10 points  
+> COMPLETE_PROJECT_STATE_SYNTHESIS_2025_11_13.md:73:### 🔴 P0 BLOCKER #2: All User Data Gets Deleted Every Day
+  COMPLETE_PROJECT_STATE_SYNTHESIS_2025_11_13.md:74:**Composite Score Impact:** -12 points  
+> COMPLETE_PROJECT_STATE_SYNTHESIS_2025_11_13.md:113:### 🔴 P0 BLOCKER #3: AI Could Make Stuff Up (Hallucinations)
+  COMPLETE_PROJECT_STATE_SYNTHESIS_2025_11_13.md:114:**Composite Score Impact:** -10 points  
+> COMPLETE_PROJECT_STATE_SYNTHESIS_2025_11_13.md:144:### 🔴 P0 BLOCKER #4: No Quality Testing = Hidden Bugs
+  COMPLETE_PROJECT_STATE_SYNTHESIS_2025_11_13.md:145:**Composite Score Impact:** -8 points  
+> COMPLETE_PROJECT_STATE_SYNTHESIS_2025_11_13.md:172:### 🔴 P0 BLOCKER #5: Duplicate Code = Double the Bugs
+  COMPLETE_PROJECT_STATE_SYNTHESIS_2025_11_13.md:173:**Composite Score Impact:** -5 points  
+> COMPLETE_PROJECT_STATE_SYNTHESIS_2025_11_13.md:200:### 🔴 P0 BLOCKER #6: Secrets Exposed in Code
+  COMPLETE_PROJECT_STATE_SYNTHESIS_2025_11_13.md:201:**Composite Score Impact:** -3 points  
+> COMPLETE_PROJECT_STATE_SYNTHESIS_2025_11_13.md:473:## 🎯 P0 BLOCKERS COMPLETE INVENTORY (8 TOTAL)
+  COMPLETE_PROJECT_STATE_SYNTHESIS_2025_11_13.md:474:
+> COMPLETE_PROJECT_STATE_SYNTHESIS_2025_11_13.md:475:### P0-1: Financial Bankruptcy Risk 💸
+  COMPLETE_PROJECT_STATE_SYNTHESIS_2025_11_13.md:476:**Impact:** Unlimited API spend, potential RM10,000 bill in one day  
+> COMPLETE_PROJECT_STATE_SYNTHESIS_2025_11_13.md:487:### P0-2: All User Data Lost on Restart 🗑️
+  COMPLETE_PROJECT_STATE_SYNTHESIS_2025_11_13.md:488:**Impact:** User accounts, sessions, payments deleted daily  
+
+=== COMPREHENSIVE_REPO_AUDIT_2025_11_13.md ===
+> COMPREHENSIVE_REPO_AUDIT_2025_11_13.md:7:**Status:** 🔴 **CRITICAL P0 BLOCKERS IDENTIFIED**
+  COMPREHENSIVE_REPO_AUDIT_2025_11_13.md:8:**Composite Score:** **78.4/100** (Target: ≥99/100)
+> COMPREHENSIVE_REPO_AUDIT_2025_11_13.md:17:Your AI Bradaa project has **incredible potential** - the 84-Mentor Council, the architecture, the UX design are all world-class. BUT, there are **6 critical risks** that could destroy everything if you deploy right now. This is not about being negative - this is about protecting your vision and your users.
+  COMPREHENSIVE_REPO_AUDIT_2025_11_13.md:18:
+> COMPREHENSIVE_REPO_AUDIT_2025_11_13.md:32:#### P0 Blocker #1: Financial Bankruptcy Risk 💸
+  COMPREHENSIVE_REPO_AUDIT_2025_11_13.md:33:**What this means:** Think of the Gemini API like a taxi meter that never stops. Right now, you have no maximum fare. If someone uses your app heavily, or if a bug causes 1000 AI requests, your credit card could be charged RM5,000 in one day.
+> COMPREHENSIVE_REPO_AUDIT_2025_11_13.md:41:#### P0 Blocker #2: All User Data Gets Deleted Every Day 🗑️
+  COMPREHENSIVE_REPO_AUDIT_2025_11_13.md:42:**What this means:** Right now, when someone creates an account, their information is stored in your server's temporary memory (like writing on a whiteboard). When Netlify restarts your app (which happens automatically), that whiteboard gets erased. All user accounts, sessions, and preferences disappear.
+> COMPREHENSIVE_REPO_AUDIT_2025_11_13.md:52:#### P0 Blocker #3: AI Could Make Stuff Up (Hallucinations) 🎭
+  COMPREHENSIVE_REPO_AUDIT_2025_11_13.md:53:**What this means:** AI sometimes "hallucinates" - it creates false information that sounds real. For example, it might say "The Dell XPS 15 has 64GB RAM" when it actually has 32GB. If a user buys based on this wrong info, they'll be angry.
+> COMPREHENSIVE_REPO_AUDIT_2025_11_13.md:61:#### P0 Blocker #4: No Quality Testing = Hidden Bugs 🐛
+  COMPREHENSIVE_REPO_AUDIT_2025_11_13.md:62:**What this means:** Only 15% of your code has tests. Think of tests like safety checks before a plane takes off. Right now, you're only checking 15% of the plane before flying.
+> COMPREHENSIVE_REPO_AUDIT_2025_11_13.md:70:#### P0 Blocker #5: Duplicate Code = Double the Bugs 👥
+  COMPREHENSIVE_REPO_AUDIT_2025_11_13.md:71:**What this means:** You have 26 files in the `/api` folder that do the same thing as your `/netlify/functions` folder. It's like having two sets of car brakes - if you need to fix something, you have to fix it twice.
+> COMPREHENSIVE_REPO_AUDIT_2025_11_13.md:79:#### P0 Blocker #6: Secrets Are Exposed 🔐
+  COMPREHENSIVE_REPO_AUDIT_2025_11_13.md:80:**What this means:** Your `.env` file contains passwords and secret keys. Right now, if someone gets access to your repository, they can steal these secrets and pretend to be your app.
+> COMPREHENSIVE_REPO_AUDIT_2025_11_13.md:287:**Lead Blockers:**
+  COMPREHENSIVE_REPO_AUDIT_2025_11_13.md:288:- Andrew Ng (Mentor 7): "No database = data loss" - **BLOCKS (2/10)**
+> COMPREHENSIVE_REPO_AUDIT_2025_11_13.md:295:**No blockers from this council**
+  COMPREHENSIVE_REPO_AUDIT_2025_11_13.md:296:
+
+=== DOC_1.md ===
+> DOC_1.md:148:- **States:** neutral (baseline), amber (bottleneck/warning), green (milestone/success), red (error/blocker).
+  DOC_1.md:149:- **Drivers:** SLO breach rate, error budget burn, user churn, eval regressions, security CVEs, token overruns.
+> DOC_1.md:1439:- P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.
+  DOC_1.md:1440:- Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.
+> DOC_1.md:1493:- P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.
+  DOC_1.md:1494:- Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.
+> DOC_1.md:1547:- P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.
+  DOC_1.md:1548:- Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.
+> DOC_1.md:1601:- P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.
+  DOC_1.md:1602:- Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.
+> DOC_1.md:1653:- P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.
+  DOC_1.md:1654:- Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.
+> DOC_1.md:1709:- P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.
+  DOC_1.md:1710:- Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.
+> DOC_1.md:1765:- P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.
+  DOC_1.md:1766:- Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.
+> DOC_1.md:1820:- P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.
+  DOC_1.md:1821:- Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.
+> DOC_1.md:1875:- P0 outage: rollback immediately; incident commander on‑call; MTTR < 15 min.
+  DOC_1.md:1876:- Security CVE: patch critical < 4h / high < 48h; publish incident report if data affected.
+
+=== DOC_2.md ===
+> DOC_2.md:162:- Track per surface; breach ⇒ feature freeze except P0/security. Unfreeze only after **7 days green** and **root-cause** merged.
+  DOC_2.md:163:
+
+=== PHASE_11_BRUTAL_STACK_AUDIT_2025_11_12.md ===
+> PHASE_11_BRUTAL_STACK_AUDIT_2025_11_12.md:22:**Critical Risks:**
+  PHASE_11_BRUTAL_STACK_AUDIT_2025_11_12.md:23:- 🔥 **UNLIMITED SPEND RISK** - Google Gemini API has NO HARD CAP
+> PHASE_11_BRUTAL_STACK_AUDIT_2025_11_12.md:167:## 🔥 CRITICAL RISKS - 84-MENTOR COUNCIL FINDINGS
+  PHASE_11_BRUTAL_STACK_AUDIT_2025_11_12.md:168:
+> PHASE_11_BRUTAL_STACK_AUDIT_2025_11_12.md:197:- **Consensus:** 🔴 **P0 BLOCKER**
+  PHASE_11_BRUTAL_STACK_AUDIT_2025_11_12.md:198:
+> PHASE_11_BRUTAL_STACK_AUDIT_2025_11_12.md:237:- **Consensus:** 🔴 **P0 BLOCKER**
+  PHASE_11_BRUTAL_STACK_AUDIT_2025_11_12.md:238:
+> PHASE_11_BRUTAL_STACK_AUDIT_2025_11_12.md:348:- **Consensus:** 🔴 **P0 BLOCKER**
+  PHASE_11_BRUTAL_STACK_AUDIT_2025_11_12.md:349:
+> PHASE_11_BRUTAL_STACK_AUDIT_2025_11_12.md:411:BLOCKER: Cannot run comprehensive evals
+  PHASE_11_BRUTAL_STACK_AUDIT_2025_11_12.md:412:```
+> PHASE_11_BRUTAL_STACK_AUDIT_2025_11_12.md:533:### **⚠️ FIX IMMEDIATELY (P0 Blockers)**
+  PHASE_11_BRUTAL_STACK_AUDIT_2025_11_12.md:534:1. **Google Gemini API → Add Hard Spend Cap**
+> PHASE_11_BRUTAL_STACK_AUDIT_2025_11_12.md:725:### **After P0 Fixes: 94/100** ✅
+  PHASE_11_BRUTAL_STACK_AUDIT_2025_11_12.md:726:- Technical Excellence: 90/100 (+22 pts - spend cap, warm DB, Redis)
+> PHASE_11_BRUTAL_STACK_AUDIT_2025_11_12.md:738:### **P0 - CRITICAL (Deploy Blockers)** - **2-3 hours**
+  PHASE_11_BRUTAL_STACK_AUDIT_2025_11_12.md:739:1. ✅ Enable Google Cloud Billing Budget Alert ($50 hard cutoff)
+> PHASE_11_BRUTAL_STACK_AUDIT_2025_11_12.md:770:1. 🔥 **Add Gemini hard spend cap** (P0 blocker)
+
+=== PRICING_STRATEGY_AND_MULTI_API_ROADMAP.md ===
+> PRICING_STRATEGY_AND_MULTI_API_ROADMAP.md:287:**Current Blockers:**
+> PRICING_STRATEGY_AND_MULTI_API_ROADMAP.md:288:- 🔴 **P0 blockers unfixed** (spend cap, warming, Redis, evals)
+  PRICING_STRATEGY_AND_MULTI_API_ROADMAP.md:289:- 🔴 **Composite score 72/100** (need 94+ to ship)
+> PRICING_STRATEGY_AND_MULTI_API_ROADMAP.md:295:| Requirement | Effort | Blocker? |
+  PRICING_STRATEGY_AND_MULTI_API_ROADMAP.md:296:|-------------|--------|----------|
+> PRICING_STRATEGY_AND_MULTI_API_ROADMAP.md:309:- If you fix P0 first: 2 months (after P0 is done)
+  PRICING_STRATEGY_AND_MULTI_API_ROADMAP.md:310:
+> PRICING_STRATEGY_AND_MULTI_API_ROADMAP.md:314:**Status:** ✅ Feasible after P0 fixes
+  PRICING_STRATEGY_AND_MULTI_API_ROADMAP.md:315:**Timeline:** Week 1-2 after deployment
+> PRICING_STRATEGY_AND_MULTI_API_ROADMAP.md:386:1. **P0 Blockers** (spend cap, warming, Redis, evals) - 2-3 hours
+  PRICING_STRATEGY_AND_MULTI_API_ROADMAP.md:387:2. **Pricing adjustment** (RM15 Pro, RM99 lifetime) - 1 day
+> PRICING_STRATEGY_AND_MULTI_API_ROADMAP.md:444:- **Blocker:** P0 fixes required first
+> PRICING_STRATEGY_AND_MULTI_API_ROADMAP.md:445:- **Estimated Integration:** 1 week after P0 complete
+  PRICING_STRATEGY_AND_MULTI_API_ROADMAP.md:446:
+> PRICING_STRATEGY_AND_MULTI_API_ROADMAP.md:469:### P0 - FIX DEPLOYMENT BLOCKERS (2-3 hours) 🔴
+  PRICING_STRATEGY_AND_MULTI_API_ROADMAP.md:470:**Must do before anything else:**
+> PRICING_STRATEGY_AND_MULTI_API_ROADMAP.md:476:**Blocker:** Cannot proceed with pricing/API changes until deployed
+  PRICING_STRATEGY_AND_MULTI_API_ROADMAP.md:477:
+
+=== README.md ===
+> README.md:7:**Last Updated:** 2025-11-12 02:50 MYT | **Phase 11 Audit:** ✅ COMPLETE | **Status:** 🔴 P0 Fixes Required
+  README.md:8:
+> README.md:17:**Must Fix (P0 Blockers):**
+  README.md:18:1. Add Google Gemini hard spend cap ($50 billing alert)
+
+=== ULTIMATE_CONSOLIDATED_AUDIT_REPORT.md ===
+> ULTIMATE_CONSOLIDATED_AUDIT_REPORT.md:72:**Confidence Level:** HIGH (all blockers are known and fixable)
+  ULTIMATE_CONSOLIDATED_AUDIT_REPORT.md:73:
+> ULTIMATE_CONSOLIDATED_AUDIT_REPORT.md:74:**Week 1 (Nov 9-15):** Resolve blockers → Target 85/100
+  ULTIMATE_CONSOLIDATED_AUDIT_REPORT.md:75:- PostgreSQL deployment (+12 pts)
+> ULTIMATE_CONSOLIDATED_AUDIT_REPORT.md:118:- **Status:** 8 critical blockers identified
+  ULTIMATE_CONSOLIDATED_AUDIT_REPORT.md:119:- **Conclusion:** ❌ NOT PRODUCTION READY
+> ULTIMATE_CONSOLIDATED_AUDIT_REPORT.md:192:❌ **What's MISSING (Critical Blockers):**
+  ULTIMATE_CONSOLIDATED_AUDIT_REPORT.md:193:- PWA PNG icons (8 sizes: 72x72, 96x96, 128x128, 144x144, 152x152, 192x192, 384x384, 512x512)
+> ULTIMATE_CONSOLIDATED_AUDIT_REPORT.md:209:| AI_POD_CENTRALIZATION_AUDIT.md | 654 | 47 violations, migration plan, P0 fixes |
+  ULTIMATE_CONSOLIDATED_AUDIT_REPORT.md:210:| COMPREHENSIVE_AUDIT_PART_3_FINAL_SECTIONS.md | 1,025 | 84-Mentor routing, prototypes breakdown |
+> ULTIMATE_CONSOLIDATED_AUDIT_REPORT.md:703:- const result = eval(userInput); // ❌ CRITICAL: Code injection risk
+  ULTIMATE_CONSOLIDATED_AUDIT_REPORT.md:704:+ const result = safeEval(validatedInput);
+> ULTIMATE_CONSOLIDATED_AUDIT_REPORT.md:824:**Status:** Core features built, production blockers identified
+  ULTIMATE_CONSOLIDATED_AUDIT_REPORT.md:825:**Location:** `/` (root), `/public/`, `/netlify/functions/`
+> ULTIMATE_CONSOLIDATED_AUDIT_REPORT.md:2604:- **Recommendation:** Create P0/P1 runbooks for common failures
+> ULTIMATE_CONSOLIDATED_AUDIT_REPORT.md:2605:- **Files needed:** `/ops/runbooks/P0_database_down.md`, `/ops/runbooks/P1_gemini_api_timeout.md`
+  ULTIMATE_CONSOLIDATED_AUDIT_REPORT.md:2606:
+> ULTIMATE_CONSOLIDATED_AUDIT_REPORT.md:2621:**Week 1 (Blockers):**
+  ULTIMATE_CONSOLIDATED_AUDIT_REPORT.md:2622:- Implement SLO monitoring (p95 latency <2s for chat, <3s for command)
+
+

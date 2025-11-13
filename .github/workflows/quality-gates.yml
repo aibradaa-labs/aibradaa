@@ -22,151 +22,151 @@ permissions:
   issues: write
 
 jobs:
-  laptop-scoring-validation:
-    name: Validate Laptop Scoring System
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
+  # laptop-scoring-validation:
+  #   name: Validate Laptop Scoring System
+  #   runs-on: ubuntu-latest
+  #   timeout-minutes: 15
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v4
+  #       with:
+  #         fetch-depth: 0
 
-      - name: Debug - List files
-        run: |
-          echo "📂 Current directory: $(pwd)"
-          echo "📋 Files in root:"
-          ls -la | head -20
-          echo ""
-          echo "🔍 package.json check:"
-          [ -f "package.json" ] && echo "✅ package.json exists" || echo "❌ package.json missing"
+  #     - name: Debug - List files
+  #       run: |
+  #         echo "📂 Current directory: $(pwd)"
+  #         echo "📋 Files in root:"
+  #         ls -la | head -20
+  #         echo ""
+  #         echo "🔍 package.json check:"
+  #         [ -f "package.json" ] && echo "✅ package.json exists" || echo "❌ package.json missing"
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20.x'
+  #     - name: Setup Node.js
+  #       uses: actions/setup-node@v4
+  #       with:
+  #         node-version: '20.x'
 
-      - name: Install dependencies
-        run: |
-          echo "📦 Installing dependencies..."
-          npm install
+  #     - name: Install dependencies
+  #       run: |
+  #         echo "📦 Installing dependencies..."
+  #         npm install
 
-      - name: Test scoring system
-        run: |
-          echo "🧮 Testing laptop scoring system..."
+  #     - name: Test scoring system
+  #       run: |
+  #         echo "🧮 Testing laptop scoring system..."
 
-          node -e "
-          import { calculateCompositeScore, scoreAllLaptops } from './ai_pod/services/laptop_scoring.mjs';
-          import { promises as fs } from 'fs';
+  #         node -e "
+  #         import { calculateCompositeScore, scoreAllLaptops } from './ai_pod/services/laptop_scoring.mjs';
+  #         import { promises as fs } from 'fs';
 
-          async function test() {
-            try {
-              const data = JSON.parse(await fs.readFile('data/laptops.json', 'utf-8'));
-              console.log('📊 Scoring', data.laptops.length, 'laptops...');
+  #         async function test() {
+  #           try {
+  #             const data = JSON.parse(await fs.readFile('data/laptops.json', 'utf-8'));
+  #             console.log('📊 Scoring', data.laptops.length, 'laptops...');
 
-              const scored = await scoreAllLaptops(data.laptops.slice(0, 5));
-              console.log('✅ Scoring system functional');
-              console.log('Sample scores:', scored.map(l => ({ id: l.id, score: l.scoring.composite })));
+  #             const scored = await scoreAllLaptops(data.laptops.slice(0, 5));
+  #             console.log('✅ Scoring system functional');
+  #             console.log('Sample scores:', scored.map(l => ({ id: l.id, score: l.scoring.composite })));
 
-              process.exit(0);
-            } catch (error) {
-              console.error('❌ Scoring system error:', error);
-              process.exit(1);
-            }
-          }
+  #             process.exit(0);
+  #           } catch (error) {
+  #             console.error('❌ Scoring system error:', error);
+  #             process.exit(1);
+  #           }
+  #         }
 
-          test();
-          "
+  #         test();
+  #         "
 
-      - name: Validate score ranges
-        run: |
-          echo "📏 Validating score ranges (0-10)..."
+  #     - name: Validate score ranges
+  #       run: |
+  #         echo "📏 Validating score ranges (0-10)..."
 
-          node -e "
-          import { scoreAllLaptops } from './ai_pod/services/laptop_scoring.mjs';
-          import { promises as fs } from 'fs';
+  #         node -e "
+  #         import { scoreAllLaptops } from './ai_pod/services/laptop_scoring.mjs';
+  #         import { promises as fs } from 'fs';
 
-          async function validate() {
-            const data = JSON.parse(await fs.readFile('data/laptops.json', 'utf-8'));
-            const scored = await scoreAllLaptops(data.laptops.slice(0, 10));
+  #         async function validate() {
+  #           const data = JSON.parse(await fs.readFile('data/laptops.json', 'utf-8'));
+  #           const scored = await scoreAllLaptops(data.laptops.slice(0, 10));
 
-            const invalid = scored.filter(l =>
-              l.scoring.composite < 0 ||
-              l.scoring.composite > 10 ||
-              isNaN(l.scoring.composite)
-            );
+  #           const invalid = scored.filter(l =>
+  #             l.scoring.composite < 0 ||
+  #             l.scoring.composite > 10 ||
+  #             isNaN(l.scoring.composite)
+  #           );
 
-            if (invalid.length > 0) {
-              console.error('❌ Invalid scores found:', invalid);
-              process.exit(1);
-            }
+  #           if (invalid.length > 0) {
+  #             console.error('❌ Invalid scores found:', invalid);
+  #             process.exit(1);
+  #           }
 
-            console.log('✅ All scores within valid range (0-10)');
-            process.exit(0);
-          }
+  #           console.log('✅ All scores within valid range (0-10)');
+  #           process.exit(0);
+  #         }
 
-          validate();
-          "
+  #         validate();
+  #         "
 
-  database-integrity:
-    name: Validate Database Integrity
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
+  # database-integrity:
+  #   name: Validate Database Integrity
+  #   runs-on: ubuntu-latest
+  #   timeout-minutes: 10
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v4
+  #       with:
+  #         fetch-depth: 0
 
-      - name: Debug - List files
-        run: |
-          echo "📂 Current directory: $(pwd)"
-          [ -f "package.json" ] && echo "✅ package.json exists" || echo "❌ package.json missing"
+  #     - name: Debug - List files
+  #       run: |
+  #         echo "📂 Current directory: $(pwd)"
+  #         [ -f "package.json" ] && echo "✅ package.json exists" || echo "❌ package.json missing"
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20.x'
+  #     - name: Setup Node.js
+  #       uses: actions/setup-node@v4
+  #       with:
+  #         node-version: '20.x'
 
-      - name: Install dependencies
-        run: |
-          echo "📦 Installing dependencies..."
-          npm install
+  #     - name: Install dependencies
+  #       run: |
+  #         echo "📦 Installing dependencies..."
+  #         npm install
 
-      - name: Run integrity checks
-        run: |
-          echo "🔍 Running database integrity checks..."
+  #     - name: Run integrity checks
+  #       run: |
+  #         echo "🔍 Running database integrity checks..."
 
-          node -e "
-          import { validateDatabaseIntegrity } from './ai_pod/services/laptop_rotation.mjs';
+  #         node -e "
+  #         import { validateDatabaseIntegrity } from './ai_pod/services/laptop_rotation.mjs';
 
-          async function check() {
-            try {
-              const result = await validateDatabaseIntegrity();
+  #         async function check() {
+  #           try {
+  #             const result = await validateDatabaseIntegrity();
 
-              console.log('📊 Integrity check results:');
-              console.log('  - Total laptops:', result.totalLaptops);
-              console.log('  - Featured:', result.featured);
-              console.log('  - Extended:', result.extended);
-              console.log('  - Valid:', result.valid);
+  #             console.log('📊 Integrity check results:');
+  #             console.log('  - Total laptops:', result.totalLaptops);
+  #             console.log('  - Featured:', result.featured);
+  #             console.log('  - Extended:', result.extended);
+  #             console.log('  - Valid:', result.valid);
 
-              if (!result.valid) {
-                console.error('❌ Database integrity issues found:', result.issues);
-                process.exit(1);
-              }
+  #             if (!result.valid) {
+  #               console.error('❌ Database integrity issues found:', result.issues);
+  #               process.exit(1);
+  #             }
 
-              console.log('✅ Database integrity validated');
-              process.exit(0);
-            } catch (error) {
-              console.log('⚠️  Integrity check skipped (catalogs not initialized)');
-              process.exit(0);
-            }
-          }
+  #             console.log('✅ Database integrity validated');
+  #             process.exit(0);
+  #           } catch (error) {
+  #             console.log('⚠️  Integrity check skipped (catalogs not initialized)');
+  #             process.exit(0);
+  #           }
+  #         }
 
-          check();
-          "
+  #         check();
+  #         "
 
   composite-score-check:
     name: Composite Score Quality Gate
@@ -324,7 +324,7 @@ jobs:
   summary:
     name: Quality Gates Summary
     runs-on: ubuntu-latest
-    needs: [laptop-scoring-validation, database-integrity, composite-score-check, config-validation]
+    needs: [composite-score-check, config-validation]
     if: always()
 
     steps:

@@ -562,3 +562,110 @@ export interface AIProviderPlugin {
 **Document Status:** Complete, ready for owner review
 **Last Appended:** 2025-11-12 07:00 MYT
 **Next Review:** After owner decision on action plan
+
+---
+
+## 🎯 12. OPENROUTER SMART ROUTING STRATEGY (APPROVED 2025-11-14)
+
+**Owner Decision:** Use OpenRouter as intelligent gateway for cheapest-model routing with $50 hard cap.
+
+### 12.1 Why OpenRouter is Superior to Direct Gemini
+
+**Previous Analysis (INCOMPLETE):** Recommended direct Gemini API at RM6.30/month for 1,000 tasks.
+
+**Owner's Strategic Insight:** Use OpenRouter to automatically route to the cheapest available model.
+
+**How OpenRouter Works (ELI5):**
+Think of it like a "smart shopping app" for AI models:
+- You send one request to OpenRouter
+- OpenRouter checks 50+ AI model providers (Google, Meta, Mistral, etc.)
+- It automatically picks the cheapest model that can handle your task
+- Many models are FREE (Llama 3.1, Mistral, Qwen)
+- Expensive models (Gemini Pro, GPT-4) only used when necessary
+
+**Cost Comparison (1,000 Orchestrator tasks/month):**
+
+| Approach | Simple Tasks (800) | Complex Tasks (200) | Total Cost |
+|----------|-------------------|---------------------|------------|
+| **Direct Gemini** | Gemini Flash: RM5.04 | Gemini Flash: RM1.26 | **RM6.30** |
+| **OpenRouter Smart** | FREE models: RM0 | Gemini Flash: RM1.26 | **RM1.26** |
+| **Savings** | 100% | 0% | **80%** ✅ |
+
+### 12.2 OpenRouter Model Routing Strategy
+
+**Tier 1: FREE Models (Use for 80% of tasks)**
+- **Llama 3.1 70B** - FREE - Best for simple chat, recommendations
+- **Mistral 7B** - FREE - Fast responses, general queries
+- **Qwen 2.5 32B** - FREE - Good for Malaysian context (multilingual)
+
+**Tier 2: Cheap Models (Use for 15% of tasks)**
+- **Gemini 2.0 Flash** - $0.10/$0.40 per 1M tokens - Fast reasoning
+- **Claude 3.5 Haiku** - $0.25/$1.25 per 1M tokens - Better writing quality
+
+**Tier 3: Premium Models (Use for 5% of tasks)**
+- **Gemini 2.0 Flash Thinking** - $0.10/$0.40 per 1M tokens - Complex planning (84-Mentor decisions)
+- **Claude 3.5 Sonnet** - $3/$15 per 1M tokens - ONLY for critical governance votes
+
+**Routing Logic (To be implemented in ai_pod/adapters/openrouter_adapter.mjs):**
+```javascript
+function routeToModel(task) {
+  // Simple chat/recommendations → FREE Llama
+  if (task.complexity === 'simple') return 'meta-llama/llama-3.1-70b-instruct:free';
+  
+  // Standard reasoning → Gemini Flash (cheap)
+  if (task.complexity === 'standard') return 'google/gemini-2.0-flash-exp:free';
+  
+  // 84-Mentor governance → Gemini Thinking (quality)
+  if (task.type === 'governance') return 'google/gemini-2.0-flash-thinking-exp-1219:free';
+  
+  // Critical decisions → Claude Sonnet (best quality)
+  if (task.priority === 'P0') return 'anthropic/claude-3.5-sonnet';
+}
+```
+
+### 12.3 Hard Spending Cap Configuration
+
+**OpenRouter Account Setup:**
+1. Sign up at openrouter.ai
+2. Navigate to Settings → Billing
+3. Set **Hard Limit: $50 USD** (RM210 MYR)
+4. Enable "Stop all requests when limit reached"
+5. Add alert at $40 (80% threshold)
+
+**Why $50 cap (explained to Warren Buffett):**
+- Expected monthly cost: $3 (RM12.60) with smart routing
+- Hard cap at $50 = **16.7x buffer** for unexpected spikes
+- If cap hit = automatic shutdown prevents runaway costs
+- Owner gets email alert at $40 to investigate
+
+### 12.4 Revised Financial Projections
+
+**Monthly API Costs (OpenRouter Smart Routing):**
+
+| User Load | Simple (FREE) | Standard (Flash) | Governance (Thinking) | Total Cost |
+|-----------|---------------|------------------|----------------------|------------|
+| **100 users** | 800 tasks: RM0 | 150 tasks: RM0.95 | 50 tasks: RM0.32 | **RM1.27** |
+| **500 users** | 4,000: RM0 | 750: RM4.73 | 250: RM1.58 | **RM6.31** |
+| **2,000 users** | 16,000: RM0 | 3,000: RM18.90 | 1,000: RM6.30 | **RM25.20** |
+
+**Comparison to Previous Direct Gemini Estimate:**
+- 1,000 tasks: RM6.30 → **RM1.26** (80% savings)
+- Fits within RM0-350 budget even at 10,000 users
+
+### 12.5 Implementation Checklist
+
+- [ ] Create OpenRouter account (openrouter.ai)
+- [ ] Set $50 hard spending limit
+- [ ] Generate API key (`sk-or-v1-...`)
+- [ ] Store in `.env` as `OPENROUTER_API_KEY`
+- [ ] Build `ai_pod/adapters/openrouter_adapter.mjs` with smart routing
+- [ ] Update all Netlify functions to use OpenRouter adapter instead of direct Gemini
+- [ ] Test with 100 requests to verify routing logic
+- [ ] Monitor costs for 1 week to validate savings
+
+---
+
+**Owner Approval:** APPROVED 2025-11-14
+**Implementation Priority:** Phase 0 (THIS WEEK)
+**Expected Savings:** 80% reduction in API costs vs direct Gemini
+**Risk Mitigation:** Hard $50 cap prevents runaway costs

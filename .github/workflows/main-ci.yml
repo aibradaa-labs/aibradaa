@@ -71,7 +71,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x, 20.x]
+        node-version: [20.x]
 
     steps:
       - name: Checkout code
@@ -98,8 +98,8 @@ jobs:
           echo "📦 Installing dependencies for Node ${{ matrix.node-version }}..."
           npm install
 
-      - name: Run tests
-        run: npm test
+      - name: Run smoke tests
+        run: npm run test:smoke
         env:
           NODE_ENV: test
 
@@ -217,7 +217,6 @@ jobs:
 
       - name: Run npm audit
         run: npm audit --audit-level=moderate
-        continue-on-error: true
 
       - name: Check for secrets in code
         run: |

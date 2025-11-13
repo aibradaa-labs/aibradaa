@@ -55,3 +55,6 @@ data/reports/*.json
 *.key
 *.pem
 credentials.json
+
+# Local Netlify folder
+.netlify

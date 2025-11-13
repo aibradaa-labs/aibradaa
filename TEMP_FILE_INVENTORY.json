@@ -1,0 +1,3262 @@
+[
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\.editorconfig",
+    "Length": 333,
+    "Lines": 15
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\.gitattributes",
+    "Length": 821,
+    "Lines": 44
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\.gitignore",
+    "Length": 641,
+    "Lines": 50
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\.nvmrc",
+    "Length": 9,
+    "Lines": 1
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\.prettierrc",
+    "Length": 140,
+    "Lines": 8
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\.prettierrc.json",
+    "Length": 259,
+    "Lines": 13
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\AGENT.md",
+    "Length": 40356,
+    "Lines": 1054
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\ARCHITECTURE.md",
+    "Length": 48892,
+    "Lines": 1158
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\CHANGELOG.md",
+    "Length": 77275,
+    "Lines": 1768
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\Chat history with co-pilot.txt",
+    "Length": 357404,
+    "Lines": 3683
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\COMPLETE_FILE_LIST_GENERATED.txt",
+    "Length": 53678,
+    "Lines": 642
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\complete_file_list.txt",
+    "Length": 2895541,
+    "Lines": 41055
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\COMPLETE_INVENTORY.txt",
+    "Length": 4255961,
+    "Lines": 35580
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\COMPLETE_PROJECT_STATE_SYNTHESIS_2025_11_13.md",
+    "Length": 34199,
+    "Lines": 723
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\COMPREHENSIVE_REPO_AUDIT_2025_11_13.md",
+    "Length": 33985,
+    "Lines": 687
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\demo-semantic-routing.mjs",
+    "Length": 11138,
+    "Lines": 226
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\DOC_1.md",
+    "Length": 225022,
+    "Lines": 4722
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\DOC_2.md",
+    "Length": 9669,
+    "Lines": 126
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\eslint.config.js",
+    "Length": 1817,
+    "Lines": 74
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\jest.config.mjs",
+    "Length": 560,
+    "Lines": 29
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\LICENSE",
+    "Length": 1092,
+    "Lines": 17
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\netlify.toml",
+    "Length": 2701,
+    "Lines": 86
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\P0_EXTRACTION.txt",
+    "Length": 46101,
+    "Lines": 495
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\package-lock.json",
+    "Length": 873655,
+    "Lines": 23304
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\package.json",
+    "Length": 2203,
+    "Lines": 73
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\PHASE_11_BRUTAL_STACK_AUDIT_2025_11_12.md",
+    "Length": 32323,
+    "Lines": 659
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\playwright.config.js",
+    "Length": 964,
+    "Lines": 41
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\PRICING_STRATEGY_AND_MULTI_API_ROADMAP.md",
+    "Length": 20498,
+    "Lines": 429
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\README.md",
+    "Length": 5994,
+    "Lines": 180
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\SETUP_GUIDE.md",
+    "Length": 3811,
+    "Lines": 60
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\tailwind.config.js",
+    "Length": 1088,
+    "Lines": 45
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\TEMP_FILE_INVENTORY.json",
+    "Length": 0,
+    "Lines": 0
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\test-semantic-routing.mjs",
+    "Length": 9566,
+    "Lines": 223
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\ULTIMATE_CONSOLIDATED_AUDIT_REPORT.md",
+    "Length": 421556,
+    "Lines": 10500
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\versions.json",
+    "Length": 2757,
+    "Lines": 84
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\.github\\copilot-instructions.md",
+    "Length": 4961,
+    "Lines": 44
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\.github\\dependabot.yml",
+    "Length": 469,
+    "Lines": 20
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\.github\\FUNDING.yml",
+    "Length": 237,
+    "Lines": 9
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\.github\\pull_request_template.md",
+    "Length": 1155,
+    "Lines": 39
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\.github\\ISSUE_TEMPLATE\\bug_report.md",
+    "Length": 876,
+    "Lines": 34
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\.github\\ISSUE_TEMPLATE\\feature_request.md",
+    "Length": 761,
+    "Lines": 25
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\.github\\workflows\\main-ci.yml",
+    "Length": 7503,
+    "Lines": 223
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\.github\\workflows\\quality-gates.yml",
+    "Length": 10584,
+    "Lines": 272
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\.github\\workflows\\scheduled-jobs.yml",
+    "Length": 7271,
+    "Lines": 178
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\.netlify\\functions-serve\\abo84-download-track\\___netlify-telemetry.mjs",
+    "Length": 852227,
+    "Lines": 99
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\.netlify\\functions-serve\\abo84-download-track\\abo84-download-track.js",
+    "Length": 71,
+    "Lines": 1
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\.netlify\\functions-serve\\abo84-download-track\\package.json",
+    "Length": 19,
+    "Lines": 1
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\.netlify\\functions-serve\\abo84-download-track\\netlify\\functions\\abo84-download-track.js",
+    "Length": 5789,
+    "Lines": 168
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\.netlify\\functions-serve\\abo84-download-track\\netlify\\functions\\abo84-download-track.js.map",
+    "Length": 11466,
+    "Lines": 8
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\abo-84-beta\\README.md",
+    "Length": 10199,
+    "Lines": 317
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\abo-84-beta\\demo\\analysis-result.json",
+    "Length": 11074,
+    "Lines": 295
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\abo-84-beta\\demo\\sample-code.js",
+    "Length": 2354,
+    "Lines": 85
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\aibradaa_pwa_icons\\AI Bradaa pwa (original).png",
+    "Length": 14334907,
+    "Lines": 108535
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\ai_pod\\config.mjs",
+    "Length": 9338,
+    "Lines": 255
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\ai_pod\\adapters\\gemini_v2_5_adapter.mjs",
+    "Length": 8436,
+    "Lines": 234
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\ai_pod\\governance\\councils.json",
+    "Length": 1998,
+    "Lines": 63
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\ai_pod\\governance\\decision_framework.md",
+    "Length": 4686,
+    "Lines": 135
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\ai_pod\\governance\\dissent_ledger.jsonl",
+    "Length": 1375,
+    "Lines": 1
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\ai_pod\\personas\\catchphrases_v2_world_class.mjs",
+    "Length": 16558,
+    "Lines": 492
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\ai_pod\\personas\\catchphrases.mjs",
+    "Length": 17298,
+    "Lines": 495
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\ai_pod\\personas\\command_fast_v1.2.0.md",
+    "Length": 2360,
+    "Lines": 82
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\ai_pod\\personas\\command_think_v1.0.0.md",
+    "Length": 5822,
+    "Lines": 142
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\ai_pod\\personas\\INTEGRATION_GUIDE.md",
+    "Length": 9455,
+    "Lines": 256
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\ai_pod\\personas\\one_piece_catchphrase_engine_v4.mjs",
+    "Length": 14423,
+    "Lines": 419
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\ai_pod\\personas\\one_piece_catchphrase_engine.mjs",
+    "Length": 16277,
+    "Lines": 499
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\ai_pod\\personas\\persona_bible.json",
+    "Length": 7235,
+    "Lines": 241
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\ai_pod\\personas\\syeddy_base_v2.3.0.md",
+    "Length": 5975,
+    "Lines": 159
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\ai_pod\\pipelines\\grounding.yaml",
+    "Length": 5693,
+    "Lines": 211
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\ai_pod\\pipelines\\rag.yaml",
+    "Length": 4505,
+    "Lines": 171
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\ai_pod\\pipelines\\toon_converter.mjs",
+    "Length": 9192,
+    "Lines": 299
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\ai_pod\\pipelines\\TOON_README.md",
+    "Length": 6969,
+    "Lines": 195
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\ai_pod\\pipelines\\toon_schema.yaml",
+    "Length": 4203,
+    "Lines": 177
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\ai_pod\\prototypes\\branding_v1\\branding.mjs",
+    "Length": 5537,
+    "Lines": 189
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\ai_pod\\prototypes\\deck_v2\\deck.mjs",
+    "Length": 8270,
+    "Lines": 301
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\ai_pod\\prototypes\\soul_v1\\fsm.mjs",
+    "Length": 5253,
+    "Lines": 218
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\ai_pod\\prototypes\\soul_v1\\render.mjs",
+    "Length": 7005,
+    "Lines": 241
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\ai_pod\\prototypes\\thinking_v1\\thinking.mjs",
+    "Length": 3883,
+    "Lines": 167
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\ai_pod\\services\\catchphrase_auto_fetch.mjs",
+    "Length": 17198,
+    "Lines": 487
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\ai_pod\\services\\laptop_auto_fetch.mjs",
+    "Length": 12666,
+    "Lines": 356
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\ai_pod\\services\\laptop_rotation.mjs",
+    "Length": 14681,
+    "Lines": 390
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\ai_pod\\services\\laptop_scoring.mjs",
+    "Length": 12981,
+    "Lines": 322
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\api\\config.mjs",
+    "Length": 5078,
+    "Lines": 147
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\api\\server.mjs",
+    "Length": 3501,
+    "Lines": 109
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\api\\adapters\\emailAdapter.mjs",
+    "Length": 2852,
+    "Lines": 77
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\api\\adapters\\geminiAdapter.mjs",
+    "Length": 3101,
+    "Lines": 92
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\api\\middleware\\auth.mjs",
+    "Length": 3800,
+    "Lines": 139
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\api\\middleware\\cors.mjs",
+    "Length": 931,
+    "Lines": 29
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\api\\middleware\\csp-report.mjs",
+    "Length": 2927,
+    "Lines": 96
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\api\\middleware\\errorHandler.mjs",
+    "Length": 923,
+    "Lines": 34
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\api\\middleware\\logger.mjs",
+    "Length": 4664,
+    "Lines": 184
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\api\\middleware\\rate-limit.mjs",
+    "Length": 2352,
+    "Lines": 77
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\api\\middleware\\rateLimiter.mjs",
+    "Length": 4592,
+    "Lines": 156
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\api\\middleware\\requestLogger.mjs",
+    "Length": 532,
+    "Lines": 19
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\api\\middleware\\telemetry.mjs",
+    "Length": 3359,
+    "Lines": 112
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\api\\middleware\\validateApiKey.mjs",
+    "Length": 886,
+    "Lines": 29
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\api\\routes\\affiliates.mjs",
+    "Length": 3137,
+    "Lines": 111
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\api\\routes\\auth.mjs",
+    "Length": 6969,
+    "Lines": 238
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\api\\routes\\camera.mjs",
+    "Length": 8294,
+    "Lines": 270
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\api\\routes\\chat.mjs",
+    "Length": 1308,
+    "Lines": 47
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\api\\routes\\command.mjs",
+    "Length": 4406,
+    "Lines": 130
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\api\\routes\\deck.mjs",
+    "Length": 5180,
+    "Lines": 170
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\api\\routes\\health.mjs",
+    "Length": 4155,
+    "Lines": 157
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\api\\routes\\intel.mjs",
+    "Length": 4018,
+    "Lines": 140
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\api\\routes\\recommendations.mjs",
+    "Length": 1379,
+    "Lines": 51
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\api\\routes\\users.mjs",
+    "Length": 1242,
+    "Lines": 51
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\api\\routes\\verify.mjs",
+    "Length": 2590,
+    "Lines": 97
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\api\\sse\\deck-stream.mjs",
+    "Length": 2729,
+    "Lines": 91
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\app\\appendices\\appendices.mjs",
+    "Length": 5781,
+    "Lines": 206
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\app\\camera_tech\\camera-tech.mjs",
+    "Length": 18146,
+    "Lines": 525
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\app\\command\\command.mjs",
+    "Length": 7212,
+    "Lines": 252
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\app\\explorer\\explorer.mjs",
+    "Length": 8660,
+    "Lines": 272
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\app\\intel\\intel.mjs",
+    "Length": 4203,
+    "Lines": 166
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\app\\matchmaker\\matchmaker.mjs",
+    "Length": 6348,
+    "Lines": 203
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\app\\shared\\components\\button.mjs",
+    "Length": 3711,
+    "Lines": 133
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\app\\shared\\components\\card.mjs",
+    "Length": 7949,
+    "Lines": 241
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\app\\shared\\components\\loader.mjs",
+    "Length": 4671,
+    "Lines": 173
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\app\\shared\\components\\modal.mjs",
+    "Length": 6136,
+    "Lines": 220
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\app\\shared\\components\\navbar.mjs",
+    "Length": 6761,
+    "Lines": 206
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\app\\shared\\components\\toast.mjs",
+    "Length": 5322,
+    "Lines": 196
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\app\\shared\\utils\\analytics.mjs",
+    "Length": 4867,
+    "Lines": 234
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\app\\shared\\utils\\api.mjs",
+    "Length": 2639,
+    "Lines": 114
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\app\\shared\\utils\\db.mjs",
+    "Length": 2881,
+    "Lines": 123
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\app\\shared\\utils\\error-handler.mjs",
+    "Length": 7087,
+    "Lines": 268
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\app\\shared\\utils\\formatters.mjs",
+    "Length": 3179,
+    "Lines": 103
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\app\\shared\\utils\\helpers.mjs",
+    "Length": 6028,
+    "Lines": 273
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\app\\shared\\utils\\performance.mjs",
+    "Length": 6266,
+    "Lines": 220
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\app\\shared\\utils\\router.mjs",
+    "Length": 1982,
+    "Lines": 85
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\app\\shared\\utils\\storage.mjs",
+    "Length": 4846,
+    "Lines": 156
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\app\\shared\\utils\\validators.mjs",
+    "Length": 7050,
+    "Lines": 256
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\app\\versus\\versus.mjs",
+    "Length": 9304,
+    "Lines": 310
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\audit_reports_2025_11_09\\84_MENTOR_COMPOSITE_SCORE_UPDATE.md",
+    "Length": 14762,
+    "Lines": 374
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\audit_reports_2025_11_09\\AI_POD_CENTRALIZATION_AUDIT.md",
+    "Length": 20220,
+    "Lines": 513
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\audit_reports_2025_11_09\\AI_POD_VIOLATIONS_SUMMARY.md",
+    "Length": 5255,
+    "Lines": 118
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\audit_reports_2025_11_09\\AUDIT_FINDINGS.md",
+    "Length": 14715,
+    "Lines": 376
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\audit_reports_2025_11_09\\BACKEND_IMPLEMENTATION_GUIDE.md",
+    "Length": 31331,
+    "Lines": 1041
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\audit_reports_2025_11_09\\CODE_OF_CONDUCT.md",
+    "Length": 3762,
+    "Lines": 43
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\audit_reports_2025_11_09\\CODEBASE_ANALYSIS_COMPREHENSIVE.md",
+    "Length": 24561,
+    "Lines": 633
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\audit_reports_2025_11_09\\COMPLETE_GAP_ANALYSIS_AND_ACTION_PLAN.md",
+    "Length": 27439,
+    "Lines": 690
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\audit_reports_2025_11_09\\COMPLETE_PROJECT_BLUEPRINT.md",
+    "Length": 12722,
+    "Lines": 333
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\audit_reports_2025_11_09\\COMPREHENSIVE_AUDIT_PART_2_REMAINING_SECTIONS.md",
+    "Length": 27110,
+    "Lines": 883
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\audit_reports_2025_11_09\\COMPREHENSIVE_AUDIT_PART_3_FINAL_SECTIONS.md",
+    "Length": 26669,
+    "Lines": 825
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\audit_reports_2025_11_09\\COMPREHENSIVE_AUDIT_REPORT_PHASE_1_EXPANDED.md",
+    "Length": 34224,
+    "Lines": 887
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\audit_reports_2025_11_09\\COMPREHENSIVE_AUDIT_REPORT_PHASE_1.md",
+    "Length": 47395,
+    "Lines": 1177
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\audit_reports_2025_11_09\\DOC 2",
+    "Length": 9840,
+    "Lines": 126
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\audit_reports_2025_11_09\\DOC_1_2_ANALYSIS_AND_EXECUTION.md",
+    "Length": 15753,
+    "Lines": 413
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\audit_reports_2025_11_09\\IMPLEMENTATION_STATUS.md",
+    "Length": 13799,
+    "Lines": 319
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\audit_reports_2025_11_09\\PRICING_AND_INFRASTRUCTURE_AUDIT.md",
+    "Length": 22181,
+    "Lines": 580
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\audit_reports_2025_11_09\\PRIORITY_ACTION_PLAN.md",
+    "Length": 21139,
+    "Lines": 751
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\audit_reports_2025_11_09\\PROGRESS_TRACKER.md",
+    "Length": 7418,
+    "Lines": 197
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\audit_reports_2025_11_09\\SESSION_SUMMARY.md",
+    "Length": 2700,
+    "Lines": 71
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\audit_reports_2025_11_09\\SOT_SOURCE_OF_TRUTH.md",
+    "Length": 12089,
+    "Lines": 435
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\docs_integrated_2025_11_09\\FIXES_APPLIED.md",
+    "Length": 8967,
+    "Lines": 239
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\docs_integrated_2025_11_09\\ICON_GENERATION_GUIDE.md",
+    "Length": 3179,
+    "Lines": 96
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\docs_integrated_2025_11_09\\NETLIFY_FIX.md",
+    "Length": 2732,
+    "Lines": 84
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\docs_integrated_2025_11_09\\ONE_PIECE_CATCHPHRASE_ENHANCEMENT_SUMMARY.md",
+    "Length": 9073,
+    "Lines": 259
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\docs_integrated_2025_11_09\\ONE_PIECE_CATCHPHRASE_V4_AUTO_FETCH_SUMMARY.md",
+    "Length": 17038,
+    "Lines": 440
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\docs_integrated_2025_11_09\\SMOL_PLAYBOOK_CROSS_CHECK_MATRIX.md",
+    "Length": 34360,
+    "Lines": 999
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\docs_integrated_2025_11_09\\STATUS.md",
+    "Length": 9140,
+    "Lines": 218
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\docs_integrated_2025_11_09\\TRANSFORMATION_GAP_ANALYSIS.md",
+    "Length": 20637,
+    "Lines": 438
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\documentation_2025-11-09\\CHANGELOG.md",
+    "Length": 8176,
+    "Lines": 183
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\documentation_2025-11-09\\CONTRIBUTORS.md",
+    "Length": 771,
+    "Lines": 21
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\documentation_2025-11-09\\DATABASE_README.md",
+    "Length": 9590,
+    "Lines": 297
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\documentation_2025-11-09\\FIXES_APPLIED.md",
+    "Length": 8967,
+    "Lines": 239
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\documentation_2025-11-09\\ICON_GENERATION_GUIDE.md",
+    "Length": 3179,
+    "Lines": 96
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\documentation_2025-11-09\\NETLIFY_FIX.md",
+    "Length": 2732,
+    "Lines": 84
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\documentation_2025-11-09\\ONE_PIECE_CATCHPHRASE_ENHANCEMENT_SUMMARY.md",
+    "Length": 9073,
+    "Lines": 259
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\documentation_2025-11-09\\ONE_PIECE_CATCHPHRASE_V4_AUTO_FETCH_SUMMARY.md",
+    "Length": 17038,
+    "Lines": 440
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\documentation_2025-11-09\\PHASE4_DEPLOYMENT.md",
+    "Length": 17544,
+    "Lines": 526
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\documentation_2025-11-09\\SMOL_PLAYBOOK_CROSS_CHECK_MATRIX.md",
+    "Length": 34360,
+    "Lines": 999
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\documentation_2025-11-09\\STATUS.md",
+    "Length": 9140,
+    "Lines": 218
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\documentation_2025-11-09\\TRANSFORMATION_GAP_ANALYSIS.md",
+    "Length": 20637,
+    "Lines": 438
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\documentation_2025-11-09\\docs\\ADR-001-tech-stack.md",
+    "Length": 3144,
+    "Lines": 78
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\documentation_2025-11-09\\docs\\API.md",
+    "Length": 7813,
+    "Lines": 384
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\documentation_2025-11-09\\docs\\ARCHITECTURE.md",
+    "Length": 17083,
+    "Lines": 358
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\documentation_2025-11-09\\docs\\CONTRIBUTING.md",
+    "Length": 7974,
+    "Lines": 291
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\documentation_2025-11-09\\docs\\DARK_MODE.md",
+    "Length": 10992,
+    "Lines": 393
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\documentation_2025-11-09\\docs\\DEPLOYMENT_CHECKLIST.md",
+    "Length": 12016,
+    "Lines": 372
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\documentation_2025-11-09\\docs\\DEPLOYMENT.md",
+    "Length": 4274,
+    "Lines": 168
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\documentation_2025-11-09\\docs\\ENVIRONMENT_SETUP.md",
+    "Length": 11233,
+    "Lines": 340
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\documentation_2025-11-09\\docs\\FAQ.md",
+    "Length": 9581,
+    "Lines": 230
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\documentation_2025-11-09\\docs\\LAPTOP_DATABASE.md",
+    "Length": 18032,
+    "Lines": 598
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\documentation_2025-11-09\\docs\\NEXT_PHASE_PLAN.md",
+    "Length": 10115,
+    "Lines": 326
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\documentation_2025-11-09\\docs\\PRIVACY.md",
+    "Length": 6572,
+    "Lines": 168
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\documentation_2025-11-09\\docs\\PRODUCTION_READINESS.md",
+    "Length": 14171,
+    "Lines": 406
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\documentation_2025-11-09\\docs\\QUICKSTART_ENV.md",
+    "Length": 2734,
+    "Lines": 104
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\documentation_2025-11-09\\docs\\ROADMAP.md",
+    "Length": 8355,
+    "Lines": 297
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\documentation_2025-11-09\\docs\\SECURITY.md",
+    "Length": 1143,
+    "Lines": 43
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\documentation_2025-11-09\\docs\\USER_GUIDE.md",
+    "Length": 10353,
+    "Lines": 317
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\documentation_2025-11-09\\docs\\sessions\\SESSION_2025-11-07.md",
+    "Length": 15495,
+    "Lines": 447
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\obsolete_code_2025-11-08\\ai-pod\\config.mjs",
+    "Length": 7496,
+    "Lines": 264
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\obsolete_code_2025-11-08\\ai-pod\\personas\\camera.mjs",
+    "Length": 10905,
+    "Lines": 188
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\obsolete_code_2025-11-08\\ai-pod\\personas\\command.mjs",
+    "Length": 2334,
+    "Lines": 57
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\obsolete_code_2025-11-08\\ai-pod\\personas\\explorer.mjs",
+    "Length": 7236,
+    "Lines": 107
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\obsolete_code_2025-11-08\\ai-pod\\personas\\matchmaker.mjs",
+    "Length": 1990,
+    "Lines": 49
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\obsolete_code_2025-11-08\\ai-pod\\personas\\versus.mjs",
+    "Length": 2076,
+    "Lines": 53
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\obsolete_code_2025-11-08\\app\\appendices\\appendices.mjs",
+    "Length": 6735,
+    "Lines": 190
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\obsolete_code_2025-11-08\\app\\command\\command.mjs",
+    "Length": 7212,
+    "Lines": 252
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\obsolete_code_2025-11-08\\app\\explorer\\explorer.mjs",
+    "Length": 9993,
+    "Lines": 267
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\obsolete_code_2025-11-08\\app\\intel\\intel.mjs",
+    "Length": 4203,
+    "Lines": 166
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\obsolete_code_2025-11-08\\app\\matchmaker\\matchmaker.mjs",
+    "Length": 6348,
+    "Lines": 203
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\obsolete_code_2025-11-08\\app\\shared\\utils\\api.mjs",
+    "Length": 2639,
+    "Lines": 114
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\obsolete_code_2025-11-08\\app\\shared\\utils\\storage.mjs",
+    "Length": 5588,
+    "Lines": 189
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\obsolete_code_2025-11-08\\app\\versus\\versus.mjs",
+    "Length": 9304,
+    "Lines": 310
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\phase_reports_2025_11_12\\ADDENDUM_V_PHASE_7.md",
+    "Length": 23951,
+    "Lines": 661
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\phase_reports_2025_11_12\\INFRASTRUCTURE_SUITE_SUMMARY.md",
+    "Length": 10096,
+    "Lines": 243
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\phase_reports_2025_11_12\\PHASE_11_IMPLEMENTATION_SUMMARY.md",
+    "Length": 13903,
+    "Lines": 336
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\phase_reports_2025_11_12\\PHASE-9.20-IMPLEMENTATION-SUMMARY.md",
+    "Length": 14651,
+    "Lines": 378
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\phase_reports_2025_11_12\\PRODUCTION_READINESS_AUDIT_PHASE_11.md",
+    "Length": 33115,
+    "Lines": 826
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\phase_reports_2025_11_12\\PULL_REQUEST_INSTRUCTIONS.md",
+    "Length": 11135,
+    "Lines": 291
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\phase_reports_2025_11_12\\SEMANTIC-ROUTING-QUICKSTART.md",
+    "Length": 7296,
+    "Lines": 223
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\archive\\phase_reports_2025_11_12\\START_HERE.md",
+    "Length": 7723,
+    "Lines": 205
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\configs\\affiliate.json",
+    "Length": 3022,
+    "Lines": 99
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\configs\\csp_meta.txt",
+    "Length": 530,
+    "Lines": 1
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\configs\\env.example",
+    "Length": 5031,
+    "Lines": 157
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\configs\\otel.yaml",
+    "Length": 5211,
+    "Lines": 184
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\configs\\security.json",
+    "Length": 6418,
+    "Lines": 281
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\configs\\tiers.json",
+    "Length": 7849,
+    "Lines": 292
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\data\\archive.json",
+    "Length": 7410,
+    "Lines": 271
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\data\\brands.json",
+    "Length": 13870,
+    "Lines": 557
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\data\\laptops-extended.json",
+    "Length": 479,
+    "Lines": 15
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\data\\laptops-full.json",
+    "Length": 419909,
+    "Lines": 14762
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\data\\laptops.json",
+    "Length": 390256,
+    "Lines": 14752
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\data\\price-drops.json",
+    "Length": 10968,
+    "Lines": 437
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\data\\quarantine.json",
+    "Length": 5395,
+    "Lines": 179
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\data\\reports.json",
+    "Length": 6267,
+    "Lines": 269
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\data\\search-index.json",
+    "Length": 5669,
+    "Lines": 235
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\data\\segments.json",
+    "Length": 10579,
+    "Lines": 394
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\database\\connection.mjs",
+    "Length": 6517,
+    "Lines": 207
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\database\\migrate.mjs",
+    "Length": 7436,
+    "Lines": 215
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\database\\schema.sql",
+    "Length": 16172,
+    "Lines": 335
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\database\\migrations\\004_catchphrases_system.sql",
+    "Length": 14938,
+    "Lines": 351
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\database\\repositories\\index.mjs",
+    "Length": 497,
+    "Lines": 19
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\database\\repositories\\SessionRepository.mjs",
+    "Length": 6707,
+    "Lines": 251
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\database\\repositories\\UsageRepository.mjs",
+    "Length": 9981,
+    "Lines": 316
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\database\\repositories\\UserRepository.mjs",
+    "Length": 10009,
+    "Lines": 312
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\database\\schema\\catchphrases.sql",
+    "Length": 11523,
+    "Lines": 232
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\manifest.json",
+    "Length": 25078,
+    "Lines": 722
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\package.json",
+    "Length": 2203,
+    "Lines": 73
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\ai_pod\\config.mjs",
+    "Length": 9338,
+    "Lines": 255
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\ai_pod\\adapters\\gemini_v2_5_adapter.mjs",
+    "Length": 8436,
+    "Lines": 234
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\ai_pod\\governance\\councils.json",
+    "Length": 1998,
+    "Lines": 63
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\ai_pod\\governance\\decision_framework.md",
+    "Length": 4686,
+    "Lines": 135
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\ai_pod\\governance\\dissent_ledger.jsonl",
+    "Length": 1375,
+    "Lines": 1
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\ai_pod\\personas\\catchphrases_v2_world_class.mjs",
+    "Length": 16558,
+    "Lines": 492
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\ai_pod\\personas\\catchphrases.mjs",
+    "Length": 17298,
+    "Lines": 495
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\ai_pod\\personas\\command_fast_v1.2.0.md",
+    "Length": 2360,
+    "Lines": 82
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\ai_pod\\personas\\command_think_v1.0.0.md",
+    "Length": 5822,
+    "Lines": 142
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\ai_pod\\personas\\INTEGRATION_GUIDE.md",
+    "Length": 9455,
+    "Lines": 256
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\ai_pod\\personas\\one_piece_catchphrase_engine_v4.mjs",
+    "Length": 14423,
+    "Lines": 419
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\ai_pod\\personas\\one_piece_catchphrase_engine.mjs",
+    "Length": 16277,
+    "Lines": 499
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\ai_pod\\personas\\persona_bible.json",
+    "Length": 7235,
+    "Lines": 241
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\ai_pod\\personas\\syeddy_base_v2.3.0.md",
+    "Length": 5975,
+    "Lines": 159
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\ai_pod\\pipelines\\grounding.yaml",
+    "Length": 5693,
+    "Lines": 211
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\ai_pod\\pipelines\\rag.yaml",
+    "Length": 4505,
+    "Lines": 171
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\ai_pod\\pipelines\\toon_converter.mjs",
+    "Length": 9192,
+    "Lines": 299
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\ai_pod\\pipelines\\TOON_README.md",
+    "Length": 6969,
+    "Lines": 195
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\ai_pod\\pipelines\\toon_schema.yaml",
+    "Length": 4203,
+    "Lines": 177
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\ai_pod\\prototypes\\branding_v1\\branding.mjs",
+    "Length": 5537,
+    "Lines": 189
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\ai_pod\\prototypes\\deck_v2\\deck.mjs",
+    "Length": 8270,
+    "Lines": 301
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\ai_pod\\prototypes\\soul_v1\\fsm.mjs",
+    "Length": 5253,
+    "Lines": 218
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\ai_pod\\prototypes\\soul_v1\\render.mjs",
+    "Length": 7005,
+    "Lines": 241
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\ai_pod\\prototypes\\thinking_v1\\thinking.mjs",
+    "Length": 3883,
+    "Lines": 167
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\ai_pod\\services\\catchphrase_auto_fetch.mjs",
+    "Length": 17198,
+    "Lines": 487
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\ai_pod\\services\\laptop_auto_fetch.mjs",
+    "Length": 12666,
+    "Lines": 356
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\ai_pod\\services\\laptop_rotation.mjs",
+    "Length": 14681,
+    "Lines": 390
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\ai_pod\\services\\laptop_scoring.mjs",
+    "Length": 12981,
+    "Lines": 322
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\app\\appendices\\appendices.mjs",
+    "Length": 5781,
+    "Lines": 206
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\app\\camera_tech\\camera-tech.mjs",
+    "Length": 18146,
+    "Lines": 525
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\app\\command\\command.mjs",
+    "Length": 7212,
+    "Lines": 252
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\app\\explorer\\explorer.mjs",
+    "Length": 8660,
+    "Lines": 272
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\app\\intel\\intel.mjs",
+    "Length": 4203,
+    "Lines": 166
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\app\\matchmaker\\matchmaker.mjs",
+    "Length": 6348,
+    "Lines": 203
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\app\\shared\\components\\button.mjs",
+    "Length": 3711,
+    "Lines": 133
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\app\\shared\\components\\card.mjs",
+    "Length": 7949,
+    "Lines": 241
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\app\\shared\\components\\loader.mjs",
+    "Length": 4671,
+    "Lines": 173
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\app\\shared\\components\\modal.mjs",
+    "Length": 6136,
+    "Lines": 220
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\app\\shared\\components\\navbar.mjs",
+    "Length": 6761,
+    "Lines": 206
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\app\\shared\\components\\toast.mjs",
+    "Length": 5322,
+    "Lines": 196
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\app\\shared\\utils\\analytics.mjs",
+    "Length": 4867,
+    "Lines": 234
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\app\\shared\\utils\\api.mjs",
+    "Length": 2639,
+    "Lines": 114
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\app\\shared\\utils\\db.mjs",
+    "Length": 2881,
+    "Lines": 123
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\app\\shared\\utils\\error-handler.mjs",
+    "Length": 7087,
+    "Lines": 268
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\app\\shared\\utils\\formatters.mjs",
+    "Length": 3179,
+    "Lines": 103
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\app\\shared\\utils\\helpers.mjs",
+    "Length": 6028,
+    "Lines": 273
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\app\\shared\\utils\\performance.mjs",
+    "Length": 6266,
+    "Lines": 220
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\app\\shared\\utils\\router.mjs",
+    "Length": 1982,
+    "Lines": 85
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\app\\shared\\utils\\storage.mjs",
+    "Length": 4846,
+    "Lines": 156
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\app\\shared\\utils\\validators.mjs",
+    "Length": 7050,
+    "Lines": 256
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\app\\versus\\versus.mjs",
+    "Length": 9304,
+    "Lines": 310
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\configs\\affiliate.json",
+    "Length": 3022,
+    "Lines": 99
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\configs\\csp_meta.txt",
+    "Length": 530,
+    "Lines": 1
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\configs\\env.example",
+    "Length": 5031,
+    "Lines": 157
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\configs\\otel.yaml",
+    "Length": 5211,
+    "Lines": 184
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\configs\\security.json",
+    "Length": 6418,
+    "Lines": 281
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\configs\\tiers.json",
+    "Length": 7849,
+    "Lines": 292
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\data\\archive.json",
+    "Length": 7410,
+    "Lines": 271
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\data\\brands.json",
+    "Length": 13870,
+    "Lines": 557
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\data\\laptops-extended.json",
+    "Length": 479,
+    "Lines": 15
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\data\\laptops-full.json",
+    "Length": 419909,
+    "Lines": 14762
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\data\\laptops.json",
+    "Length": 390256,
+    "Lines": 14752
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\data\\price-drops.json",
+    "Length": 10968,
+    "Lines": 437
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\data\\quarantine.json",
+    "Length": 5395,
+    "Lines": 179
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\data\\reports.json",
+    "Length": 6267,
+    "Lines": 269
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\data\\search-index.json",
+    "Length": 5669,
+    "Lines": 235
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\data\\segments.json",
+    "Length": 10579,
+    "Lines": 394
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\404.html",
+    "Length": 4401,
+    "Lines": 112
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\app.html",
+    "Length": 70522,
+    "Lines": 1475
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\build-info.json",
+    "Length": 281,
+    "Lines": 11
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\index.html",
+    "Length": 99940,
+    "Lines": 1372
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\manifest.json",
+    "Length": 2567,
+    "Lines": 105
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\mentor-dashboard.html",
+    "Length": 13388,
+    "Lines": 427
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\offline.html",
+    "Length": 8332,
+    "Lines": 308
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\pricing.html",
+    "Length": 24715,
+    "Lines": 301
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\robots.txt",
+    "Length": 187,
+    "Lines": 8
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\service-worker.js",
+    "Length": 3393,
+    "Lines": 128
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\signup.html",
+    "Length": 12259,
+    "Lines": 263
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\sitemap.xml",
+    "Length": 1604,
+    "Lines": 51
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\sw.js",
+    "Length": 18913,
+    "Lines": 567
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\app\\appendices\\appendices.mjs",
+    "Length": 26839,
+    "Lines": 735
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\app\\command\\command.mjs",
+    "Length": 26595,
+    "Lines": 720
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\app\\explorer\\explorer.mjs",
+    "Length": 41724,
+    "Lines": 1153
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\app\\intel\\intel.mjs",
+    "Length": 19606,
+    "Lines": 587
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\app\\matchmaker\\matchmaker.mjs",
+    "Length": 18152,
+    "Lines": 487
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\app\\shared\\utils\\api.mjs",
+    "Length": 3568,
+    "Lines": 120
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\app\\shared\\utils\\storage.mjs",
+    "Length": 7659,
+    "Lines": 227
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\app\\versus\\versus.mjs",
+    "Length": 51073,
+    "Lines": 1278
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\appendices\\appendices.css",
+    "Length": 8957,
+    "Lines": 420
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\appendices\\index.html",
+    "Length": 2010,
+    "Lines": 52
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\assets\\icons\\icon.svg",
+    "Length": 1523,
+    "Lines": 28
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\camera-tech\\camera-tech.css",
+    "Length": 3211,
+    "Lines": 146
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\camera-tech\\index.html",
+    "Length": 2419,
+    "Lines": 67
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\command\\command.css",
+    "Length": 7103,
+    "Lines": 332
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\command\\index.html",
+    "Length": 2954,
+    "Lines": 76
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\components\\image-upload.js",
+    "Length": 18572,
+    "Lines": 567
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\data\\laptops.json",
+    "Length": 222190,
+    "Lines": 9314
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\downloads\\abo84-cli.html",
+    "Length": 10858,
+    "Lines": 240
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\downloads\\abo84-linux.html",
+    "Length": 10524,
+    "Lines": 169
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\downloads\\abo84-macos.html",
+    "Length": 17073,
+    "Lines": 309
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\downloads\\abo84-ollama.html",
+    "Length": 13557,
+    "Lines": 260
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\downloads\\abo84-vscode.html",
+    "Length": 12810,
+    "Lines": 196
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\downloads\\abo84-windows.html",
+    "Length": 19592,
+    "Lines": 443
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\downloads\\abo84.html",
+    "Length": 25512,
+    "Lines": 573
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\explorer\\explorer.css",
+    "Length": 8853,
+    "Lines": 422
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\explorer\\index.html",
+    "Length": 2248,
+    "Lines": 61
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\icons\\apple-touch-icon.png",
+    "Length": 24463,
+    "Lines": 216
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\icons\\favicon.svg",
+    "Length": 804,
+    "Lines": 16
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\icons\\icon-128.png",
+    "Length": 14109,
+    "Lines": 106
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\icons\\icon-144.png",
+    "Length": 17031,
+    "Lines": 141
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\icons\\icon-152.png",
+    "Length": 18812,
+    "Lines": 183
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\icons\\icon-192.png",
+    "Length": 27407,
+    "Lines": 202
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\icons\\icon-384.png",
+    "Length": 84601,
+    "Lines": 674
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\icons\\icon-512.png",
+    "Length": 137500,
+    "Lines": 1171
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\icons\\icon-72.png",
+    "Length": 5490,
+    "Lines": 41
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\icons\\icon-96.png",
+    "Length": 8759,
+    "Lines": 75
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\icons\\ICONS_README.md",
+    "Length": 3920,
+    "Lines": 116
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\intel\\index.html",
+    "Length": 2603,
+    "Lines": 69
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\intel\\intel.css",
+    "Length": 7251,
+    "Lines": 333
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\js\\app.js",
+    "Length": 7891,
+    "Lines": 220
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\js\\main.js",
+    "Length": 7644,
+    "Lines": 224
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\js\\theme-switcher.js",
+    "Length": 10445,
+    "Lines": 278
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\js\\components\\comparison-table.js",
+    "Length": 10576,
+    "Lines": 241
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\js\\components\\laptop-card.js",
+    "Length": 8153,
+    "Lines": 230
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\js\\components\\ui.js",
+    "Length": 6227,
+    "Lines": 179
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\js\\sections\\appendices-app.js",
+    "Length": 13142,
+    "Lines": 425
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\js\\sections\\command-app.js",
+    "Length": 20357,
+    "Lines": 679
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\js\\sections\\explorer-app.js",
+    "Length": 10522,
+    "Lines": 328
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\js\\sections\\intel-app.js",
+    "Length": 10651,
+    "Lines": 342
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\js\\sections\\matchmaker-app.js",
+    "Length": 17095,
+    "Lines": 500
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\js\\sections\\versus-app.js",
+    "Length": 9438,
+    "Lines": 328
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\js\\utils\\analytics.js",
+    "Length": 9489,
+    "Lines": 405
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\js\\utils\\apiClient.js",
+    "Length": 1471,
+    "Lines": 60
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\js\\utils\\db.js",
+    "Length": 7199,
+    "Lines": 211
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\js\\utils\\error-handler.js",
+    "Length": 6884,
+    "Lines": 283
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\js\\utils\\helpers.js",
+    "Length": 5639,
+    "Lines": 204
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\js\\utils\\performance.js",
+    "Length": 10100,
+    "Lines": 391
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\js\\utils\\router.js",
+    "Length": 666,
+    "Lines": 31
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\js\\utils\\stateManager.js",
+    "Length": 510,
+    "Lines": 25
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\matchmaker\\index.html",
+    "Length": 1741,
+    "Lines": 49
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\matchmaker\\matchmaker.css",
+    "Length": 5488,
+    "Lines": 248
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\pwa\\manifest.json",
+    "Length": 3309,
+    "Lines": 134
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\pwa\\offline.html",
+    "Length": 4942,
+    "Lines": 175
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\pwa\\service-worker.js",
+    "Length": 6898,
+    "Lines": 225
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\scripts\\ai-integration.js",
+    "Length": 37161,
+    "Lines": 1095
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\scripts\\app-core.js",
+    "Length": 45296,
+    "Lines": 1437
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\scripts\\auth.js",
+    "Length": 27576,
+    "Lines": 852
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\scripts\\catchphrase-manager.js",
+    "Length": 16549,
+    "Lines": 467
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\scripts\\data-sync.js",
+    "Length": 17340,
+    "Lines": 541
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\scripts\\landing-enhanced.js",
+    "Length": 25188,
+    "Lines": 599
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\scripts\\landing-interactive.js",
+    "Length": 35425,
+    "Lines": 1050
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\scripts\\landing.js",
+    "Length": 7760,
+    "Lines": 217
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\scripts\\maps-integration.js",
+    "Length": 13973,
+    "Lines": 439
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\scripts\\signup-wizard.js",
+    "Length": 27126,
+    "Lines": 811
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\scripts\\voice-interface.js",
+    "Length": 13674,
+    "Lines": 423
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\sections\\appendices.html",
+    "Length": 7948,
+    "Lines": 168
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\sections\\camera-tech.html",
+    "Length": 19201,
+    "Lines": 398
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\sections\\command.html",
+    "Length": 5646,
+    "Lines": 145
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\sections\\explorer.html",
+    "Length": 3302,
+    "Lines": 83
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\sections\\intel.html",
+    "Length": 6005,
+    "Lines": 131
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\sections\\matchmaker.html",
+    "Length": 10846,
+    "Lines": 265
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\sections\\versus.html",
+    "Length": 3429,
+    "Lines": 83
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\styles\\animations.css",
+    "Length": 4865,
+    "Lines": 1
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\styles\\app.css",
+    "Length": 32346,
+    "Lines": 1
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\styles\\auth.css",
+    "Length": 5307,
+    "Lines": 1
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\styles\\command-ui.css",
+    "Length": 9239,
+    "Lines": 1
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\styles\\cyberpunk-core.css",
+    "Length": 3934,
+    "Lines": 1
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\styles\\landing-enhanced.css",
+    "Length": 26281,
+    "Lines": 1
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\styles\\landing-psychological.css",
+    "Length": 9353,
+    "Lines": 1
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\styles\\main.css",
+    "Length": 1569,
+    "Lines": 1
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\styles\\mobile-first.css",
+    "Length": 6324,
+    "Lines": 1
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\styles\\signup-animations.css",
+    "Length": 9866,
+    "Lines": 1
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\styles\\tailwind.css",
+    "Length": 485,
+    "Lines": 1
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\styles\\themes.css",
+    "Length": 6033,
+    "Lines": 1
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\versus\\index.html",
+    "Length": 1851,
+    "Lines": 53
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\public\\versus\\versus.css",
+    "Length": 5350,
+    "Lines": 253
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\shared\\utils\\cacheManager.mjs",
+    "Length": 12789,
+    "Lines": 480
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\dist\\shared\\utils\\fetchClient.mjs",
+    "Length": 10074,
+    "Lines": 356
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\docs\\ABO-84_SPECIFICATION.md",
+    "Length": 16874,
+    "Lines": 430
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\docs\\DATABASE_SCHEMA_SPECIFICATION.md",
+    "Length": 31984,
+    "Lines": 883
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\docs\\GITHUB_GUIDE_FOR_BEGINNERS.md",
+    "Length": 26778,
+    "Lines": 742
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\docs\\MULTI_CATEGORY_EXPANSION_STRATEGY.md",
+    "Length": 28268,
+    "Lines": 767
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\docs\\N8N_EVALUATION_REPORT.md",
+    "Length": 20240,
+    "Lines": 502
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\docs\\SECURITY_IMPLEMENTATION_ROADMAP.md",
+    "Length": 27300,
+    "Lines": 831
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\docs\\TIER_SYSTEM_SPECIFICATION.md",
+    "Length": 18279,
+    "Lines": 503
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\internal\\one-piece-reference\\episode-database.json",
+    "Length": 7593,
+    "Lines": 195
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\internal\\one-piece-reference\\README.md",
+    "Length": 4359,
+    "Lines": 101
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\internal\\one-piece-reference\\tone-guide.md",
+    "Length": 11659,
+    "Lines": 267
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\Laptops\\top 100",
+    "Length": 231504,
+    "Lines": 9314
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\Laptops\\top100.json",
+    "Length": 1452,
+    "Lines": 39
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\netlify\\functions\\abo84-download-track.mjs",
+    "Length": 8053,
+    "Lines": 228
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\netlify\\functions\\abo84-downloads.mjs",
+    "Length": 3722,
+    "Lines": 116
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\netlify\\functions\\admin-catchphrases.mjs",
+    "Length": 9260,
+    "Lines": 308
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\netlify\\functions\\affiliates-out.mjs",
+    "Length": 3886,
+    "Lines": 121
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\netlify\\functions\\affiliates.mjs",
+    "Length": 1218,
+    "Lines": 26
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\netlify\\functions\\appendices-catalog.mjs",
+    "Length": 4500,
+    "Lines": 141
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\netlify\\functions\\auth.mjs",
+    "Length": 1195,
+    "Lines": 28
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\netlify\\functions\\camera.mjs",
+    "Length": 647,
+    "Lines": 17
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\netlify\\functions\\catchphrase-get.mjs",
+    "Length": 4515,
+    "Lines": 157
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\netlify\\functions\\catchphrase-paraphrase.mjs",
+    "Length": 6747,
+    "Lines": 209
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\netlify\\functions\\catchphrases.mjs",
+    "Length": 8063,
+    "Lines": 224
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\netlify\\functions\\chat.mjs",
+    "Length": 1291,
+    "Lines": 27
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\netlify\\functions\\command.mjs",
+    "Length": 1429,
+    "Lines": 33
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\netlify\\functions\\CONVERSION_STATUS.md",
+    "Length": 8989,
+    "Lines": 228
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\netlify\\functions\\cron-catchphrase-fetch.mjs",
+    "Length": 1435,
+    "Lines": 43
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\netlify\\functions\\cron-laptop-fetch.mjs",
+    "Length": 4062,
+    "Lines": 111
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\netlify\\functions\\data.mjs",
+    "Length": 5754,
+    "Lines": 190
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\netlify\\functions\\deck.mjs",
+    "Length": 1100,
+    "Lines": 26
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\netlify\\functions\\deep-research.mjs",
+    "Length": 11524,
+    "Lines": 344
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\netlify\\functions\\explorer-search.mjs",
+    "Length": 7697,
+    "Lines": 234
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\netlify\\functions\\gemini-live.mjs",
+    "Length": 13489,
+    "Lines": 405
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\netlify\\functions\\health.mjs",
+    "Length": 2239,
+    "Lines": 53
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\netlify\\functions\\intel.mjs",
+    "Length": 1350,
+    "Lines": 40
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\netlify\\functions\\matchmaker-recommend.mjs",
+    "Length": 8810,
+    "Lines": 271
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\netlify\\functions\\mentor-consultation.mjs",
+    "Length": 11394,
+    "Lines": 331
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\netlify\\functions\\paraphrase-engine.mjs",
+    "Length": 10526,
+    "Lines": 316
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\netlify\\functions\\rag-search.mjs",
+    "Length": 9584,
+    "Lines": 295
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\netlify\\functions\\recommendations.mjs",
+    "Length": 1034,
+    "Lines": 24
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\netlify\\functions\\stripe-webhook.mjs",
+    "Length": 10794,
+    "Lines": 324
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\netlify\\functions\\tts-generate.mjs",
+    "Length": 10291,
+    "Lines": 325
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\netlify\\functions\\users.mjs",
+    "Length": 1132,
+    "Lines": 33
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\netlify\\functions\\versus.mjs",
+    "Length": 6628,
+    "Lines": 216
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\netlify\\functions\\vision-analysis.mjs",
+    "Length": 8668,
+    "Lines": 263
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\netlify\\functions\\middleware\\tier-check.mjs",
+    "Length": 8850,
+    "Lines": 311
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\netlify\\functions\\utils\\abo84-access.mjs",
+    "Length": 6161,
+    "Lines": 204
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\netlify\\functions\\utils\\auth.mjs",
+    "Length": 2654,
+    "Lines": 114
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\netlify\\functions\\utils\\cache.mjs",
+    "Length": 10990,
+    "Lines": 437
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\netlify\\functions\\utils\\error-tracker.mjs",
+    "Length": 11115,
+    "Lines": 360
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\netlify\\functions\\utils\\feature-gates.mjs",
+    "Length": 7426,
+    "Lines": 232
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\netlify\\functions\\utils\\gemini.mjs",
+    "Length": 15044,
+    "Lines": 487
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\netlify\\functions\\utils\\laptopDb.mjs",
+    "Length": 16701,
+    "Lines": 517
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\netlify\\functions\\utils\\otel.mjs",
+    "Length": 9928,
+    "Lines": 340
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\netlify\\functions\\utils\\quota.mjs",
+    "Length": 14496,
+    "Lines": 437
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\netlify\\functions\\utils\\rateLimiter.mjs",
+    "Length": 2799,
+    "Lines": 104
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\netlify\\functions\\utils\\response.mjs",
+    "Length": 3148,
+    "Lines": 128
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\netlify\\functions\\utils\\retry.mjs",
+    "Length": 8033,
+    "Lines": 274
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\netlify\\functions\\utils\\security-monitor.mjs",
+    "Length": 10448,
+    "Lines": 310
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\netlify\\functions\\utils\\semantic-router.mjs",
+    "Length": 16844,
+    "Lines": 409
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\netlify\\functions\\utils\\toon.mjs",
+    "Length": 6481,
+    "Lines": 229
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\ops\\error-spike-detection.yaml",
+    "Length": 6832,
+    "Lines": 236
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\ops\\mentor-expertise.json",
+    "Length": 11359,
+    "Lines": 248
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\ops\\otel-config.yaml",
+    "Length": 5674,
+    "Lines": 199
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\ops\\routing-history.json",
+    "Length": 3817,
+    "Lines": 103
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\ops\\score-history.json",
+    "Length": 462,
+    "Lines": 19
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\ops\\runbooks\\P0_database_down.md",
+    "Length": 7932,
+    "Lines": 253
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\ops\\runbooks\\P1_gemini_api_timeout.md",
+    "Length": 9054,
+    "Lines": 266
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\ops\\runbooks\\P1_high_latency.md",
+    "Length": 10893,
+    "Lines": 363
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\ops\\runbooks\\P2_deployment_failed.md",
+    "Length": 10640,
+    "Lines": 365
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\project\\governance\\84\\changelog.md",
+    "Length": 6591,
+    "Lines": 163
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\project\\governance\\84\\composite_score_nov_2025.md",
+    "Length": 12874,
+    "Lines": 261
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\project\\governance\\84\\council_roster.json",
+    "Length": 193209,
+    "Lines": 4322
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\project\\governance\\84\\council_routes.yaml",
+    "Length": 7991,
+    "Lines": 252
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\project\\governance\\84\\dissent_ledger.md",
+    "Length": 3273,
+    "Lines": 77
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\project\\governance\\84\\executive_board.json",
+    "Length": 7418,
+    "Lines": 232
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\project\\governance\\84\\lenses_catalog.json",
+    "Length": 16916,
+    "Lines": 431
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\project\\governance\\84\\policy_pdpa.md",
+    "Length": 11429,
+    "Lines": 288
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\project\\governance\\84\\policy_security.md",
+    "Length": 14773,
+    "Lines": 387
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\project\\governance\\84\\syeddy_orchestrator.mjs",
+    "Length": 41977,
+    "Lines": 890
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\project\\governance\\84\\decisions\\ARCHITECTURE_CHANGE_1762884228884_kua08gvwf.json",
+    "Length": 17883,
+    "Lines": 597
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\project\\governance\\84\\decisions\\CODE_CHANGE_1762887914019_s8lk3flcj.json",
+    "Length": 9385,
+    "Lines": 310
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\project\\governance\\84\\decisions\\PRODUCTION_DEPLOYMENT_1762882831425_tvrwcmeor.json",
+    "Length": 31454,
+    "Lines": 1051
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\project\\governance\\84\\eval_suites\\README.md",
+    "Length": 8972,
+    "Lines": 266
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\project\\governance\\84\\eval_suites\\command\\baseline.json",
+    "Length": 1093,
+    "Lines": 40
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\project\\governance\\84\\eval_suites\\command\\golden_set.jsonl",
+    "Length": 1592,
+    "Lines": 3
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\project\\governance\\84\\eval_suites\\command\\slice_specs.json",
+    "Length": 1844,
+    "Lines": 49
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\project\\governance\\84\\eval_suites\\intel\\baseline.json",
+    "Length": 1091,
+    "Lines": 40
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\project\\governance\\84\\eval_suites\\intel\\golden_set.jsonl",
+    "Length": 1068,
+    "Lines": 2
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\project\\governance\\84\\eval_suites\\intel\\slice_specs.json",
+    "Length": 1842,
+    "Lines": 49
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\project\\governance\\84\\eval_suites\\offers\\baseline.json",
+    "Length": 1092,
+    "Lines": 40
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\project\\governance\\84\\eval_suites\\offers\\golden_set.jsonl",
+    "Length": 1059,
+    "Lines": 2
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\project\\governance\\84\\eval_suites\\offers\\slice_specs.json",
+    "Length": 1843,
+    "Lines": 49
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\project\\governance\\84\\eval_suites\\versus\\baseline.json",
+    "Length": 1092,
+    "Lines": 40
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\project\\governance\\84\\eval_suites\\versus\\golden_set.jsonl",
+    "Length": 1095,
+    "Lines": 2
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\project\\governance\\84\\eval_suites\\versus\\slice_specs.json",
+    "Length": 1843,
+    "Lines": 49
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\project\\governance\\84\\examples\\github_actions_integration.mjs",
+    "Length": 5917,
+    "Lines": 190
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\404.html",
+    "Length": 4401,
+    "Lines": 112
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\app.html",
+    "Length": 70522,
+    "Lines": 1475
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\index.html",
+    "Length": 99940,
+    "Lines": 1372
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\manifest.json",
+    "Length": 2567,
+    "Lines": 105
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\mentor-dashboard.html",
+    "Length": 13388,
+    "Lines": 427
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\offline.html",
+    "Length": 8332,
+    "Lines": 308
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\pricing.html",
+    "Length": 24715,
+    "Lines": 301
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\robots.txt",
+    "Length": 187,
+    "Lines": 8
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\service-worker.js",
+    "Length": 3393,
+    "Lines": 128
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\signup.html",
+    "Length": 12259,
+    "Lines": 263
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\sitemap.xml",
+    "Length": 1604,
+    "Lines": 51
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\sw.js",
+    "Length": 18913,
+    "Lines": 567
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\app\\appendices\\appendices.mjs",
+    "Length": 26839,
+    "Lines": 735
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\app\\command\\command.mjs",
+    "Length": 26595,
+    "Lines": 720
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\app\\explorer\\explorer.mjs",
+    "Length": 41724,
+    "Lines": 1153
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\app\\intel\\intel.mjs",
+    "Length": 19606,
+    "Lines": 587
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\app\\matchmaker\\matchmaker.mjs",
+    "Length": 18152,
+    "Lines": 487
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\app\\shared\\utils\\api.mjs",
+    "Length": 3568,
+    "Lines": 120
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\app\\shared\\utils\\storage.mjs",
+    "Length": 7659,
+    "Lines": 227
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\app\\versus\\versus.mjs",
+    "Length": 51073,
+    "Lines": 1278
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\appendices\\appendices.css",
+    "Length": 8957,
+    "Lines": 420
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\appendices\\index.html",
+    "Length": 2010,
+    "Lines": 52
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\assets\\icons\\icon.svg",
+    "Length": 1523,
+    "Lines": 28
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\camera-tech\\camera-tech.css",
+    "Length": 3211,
+    "Lines": 146
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\camera-tech\\index.html",
+    "Length": 2419,
+    "Lines": 67
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\command\\command.css",
+    "Length": 7103,
+    "Lines": 332
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\command\\index.html",
+    "Length": 2954,
+    "Lines": 76
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\components\\image-upload.js",
+    "Length": 18572,
+    "Lines": 567
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\data\\laptops.json",
+    "Length": 222190,
+    "Lines": 9314
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\downloads\\abo84-cli.html",
+    "Length": 10858,
+    "Lines": 240
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\downloads\\abo84-linux.html",
+    "Length": 10524,
+    "Lines": 169
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\downloads\\abo84-macos.html",
+    "Length": 17073,
+    "Lines": 309
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\downloads\\abo84-ollama.html",
+    "Length": 13557,
+    "Lines": 260
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\downloads\\abo84-vscode.html",
+    "Length": 12810,
+    "Lines": 196
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\downloads\\abo84-windows.html",
+    "Length": 19592,
+    "Lines": 443
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\downloads\\abo84.html",
+    "Length": 25512,
+    "Lines": 573
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\explorer\\explorer.css",
+    "Length": 8853,
+    "Lines": 422
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\explorer\\index.html",
+    "Length": 2248,
+    "Lines": 61
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\icons\\apple-touch-icon.png",
+    "Length": 24463,
+    "Lines": 216
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\icons\\favicon.svg",
+    "Length": 804,
+    "Lines": 16
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\icons\\icon-128.png",
+    "Length": 14109,
+    "Lines": 106
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\icons\\icon-144.png",
+    "Length": 17031,
+    "Lines": 141
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\icons\\icon-152.png",
+    "Length": 18812,
+    "Lines": 183
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\icons\\icon-192.png",
+    "Length": 27407,
+    "Lines": 202
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\icons\\icon-384.png",
+    "Length": 84601,
+    "Lines": 674
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\icons\\icon-512.png",
+    "Length": 137500,
+    "Lines": 1171
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\icons\\icon-72.png",
+    "Length": 5490,
+    "Lines": 41
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\icons\\icon-96.png",
+    "Length": 8759,
+    "Lines": 75
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\icons\\ICONS_README.md",
+    "Length": 3920,
+    "Lines": 116
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\intel\\index.html",
+    "Length": 2603,
+    "Lines": 69
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\intel\\intel.css",
+    "Length": 7251,
+    "Lines": 333
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\js\\app.js",
+    "Length": 7891,
+    "Lines": 220
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\js\\main.js",
+    "Length": 7644,
+    "Lines": 224
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\js\\theme-switcher.js",
+    "Length": 10445,
+    "Lines": 278
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\js\\components\\comparison-table.js",
+    "Length": 10576,
+    "Lines": 241
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\js\\components\\laptop-card.js",
+    "Length": 8153,
+    "Lines": 230
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\js\\components\\ui.js",
+    "Length": 6227,
+    "Lines": 179
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\js\\sections\\appendices-app.js",
+    "Length": 13142,
+    "Lines": 425
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\js\\sections\\command-app.js",
+    "Length": 20357,
+    "Lines": 679
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\js\\sections\\explorer-app.js",
+    "Length": 10522,
+    "Lines": 328
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\js\\sections\\intel-app.js",
+    "Length": 10651,
+    "Lines": 342
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\js\\sections\\matchmaker-app.js",
+    "Length": 17095,
+    "Lines": 500
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\js\\sections\\versus-app.js",
+    "Length": 9438,
+    "Lines": 328
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\js\\utils\\analytics.js",
+    "Length": 9489,
+    "Lines": 405
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\js\\utils\\apiClient.js",
+    "Length": 1471,
+    "Lines": 60
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\js\\utils\\db.js",
+    "Length": 7199,
+    "Lines": 211
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\js\\utils\\error-handler.js",
+    "Length": 6884,
+    "Lines": 283
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\js\\utils\\helpers.js",
+    "Length": 5639,
+    "Lines": 204
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\js\\utils\\performance.js",
+    "Length": 10100,
+    "Lines": 391
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\js\\utils\\router.js",
+    "Length": 666,
+    "Lines": 31
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\js\\utils\\stateManager.js",
+    "Length": 510,
+    "Lines": 25
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\matchmaker\\index.html",
+    "Length": 1741,
+    "Lines": 49
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\matchmaker\\matchmaker.css",
+    "Length": 5488,
+    "Lines": 248
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\pwa\\manifest.json",
+    "Length": 3309,
+    "Lines": 134
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\pwa\\offline.html",
+    "Length": 4942,
+    "Lines": 175
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\pwa\\service-worker.js",
+    "Length": 6898,
+    "Lines": 225
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\scripts\\ai-integration.js",
+    "Length": 37161,
+    "Lines": 1095
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\scripts\\app-core.js",
+    "Length": 45296,
+    "Lines": 1437
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\scripts\\auth.js",
+    "Length": 27576,
+    "Lines": 852
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\scripts\\catchphrase-manager.js",
+    "Length": 16549,
+    "Lines": 467
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\scripts\\data-sync.js",
+    "Length": 17340,
+    "Lines": 541
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\scripts\\landing-enhanced.js",
+    "Length": 25188,
+    "Lines": 599
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\scripts\\landing-interactive.js",
+    "Length": 35425,
+    "Lines": 1050
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\scripts\\landing.js",
+    "Length": 7760,
+    "Lines": 217
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\scripts\\maps-integration.js",
+    "Length": 13973,
+    "Lines": 439
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\scripts\\signup-wizard.js",
+    "Length": 27126,
+    "Lines": 811
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\scripts\\voice-interface.js",
+    "Length": 13674,
+    "Lines": 423
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\sections\\appendices.html",
+    "Length": 7948,
+    "Lines": 168
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\sections\\camera-tech.html",
+    "Length": 19201,
+    "Lines": 398
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\sections\\command.html",
+    "Length": 5646,
+    "Lines": 145
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\sections\\explorer.html",
+    "Length": 3302,
+    "Lines": 83
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\sections\\intel.html",
+    "Length": 6005,
+    "Lines": 131
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\sections\\matchmaker.html",
+    "Length": 10846,
+    "Lines": 265
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\sections\\versus.html",
+    "Length": 3429,
+    "Lines": 83
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\styles\\animations.css",
+    "Length": 6731,
+    "Lines": 377
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\styles\\app.css",
+    "Length": 40239,
+    "Lines": 1796
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\styles\\auth.css",
+    "Length": 6529,
+    "Lines": 312
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\styles\\command-ui.css",
+    "Length": 14125,
+    "Lines": 660
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\styles\\cyberpunk-core.css",
+    "Length": 5034,
+    "Lines": 219
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\styles\\landing-enhanced.css",
+    "Length": 31688,
+    "Lines": 1465
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\styles\\landing-psychological.css",
+    "Length": 12642,
+    "Lines": 598
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\styles\\main.css",
+    "Length": 2286,
+    "Lines": 120
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\styles\\mobile-first.css",
+    "Length": 10641,
+    "Lines": 458
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\styles\\signup-animations.css",
+    "Length": 15137,
+    "Lines": 719
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\styles\\tailwind.css",
+    "Length": 702,
+    "Lines": 28
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\styles\\themes.css",
+    "Length": 9037,
+    "Lines": 302
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\versus\\index.html",
+    "Length": 1851,
+    "Lines": 53
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\public\\versus\\versus.css",
+    "Length": 5350,
+    "Lines": 253
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\scripts\\build.mjs",
+    "Length": 7317,
+    "Lines": 235
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\scripts\\catchphrase-auto-fetch.mjs",
+    "Length": 12088,
+    "Lines": 347
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\scripts\\dev.mjs",
+    "Length": 990,
+    "Lines": 36
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\scripts\\generate-icons.js",
+    "Length": 3759,
+    "Lines": 105
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\scripts\\generate-pwa-icons.mjs",
+    "Length": 2699,
+    "Lines": 72
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\scripts\\phase6-validation.mjs",
+    "Length": 2941,
+    "Lines": 72
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\scripts\\test.mjs",
+    "Length": 787,
+    "Lines": 34
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\shared\\utils\\cacheManager.mjs",
+    "Length": 12789,
+    "Lines": 480
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\shared\\utils\\fetchClient.mjs",
+    "Length": 10074,
+    "Lines": 356
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\syeddy-debugger\\README.md",
+    "Length": 11518,
+    "Lines": 348
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\syeddy-debugger\\signals\\phase1-core-signals.mjs",
+    "Length": 24846,
+    "Lines": 703
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\tests\\api.test.mjs",
+    "Length": 2980,
+    "Lines": 97
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\tests\\data.test.mjs",
+    "Length": 3150,
+    "Lines": 107
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\tests\\eval-runner.mjs",
+    "Length": 13872,
+    "Lines": 422
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\tests\\helpers.test.mjs",
+    "Length": 7545,
+    "Lines": 225
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\tests\\integration.test.mjs",
+    "Length": 4021,
+    "Lines": 130
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\tests\\smoke.test.mjs",
+    "Length": 1501,
+    "Lines": 37
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\tests\\data\\schema.test.mjs",
+    "Length": 3887,
+    "Lines": 93
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\tests\\integration\\laptop-database.test.mjs",
+    "Length": 16308,
+    "Lines": 448
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\tests\\integration\\netlify-functions.test.mjs",
+    "Length": 7136,
+    "Lines": 171
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\tests\\smoke\\boot.test.mjs",
+    "Length": 2294,
+    "Lines": 63
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\tests\\smoke\\csp.test.mjs",
+    "Length": 4724,
+    "Lines": 108
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\tests\\smoke\\render.test.mjs",
+    "Length": 7245,
+    "Lines": 184
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\tests\\unit\\api.test.mjs",
+    "Length": 2659,
+    "Lines": 82
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\tools\\build-netlify.mjs",
+    "Length": 7594,
+    "Lines": 204
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\tools\\build.mjs",
+    "Length": 6347,
+    "Lines": 176
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\tools\\dev-server.mjs",
+    "Length": 3812,
+    "Lines": 121
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\tools\\generate-laptop-db.mjs",
+    "Length": 20762,
+    "Lines": 483
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\tools\\syeddy-cli.mjs",
+    "Length": 8095,
+    "Lines": 223
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\tools\\etl\\expand-laptops-database.mjs",
+    "Length": 22894,
+    "Lines": 888
+  },
+  {
+    "FullName": "C:\\Users\\syedu\\OneDrive\\Desktop\\AI Bradaa Full\\tools\\etl\\pipeline.mjs",
+    "Length": 11586,
+    "Lines": 322
+  }
+]

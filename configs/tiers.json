@@ -40,7 +40,7 @@
         },
         "abo84": {
           "access": false,
-          "reason": "ABO-84 Beta is exclusive to Ultimate tier (RM80/month)"
+          "reason": "ABO-84 Beta is exclusive to Ultimate tier (RM39/month)"
         }
       },
       "limits": {
@@ -54,7 +54,7 @@
     },
     "pro": {
       "name": "Pro",
-      "price": 30,
+      "price": 15,
       "currency": "MYR",
       "billingCycle": "monthly",
       "stripePriceId": "price_YOUR_STRIPE_PRO_PRICE_ID",
@@ -101,7 +101,7 @@
         },
         "abo84": {
           "access": false,
-          "reason": "ABO-84 Beta is exclusive to Ultimate tier (RM80/month)"
+          "reason": "ABO-84 Beta is exclusive to Ultimate tier (RM39/month)"
         }
       },
       "limits": {
@@ -116,7 +116,7 @@
     },
     "ultimate": {
       "name": "Ultimate",
-      "price": 80,
+      "price": 39,
       "currency": "MYR",
       "billingCycle": "monthly",
       "stripePriceId": "price_YOUR_STRIPE_ULTIMATE_PRICE_ID",

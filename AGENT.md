@@ -62,21 +62,18 @@ This guide ensures every contributor (AI agent or human) works safely, consisten
 
 ### Environment Setup
 
-```bash
-# 1. Clone and navigate
-cd /home/user/aibradaa
+For a complete, step-by-step guide written for absolute beginners, please refer to the new single source of truth for setup:
 
-# 2. Install dependencies
+**➡️ `/SETUP_GUIDE.md`**
+
+This guide explains every step, including how to get secret keys and what each command does, assuming zero technical knowledge.
+
+The basic commands are:
+```bash
+# 1. Install all necessary tools
 npm install
 
-# 3. Set up environment variables
-cp .env.example .env
-# Edit .env with required keys (see .env.example for all variables)
-
-# 4. Verify setup
-npm run test:smoke
-
-# 5. Start development server
+# 2. Start the application
 npm run dev
 ```
 

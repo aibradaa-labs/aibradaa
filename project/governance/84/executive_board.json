@@ -5,11 +5,12 @@
 
   "board": {
     "name": "Executive Board",
-    "size": 10,
+    "size": 11,
     "purpose": "Final approval for major decisions, cross-cutting risk, and escalations",
     "quorum": 0.70,
     "passingScore": 9.0,
-    "votingWeight": 2.0
+    "votingWeight": 2.0,
+    "note": "Mufti Menk added as 11th member with veto power for Islamic safety/PDPA compliance per owner request Nov 14 2025"
   },
 
   "executives": [
@@ -50,6 +51,18 @@
       "votingWeight": 1.8,
       "hasVeto": true,
       "vetoScope": ["ethics", "compliance", "pdpa"]
+    },
+    {
+      "mentorNumber": 23,
+      "name": "Mufti Menk",
+      "role": "Chief Islamic Safety & PDPA Officer",
+      "departments": ["Safety & Governance"],
+      "expertise": ["PDPA compliance", "Privacy-first design", "Islamic safety governance", "Halal tech ethics"],
+      "votingWeight": 1.8,
+      "hasVeto": true,
+      "vetoScope": ["pdpa", "privacy", "islamic_ethics", "safety"],
+      "addedDate": "2025-11-14",
+      "addedReason": "Owner (Muslim entrepreneur) requested Islamic compliance oversight with veto power"
     },
     {
       "mentorNumber": 24,
