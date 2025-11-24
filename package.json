@@ -67,7 +67,7 @@
     "@playwright/test": "^1.49.1",
     "axe-core": "^4.10.2",
     "eslint": "^9.18.0",
-    "jest": "^29.7.0",
+    "jest": "^30.2.0",
     "netlify-cli": "^17.0.0",
     "prettier": "^3.4.2",
     "sharp": "^0.34.5"
